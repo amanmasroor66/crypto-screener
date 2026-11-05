@@ -95,6 +95,29 @@ def analyse(c):
     return None
 
 
+def near_miss(c):
+    """Watchlist: closed within 3% under the 42 day high, not yet broken out."""
+    if len(c) < 60:
+        return None
+    last = c[-1]
+    prior = c[-43:-1]
+    hi = max(x["h"] for x in prior)
+    lo = min(x["l"] for x in prior)
+    vol_avg20 = sum(x["v"] for x in c[-21:-1]) / 20
+    if vol_avg20 <= 0 or last["c"] >= hi:
+        return None
+    gap = (hi - last["c"]) / hi
+    if gap > 0.03 or (hi - lo) / lo > 1.0:  # skip wild, non breakout style charts
+        return None
+    return {
+        "price": last["c"],
+        "trigger": hi,
+        "gap_pct": round(gap * 100, 1),
+        "vol_ratio": round(last["v"] / vol_avg20, 1),
+        "why": f"Needs a daily close above {fmt(hi)} on strong volume to trigger.",
+    }
+
+
 def fmt(x):
     return f"{x:.6g}"
 
@@ -131,19 +154,27 @@ def run(fetch=get):
     btc = next((t for t in tickers if t["symbol"] == "BTCUSDT"), None)
     eth = next((t for t in tickers if t["symbol"] == "ETHUSDT"), None)
     results = []
+    watch = []
     for sym, base, qv, chg in cands:
         try:
             k = fetch("/api/v3/klines", {"symbol": sym, "interval": "1d", "limit": 120})
         except Exception as e:  # skip a failing symbol, keep the run alive
             print("skip", sym, e, file=sys.stderr)
             continue
-        sig = analyse(parse(k))
+        candles = parse(k)
+        sig = analyse(candles)
+        if not sig:
+            nm = near_miss(candles)
+            if nm:
+                nm.update({"symbol": base, "pair": sym, "qvol_musd": round(qv / 1e6, 1), "chg24h": round(chg, 1)})
+                watch.append(nm)
         if sig:
             sig.update({"symbol": base, "pair": sym, "qvol_musd": round(qv / 1e6, 1), "chg24h": round(chg, 1)})
             sig["score"] = quality(sig, qv)
             results.append(sig)
         time.sleep(0.05)
     results.sort(key=lambda x: x["score"], reverse=True)
+    watch.sort(key=lambda x: x["gap_pct"])
     return {
         "generated_utc": datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M"),
         "scanned": len(cands),
@@ -152,6 +183,7 @@ def run(fetch=get):
             "ETH": {"price": float(eth["lastPrice"]), "chg24h": float(eth["priceChangePercent"])} if eth else None,
         },
         "signals": results,
+        "watchlist": watch[:15],
         "notes": [
             "Filters only. Not advice and not a prediction.",
             "Check token unlock dates (tokenomist.ai) before any buy.",
@@ -178,6 +210,8 @@ def brief(out):
     for s in out["signals"][:6]:
         lines.append(f"{s['symbol']} {s['type']} | price {fmt(s['price'])} | stop {fmt(s['stop'])} "
                      f"| risk {s['risk_pct']}% | vol {s['vol_ratio']}x")
+    for w in out.get("watchlist", [])[:5]:
+        lines.append(f"Watch {w['symbol']} | {w['gap_pct']}% below trigger {fmt(w['trigger'])}")
     lines.append("Check unlocks first. Not advice.")
     return "\n".join(lines)
 

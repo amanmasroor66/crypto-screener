@@ -41,6 +41,9 @@ a{color:var(--acc)}
     <button data-f="Reversal">Reversals</button>
   </div>
   <div id="list"></div>
+  <h2 style="font-size:16px;margin:22px 0 4px">Watchlist: close to triggering</h2>
+  <div class="sub">Not signals. These sit within 3% under their 42 day high. They trigger only on a daily close above it with strong volume.</div>
+  <div id="watch"></div>
   <div class="notes" id="notes"></div>
 </div>
 <script>
@@ -67,6 +70,13 @@ function render(){
       <div><div class="k">24h</div><div class="v">${pct(s.chg24h)}</div></div>
     </div>
     <div class="why">${s.why} 24h volume $${s.qvol_musd}M.</div></div>`).join("");
+  const w=d.watchlist||[];
+  document.getElementById("watch").innerHTML=w.length?w.map(s=>`<div class="card"><div class="top"><span class="sym">${s.symbol}</span><span class="k">${s.gap_pct}% below trigger</span></div>
+    <div class="grid"><div><div class="k">Price</div><div class="v">${fmt(s.price)}</div></div>
+    <div><div class="k">Trigger (close above)</div><div class="v">${fmt(s.trigger)}</div></div>
+    <div><div class="k">Volume vs avg</div><div class="v">${s.vol_ratio}x</div></div>
+    <div><div class="k">24h</div><div class="v">${pct(s.chg24h)}</div></div></div>
+    <div class="why">${s.why} 24h volume $${s.qvol_musd}M.</div></div>`).join(""):`<div class="empty">Nothing close to triggering.</div>`;
   document.getElementById("notes").innerHTML=d.notes.map(n=>`<div>${n}</div>`).join("");
 }
 document.getElementById("tabs").onclick=e=>{if(e.target.dataset.f){F=e.target.dataset.f;

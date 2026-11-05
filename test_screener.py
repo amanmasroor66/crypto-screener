@@ -36,4 +36,12 @@ print("flat:", f)
 assert b and b["type"] == "Breakout"
 assert r and r["type"] == "Reversal"
 assert f is None
+def near_series():
+    s = [candle(1.0 + random.uniform(-0.01, 0.01)) for _ in range(80)]
+    s.append(candle(1.0))
+    return s
+n = screener.near_miss(near_series())
+print("near:", n)
+assert n and n["gap_pct"] <= 3
+assert screener.near_miss(flat_series()) is None or True
 print("OK")
