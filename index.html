@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Crypto Screener</title>
+<style>
+:root{--bg:#f6f7f9;--card:#fff;--ink:#14171c;--mute:#667085;--line:#e4e7ec;--up:#12805c;--warn:#b54708;--acc:#2f5fd0}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+.wrap{max-width:900px;margin:0 auto;padding:20px 16px 48px}
+h1{font-size:22px;margin:0 0 2px}
+.sub{color:var(--mute);font-size:13px;margin-bottom:16px}
+.mk{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px}
+.pill{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:8px 12px;font-size:14px}
+.up{color:var(--up)}.dn{color:#b42318}
+.tabs{display:flex;gap:8px;margin-bottom:12px}
+.tabs button{border:1px solid var(--line);background:var(--card);border-radius:8px;padding:6px 12px;cursor:pointer;font:inherit}
+.tabs button.on{background:var(--acc);color:#fff;border-color:var(--acc)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-bottom:10px}
+.top{display:flex;justify-content:space-between;align-items:baseline;gap:8px;flex-wrap:wrap}
+.sym{font-weight:700;font-size:17px}
+.tag{font-size:12px;border-radius:6px;padding:2px 8px;background:#eef3ff;color:var(--acc);margin-left:8px}
+.tag.rev{background:#fff4e5;color:var(--warn)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px;margin:10px 0 6px}
+.k{color:var(--mute);font-size:12px}.v{font-weight:600}
+.why{color:var(--mute);font-size:13px}
+.empty{background:var(--card);border:1px dashed var(--line);border-radius:12px;padding:20px;color:var(--mute)}
+.notes{margin-top:18px;color:var(--mute);font-size:13px}
+a{color:var(--acc)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Crypto Screener</h1>
+  <div class="sub" id="sub">Loading...</div>
+  <div class="mk" id="mk"></div>
+  <div class="tabs" id="tabs">
+    <button data-f="All" class="on">All</button>
+    <button data-f="Breakout">Breakouts</button>
+    <button data-f="Reversal">Reversals</button>
+  </div>
+  <div id="list"></div>
+  <div class="notes" id="notes"></div>
+</div>
+<script>
+let DATA=null,F="All";
+const fmt=x=>Number(x).toPrecision(5).replace(/\.?0+$/,"");
+const pct=x=>`<span class="${x>=0?"up":"dn"}">${x>=0?"+":""}${x.toFixed(1)}%</span>`;
+function render(){
+  const d=DATA;
+  document.getElementById("sub").textContent=d.generated_utc?`Updated ${d.generated_utc} UTC | scanned ${d.scanned} spot pairs on Binance`:"No scan yet";
+  const mk=document.getElementById("mk");mk.innerHTML="";
+  for(const k of ["BTC","ETH"]){const m=d.market[k];if(m)mk.innerHTML+=`<div class="pill"><b>${k}</b> ${fmt(m.price)} ${pct(m.chg24h)}</div>`}
+  const rows=d.signals.filter(s=>F==="All"||s.type===F);
+  const el=document.getElementById("list");
+  if(!rows.length){el.innerHTML=`<div class="empty">No clean setups right now. Waiting is a valid position.</div>`}
+  else el.innerHTML=rows.map(s=>`<div class="card">
+    <div class="top"><div><span class="sym">${s.symbol}</span><span class="tag ${s.type==="Reversal"?"rev":""}">${s.type}</span></div>
+    <div class="k">score ${s.score}</div></div>
+    <div class="grid">
+      <div><div class="k">Price</div><div class="v">${fmt(s.price)}</div></div>
+      <div><div class="k">Stop (exit if below)</div><div class="v">${fmt(s.stop)}</div></div>
+      <div><div class="k">Risk to stop</div><div class="v">${s.risk_pct}%</div></div>
+      <div><div class="k">Size for 1% loss</div><div class="v">${s.size_for_1pct_loss}% of capital</div></div>
+      <div><div class="k">Volume vs avg</div><div class="v">${s.vol_ratio}x</div></div>
+      <div><div class="k">24h</div><div class="v">${pct(s.chg24h)}</div></div>
+    </div>
+    <div class="why">${s.why} 24h volume $${s.qvol_musd}M.</div></div>`).join("");
+  document.getElementById("notes").innerHTML=d.notes.map(n=>`<div>${n}</div>`).join("");
+}
+document.getElementById("tabs").onclick=e=>{if(e.target.dataset.f){F=e.target.dataset.f;
+  document.querySelectorAll(".tabs button").forEach(b=>b.classList.toggle("on",b===e.target));render()}};
+fetch("signals.json?t="+Date.now()).then(r=>r.json()).then(d=>{DATA=d;render()})
+ .catch(()=>{document.getElementById("sub").textContent="Could not load signals.json"});
+</script>
+</body>
+</html>
