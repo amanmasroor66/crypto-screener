@@ -16,6 +16,12 @@ MIN_QUOTE_VOL = 5_000_000   # USDT traded in 24h
 TOP_N = 150                 # candidates scanned, by volume
 STABLES = {"USDC", "FDUSD", "TUSD", "USDP", "DAI", "USDE", "EUR", "AEUR", "XUSD", "USD1", "PYUSD", "BFUSD", "RLUSD", "U", "USDS", "USDD", "BUSD", "EURI", "UST", "FRAX", "LUSD", "GUSD", "USDG"}
 BAD_SUFFIX = ("UP", "DOWN", "BULL", "BEAR")
+# Gold and tokenized stock pairs follow other markets and trade thinly at weekends. Not crypto setups.
+NON_CRYPTO = {"PAXG", "XAUT", "RWUSD", "SNDKB", "SOXLB", "SPCXB", "CRCLB", "MUB", "GOOGLB", "MSTRB", "SKHYB",
+              "KORUB", "INTCB", "NVDAB", "QQQB", "TSLAB", "SNXXB", "TQQQB", "BEB"}
+COOLDOWN_DAYS = 10      # no repeat signal on a coin that already signalled in the last 10 days
+MAX_EXTENSION = 0.15    # skip breakouts that closed more than 15% above the old high (chasing)
+STOP_BELOW_LEVEL = 0.10 # breakout stop sits 10% under the broken level, not at the far base low
 
 
 def get(path, params=None):
@@ -34,7 +40,7 @@ def candidates(tickers):
         if not s.endswith("USDT"):
             continue
         base = s[:-4]
-        if base in STABLES or base.endswith(BAD_SUFFIX):
+        if base in STABLES or base in NON_CRYPTO or base.endswith(BAD_SUFFIX):
             continue
         qv = float(t["quoteVolume"])
         if qv < MIN_QUOTE_VOL:
@@ -58,7 +64,19 @@ def sma(vals, n):
 
 
 def analyse(c):
-    """c: list of closed daily candles, oldest first. Returns signal dict or None."""
+    """c: closed daily candles, oldest first. Returns a signal dict or None.
+    A coin that already signalled in the last COOLDOWN_DAYS days is skipped, because
+    repeat signals on the same run lost money in the backtest."""
+    sig = _signal(c)
+    if not sig:
+        return None
+    for j in range(1, COOLDOWN_DAYS + 1):
+        if _signal(c[:-j]):
+            return None
+    return sig
+
+
+def _signal(c):
     if len(c) < 60:
         return None
     last = c[-1]
@@ -75,10 +93,13 @@ def analyse(c):
     base_range = (prior_high - prior_low) / prior_low if prior_low else 9
     if base_range < 0.08:  # pegged coin, never a real setup
         return None
+    ma20 = sma(closes, 20)
     if last["c"] > prior_high and vol_ratio >= 2.0:
-        stop = prior_low if (last["c"] - prior_low) / last["c"] < 0.30 else min(x["l"] for x in c[-10:]) * 0.98
+        if last["c"] > prior_high * (1 + MAX_EXTENSION):
+            return None  # already ran too far past the level
+        stop = max(prior_low, prior_high * (1 - STOP_BELOW_LEVEL))
         return build("Breakout", last, stop, vol_ratio,
-                     f"Closed above the 42 day high ({fmt(prior_high)}) on {vol_ratio:.1f}x average volume.")
+                     f"Closed above the 42 day high ({fmt(prior_high)}) on {vol_ratio:.1f}x average volume.", ma20)
 
     # ---- Reversal: deep drawdown, tight base, price back above the 20 day average
     high90 = max(x["h"] for x in c[-90:])
@@ -87,13 +108,12 @@ def analyse(c):
     b_hi = max(x["h"] for x in base20)
     b_lo = min(x["l"] for x in base20)
     tight = (b_hi - b_lo) / b_lo <= 0.40
-    ma20 = sma(closes, 20)
     higher_low = min(x["l"] for x in c[-10:]) > min(x["l"] for x in c[-30:-10])
     if drawdown >= 0.50 and tight and last["c"] > ma20 and higher_low and vol_ratio >= 1.5:
         stop = b_lo * 0.98
         return build("Reversal", last, stop, vol_ratio,
                      f"Down {drawdown*100:.0f}% from the 90 day high, now above its 20 day average "
-                     f"with a higher low and {vol_ratio:.1f}x volume.")
+                     f"with a higher low and {vol_ratio:.1f}x volume. Experimental: reversals lost money in the backtest.", ma20)
     return None
 
 
@@ -125,7 +145,7 @@ def fmt(x):
     return f"{x:.6g}"
 
 
-def build(kind, last, stop, vol_ratio, why):
+def build(kind, last, stop, vol_ratio, why, ma20):
     price = last["c"]
     risk = (price - stop) / price
     if risk <= 0:
@@ -138,6 +158,8 @@ def build(kind, last, stop, vol_ratio, why):
         # position size so that a stop out loses 1% of total capital
         "size_for_1pct_loss": round(min(1 / risk, 100), 1),
         "vol_ratio": round(vol_ratio, 1),
+        "exit_below": ma20,  # sell rule: a daily close under this level (20 day average)
+        "experimental": kind == "Reversal",
         "why": why,
     }
 
@@ -191,6 +213,8 @@ def run(fetch=get):
             "Filters only. Not advice and not a prediction.",
             "Check token unlock dates (tokenomist.ai) before any buy.",
             "Use the stop level. Size so a stop out costs about 1% of capital.",
+            "Sell rule: exit on a daily close below the 20 day average, or when the stop is hit. Recheck the 20 day average daily as it moves.",
+            "Backtest of 8 months: breakouts won about 1 in 3 trades, and most profit came from a few big winners. Reversals lost money, so treat them as experimental.",
         ],
     }
 
@@ -212,7 +236,7 @@ def brief(out):
         lines.append("No clean setups today. Doing nothing is a valid trade.")
     for s in out["signals"][:6]:
         lines.append(f"{s['symbol']} {s['type']} | price {fmt(s['price'])} | stop {fmt(s['stop'])} "
-                     f"| risk {s['risk_pct']}% | vol {s['vol_ratio']}x")
+                     f"| risk {s['risk_pct']}% | vol {s['vol_ratio']}x | exit on close below {fmt(s['exit_below'])}")
     for w in out.get("watchlist", [])[:5]:
         lines.append(f"Watch {w['symbol']} | {w['gap_pct']}% below trigger {fmt(w['trigger'])}")
     lines.append("Check unlocks first. Not advice.")

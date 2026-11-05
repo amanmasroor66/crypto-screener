@@ -11,7 +11,7 @@ def candle(c, v=1e6):
 
 def breakout_series():
     s = [candle(1.0 + random.uniform(-0.03, 0.03)) for _ in range(80)]
-    s.append(candle(1.25, 6e6))  # breakout on big volume
+    s.append(candle(1.12, 6e6))  # breakout on big volume
     return s
 
 
@@ -45,4 +45,16 @@ n = screener.near_miss(near_series())
 print("near:", n)
 assert n and n["gap_pct"] <= 3
 assert screener.near_miss(flat_series()) is None  # pegged/flat coins are skipped
+# over-extended breakout is skipped
+ext = [candle(1.0 + random.uniform(-0.03, 0.03)) for _ in range(80)] + [candle(1.4, 6e6)]
+assert screener.analyse(ext) is None
+# cooldown: a second breakout candle right after the first is not a new signal
+first = breakout_series()
+assert screener.analyse(first)
+assert screener.analyse(first + [candle(1.14, 6e6)]) is None
+# signal carries a sell level and a stop that is not absurdly far
+assert b["exit_below"] > 0 and b["stop"] < b["price"] and b["risk_pct"] <= 25
+# gold, tokenized stocks and stablecoins are excluded
+tk = [{"symbol": x + "USDT", "quoteVolume": "9e9", "priceChangePercent": "0"} for x in ("PAXG", "TSLAB", "RWUSD", "USDC", "BTC")]
+assert [c[1] for c in screener.candidates(tk)] == ["BTC"]
 print("OK")

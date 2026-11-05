@@ -22,6 +22,7 @@ h1{font-size:22px;margin:0 0 2px}
 .sym{font-weight:700;font-size:17px}
 .tag{font-size:12px;border-radius:6px;padding:2px 8px;background:#eef3ff;color:var(--acc);margin-left:8px}
 .tag.rev{background:#fff4e5;color:var(--warn)}
+.tag.exp{background:#fef3f2;color:#b42318}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px;margin:10px 0 6px}
 .k{color:var(--mute);font-size:12px}.v{font-weight:600}
 .why{color:var(--mute);font-size:13px}
@@ -59,11 +60,12 @@ function render(){
   const el=document.getElementById("list");
   if(!rows.length){el.innerHTML=`<div class="empty">No clean setups right now. Waiting is a valid position.</div>`}
   else el.innerHTML=rows.map(s=>`<div class="card">
-    <div class="top"><div><span class="sym">${s.symbol}</span><span class="tag ${s.type==="Reversal"?"rev":""}">${s.type}</span></div>
+    <div class="top"><div><span class="sym">${s.symbol}</span><span class="tag ${s.type==="Reversal"?"rev":""}">${s.type}</span>${s.experimental?'<span class="tag exp">Experimental</span>':''}</div>
     <div class="k">score ${s.score}</div></div>
     <div class="grid">
       <div><div class="k">Price</div><div class="v">${fmt(s.price)}</div></div>
       <div><div class="k">Stop (exit if below)</div><div class="v">${fmt(s.stop)}</div></div>
+      <div><div class="k">Sell if daily close below</div><div class="v">${fmt(s.exit_below)}</div></div>
       <div><div class="k">Risk to stop</div><div class="v">${s.risk_pct}%</div></div>
       <div><div class="k">Size for 1% loss</div><div class="v">${s.size_for_1pct_loss}% of capital</div></div>
       <div><div class="k">Volume vs avg</div><div class="v">${s.vol_ratio}x</div></div>
