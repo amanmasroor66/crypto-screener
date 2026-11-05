@@ -1,1 +1,20 @@
-{"generated_utc": null, "scanned": 0, "market": {"BTC": null, "ETH": null}, "signals": [], "notes": ["No run yet. Run the Daily screener workflow once from the Actions tab."]}
+{
+  "generated_utc": "2026-11-05 04:11",
+  "scanned": 74,
+  "market": {
+    "BTC": {
+      "price": 80444.0,
+      "chg24h": 4.663
+    },
+    "ETH": {
+      "price": 2420.4,
+      "chg24h": 6.919
+    }
+  },
+  "signals": [],
+  "notes": [
+    "Filters only. Not advice and not a prediction.",
+    "Check token unlock dates (tokenomist.ai) before any buy.",
+    "Use the stop level. Size so a stop out costs about 1% of capital."
+  ]
+}
