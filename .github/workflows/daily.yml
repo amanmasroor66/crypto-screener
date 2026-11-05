@@ -1,8 +1,12 @@
 name: Daily screener
 on:
   schedule:
-    - cron: "0 4 * * *"   # 08:00 Dubai time
+    - cron: "0 4 * * *"   # 08:00 Dubai time, sends the Telegram brief
+    - cron: "30 0,8,12,16,20 * * *"   # refresh signals and research, no Telegram
   workflow_dispatch: {}
+concurrency:
+  group: screener
+  cancel-in-progress: false
 permissions:
   contents: write
 jobs:
@@ -16,7 +20,7 @@ jobs:
       - run: python3 test_screener.py
       - run: python3 screener.py
         env:
-          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          TELEGRAM_TOKEN: ${{ (github.event_name == 'workflow_dispatch' || github.event.schedule == '0 4 * * *') && secrets.TELEGRAM_TOKEN || '' }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
       - name: Save signals
         run: |

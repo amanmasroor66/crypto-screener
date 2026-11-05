@@ -29,6 +29,9 @@ h1{font-size:22px;margin:0 0 2px}
 .res{margin-top:10px;padding-top:10px;border-top:1px solid var(--line);font-size:13px}
 .res .ok{color:var(--up);font-weight:600}.res .cau{color:var(--warn);font-weight:600}
 .res ul{margin:4px 0 0;padding-left:18px}.res li{margin:2px 0}
+.live{display:inline-block;width:8px;height:8px;border-radius:50%;background:#98a2b3;margin-right:6px}
+.live.on{background:var(--up);animation:p 2s infinite}@keyframes p{50%{opacity:.3}}
+.st{font-weight:600}.st.bad{color:#b42318}.st.ok{color:var(--up)}.st.mid{color:var(--warn)}
 .empty{background:var(--card);border:1px dashed var(--line);border-radius:12px;padding:20px;color:var(--mute)}
 .notes{margin-top:18px;color:var(--mute);font-size:13px}
 a{color:var(--acc)}
@@ -38,6 +41,7 @@ a{color:var(--acc)}
 <div class="wrap">
   <h1>Crypto Screener</h1>
   <div class="sub" id="sub">Loading...</div>
+  <div class="sub"><span class="live" id="dot"></span><span id="liveTxt">Connecting to live prices...</span></div>
   <div class="mk" id="mk"></div>
   <div class="tabs" id="tabs">
     <button data-f="All" class="on">All</button>
@@ -52,7 +56,7 @@ a{color:var(--acc)}
 </div>
 <script>
 let DATA=null,F="All";
-const fmt=x=>Number(x).toPrecision(5).replace(/\.?0+$/,"");
+const fmt=x=>{const t=Number(x).toPrecision(5);return t.includes(".")&&!t.includes("e")?t.replace(/\.?0+$/,""):String(parseFloat(t))};
 const esc=t=>String(t).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 function res(s){const r=s.research;if(!r)return"";
   const facts=[r.mcap_musd!=null?`Market cap $${r.mcap_musd}M (rank ${r.rank||"n/a"})`:"",r.circulating_pct!=null?`${r.circulating_pct}% of supply circulating`:"",r.ath_drop_pct!=null?`${r.ath_drop_pct}% below all time high`:""].filter(Boolean).join(" | ");
@@ -72,7 +76,9 @@ function render(){
     <div class="top"><div><span class="sym">${s.symbol}</span><span class="tag ${s.type==="Reversal"?"rev":""}">${s.type}</span>${s.experimental?'<span class="tag exp">Experimental</span>':''}</div>
     <div class="k">score ${s.score}</div></div>
     <div class="grid">
-      <div><div class="k">Price</div><div class="v">${fmt(s.price)}</div></div>
+      <div><div class="k">Live price</div><div class="v live-px" data-p="${s.pair}">...</div></div>
+      <div><div class="k">Status now</div><div class="v st" data-st="${s.pair}">...</div></div>
+      <div><div class="k">Price at signal</div><div class="v">${fmt(s.price)}</div></div>
       <div><div class="k">Stop (exit if below)</div><div class="v">${fmt(s.stop)}</div></div>
       <div><div class="k">Sell if daily close below</div><div class="v">${fmt(s.exit_below)}</div></div>
       <div><div class="k">Risk to stop</div><div class="v">${s.risk_pct}%</div></div>
@@ -83,7 +89,8 @@ function render(){
     <div class="why">${s.why} 24h volume $${s.qvol_musd}M.</div>${res(s)}</div>`).join("");
   const w=d.watchlist||[];
   document.getElementById("watch").innerHTML=w.length?w.map(s=>`<div class="card"><div class="top"><span class="sym">${s.symbol}</span><span class="k">${s.gap_pct}% below trigger</span></div>
-    <div class="grid"><div><div class="k">Price</div><div class="v">${fmt(s.price)}</div></div>
+    <div class="grid"><div><div class="k">Live price</div><div class="v live-px" data-p="${s.pair}">...</div></div>
+    <div><div class="k">Status now</div><div class="v st" data-wt="${s.pair}">...</div></div>
     <div><div class="k">Trigger (close above)</div><div class="v">${fmt(s.trigger)}</div></div>
     <div><div class="k">Volume vs avg</div><div class="v">${s.vol_ratio}x</div></div>
     <div><div class="k">24h</div><div class="v">${pct(s.chg24h)}</div></div></div>
@@ -92,8 +99,26 @@ function render(){
 }
 document.getElementById("tabs").onclick=e=>{if(e.target.dataset.f){F=e.target.dataset.f;
   document.querySelectorAll(".tabs button").forEach(b=>b.classList.toggle("on",b===e.target));render()}};
-fetch("signals.json?t="+Date.now()).then(r=>r.json()).then(d=>{DATA=d;render()})
- .catch(()=>{document.getElementById("sub").textContent="Could not load signals.json"});
+function live(){
+  const pairs=[...new Set([...(DATA.signals||[]),...(DATA.watchlist||[])].map(x=>x.pair).concat(["BTCUSDT","ETHUSDT"]))];
+  fetch("https://data-api.binance.vision/api/v3/ticker/price?symbols="+encodeURIComponent(JSON.stringify(pairs))).then(r=>r.json()).then(a=>{
+    const P={};a.forEach(x=>P[x.symbol]=parseFloat(x.price));
+    document.querySelectorAll("[data-p]").forEach(el=>{const p=P[el.dataset.p];if(p!=null)el.textContent=fmt(p)});
+    (DATA.signals||[]).forEach(s=>{const p=P[s.pair],el=document.querySelector(`[data-st="${s.pair}"]`);if(p==null||!el)return;
+      let t,c;if(p<=s.stop){t="Below stop: exit";c="bad"}else if(p<s.exit_below){t="Below sell level: exit if the day closes here";c="mid"}else{t=`${((p/s.price-1)*100).toFixed(1)}% since signal. Hold`;c="ok"}
+      el.textContent=t;el.className="v st "+c});
+    (DATA.watchlist||[]).forEach(w=>{const p=P[w.pair],el=document.querySelector(`[data-wt="${w.pair}"]`);if(p==null||!el)return;
+      const g=(w.trigger/p-1)*100;el.textContent=g<=0?"Above trigger now. Needs a daily close":`${g.toFixed(1)}% below trigger`;el.className="v st "+(g<=0?"mid":"")});
+    ["BTC","ETH"].forEach(k=>{const p=P[k+"USDT"];if(p!=null&&DATA.market[k]){DATA.market[k].price=p;}});
+    const mk=document.getElementById("mk");mk.innerHTML="";
+    for(const k of ["BTC","ETH"]){const m=DATA.market[k];if(m)mk.innerHTML+=`<div class="pill"><b>${k}</b> ${fmt(m.price)} ${pct(m.chg24h)}</div>`}
+    document.getElementById("dot").className="live on";
+    document.getElementById("liveTxt").textContent="Live prices, updated "+new Date().toLocaleTimeString()+". Signals refresh several times a day.";
+  }).catch(()=>{document.getElementById("dot").className="live";document.getElementById("liveTxt").textContent="Live prices unavailable. Showing the last saved scan."});
+}
+function load(){fetch("signals.json?t="+Date.now()).then(r=>r.json()).then(d=>{DATA=d;render();live()})
+ .catch(()=>{document.getElementById("sub").textContent="Could not load signals.json"})}
+load();setInterval(()=>{if(DATA)live()},15000);setInterval(load,10*60*1000);
 </script>
 </body>
 </html>
