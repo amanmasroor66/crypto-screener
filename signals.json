@@ -1,17 +1,41 @@
 {
-  "generated_utc": "2026-11-05 04:11",
+  "generated_utc": "2026-11-05 04:24",
   "scanned": 74,
   "market": {
     "BTC": {
-      "price": 80444.0,
-      "chg24h": 4.663
+      "price": 80395.3,
+      "chg24h": 4.853
     },
     "ETH": {
-      "price": 2420.4,
-      "chg24h": 6.919
+      "price": 2419.65,
+      "chg24h": 7.167
     }
   },
   "signals": [],
+  "watchlist": [
+    {
+      "price": 1.0009,
+      "trigger": 1.0019,
+      "gap_pct": 0.1,
+      "vol_ratio": 0.9,
+      "why": "Needs a daily close above 1.0019 on strong volume to trigger.",
+      "symbol": "RLUSD",
+      "pair": "RLUSDUSDT",
+      "qvol_musd": 45.1,
+      "chg24h": -0.1
+    },
+    {
+      "price": 0.9997,
+      "trigger": 1.001,
+      "gap_pct": 0.1,
+      "vol_ratio": 1.0,
+      "why": "Needs a daily close above 1.001 on strong volume to trigger.",
+      "symbol": "U",
+      "pair": "UUSDT",
+      "qvol_musd": 26.9,
+      "chg24h": -0.0
+    }
+  ],
   "notes": [
     "Filters only. Not advice and not a prediction.",
     "Check token unlock dates (tokenomist.ai) before any buy.",
