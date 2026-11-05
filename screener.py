@@ -173,7 +173,7 @@ def quality(sig, qv):
     return round(s, 1)
 
 
-def run(fetch=get):
+def run(fetch=get, enrich_with_research=True):
     tickers = fetch("/api/v3/ticker/24hr")
     cands = candidates(tickers)
     btc = next((t for t in tickers if t["symbol"] == "BTCUSDT"), None)
@@ -200,7 +200,7 @@ def run(fetch=get):
         time.sleep(0.05)
     results.sort(key=lambda x: x["score"], reverse=True)
     watch.sort(key=lambda x: x["gap_pct"])
-    return {
+    out = {
         "generated_utc": datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M"),
         "scanned": len(cands),
         "market": {
@@ -217,6 +217,13 @@ def run(fetch=get):
             "Backtest of 8 months: breakouts won about 1 in 3 trades, and most profit came from a few big winners. Reversals lost money, so treat them as experimental.",
         ],
     }
+    if enrich_with_research:
+        try:
+            import research
+            research.enrich(out)
+        except Exception as e:  # research is optional, never block the scan
+            print("research skipped", e, file=sys.stderr)
+    return out
 
 
 def telegram(text):
@@ -237,6 +244,10 @@ def brief(out):
     for s in out["signals"][:6]:
         lines.append(f"{s['symbol']} {s['type']} | price {fmt(s['price'])} | stop {fmt(s['stop'])} "
                      f"| risk {s['risk_pct']}% | vol {s['vol_ratio']}x | exit on close below {fmt(s['exit_below'])}")
+    for s_ in out["signals"][:6]:
+        r = s_.get("research")
+        if r and r["flags"]:
+            lines.append(f"{s_['symbol']} caution: " + " ".join(r["flags"]))
     for w in out.get("watchlist", [])[:5]:
         lines.append(f"Watch {w['symbol']} | {w['gap_pct']}% below trigger {fmt(w['trigger'])}")
     lines.append("Check unlocks first. Not advice.")

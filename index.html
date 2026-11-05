@@ -26,6 +26,9 @@ h1{font-size:22px;margin:0 0 2px}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px;margin:10px 0 6px}
 .k{color:var(--mute);font-size:12px}.v{font-weight:600}
 .why{color:var(--mute);font-size:13px}
+.res{margin-top:10px;padding-top:10px;border-top:1px solid var(--line);font-size:13px}
+.res .ok{color:var(--up);font-weight:600}.res .cau{color:var(--warn);font-weight:600}
+.res ul{margin:4px 0 0;padding-left:18px}.res li{margin:2px 0}
 .empty{background:var(--card);border:1px dashed var(--line);border-radius:12px;padding:20px;color:var(--mute)}
 .notes{margin-top:18px;color:var(--mute);font-size:13px}
 a{color:var(--acc)}
@@ -50,6 +53,12 @@ a{color:var(--acc)}
 <script>
 let DATA=null,F="All";
 const fmt=x=>Number(x).toPrecision(5).replace(/\.?0+$/,"");
+const esc=t=>String(t).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+function res(s){const r=s.research;if(!r)return"";
+  const facts=[r.mcap_musd!=null?`Market cap $${r.mcap_musd}M (rank ${r.rank||"n/a"})`:"",r.circulating_pct!=null?`${r.circulating_pct}% of supply circulating`:"",r.ath_drop_pct!=null?`${r.ath_drop_pct}% below all time high`:""].filter(Boolean).join(" | ");
+  const fl=r.flags.map(f=>`<li>${esc(f)}</li>`).join("");
+  const nw=(r.news||[]).map(n=>`<li><a href="${esc(n.link)}" target="_blank" rel="noopener">${esc(n.title)}</a> <span class="k">${esc(n.source)}</span></li>`).join("");
+  return `<div class="res"><span class="${r.flags.length?"cau":"ok"}">${esc(r.verdict)}</span> <span class="k">${esc(facts)}</span>${fl?`<ul>${fl}</ul>`:""}${nw?`<div class="k" style="margin-top:6px">Recent headlines</div><ul>${nw}</ul>`:`<div class="k" style="margin-top:6px">No recent headlines found in the feeds checked.</div>`}</div>`}
 const pct=x=>`<span class="${x>=0?"up":"dn"}">${x>=0?"+":""}${x.toFixed(1)}%</span>`;
 function render(){
   const d=DATA;
@@ -71,14 +80,14 @@ function render(){
       <div><div class="k">Volume vs avg</div><div class="v">${s.vol_ratio}x</div></div>
       <div><div class="k">24h</div><div class="v">${pct(s.chg24h)}</div></div>
     </div>
-    <div class="why">${s.why} 24h volume $${s.qvol_musd}M.</div></div>`).join("");
+    <div class="why">${s.why} 24h volume $${s.qvol_musd}M.</div>${res(s)}</div>`).join("");
   const w=d.watchlist||[];
   document.getElementById("watch").innerHTML=w.length?w.map(s=>`<div class="card"><div class="top"><span class="sym">${s.symbol}</span><span class="k">${s.gap_pct}% below trigger</span></div>
     <div class="grid"><div><div class="k">Price</div><div class="v">${fmt(s.price)}</div></div>
     <div><div class="k">Trigger (close above)</div><div class="v">${fmt(s.trigger)}</div></div>
     <div><div class="k">Volume vs avg</div><div class="v">${s.vol_ratio}x</div></div>
     <div><div class="k">24h</div><div class="v">${pct(s.chg24h)}</div></div></div>
-    <div class="why">${s.why} 24h volume $${s.qvol_musd}M.</div></div>`).join(""):`<div class="empty">Nothing close to triggering.</div>`;
+    <div class="why">${s.why} 24h volume $${s.qvol_musd}M.</div>${res(s)}</div>`).join(""):`<div class="empty">Nothing close to triggering.</div>`;
   document.getElementById("notes").innerHTML=d.notes.map(n=>`<div>${n}</div>`).join("");
 }
 document.getElementById("tabs").onclick=e=>{if(e.target.dataset.f){F=e.target.dataset.f;

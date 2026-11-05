@@ -57,4 +57,30 @@ assert b["exit_below"] > 0 and b["stop"] < b["price"] and b["risk_pct"] <= 25
 # gold, tokenized stocks and stablecoins are excluded
 tk = [{"symbol": x + "USDT", "quoteVolume": "9e9", "priceChangePercent": "0"} for x in ("PAXG", "TSLAB", "RWUSD", "USDC", "BTC")]
 assert [c[1] for c in screener.candidates(tk)] == ["BTC"]
+# research layer, offline with fake data
+import research
+row = {"symbol": "ABC", "price": 1.0}
+good = {"symbol": "abc", "name": "Alpha Beta Coin", "current_price": 1.02, "market_cap": 20e6, "market_cap_rank": 900,
+        "circulating_supply": 30, "max_supply": 100, "fully_diluted_valuation": 70e6, "ath_change_percentage": -85,
+        "price_change_percentage_30d_in_currency": 150}
+news = research.match_news("ABC", "Alpha Beta Coin", [{"source": "x", "title": "ABC hit by exploit", "link": "u"},
+                                                       {"source": "x", "title": "Nothing about it", "link": "u"},
+                                                       {"source": "x", "title": "ABCD rallies", "link": "u"}])
+assert len(news) == 1
+ctx = research.context(row, good, news)
+assert ctx["verdict"] == "Caution" and len(ctx["flags"]) == 4 and ctx["verified"]
+wrong = dict(good, current_price=40.0)  # same ticker, different coin
+assert research.context(row, wrong, [])["verified"] is False
+assert research.context(row, None, [])["flags"]
+clean = dict(good, market_cap=900e6, circulating_supply=95, price_change_percentage_30d_in_currency=5)
+assert research.context(row, clean, [])["verdict"] == "No red flags found"
+out = {"signals": [dict(row)], "watchlist": []}
+
+
+def boom(*a):
+    raise RuntimeError("down")
+
+
+research.enrich(out, boom, boom)  # both sources down: must not crash
+assert out["signals"][0]["research"]["verdict"] == "Caution"
 print("OK")
