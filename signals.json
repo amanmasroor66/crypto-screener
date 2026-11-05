@@ -1,44 +1,23 @@
 {
-  "generated_utc": "2026-11-05 04:24",
-  "scanned": 74,
+  "generated_utc": "2026-11-05 05:42",
+  "scanned": 50,
   "market": {
     "BTC": {
-      "price": 80395.3,
-      "chg24h": 4.853
+      "price": 80525.2,
+      "chg24h": 3.521
     },
     "ETH": {
-      "price": 2419.65,
-      "chg24h": 7.167
+      "price": 2424.91,
+      "chg24h": 5.605
     }
   },
   "signals": [],
-  "watchlist": [
-    {
-      "price": 1.0009,
-      "trigger": 1.0019,
-      "gap_pct": 0.1,
-      "vol_ratio": 0.9,
-      "why": "Needs a daily close above 1.0019 on strong volume to trigger.",
-      "symbol": "RLUSD",
-      "pair": "RLUSDUSDT",
-      "qvol_musd": 45.1,
-      "chg24h": -0.1
-    },
-    {
-      "price": 0.9997,
-      "trigger": 1.001,
-      "gap_pct": 0.1,
-      "vol_ratio": 1.0,
-      "why": "Needs a daily close above 1.001 on strong volume to trigger.",
-      "symbol": "U",
-      "pair": "UUSDT",
-      "qvol_musd": 26.9,
-      "chg24h": -0.0
-    }
-  ],
+  "watchlist": [],
   "notes": [
     "Filters only. Not advice and not a prediction.",
     "Check token unlock dates (tokenomist.ai) before any buy.",
-    "Use the stop level. Size so a stop out costs about 1% of capital."
+    "Use the stop level. Size so a stop out costs about 1% of capital.",
+    "Sell rule: exit on a daily close below the 20 day average, or when the stop is hit. Recheck the 20 day average daily as it moves.",
+    "Backtest of 8 months: breakouts won about 1 in 3 trades, and most profit came from a few big winners. Reversals lost money, so treat them as experimental."
   ]
 }
