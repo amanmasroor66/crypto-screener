@@ -231,7 +231,10 @@ def telegram(text):
     if not token or not chat:
         return
     data = urllib.parse.urlencode({"chat_id": chat, "text": text}).encode()
-    urllib.request.urlopen(f"https://api.telegram.org/bot{token}/sendMessage", data, timeout=30)
+    try:
+        urllib.request.urlopen(f"https://api.telegram.org/bot{token}/sendMessage", data, timeout=30)
+    except Exception as e:  # a bad token or chat id must never block saving signals.json
+        print("telegram failed:", type(e).__name__, getattr(e, "code", ""), file=sys.stderr)
 
 
 def brief(out):
