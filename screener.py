@@ -14,7 +14,7 @@ from datetime import datetime, timezone
 BASE = "https://data-api.binance.vision"  # public data host, works from US servers
 MIN_QUOTE_VOL = 5_000_000   # USDT traded in 24h
 TOP_N = 150                 # candidates scanned, by volume
-STABLES = {"USDC", "FDUSD", "TUSD", "USDP", "DAI", "USDE", "EUR", "AEUR", "XUSD", "USD1", "PYUSD", "BFUSD"}
+STABLES = {"USDC", "FDUSD", "TUSD", "USDP", "DAI", "USDE", "EUR", "AEUR", "XUSD", "USD1", "PYUSD", "BFUSD", "RLUSD", "U", "USDS", "USDD", "BUSD", "EURI", "UST", "FRAX", "LUSD", "GUSD", "USDG"}
 BAD_SUFFIX = ("UP", "DOWN", "BULL", "BEAR")
 
 
@@ -73,6 +73,8 @@ def analyse(c):
     prior_high = max(x["h"] for x in prior)
     prior_low = min(x["l"] for x in prior)
     base_range = (prior_high - prior_low) / prior_low if prior_low else 9
+    if base_range < 0.08:  # pegged coin, never a real setup
+        return None
     if last["c"] > prior_high and vol_ratio >= 2.0:
         stop = prior_low if (last["c"] - prior_low) / last["c"] < 0.30 else min(x["l"] for x in c[-10:]) * 0.98
         return build("Breakout", last, stop, vol_ratio,
@@ -107,7 +109,8 @@ def near_miss(c):
     if vol_avg20 <= 0 or last["c"] >= hi:
         return None
     gap = (hi - last["c"]) / hi
-    if gap > 0.03 or (hi - lo) / lo > 1.0:  # skip wild, non breakout style charts
+    rng = (hi - lo) / lo
+    if gap > 0.03 or rng > 1.0 or rng < 0.08:  # skip wild charts and flat pegged coins
         return None
     return {
         "price": last["c"],
