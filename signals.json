@@ -1,14 +1,14 @@
 {
-  "generated_utc": "2026-11-07 15:02",
-  "scanned": 32,
+  "generated_utc": "2026-11-07 20:25",
+  "scanned": 29,
   "market": {
     "BTC": {
-      "price": 75930.02,
-      "chg24h": 0.638
+      "price": 75766.94,
+      "chg24h": -0.046
     },
     "ETH": {
-      "price": 2245.43,
-      "chg24h": 0.931
+      "price": 2231.54,
+      "chg24h": 0.089
     }
   },
   "signals": [],
