@@ -1,14 +1,14 @@
 {
-  "generated_utc": "2026-11-08 06:33",
-  "scanned": 32,
+  "generated_utc": "2026-11-08 11:04",
+  "scanned": 33,
   "market": {
     "BTC": {
-      "price": 75841.24,
-      "chg24h": -0.266
+      "price": 75916.01,
+      "chg24h": -0.111
     },
     "ETH": {
-      "price": 2235.57,
-      "chg24h": -0.483
+      "price": 2236.0,
+      "chg24h": -0.513
     }
   },
   "signals": [
@@ -24,19 +24,15 @@
       "why": "Closed above the 42 day high (0.01223) on 15.2x average volume.",
       "symbol": "ACT",
       "pair": "ACTUSDT",
-      "qvol_musd": 8.4,
-      "chg24h": 5.0,
+      "qvol_musd": 7.0,
+      "chg24h": -7.3,
       "score": 7,
       "research": {
         "source": "CoinGecko + news RSS",
-        "verified": true,
-        "mcap_musd": 10.8,
-        "rank": 1178,
-        "ath_drop_pct": 99.0,
-        "circulating_pct": 95.0,
+        "verified": false,
         "news": [],
         "flags": [
-          "Small cap ($11M). Hard to exit, so size down."
+          "CoinGecko may be showing a different coin with this ticker. Check the coin manually."
         ],
         "verdict": "Caution"
       }
@@ -161,6 +157,15 @@
         "ch30": 22.3,
         "from_high_pct": -12.3,
         "note": "INJ is +22% over 30 days and +14% this week, above its 50 day average. It sits 12% under its recent high. Strength can continue, but buying after a run means a deeper fall if it turns."
+      },
+      {
+        "symbol": "BMT",
+        "trend": "Uptrend",
+        "price": 0.02262,
+        "ch7": -0.2,
+        "ch30": 19.0,
+        "from_high_pct": -56.0,
+        "note": "BMT is +19% over 30 days and -0% this week, above its 50 day average. It sits 56% under its recent high. Strength can continue, but buying after a run means a deeper fall if it turns."
       }
     ],
     "new_listings": [
@@ -176,10 +181,18 @@
     ],
     "trending": [
       {
-        "symbol": "PENGU",
-        "name": "Pudgy Penguins",
-        "rank": 115,
-        "ch24": -2.7,
+        "symbol": "WASTED",
+        "name": "WASTED",
+        "rank": 810,
+        "ch24": 64.6,
+        "on_binance": false,
+        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top. It is a small coin (rank 810), so moves both ways are violent. Not in this screener's Binance list, so none of the checks here apply."
+      },
+      {
+        "symbol": "KNTQ",
+        "name": "Kinetiq",
+        "rank": 192,
+        "ch24": 4.1,
         "on_binance": false,
         "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top. Not in this screener's Binance list, so none of the checks here apply."
       },
@@ -187,52 +200,54 @@
         "symbol": "BTC",
         "name": "Bitcoin",
         "rank": 1,
-        "ch24": -0.3,
+        "ch24": -0.1,
         "on_binance": true,
         "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top."
       },
       {
-        "symbol": "KNTQ",
-        "name": "Kinetiq",
-        "rank": 194,
-        "ch24": 3.8,
+        "symbol": "PENGU",
+        "name": "Pudgy Penguins",
+        "rank": 116,
+        "ch24": -2.2,
         "on_binance": false,
         "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top. Not in this screener's Binance list, so none of the checks here apply."
       },
       {
-        "symbol": "UAI",
-        "name": "UnifAI Network",
-        "rank": 870,
-        "ch24": -38.9,
-        "on_binance": false,
-        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top. It is a small coin (rank 870), so moves both ways are violent. Not in this screener's Binance list, so none of the checks here apply."
-      },
-      {
-        "symbol": "NEAR",
-        "name": "NEAR Protocol",
-        "rank": 21,
-        "ch24": -0.6,
+        "symbol": "HYPE",
+        "name": "Hyperliquid",
+        "rank": 11,
+        "ch24": -1.5,
         "on_binance": true,
         "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top."
       },
       {
         "symbol": "PEARL",
         "name": "Pearl",
-        "rank": 89,
-        "ch24": 0.6,
+        "rank": 88,
+        "ch24": 0.1,
         "on_binance": false,
         "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top. Not in this screener's Binance list, so none of the checks here apply."
       },
       {
-        "symbol": "XLM",
-        "name": "Stellar",
-        "rank": 19,
-        "ch24": -1.4,
+        "symbol": "JCT",
+        "name": "Janction",
+        "rank": 328,
+        "ch24": 120.0,
         "on_binance": false,
-        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top. Not in this screener's Binance list, so none of the checks here apply."
+        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top. It is a small coin (rank 328), so moves both ways are violent. Not in this screener's Binance list, so none of the checks here apply."
       }
     ],
     "news": [
+      {
+        "source": "Cointelegraph",
+        "title": "Amsterdam protesters break into Microsoft data center construction site: Report",
+        "link": "https://cointelegraph.com/news/amsterdam-data-center-protesters-break-into-construction-site-report?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
+      },
+      {
+        "source": "Cointelegraph",
+        "title": "Binance\u2019s  finance chief Kaiser Ng to leave company, report says",
+        "link": "https://cointelegraph.com/news/binances-finance-chief-kaiser-ng-to-leave-company-report-says?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
+      },
       {
         "source": "Cointelegraph",
         "title": "Here\u2019s what happened in crypto today",
@@ -252,24 +267,14 @@
         "source": "Cointelegraph",
         "title": "US sanctions Canadian money-exchange firms over Iran ties",
         "link": "https://cointelegraph.com/news/us-sanctions-canadian-money-exchange-firms-over-iran-ties?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
-      },
-      {
-        "source": "Cointelegraph",
-        "title": "Suspicious prediction market activity seen before election poll release: NYT",
-        "link": "https://cointelegraph.com/news/suspicious-prediction-market-activity-seen-before-election-poll-release-nyt?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
-      },
-      {
-        "source": "Cointelegraph",
-        "title": "Nvidia may face a more hostile post-election Washington: Report",
-        "link": "https://cointelegraph.com/news/nvidia-may-be-facing-a-more-hostile-post-election-washington-report?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
       }
     ],
     "regime": {
       "mood": "Downtrend",
-      "breadth_pct": 13,
+      "breadth_pct": 16,
       "btc_above_50d": false,
       "btc_above_200d": true,
-      "summary": "The market is weak. BTC is below its 50 day average and above its 200 day average, and 13% of coins are above their 50 day average. Most breakouts fail even in good markets, so in a weak market protecting cash matters more than finding a winner. Today there is 1 signal. If you act, act only on those: read the caution flags, size so a stop out costs about 1% of your capital, and note the sell level. Should you invest at all? Only money you can afford to lose completely, and only after a few weeks of paper trading these signals."
+      "summary": "The market is weak. BTC is below its 50 day average and above its 200 day average, and 16% of coins are above their 50 day average. Most breakouts fail even in good markets, so in a weak market protecting cash matters more than finding a winner. Today there is 1 signal. If you act, act only on those: read the caution flags, size so a stop out costs about 1% of your capital, and note the sell level. Should you invest at all? Only money you can afford to lose completely, and only after a few weeks of paper trading these signals."
     }
   }
 }
