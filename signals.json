@@ -1,14 +1,14 @@
 {
-  "generated_utc": "2026-11-08 11:04",
-  "scanned": 33,
+  "generated_utc": "2026-11-08 15:30",
+  "scanned": 32,
   "market": {
     "BTC": {
-      "price": 75916.01,
-      "chg24h": -0.111
+      "price": 76064.02,
+      "chg24h": 0.27
     },
     "ETH": {
-      "price": 2236.0,
-      "chg24h": -0.513
+      "price": 2240.98,
+      "chg24h": -0.062
     }
   },
   "signals": [
@@ -24,8 +24,8 @@
       "why": "Closed above the 42 day high (0.01223) on 15.2x average volume.",
       "symbol": "ACT",
       "pair": "ACTUSDT",
-      "qvol_musd": 7.0,
-      "chg24h": -7.3,
+      "qvol_musd": 6.1,
+      "chg24h": -3.0,
       "score": 7,
       "research": {
         "source": "CoinGecko + news RSS",
@@ -181,63 +181,73 @@
     ],
     "trending": [
       {
-        "symbol": "WASTED",
-        "name": "WASTED",
-        "rank": 810,
-        "ch24": 64.6,
+        "symbol": "DACITY",
+        "name": "Dacity Coin",
+        "rank": 724,
+        "ch24": 16.1,
         "on_binance": false,
-        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top. It is a small coin (rank 810), so moves both ways are violent. Not in this screener's Binance list, so none of the checks here apply."
+        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top. It is a small coin (rank 724), so moves both ways are violent. Not in this screener's Binance list, so none of the checks here apply."
       },
       {
-        "symbol": "KNTQ",
-        "name": "Kinetiq",
-        "rank": 192,
-        "ch24": 4.1,
+        "symbol": "WASTED",
+        "name": "WASTED",
+        "rank": 826,
+        "ch24": 40.8,
+        "on_binance": false,
+        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top. It is a small coin (rank 826), so moves both ways are violent. Not in this screener's Binance list, so none of the checks here apply."
+      },
+      {
+        "symbol": "ZEC",
+        "name": "Zcash",
+        "rank": 10,
+        "ch24": 1.0,
+        "on_binance": true,
+        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top."
+      },
+      {
+        "symbol": "JCT",
+        "name": "Janction",
+        "rank": 267,
+        "ch24": 213.9,
         "on_binance": false,
         "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top. Not in this screener's Binance list, so none of the checks here apply."
       },
       {
-        "symbol": "BTC",
-        "name": "Bitcoin",
-        "rank": 1,
+        "symbol": "SOL",
+        "name": "Solana",
+        "rank": 7,
         "ch24": -0.1,
         "on_binance": true,
         "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top."
       },
       {
-        "symbol": "PENGU",
-        "name": "Pudgy Penguins",
-        "rank": 116,
-        "ch24": -2.2,
-        "on_binance": false,
-        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top. Not in this screener's Binance list, so none of the checks here apply."
+        "symbol": "PUMP",
+        "name": "Pump.fun",
+        "rank": 55,
+        "ch24": 0.1,
+        "on_binance": true,
+        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top."
       },
       {
         "symbol": "HYPE",
         "name": "Hyperliquid",
         "rank": 11,
-        "ch24": -1.5,
+        "ch24": -0.6,
         "on_binance": true,
         "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top."
-      },
-      {
-        "symbol": "PEARL",
-        "name": "Pearl",
-        "rank": 88,
-        "ch24": 0.1,
-        "on_binance": false,
-        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top. Not in this screener's Binance list, so none of the checks here apply."
-      },
-      {
-        "symbol": "JCT",
-        "name": "Janction",
-        "rank": 328,
-        "ch24": 120.0,
-        "on_binance": false,
-        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top. It is a small coin (rank 328), so moves both ways are violent. Not in this screener's Binance list, so none of the checks here apply."
       }
     ],
     "news": [
+      {
+        "source": "Cointelegraph",
+        "title": "Here\u2019s what happened in crypto today",
+        "link": "https://cointelegraph.com/news/what-happened-in-crypto-today?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
+      },
+      {
+        "source": "Cointelegraph",
+        "title": "Binance France emails announce closure of its users\u2019 accounts on Dec. 31",
+        "link": "https://cointelegraph.com/news/binance-france-emails-announce-closure-of-its-users-accounts-on-dec-31?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
+      },
       {
         "source": "Cointelegraph",
         "title": "Amsterdam protesters break into Microsoft data center construction site: Report",
@@ -250,11 +260,6 @@
       },
       {
         "source": "Cointelegraph",
-        "title": "Here\u2019s what happened in crypto today",
-        "link": "https://cointelegraph.com/news/what-happened-in-crypto-today?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
-      },
-      {
-        "source": "Cointelegraph",
         "title": "Ex-FBI counterintelligence agent stole almost $2.5M in crypto",
         "link": "https://cointelegraph.com/news/ex-fbi-counterintelligence-agent-stole-almost-25m-in-crypto?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
       },
@@ -262,11 +267,6 @@
         "source": "Cointelegraph",
         "title": "Bitcoin holders have received eCash \u2014 What can you do with it?",
         "link": "https://cointelegraph.com/magazine/bitcoin-holders-have-received-ecash-what-can-you-with-it?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
-      },
-      {
-        "source": "Cointelegraph",
-        "title": "US sanctions Canadian money-exchange firms over Iran ties",
-        "link": "https://cointelegraph.com/news/us-sanctions-canadian-money-exchange-firms-over-iran-ties?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
       }
     ],
     "regime": {
