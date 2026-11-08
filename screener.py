@@ -50,11 +50,23 @@ def candidates(tickers):
     return out[:TOP_N]
 
 
+def likely_stock_token(base, candles):
+    """Binance tokenized stocks end in B and trade far less at weekends (stock market closed)."""
+    if not base.endswith("B") or len(candles) < 28:
+        return False
+    wk = [x["v"] for x in candles[-56:] if x.get("wd", 0) >= 5]
+    wd = [x["v"] for x in candles[-56:] if x.get("wd", 0) < 5]
+    if not wk or not wd or sum(wd) == 0:
+        return False
+    return (sum(wk) / len(wk)) / (sum(wd) / len(wd)) < 0.36
+
+
 def parse(klines):
     # drop the still-forming candle (last one)
     rows = klines[:-1]
     return [
-        {"o": float(k[1]), "h": float(k[2]), "l": float(k[3]), "c": float(k[4]), "v": float(k[5]) * float(k[4])}
+        {"o": float(k[1]), "h": float(k[2]), "l": float(k[3]), "c": float(k[4]), "v": float(k[5]) * float(k[4]),
+         "wd": datetime.fromtimestamp(k[0] / 1000, timezone.utc).weekday()}
         for k in rows
     ]
 
@@ -180,13 +192,18 @@ def run(fetch=get, enrich_with_research=True):
     eth = next((t for t in tickers if t["symbol"] == "ETHUSDT"), None)
     results = []
     watch = []
+    allc = {}
     for sym, base, qv, chg in cands:
         try:
-            k = fetch("/api/v3/klines", {"symbol": sym, "interval": "1d", "limit": 120})
+            k = fetch("/api/v3/klines", {"symbol": sym, "interval": "1d", "limit": 220})
         except Exception as e:  # skip a failing symbol, keep the run alive
             print("skip", sym, e, file=sys.stderr)
             continue
         candles = parse(k)
+        if likely_stock_token(base, candles):
+            print("skip stock token", base, file=sys.stderr)
+            continue
+        allc[base] = {"candles": candles, "qv": qv}
         sig = analyse(candles)
         if not sig:
             nm = near_miss(candles)
@@ -217,13 +234,27 @@ def run(fetch=get, enrich_with_research=True):
             "Backtest of 8 months: breakouts won about 1 in 3 trades, and most profit came from a few big winners. Reversals lost money, so treat them as experimental.",
         ],
     }
+    news = top = trending = None
     if enrich_with_research:
         try:
             import research
-            research.enrich(out)
+            news = research.fetch_news()
+            research.enrich(out, fetch_n=lambda: news)
+            time.sleep(2)
+            top = research.fetch_top()
+            time.sleep(2)
+            trending = research.fetch_trending()
         except Exception as e:  # research is optional, never block the scan
             print("research skipped", e, file=sys.stderr)
+    out["overview"] = overview(allc, len(results), top, trending, news)
     return out
+
+
+def overview(allc, n_signals, top=None, trending=None, news=None):
+    import market
+    ov = market.build(allc, gecko_top=top, trending=trending, news=news)
+    ov["regime"] = market.regime(ov.pop("_btc"), ov.pop("_all"), n_signals)
+    return ov
 
 
 def telegram(text):
@@ -253,6 +284,15 @@ def brief(out):
             lines.append(f"{s_['symbol']} caution: " + " ".join(r["flags"]))
     for w in out.get("watchlist", [])[:5]:
         lines.append(f"Watch {w['symbol']} | {w['gap_pct']}% below trigger {fmt(w['trigger'])}")
+    ov = out.get("overview")
+    if ov:
+        lines.append("")
+        lines.append(f"Market: {ov['regime']['mood']}. " + ov["regime"]["summary"])
+        if ov["growing"]:
+            lines.append("Growing: " + ", ".join(f"{g['symbol']} {g['ch30']:+.0f}% 30d" for g in ov["growing"][:4]))
+        if ov["new_listings"]:
+            lines.append("New listings (high risk): " + ", ".join(n["symbol"] for n in ov["new_listings"][:4]))
+        lines.append("")
     lines.append("Check unlocks first. Not advice.")
     return "\n".join(lines)
 

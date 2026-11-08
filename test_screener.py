@@ -83,4 +83,32 @@ def boom(*a):
 
 research.enrich(out, boom, boom)  # both sources down: must not crash
 assert out["signals"][0]["research"]["verdict"] == "Caution"
+# market overview, offline
+import market
+
+
+def series(start, step, n, v=1e6):
+    return [{"o": start + i * step, "h": (start + i * step) * 1.01, "l": (start + i * step) * 0.99,
+             "c": start + i * step, "v": v, "wd": i % 7} for i in range(n)]
+
+
+cands = {"BTC": {"candles": series(50, 0.2, 220), "qv": 9e9}, "UPC": {"candles": series(1, 0.01, 150), "qv": 5e7},
+         "DWN": {"candles": series(5, -0.02, 150), "qv": 6e7}, "NEWC": {"candles": series(2, -0.01, 30), "qv": 2e7}}
+ov = market.build(cands, gecko_top=[{"symbol": "btc", "market_cap_rank": 1}, {"symbol": "dwn", "market_cap_rank": 9}],
+                  trending=[{"item": {"symbol": "upc", "name": "Up", "market_cap_rank": 400, "data": {"price_change_percentage_24h": {"usd": 12}}}}])
+assert [x["symbol"] for x in ov["leaders"]] == ["BTC", "DWN"]
+assert ov["leaders"][0]["trend"] == "Uptrend" and ov["leaders"][1]["trend"] == "Downtrend"
+assert [x["symbol"] for x in ov["growing"]] == ["UPC"]
+assert [x["symbol"] for x in ov["new_listings"]] == ["NEWC"] and "riskiest" in ov["new_listings"][0]["note"]
+assert ov["trending"][0]["on_binance"] and "attention" in ov["trending"][0]["note"]
+rg = market.regime(ov["_btc"], ov["_all"], 0)
+assert rg["mood"] in ("Uptrend", "Mixed", "Downtrend") and "nothing to buy" in rg["summary"]
+weak = market.regime({"price": 1, "ma50": 2, "ma200": 3}, [{"ma50": 1, "above50": False}] * 9 + [{"ma50": 1, "above50": True}], 0)
+assert weak["mood"] == "Downtrend"
+texts = [rg["summary"], weak["summary"]] + [x["note"] for k in ("leaders", "growing", "new_listings", "trending") for x in ov[k]]
+assert not any("\u2014" in x or "\u2013" in x for x in texts)  # house style: no dashes
+stock = [dict(x, v=(1e5 if x["wd"] >= 5 else 1e6)) for x in series(1, 0, 60)]
+assert screener.likely_stock_token("TSLAB", stock) and not screener.likely_stock_token("BTC", stock)
+assert not screener.likely_stock_token("ARB", series(1, 0, 60))  # crypto trades the same at weekends
+assert not screener.likely_stock_token("BNB", series(1, 0, 60))
 print("OK")

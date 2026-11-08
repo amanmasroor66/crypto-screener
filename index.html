@@ -32,6 +32,14 @@ h1{font-size:22px;margin:0 0 2px}
 .live{display:inline-block;width:8px;height:8px;border-radius:50%;background:#98a2b3;margin-right:6px}
 .live.on{background:var(--up);animation:p 2s infinite}@keyframes p{50%{opacity:.3}}
 .st{font-weight:600}.st.bad{color:#b42318}.st.ok{color:var(--up)}.st.mid{color:var(--warn)}
+.sum{border-left:4px solid var(--acc)}.sum.Downtrend{border-left-color:#b42318}.sum.Uptrend{border-left-color:var(--up)}
+.sum p{margin:6px 0 0}
+.tr{font-size:12px;border-radius:6px;padding:2px 8px;margin-left:8px;background:#f2f4f7;color:var(--mute)}
+.tr.Uptrend{background:#ecfdf3;color:var(--up)}.tr.Downtrend{background:#fef3f2;color:#b42318}
+h2{font-size:16px;margin:26px 0 4px}
+.row{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin-bottom:8px}
+.row .nums{color:var(--mute);font-size:13px;margin:2px 0 4px}
+.row .note{font-size:13.5px}
 .empty{background:var(--card);border:1px dashed var(--line);border-radius:12px;padding:20px;color:var(--mute)}
 .notes{margin-top:18px;color:var(--mute);font-size:13px}
 a{color:var(--acc)}
@@ -43,6 +51,8 @@ a{color:var(--acc)}
   <div class="sub" id="sub">Loading...</div>
   <div class="sub"><span class="live" id="dot"></span><span id="liveTxt">Connecting to live prices...</span></div>
   <div class="mk" id="mk"></div>
+  <div class="card sum" id="summary" style="display:none"></div>
+  <h2 style="margin-top:8px">Signals</h2>
   <div class="tabs" id="tabs">
     <button data-f="All" class="on">All</button>
     <button data-f="Breakout">Breakouts</button>
@@ -52,6 +62,21 @@ a{color:var(--acc)}
   <h2 style="font-size:16px;margin:22px 0 4px">Watchlist: close to triggering</h2>
   <div class="sub">Not signals. These sit within 3% under their 42 day high. They trigger only on a daily close above it with strong volume.</div>
   <div id="watch"></div>
+  <h2>Market leaders</h2>
+  <div class="sub">The biggest coins by market cap that trade on Binance, with their trend today.</div>
+  <div id="leaders"></div>
+  <h2>Growing coins</h2>
+  <div class="sub">In an uptrend and up over 30 days, strongest first. Strength, not a buy signal.</div>
+  <div id="growing"></div>
+  <h2>New on Binance</h2>
+  <div class="sub">Listed in the last 90 days. The riskiest group. Too new for the screener rules.</div>
+  <div id="newl"></div>
+  <h2>Trending searches</h2>
+  <div class="sub">Most searched coins on CoinGecko in the last 24 hours. Attention, not quality.</div>
+  <div id="trending"></div>
+  <h2>Market news</h2>
+  <div class="sub">Latest headlines from Cointelegraph and Decrypt.</div>
+  <div id="news"></div>
   <div class="notes" id="notes"></div>
 </div>
 <script>
@@ -95,12 +120,28 @@ function render(){
     <div><div class="k">Volume vs avg</div><div class="v">${s.vol_ratio}x</div></div>
     <div><div class="k">24h</div><div class="v">${pct(s.chg24h)}</div></div></div>
     <div class="why">${s.why} 24h volume $${s.qvol_musd}M.</div>${res(s)}</div>`).join(""):`<div class="empty">Nothing close to triggering.</div>`;
+  const ov=d.overview||{};
+  const sm=document.getElementById("summary");
+  if(ov.regime){sm.style.display="";sm.className="card sum "+ov.regime.mood;
+    sm.innerHTML=`<div class="top"><b>Market today: ${esc(ov.regime.mood)}</b><span class="k">${ov.regime.breadth_pct}% of coins above their 50 day average</span></div><p>${esc(ov.regime.summary)}</p>`}
+  const p7=x=>x==null?"n/a":pct(x);
+  const sect=(id,list,fn,empty)=>{document.getElementById(id).innerHTML=(list&&list.length)?list.map(fn).join(""):`<div class="empty">${empty}</div>`};
+  const pc=s=>`<span class="v live-px" data-p="${esc(s.symbol)}USDT">${fmt(s.price)}</span>`;
+  sect("leaders",ov.leaders,s=>`<div class="row"><div class="top"><div><span class="sym">${esc(s.symbol)}</span><span class="tr ${s.trend}">${s.trend}</span></div>${pc(s)}</div>
+    <div class="nums">7d ${p7(s.ch7)} | 30d ${p7(s.ch30)} | ${Math.abs(s.from_high_pct).toFixed(0)}% below recent high</div><div class="note">${esc(s.note)}</div></div>`,"No data this run.");
+  sect("growing",ov.growing,s=>`<div class="row"><div class="top"><div><span class="sym">${esc(s.symbol)}</span><span class="tr ${s.trend}">${s.trend}</span></div>${pc(s)}</div>
+    <div class="nums">7d ${p7(s.ch7)} | 30d ${p7(s.ch30)}</div><div class="note">${esc(s.note)}</div></div>`,"No coin is in a clean uptrend right now. That itself tells you the market is weak.");
+  sect("newl",ov.new_listings,s=>`<div class="row"><div class="top"><div><span class="sym">${esc(s.symbol)}</span><span class="tr">${s.days_listed} days</span></div>${pc(s)}</div>
+    <div class="nums">Since listing ${p7(s.since_listing_pct)} | ${Math.abs(s.from_high_pct).toFixed(0)}% below its high</div><div class="note">${esc(s.note)}</div></div>`,"No liquid new listings.");
+  sect("trending",ov.trending,s=>`<div class="row"><div class="top"><div><span class="sym">${esc(s.symbol)}</span><span class="k" style="margin-left:8px">${esc(s.name||"")}${s.rank?" | rank "+s.rank:""}</span></div><span class="k">24h ${p7(s.ch24)}</span></div>
+    <div class="note">${esc(s.note)}</div></div>`,"Trending data unavailable this run.");
+  sect("news",ov.news,n=>`<div class="row"><a href="${esc(n.link)}" target="_blank" rel="noopener">${esc(n.title)}</a> <span class="k">${esc(n.source)}</span></div>`,"News unavailable this run.");
   document.getElementById("notes").innerHTML=d.notes.map(n=>`<div>${n}</div>`).join("");
 }
 document.getElementById("tabs").onclick=e=>{if(e.target.dataset.f){F=e.target.dataset.f;
   document.querySelectorAll(".tabs button").forEach(b=>b.classList.toggle("on",b===e.target));render()}};
 function live(){
-  const pairs=[...new Set([...(DATA.signals||[]),...(DATA.watchlist||[])].map(x=>x.pair).concat(["BTCUSDT","ETHUSDT"]))];
+  const ov=DATA.overview||{};const pairs=[...new Set([...(DATA.signals||[]),...(DATA.watchlist||[])].map(x=>x.pair).concat(["BTCUSDT","ETHUSDT"]).concat([...(ov.leaders||[]),...(ov.growing||[]),...(ov.new_listings||[])].map(x=>x.symbol+"USDT")))];
   fetch("https://data-api.binance.vision/api/v3/ticker/price?symbols="+encodeURIComponent(JSON.stringify(pairs))).then(r=>r.json()).then(a=>{
     const P={};a.forEach(x=>P[x.symbol]=parseFloat(x.price));
     document.querySelectorAll("[data-p]").forEach(el=>{const p=P[el.dataset.p];if(p!=null)el.textContent=fmt(p)});

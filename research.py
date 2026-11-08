@@ -26,17 +26,32 @@ def _read(url, timeout=30):
         return r.read().decode("utf-8", "replace")
 
 
-def fetch_gecko(symbols):
-    q = urllib.parse.urlencode({"vs_currency": "usd", "symbols": ",".join(s.lower() for s in symbols),
-                                "per_page": 250, "price_change_percentage": "30d"})
+def _gecko(url):
     for wait in (0, 15, 30, 60):  # free tier is rate limited, so retry with a pause
         time.sleep(wait)
         try:
-            return json.loads(_read(GECKO + "?" + q))
+            return json.loads(_read(url))
         except urllib.error.HTTPError as e:
             if e.code != 429:
                 raise
     raise RuntimeError("CoinGecko rate limit, gave up")
+
+
+def fetch_gecko(symbols):
+    q = urllib.parse.urlencode({"vs_currency": "usd", "symbols": ",".join(s.lower() for s in symbols),
+                                "per_page": 250, "price_change_percentage": "30d"})
+    return _gecko(GECKO + "?" + q)
+
+
+def fetch_top(n=40):
+    """Largest coins by market cap."""
+    q = urllib.parse.urlencode({"vs_currency": "usd", "order": "market_cap_desc", "per_page": n})
+    return _gecko(GECKO + "?" + q)
+
+
+def fetch_trending():
+    """Coins most searched on CoinGecko in the last 24 hours."""
+    return _gecko("https://api.coingecko.com/api/v3/search/trending").get("coins", [])
 
 
 def fetch_news():
