@@ -111,4 +111,15 @@ stock = [dict(x, v=(1e5 if x["wd"] >= 5 else 1e6)) for x in series(1, 0, 60)]
 assert screener.likely_stock_token("TSLAB", stock) and not screener.likely_stock_token("BTC", stock)
 assert not screener.likely_stock_token("ARB", series(1, 0, 60))  # crypto trades the same at weekends
 assert not screener.likely_stock_token("BNB", series(1, 0, 60))
+# trade plans
+up = series(1, 0.01, 220)
+pu = market.plan(up, market.metrics(up))
+assert pu["status"] in ("In buy zone", "Wait for a dip") and pu["stop"] < pu["entry_lo"] <= pu["entry_hi"]
+assert len(pu["targets"]) == 3 and all(t > pu["entry_hi"] for t in pu["targets"]) and pu["tested"]
+dn = series(5, -0.01, 220)
+pd = market.plan(dn, market.metrics(dn))
+assert pd["status"] == "No buy" and pd["entry_lo"] is None and "targets" not in pd
+sg = market.plan(up, market.metrics(up), {"price": up[-1]["c"], "stop": up[-1]["c"] * 0.9})
+assert sg["status"] == "Signal active" and sg["targets"][0] > up[-1]["c"] and "61%" in sg["tested"]
+assert not any("\u2014" in str(v) for v in list(pu.values()) + list(pd.values()) + list(sg.values()))
 print("OK")

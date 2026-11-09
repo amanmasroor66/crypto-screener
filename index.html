@@ -40,6 +40,14 @@ h2{font-size:16px;margin:26px 0 4px}
 .row{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin-bottom:8px}
 .row .nums{color:var(--mute);font-size:13px;margin:2px 0 4px}
 .row .note{font-size:13.5px}
+details.row>summary{list-style:none;cursor:pointer}details.row>summary::-webkit-details-marker{display:none}
+details.row>summary .tap{color:var(--acc);font-size:12.5px;margin-top:6px}
+details.row[open]>summary .tap{display:none}
+.plan{margin-top:10px;padding:12px;background:#f8f9fb;border:1px solid var(--line);border-radius:10px;font-size:13.5px}
+.plan p{margin:6px 0}.plan ol{margin:4px 0;padding-left:22px}
+.plan .lv{display:grid;grid-template-columns:auto 1fr;gap:2px 10px;margin:6px 0}
+.pls{font-weight:700}.pls.go{color:var(--up)}.pls.wait{color:var(--warn)}.pls.no{color:#b42318}
+details.pl{margin-top:10px}details.pl>summary{cursor:pointer;color:var(--acc);font-size:13px}
 .empty{background:var(--card);border:1px dashed var(--line);border-radius:12px;padding:20px;color:var(--mute)}
 .notes{margin-top:18px;color:var(--mute);font-size:13px}
 a{color:var(--acc)}
@@ -88,6 +96,25 @@ function res(s){const r=s.research;if(!r)return"";
   const fl=r.flags.map(f=>`<li>${esc(f)}</li>`).join("");
   const nw=(r.news||[]).map(n=>`<li><a href="${esc(n.link)}" target="_blank" rel="noopener">${esc(n.title)}</a> <span class="k">${esc(n.source)}</span></li>`).join("");
   return `<div class="res"><span class="${r.flags.length?"cau":"ok"}">${esc(r.verdict)}</span> <span class="k">${esc(facts)}</span>${fl?`<ul>${fl}</ul>`:""}${nw?`<div class="k" style="margin-top:6px">Recent headlines</div><ul>${nw}</ul>`:`<div class="k" style="margin-top:6px">No recent headlines found in the feeds checked.</div>`}</div>`}
+function planHtml(p){if(!p)return"";
+  const cls=p.status==="Signal active"||p.status==="In buy zone"?"go":p.status==="No buy"?"no":"wait";
+  const mid=p.entry_lo!=null?(p.entry_lo+p.entry_hi)/2:null;
+  const rel=v=>mid?` <span class="k">(${v>=mid?"+":""}${((v/mid-1)*100).toFixed(1)}%)</span>`:"";
+  const list=a=>a&&a.length?a.map(fmt).join(", "):"none nearby";
+  let h=`<div class="plan"><div><span class="k">Status</span> <span class="pls ${cls}">${esc(p.status)}</span></div><p>${esc(p.why)}</p>`;
+  if(p.entry_lo!=null){
+    h+=`<div class="lv"><span class="k">Buy zone</span><b>${fmt(p.entry_lo)} to ${fmt(p.entry_hi)}</b>
+      <span class="k">Stop</span><b>${fmt(p.stop)}${rel(p.stop)}</b>
+      <span class="k">Size</span><span>${p.size_for_1pct_loss}% of capital, so a stop out costs about 1%</span></div>
+      <div class="k">Targets (where price turned down before)</div><ol>${(p.targets||[]).map(t=>`<li><b>${fmt(t)}</b>${rel(t)}</li>`).join("")}</ol>
+      <p><b>Taking profit:</b> ${esc(p.profit_plan)}</p><p><b>Cancel:</b> ${esc(p.cancel)}</p>`}
+  h+=`<div class="lv"><span class="k">Resistance</span><span>${list(p.resistance)}</span>
+    <span class="k">Support</span><span>${list(p.support)}</span>
+    <span class="k">Averages</span><span>20d ${p.ma20?fmt(p.ma20):"n/a"} | 50d ${p.ma50?fmt(p.ma50):"n/a"} | 200d ${p.ma200?fmt(p.ma200):"n/a"}</span>
+    <span class="k">Breakout at</span><span>${fmt(p.trigger)} (42 day high)</span>
+    <span class="k">Daily swing</span><span>about ${p.atr_pct}% a day</span></div>`;
+  if(p.tested)h+=`<p class="k">${esc(p.tested)}</p>`;
+  return h+`<p class="k">Spot only. No leverage. Levels come from past prices, not predictions.</p></div>`}
 const pct=x=>`<span class="${x>=0?"up":"dn"}">${x>=0?"+":""}${x.toFixed(1)}%</span>`;
 function render(){
   const d=DATA;
@@ -111,7 +138,7 @@ function render(){
       <div><div class="k">Volume vs avg</div><div class="v">${s.vol_ratio}x</div></div>
       <div><div class="k">24h</div><div class="v">${pct(s.chg24h)}</div></div>
     </div>
-    <div class="why">${s.why} 24h volume $${s.qvol_musd}M.</div>${res(s)}</div>`).join("");
+    <div class="why">${s.why} 24h volume $${s.qvol_musd}M.</div>${res(s)}${s.plan?`<details class="pl" open><summary>Trade plan</summary>${planHtml(s.plan)}</details>`:""}</div>`).join("");
   const w=d.watchlist||[];
   document.getElementById("watch").innerHTML=w.length?w.map(s=>`<div class="card"><div class="top"><span class="sym">${s.symbol}</span><span class="k">${s.gap_pct}% below trigger</span></div>
     <div class="grid"><div><div class="k">Live price</div><div class="v live-px" data-p="${s.pair}">...</div></div>
@@ -127,10 +154,10 @@ function render(){
   const p7=x=>x==null?"n/a":pct(x);
   const sect=(id,list,fn,empty)=>{document.getElementById(id).innerHTML=(list&&list.length)?list.map(fn).join(""):`<div class="empty">${empty}</div>`};
   const pc=s=>`<span class="v live-px" data-p="${esc(s.symbol)}USDT">${fmt(s.price)}</span>`;
-  sect("leaders",ov.leaders,s=>`<div class="row"><div class="top"><div><span class="sym">${esc(s.symbol)}</span><span class="tr ${s.trend}">${s.trend}</span></div>${pc(s)}</div>
-    <div class="nums">7d ${p7(s.ch7)} | 30d ${p7(s.ch30)} | ${Math.abs(s.from_high_pct).toFixed(0)}% below recent high</div><div class="note">${esc(s.note)}</div></div>`,"No data this run.");
-  sect("growing",ov.growing,s=>`<div class="row"><div class="top"><div><span class="sym">${esc(s.symbol)}</span><span class="tr ${s.trend}">${s.trend}</span></div>${pc(s)}</div>
-    <div class="nums">7d ${p7(s.ch7)} | 30d ${p7(s.ch30)}</div><div class="note">${esc(s.note)}</div></div>`,"No coin is in a clean uptrend right now. That itself tells you the market is weak.");
+  sect("leaders",ov.leaders,s=>`<details class="row"><summary><div class="top"><div><span class="sym">${esc(s.symbol)}</span><span class="tr ${s.trend}">${s.trend}</span></div>${pc(s)}</div>
+    <div class="nums">7d ${p7(s.ch7)} | 30d ${p7(s.ch30)} | ${Math.abs(s.from_high_pct).toFixed(0)}% below recent high</div><div class="note">${esc(s.note)}</div><div class="tap">Tap for trade plan and levels</div></summary>${planHtml(s.plan)}</details>`,"No data this run.");
+  sect("growing",ov.growing,s=>`<details class="row"><summary><div class="top"><div><span class="sym">${esc(s.symbol)}</span><span class="tr ${s.trend}">${s.trend}</span></div>${pc(s)}</div>
+    <div class="nums">7d ${p7(s.ch7)} | 30d ${p7(s.ch30)}</div><div class="note">${esc(s.note)}</div><div class="tap">Tap for trade plan and levels</div></summary>${planHtml(s.plan)}</details>`,"No coin is in a clean uptrend right now. That itself tells you the market is weak.");
   sect("newl",ov.new_listings,s=>`<div class="row"><div class="top"><div><span class="sym">${esc(s.symbol)}</span><span class="tr">${s.days_listed} days</span></div>${pc(s)}</div>
     <div class="nums">Since listing ${p7(s.since_listing_pct)} | ${Math.abs(s.from_high_pct).toFixed(0)}% below its high</div><div class="note">${esc(s.note)}</div></div>`,"No liquid new listings.");
   sect("trending",ov.trending,s=>`<div class="row"><div class="top"><div><span class="sym">${esc(s.symbol)}</span><span class="k" style="margin-left:8px">${esc(s.name||"")}${s.rank?" | rank "+s.rank:""}</span></div><span class="k">24h ${p7(s.ch24)}</span></div>

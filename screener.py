@@ -236,17 +236,22 @@ def run(fetch=get, enrich_with_research=True):
     }
     news = top = trending = None
     if enrich_with_research:
-        try:
-            import research
-            news = research.fetch_news()
-            research.enrich(out, fetch_n=lambda: news)
-            time.sleep(2)
-            top = research.fetch_top()
-            time.sleep(2)
-            trending = research.fetch_trending()
-        except Exception as e:  # research is optional, never block the scan
-            print("research skipped", e, file=sys.stderr)
+        import research
+
+        def safe(name, fn):  # each source is optional; one failing must not drop the others
+            try:
+                return fn()
+            except Exception as e:
+                print(name, "skipped:", e, file=sys.stderr)
+                return None
+        news = safe("news", research.fetch_news)
+        safe("coin research", lambda: research.enrich(out, fetch_n=lambda: news or []))
+        time.sleep(3)
+        top = safe("top coins", research.fetch_top)
+        time.sleep(3)
+        trending = safe("trending", research.fetch_trending)
     out["overview"] = overview(allc, len(results), top, trending, news)
+    attach_plans(results, allc)
     return out
 
 
@@ -255,6 +260,15 @@ def overview(allc, n_signals, top=None, trending=None, news=None):
     ov = market.build(allc, gecko_top=top, trending=trending, news=news)
     ov["regime"] = market.regime(ov.pop("_btc"), ov.pop("_all"), n_signals)
     return ov
+
+
+def attach_plans(signals, allc):
+    """Give each signal the same tap to open trade plan as the overview coins."""
+    import market
+    for s in signals:
+        c = allc.get(s["symbol"], {}).get("candles")
+        if c and len(c) >= 50:
+            s["plan"] = market.plan(c, market.metrics(c), s if s["type"] == "Breakout" else None)
 
 
 def telegram(text):
@@ -278,6 +292,10 @@ def brief(out):
     for s in out["signals"][:6]:
         lines.append(f"{s['symbol']} {s['type']} | price {fmt(s['price'])} | stop {fmt(s['stop'])} "
                      f"| risk {s['risk_pct']}% | vol {s['vol_ratio']}x | exit on close below {fmt(s['exit_below'])}")
+        p = s.get("plan") or {}
+        if p.get("targets"):
+            lines.append("  Targets: " + " / ".join(f"{i + 1}) {fmt(t)}" for i, t in enumerate(p["targets"]))
+                         + ". Sell a third at each, stop to entry after target 1. Spot only.")
     for s_ in out["signals"][:6]:
         r = s_.get("research")
         if r and r["flags"]:

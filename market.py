@@ -138,7 +138,8 @@ def build(cands, btc_sym="BTC", gecko_top=None, trending=None, news=None, skip=(
         if s in old and s not in skip and s not in [x["symbol"] for x in leaders]:
             m = old[s]
             leaders.append({"symbol": s, "trend": trend_word(m), "price": m["price"], "ch7": m["ch7"], "ch30": m["ch30"],
-                            "from_high_pct": m["from_high_pct"], "note": leader_note(s, m)})
+                            "from_high_pct": m["from_high_pct"], "note": leader_note(s, m),
+                            "plan": plan(cands[s]["candles"], m)})
         if len(leaders) >= LEADERS_MAX:
             break
     lead_set = {x["symbol"] for x in leaders}
@@ -146,7 +147,8 @@ def build(cands, btc_sym="BTC", gecko_top=None, trending=None, news=None, skip=(
     growing = [(s, m) for s, m in old.items() if s not in lead_set and s not in skip and m["uptrend"] and (m["ch30"] or 0) > 0]
     growing.sort(key=lambda x: x[1]["ch30"], reverse=True)
     growing = [{"symbol": s, "trend": trend_word(m), "price": m["price"], "ch7": m["ch7"], "ch30": m["ch30"],
-                "from_high_pct": m["from_high_pct"], "note": growing_note(s, m)} for s, m in growing[:GROWING_MAX]]
+                "from_high_pct": m["from_high_pct"], "note": growing_note(s, m),
+                "plan": plan(cands[s]["candles"], m)} for s, m in growing[:GROWING_MAX]]
 
     new = [(s, m) for s, m in ms.items() if m["days_listed"] < NEW_DAYS and s not in skip]
     new.sort(key=lambda x: x[1]["days_listed"])
@@ -165,3 +167,87 @@ def build(cands, btc_sym="BTC", gecko_top=None, trending=None, news=None, skip=(
 
     return {"leaders": leaders, "growing": growing, "new_listings": new, "trending": trend_rows,
             "news": (news or [])[:NEWS_MAX], "_btc": ms.get(btc_sym), "_all": list(old.values())}
+
+
+# ---------------------------------------------------------------- trade plan
+def atr(c, n=14):
+    tr = [max(x["h"] - x["l"], abs(x["h"] - p["c"]), abs(x["l"] - p["c"])) for p, x in zip(c[-n - 1:-1], c[-n:])]
+    return sum(tr) / len(tr) if tr else None
+
+
+def pivots(c, side, k=3, lookback=180):
+    """Swing highs (side='h') or lows (side='l'): a candle that beats k candles on each side."""
+    w = c[-lookback:]
+    out = []
+    for i in range(k, len(w) - k):
+        v = w[i][side]
+        nb = [w[j][side] for j in range(i - k, i + k + 1) if j != i]
+        if (side == "h" and v > max(nb)) or (side == "l" and v < min(nb)):
+            out.append(v)
+    return out
+
+
+def _merge(levels, tol=0.02):
+    """Collapse levels closer than tol into one, keeping the first."""
+    out = []
+    for v in levels:
+        if all(abs(v / o - 1) > tol for o in out):
+            out.append(v)
+    return out
+
+
+def plan(c, m, sig=None):
+    """Price levels for one coin, spot only. Levels are where price turned before; not predictions."""
+    px = m["price"]
+    a = atr(c) or px * 0.04
+    res = _merge(sorted(v for v in pivots(c, "h") if v > px * 1.02))[:3]
+    sup = _merge(sorted((v for v in pivots(c, "l") if v < px * 0.98), reverse=True))[:3]
+    hi42 = max(x["h"] for x in c[-43:-1]) if len(c) > 43 else max(x["h"] for x in c)
+    p = {"atr_pct": round(a / px * 100, 1), "resistance": res, "support": sup, "trigger": hi42,
+         "ma20": m["ma20"], "ma50": m["ma50"], "ma200": m["ma200"]}
+
+    def targets(entry, stop):
+        r = entry - stop
+        t = [v for v in res if v > entry * 1.03]
+        for mult in (1.5, 2.5, 4, 5.5, 7, 9):  # fill with risk multiples when there is no overhead level
+            if len(t) >= 3:
+                break
+            v = entry + mult * r
+            if all(abs(v / x - 1) > 0.03 for x in t):
+                t.append(v)
+        return sorted(t)[:3]
+
+    if sig:
+        entry, stop = sig["price"], sig["stop"]
+        p.update(status="Signal active", entry_lo=entry, entry_hi=entry * 1.02, stop=stop,
+                 why="Breakout signal today. Entry is near the signal price; do not chase more than about 2% above it.",
+                 tested=("Tested on the last 2.7 years of these coins: target 1 was reached 61% of the time and the stop was hit first 37% of the time."
+                         " Following this plan, the average trade made about +2.5% after fees. A small edge, not a sure thing."))
+    elif m["uptrend"] and m["ma20"]:
+        lo = max(m["ma50"], m["ma20"] - a)
+        hi = m["ma20"]
+        stop = min(lo - a, (sup[0] if sup and sup[0] < lo else lo - a))
+        inzone = lo <= px <= hi * 1.01
+        p.update(status="In buy zone" if inzone else "Wait for a dip", entry_lo=lo, entry_hi=hi, stop=stop,
+                 why=("Uptrend, and price has pulled back to its 20 day average. This is where trend buyers usually step in."
+                      if inzone else "Uptrend, but price is stretched above its 20 day average. Buying the dip to the zone gives a closer stop than buying now."),
+                 tested=("Tested on the last 2.7 years of these coins: dip buys like this won 60% of the time but broke even on average,"
+                         " because the losses were bigger than the wins. Treat the zone as a better price, not an edge. Breakout signals tested better."))
+        entry = (lo + hi) / 2
+    else:
+        cond = m["ma50"] if m["ma50"] else hi42
+        p.update(status="No buy", entry_lo=None, entry_hi=None, stop=None,
+                 why=(f"Downtrend. No buy zone until price closes back above the 50 day average ({cond:.6g}) or breaks the 42 day high ({hi42:.6g})."
+                      if m["downtrend"] else f"No clear trend. A daily close above {hi42:.6g} (the 42 day high) on strong volume would make it a breakout signal."))
+        return p
+    if p["atr_pct"] >= 10:
+        p["why"] += (f" Warning: this coin moves about {p['atr_pct']:.0f}% a day, so the stop is far away and the position must be very small."
+                     " Many traders simply skip coins this wild.")
+    p["targets"] = targets(entry, p["stop"])
+    risk = (entry - p["stop"]) / entry
+    p["risk_pct"] = round(risk * 100, 1)
+    p["size_for_1pct_loss"] = round(min(1 / risk, 100), 1) if risk > 0 else None
+    p["profit_plan"] = ("Sell about a third at each target. After target 1, move your stop to your entry price so the rest cannot turn into a loss."
+                        " If price closes a day below the 20 day average before the targets, sell the rest: that exit beat fixed holding in the backtest.")
+    p["cancel"] = f"Plan is wrong if price closes below {p['stop']:.6g}. Sell there, no exceptions."
+    return p
