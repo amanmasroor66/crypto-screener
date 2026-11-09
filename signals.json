@@ -1,14 +1,14 @@
 {
-  "generated_utc": "2026-11-09 13:52",
+  "generated_utc": "2026-11-09 14:17",
   "scanned": 46,
   "market": {
     "BTC": {
-      "price": 74818.01,
-      "chg24h": -1.464
+      "price": 74622.01,
+      "chg24h": -1.782
     },
     "ETH": {
-      "price": 2122.42,
-      "chg24h": -5.1
+      "price": 2121.94,
+      "chg24h": -5.261
     }
   },
   "signals": [],
@@ -467,26 +467,34 @@
       {
         "symbol": "DACITY",
         "name": "Dacity Coin",
-        "rank": 903,
-        "ch24": -33.0,
+        "rank": 920,
+        "ch24": -29.2,
         "on_binance": false,
-        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top. It is a small coin (rank 903), so moves both ways are violent. Not in this screener's Binance list, so none of the checks here apply."
-      },
-      {
-        "symbol": "HYPE",
-        "name": "Hyperliquid",
-        "rank": 11,
-        "ch24": -5.8,
-        "on_binance": true,
-        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top."
+        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top. It is a small coin (rank 920), so moves both ways are violent. Not in this screener's Binance list, so none of the checks here apply."
       },
       {
         "symbol": "AVAX",
         "name": "Avalanche",
         "rank": 26,
-        "ch24": 6.0,
+        "ch24": 7.5,
         "on_binance": true,
         "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top."
+      },
+      {
+        "symbol": "HYPE",
+        "name": "Hyperliquid",
+        "rank": 11,
+        "ch24": -5.5,
+        "on_binance": true,
+        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top."
+      },
+      {
+        "symbol": "KNTQ",
+        "name": "Kinetiq",
+        "rank": 235,
+        "ch24": -27.4,
+        "on_binance": false,
+        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top. Not in this screener's Binance list, so none of the checks here apply."
       },
       {
         "symbol": "BTC",
@@ -497,31 +505,207 @@
         "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top."
       },
       {
-        "symbol": "KNTQ",
-        "name": "Kinetiq",
-        "rank": 230,
-        "ch24": -25.7,
-        "on_binance": false,
-        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top. Not in this screener's Binance list, so none of the checks here apply."
-      },
-      {
-        "symbol": "AERO",
-        "name": "Aero",
-        "rank": 116,
-        "ch24": -3.1,
-        "on_binance": false,
-        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top. Not in this screener's Binance list, so none of the checks here apply."
+        "symbol": "GRAM",
+        "name": "Gram (prev. Toncoin)",
+        "rank": 33,
+        "ch24": -0.5,
+        "on_binance": true,
+        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top."
       },
       {
         "symbol": "NEAR",
         "name": "NEAR Protocol",
         "rank": 22,
-        "ch24": -4.5,
+        "ch24": -4.1,
         "on_binance": true,
         "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top."
       }
     ],
+    "bottoms": [
+      {
+        "drawdown_pct": 67,
+        "base_range_pct": 141,
+        "divergence": false,
+        "rsi_lows": null,
+        "div_days_ago": null,
+        "vol_pickup": 12.4,
+        "above20": true,
+        "base_low": 0.001027,
+        "base_high": 0.002476,
+        "score": 3.84,
+        "symbol": "ONE",
+        "price": 0.001713,
+        "note": "ONE is 67% below its 6 month high and has moved in a 141% range for 30 days. No bullish divergence yet. Volume is picking up (12.4x its recent average). A bottom is only confirmed once price breaks above the base (0.002476) on a daily close. Below the base low (0.001027) the idea is wrong.",
+        "label": "Still swinging, no base yet",
+        "plan": {
+          "atr_pct": 14.0,
+          "resistance": [
+            0.0019,
+            0.00207,
+            0.002944
+          ],
+          "support": [
+            0.00141,
+            0.001355,
+            0.00117
+          ],
+          "trigger": 0.002963,
+          "ma20": 0.00135015,
+          "ma50": 0.0019007,
+          "ma200": 0.00154976,
+          "status": "No buy",
+          "entry_lo": null,
+          "entry_hi": null,
+          "stop": null,
+          "why": "Downtrend. No buy zone until price closes back above the 50 day average (0.0019007) or breaks the 42 day high (0.002963)."
+        }
+      },
+      {
+        "drawdown_pct": 69,
+        "base_range_pct": 77,
+        "divergence": false,
+        "rsi_lows": null,
+        "div_days_ago": null,
+        "vol_pickup": 1.8,
+        "above20": false,
+        "base_low": 1.109,
+        "base_high": 1.959,
+        "score": 2.23,
+        "symbol": "TRUMP",
+        "price": 1.136,
+        "note": "TRUMP is 69% below its 6 month high and has moved in a 77% range for 30 days. No bullish divergence yet. Volume is picking up (1.8x its recent average). A bottom is only confirmed once price breaks above the base (1.959) on a daily close. Below the base low (1.109) the idea is wrong.",
+        "label": "Still swinging, no base yet",
+        "plan": {
+          "atr_pct": 11.7,
+          "resistance": [
+            1.51,
+            1.67,
+            1.711
+          ],
+          "support": [],
+          "trigger": 2.251,
+          "ma20": 1.5576,
+          "ma50": 1.8090799999999998,
+          "ma200": 1.897645,
+          "status": "No buy",
+          "entry_lo": null,
+          "entry_hi": null,
+          "stop": null,
+          "why": "Downtrend. No buy zone until price closes back above the 50 day average (1.80908) or breaks the 42 day high (2.251)."
+        }
+      },
+      {
+        "drawdown_pct": 68,
+        "base_range_pct": 117,
+        "divergence": false,
+        "rsi_lows": null,
+        "div_days_ago": null,
+        "vol_pickup": 0.4,
+        "above20": false,
+        "base_low": 0.1386,
+        "base_high": 0.3003,
+        "score": 1.36,
+        "symbol": "NXPC",
+        "price": 0.1408,
+        "note": "NXPC is 68% below its 6 month high and has moved in a 117% range for 30 days. No bullish divergence yet. A bottom is only confirmed once price breaks above the base (0.3003) on a daily close. Below the base low (0.1386) the idea is wrong.",
+        "label": "Still swinging, no base yet",
+        "plan": {
+          "atr_pct": 6.6,
+          "resistance": [
+            0.1763,
+            0.2156,
+            0.2205
+          ],
+          "support": [],
+          "trigger": 0.3003,
+          "ma20": 0.16527,
+          "ma50": 0.19921399999999997,
+          "ma200": 0.2581815,
+          "status": "No buy",
+          "entry_lo": null,
+          "entry_hi": null,
+          "stop": null,
+          "why": "Downtrend. No buy zone until price closes back above the 50 day average (0.199214) or breaks the 42 day high (0.3003)."
+        }
+      },
+      {
+        "drawdown_pct": 51,
+        "base_range_pct": 44,
+        "divergence": false,
+        "rsi_lows": null,
+        "div_days_ago": null,
+        "vol_pickup": 0.7,
+        "above20": false,
+        "base_low": 0.143,
+        "base_high": 0.2061,
+        "score": 1.25,
+        "symbol": "XLM",
+        "price": 0.1463,
+        "note": "XLM is 51% below its 6 month high and has moved in a 44% range for 30 days. No bullish divergence yet. A bottom is only confirmed once price breaks above the base (0.2061) on a daily close. Below the base low (0.143) the idea is wrong.",
+        "label": "Still swinging, no base yet",
+        "plan": {
+          "atr_pct": 5.7,
+          "resistance": [
+            0.1711,
+            0.1752,
+            0.1872
+          ],
+          "support": [
+            0.1395
+          ],
+          "trigger": 0.2371,
+          "ma20": 0.16673500000000002,
+          "ma50": 0.189348,
+          "ma200": 0.18290050000000002,
+          "status": "No buy",
+          "entry_lo": null,
+          "entry_hi": null,
+          "stop": null,
+          "why": "Downtrend. No buy zone until price closes back above the 50 day average (0.189348) or breaks the 42 day high (0.2371)."
+        }
+      },
+      {
+        "drawdown_pct": 59,
+        "base_range_pct": 81,
+        "divergence": false,
+        "rsi_lows": null,
+        "div_days_ago": null,
+        "vol_pickup": 0.8,
+        "above20": false,
+        "base_low": 0.04967,
+        "base_high": 0.08978,
+        "score": 1.18,
+        "symbol": "XPL",
+        "price": 0.05147,
+        "note": "XPL is 59% below its 6 month high and has moved in a 81% range for 30 days. No bullish divergence yet. A bottom is only confirmed once price breaks above the base (0.08978) on a daily close. Below the base low (0.04967) the idea is wrong.",
+        "label": "Still swinging, no base yet",
+        "plan": {
+          "atr_pct": 13.8,
+          "resistance": [
+            0.08639,
+            0.08978,
+            0.0926
+          ],
+          "support": [],
+          "trigger": 0.11341,
+          "ma20": 0.070345,
+          "ma50": 0.08310840000000001,
+          "ma200": 0.08692335,
+          "status": "No buy",
+          "entry_lo": null,
+          "entry_hi": null,
+          "stop": null,
+          "why": "Downtrend. No buy zone until price closes back above the 50 day average (0.0831084) or breaks the 42 day high (0.11341)."
+        }
+      }
+    ],
+    "bottoms_tested": "Tested on 2.7 years of these coins, 30 days later: the classic pattern (bullish divergence plus a tight base) averaged 5% down and rose only 32% of the time, worse than a random coin (up 44% of the time). Buying after the break above the base was worse still. Catching bottoms has no edge in this data.",
     "news": [
+      {
+        "source": "Cointelegraph",
+        "title": "Analysts see no broader \u2018contagion\u2019 from $6.3B Binance hack",
+        "link": "https://cointelegraph.com/markets/analysts-no-contagion-effect-63b-binance-hack?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
+      },
       {
         "source": "Cointelegraph",
         "title": "Here\u2019s what happened in crypto today",
@@ -546,11 +730,6 @@
         "source": "Cointelegraph",
         "title": "Coinbase\u2019s US national trust bank charter takes effect",
         "link": "https://cointelegraph.com/news/coinbase-occ-approval-national-trust-bank-charter?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
-      },
-      {
-        "source": "Cointelegraph",
-        "title": "Robinhood opens access to US IPOs for UK retail investors",
-        "link": "https://cointelegraph.com/news/robinhood-us-ipo-access-uk-retail-investors?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
       }
     ],
     "regime": {
