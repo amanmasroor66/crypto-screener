@@ -76,6 +76,10 @@ a{color:var(--acc)}
   <h2>Growing coins</h2>
   <div class="sub">In an uptrend and up over 30 days, strongest first. Strength, not a buy signal.</div>
   <div id="growing"></div>
+  <h2>Bottom watch: 5 beaten down coins</h2>
+  <div class="sub">Down 50%+ from their 6 month high, ranked by base tightness, bullish divergence and volume. Read the test result first.</div>
+  <div class="card" id="bottest" style="border-left:4px solid #b42318;font-size:13.5px;display:none"></div>
+  <div id="bottoms"></div>
   <h2>New on Binance</h2>
   <div class="sub">Listed in the last 90 days. The riskiest group. Too new for the screener rules.</div>
   <div id="newl"></div>
@@ -158,6 +162,9 @@ function render(){
     <div class="nums">7d ${p7(s.ch7)} | 30d ${p7(s.ch30)} | ${Math.abs(s.from_high_pct).toFixed(0)}% below recent high</div><div class="note">${esc(s.note)}</div><div class="tap">Tap for trade plan and levels</div></summary>${planHtml(s.plan)}</details>`,"No data this run.");
   sect("growing",ov.growing,s=>`<details class="row"><summary><div class="top"><div><span class="sym">${esc(s.symbol)}</span><span class="tr ${s.trend}">${s.trend}</span></div>${pc(s)}</div>
     <div class="nums">7d ${p7(s.ch7)} | 30d ${p7(s.ch30)}</div><div class="note">${esc(s.note)}</div><div class="tap">Tap for trade plan and levels</div></summary>${planHtml(s.plan)}</details>`,"No coin is in a clean uptrend right now. That itself tells you the market is weak.");
+  const bt=document.getElementById("bottest");if(ov.bottoms_tested){bt.style.display="";bt.textContent=ov.bottoms_tested}
+  sect("bottoms",ov.bottoms,s=>`<details class="row"><summary><div class="top"><div><span class="sym">${esc(s.symbol)}</span><span class="tr ${s.label==="Bottoming pattern"?"Uptrend":""}">${esc(s.label)}</span></div>${pc(s)}</div>
+    <div class="nums">${s.drawdown_pct}% below 6 month high | 30 day range ${s.base_range_pct}% | divergence ${s.divergence?"yes":"no"} | volume ${s.vol_pickup}x</div><div class="note">${esc(s.note)}</div><div class="tap">Tap for levels</div></summary>${planHtml(s.plan)}</details>`,"No coin is down 50% or more right now.");
   sect("newl",ov.new_listings,s=>`<div class="row"><div class="top"><div><span class="sym">${esc(s.symbol)}</span><span class="tr">${s.days_listed} days</span></div>${pc(s)}</div>
     <div class="nums">Since listing ${p7(s.since_listing_pct)} | ${Math.abs(s.from_high_pct).toFixed(0)}% below its high</div><div class="note">${esc(s.note)}</div></div>`,"No liquid new listings.");
   sect("trending",ov.trending,s=>`<div class="row"><div class="top"><div><span class="sym">${esc(s.symbol)}</span><span class="k" style="margin-left:8px">${esc(s.name||"")}${s.rank?" | rank "+s.rank:""}</span></div><span class="k">24h ${p7(s.ch24)}</span></div>
@@ -168,7 +175,7 @@ function render(){
 document.getElementById("tabs").onclick=e=>{if(e.target.dataset.f){F=e.target.dataset.f;
   document.querySelectorAll(".tabs button").forEach(b=>b.classList.toggle("on",b===e.target));render()}};
 function live(){
-  const ov=DATA.overview||{};const pairs=[...new Set([...(DATA.signals||[]),...(DATA.watchlist||[])].map(x=>x.pair).concat(["BTCUSDT","ETHUSDT"]).concat([...(ov.leaders||[]),...(ov.growing||[]),...(ov.new_listings||[])].map(x=>x.symbol+"USDT")))];
+  const ov=DATA.overview||{};const pairs=[...new Set([...(DATA.signals||[]),...(DATA.watchlist||[])].map(x=>x.pair).concat(["BTCUSDT","ETHUSDT"]).concat([...(ov.leaders||[]),...(ov.growing||[]),...(ov.new_listings||[]),...(ov.bottoms||[])].map(x=>x.symbol+"USDT")))];
   fetch("https://data-api.binance.vision/api/v3/ticker/price?symbols="+encodeURIComponent(JSON.stringify(pairs))).then(r=>r.json()).then(a=>{
     const P={};a.forEach(x=>P[x.symbol]=parseFloat(x.price));
     document.querySelectorAll("[data-p]").forEach(el=>{const p=P[el.dataset.p];if(p!=null)el.textContent=fmt(p)});

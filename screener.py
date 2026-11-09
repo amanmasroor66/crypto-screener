@@ -308,6 +308,9 @@ def brief(out):
         lines.append(f"Market: {ov['regime']['mood']}. " + ov["regime"]["summary"])
         if ov["growing"]:
             lines.append("Growing: " + ", ".join(f"{g['symbol']} {g['ch30']:+.0f}% 30d" for g in ov["growing"][:4]))
+        if ov.get("bottoms"):
+            lines.append("Bottom watch (tested: no edge): " + ", ".join(
+                f"{b['symbol']} -{b['drawdown_pct']}%{' div' if b['divergence'] else ''}" for b in ov["bottoms"]))
         if ov["new_listings"]:
             lines.append("New listings (high risk): " + ", ".join(n["symbol"] for n in ov["new_listings"][:4]))
         lines.append("")

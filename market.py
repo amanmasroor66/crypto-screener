@@ -165,7 +165,11 @@ def build(cands, btc_sym="BTC", gecko_top=None, trending=None, news=None, skip=(
         row["note"] = trending_note(row)
         trend_rows.append(row)
 
+    bots = bottoms(cands, skip)
+    for b in bots:
+        b["plan"] = plan(cands[b["symbol"]]["candles"], metrics(cands[b["symbol"]]["candles"]))
     return {"leaders": leaders, "growing": growing, "new_listings": new, "trending": trend_rows,
+            "bottoms": bots, "bottoms_tested": BOTTOM_TESTED,
             "news": (news or [])[:NEWS_MAX], "_btc": ms.get(btc_sym), "_all": list(old.values())}
 
 
@@ -251,3 +255,96 @@ def plan(c, m, sig=None):
                         " If price closes a day below the 20 day average before the targets, sell the rest: that exit beat fixed holding in the backtest.")
     p["cancel"] = f"Plan is wrong if price closes below {p['stop']:.6g}. Sell there, no exceptions."
     return p
+
+
+# ---------------------------------------------------------------- bottoming candidates
+def rsi(closes, n=14):
+    """Wilder RSI for every candle (None until enough data)."""
+    out = [None] * len(closes)
+    if len(closes) <= n:
+        return out
+    gains = [max(closes[i] - closes[i - 1], 0) for i in range(1, len(closes))]
+    losses = [max(closes[i - 1] - closes[i], 0) for i in range(1, len(closes))]
+    ag, al = sum(gains[:n]) / n, sum(losses[:n]) / n
+    for i in range(n, len(closes)):
+        if i > n:
+            ag = (ag * (n - 1) + gains[i - 1]) / n
+            al = (al * (n - 1) + losses[i - 1]) / n
+        out[i] = 100 if al == 0 else 100 - 100 / (1 + ag / al)
+    return out
+
+
+def divergence(c, k=3, window=60):
+    """Bullish divergence: price made a lower low but RSI made a higher low, from oversold.
+    Returns (found, rsi_first, rsi_second, days_since_second_low)."""
+    closes = [x["c"] for x in c]
+    r = rsi(closes)
+    start = max(k, len(c) - window)
+    lows = [i for i in range(start, len(c) - k)
+            if c[i]["l"] < min(c[j]["l"] for j in range(i - k, i + k + 1) if j != i) and r[i] is not None]
+    if len(lows) < 2:
+        return False, None, None, None
+    a, b = lows[-2], lows[-1]
+    found = c[b]["l"] < c[a]["l"] and r[b] > r[a] + 2 and r[a] < 35 and closes[-1] > c[b]["l"]
+    return found, round(r[a]), round(r[b]), len(c) - 1 - b
+
+
+def bottom_score(c):
+    """Measured bottoming picture for one coin, or None if it is not beaten down."""
+    if len(c) < 120:
+        return None
+    px = c[-1]["c"]
+    hi = max(x["h"] for x in c[-180:])
+    dd = 1 - px / hi
+    if dd < 0.5:
+        return None
+    base = c[-30:]
+    blo, bhi = min(x["l"] for x in base), max(x["h"] for x in base)
+    base_range = (bhi - blo) / blo
+    div, r1, r2, ago = divergence(c)
+    v5 = sum(x["v"] for x in c[-5:]) / 5
+    v30 = sum(x["v"] for x in c[-35:-5]) / 30 or 1
+    closes = [x["c"] for x in c]
+    ma20 = sma(closes, 20)
+    score = (3 if div else 0) + max(0, 2 - base_range * 4) + min(dd * 2, 2) + min(max(v5 / v30 - 1, 0), 1.5) + (1 if px > ma20 else 0)
+    return {"drawdown_pct": round(dd * 100), "base_range_pct": round(base_range * 100), "divergence": div,
+            "rsi_lows": [r1, r2] if div else None, "div_days_ago": ago if div else None,
+            "vol_pickup": round(v5 / v30, 1), "above20": px > ma20, "base_low": blo, "base_high": bhi,
+            "score": round(score, 2)}
+
+
+BOTTOM_TESTED = ("Tested on 2.7 years of these coins, 30 days later: the classic pattern (bullish divergence plus a tight base)"
+                 " averaged 5% down and rose only 32% of the time, worse than a random coin (up 44% of the time)."
+                 " Buying after the break above the base was worse still. Catching bottoms has no edge in this data.")
+
+
+def bottom_note(sym, b):
+    s = f"{sym} is {b['drawdown_pct']}% below its 6 month high and has moved in a {b['base_range_pct']}% range for 30 days."
+    if b["divergence"]:
+        s += (f" Bullish divergence: price made a lower low but RSI made a higher low ({b['rsi_lows'][0]} then {b['rsi_lows'][1]}),"
+              " which means selling pressure is weakening.")
+    else:
+        s += " No bullish divergence yet."
+    if b["vol_pickup"] >= 1.5:
+        s += f" Volume is picking up ({b['vol_pickup']}x its recent average)."
+    s += (f" A bottom is only confirmed once price breaks above the base ({b['base_high']:.6g}) on a daily close."
+          f" Below the base low ({b['base_low']:.6g}) the idea is wrong.")
+    return s
+
+
+def bottoms(cands, skip=(), n=5):
+    rows = []
+    for s, v in cands.items():
+        if s in skip:
+            continue
+        b = bottom_score(v["candles"])
+        if b:
+            b["symbol"] = s
+            b["price"] = v["candles"][-1]["c"]
+            rows.append(b)
+    rows.sort(key=lambda x: x["score"], reverse=True)
+    for b in rows[:n]:
+        b["note"] = bottom_note(b["symbol"], b)
+        b["label"] = "Bottoming pattern" if b["divergence"] and b["base_range_pct"] <= 40 else (
+            "Basing, no divergence" if b["base_range_pct"] <= 40 else "Still swinging, no base yet")
+    return rows[:n]

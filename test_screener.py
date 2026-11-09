@@ -122,4 +122,14 @@ assert pd["status"] == "No buy" and pd["entry_lo"] is None and "targets" not in 
 sg = market.plan(up, market.metrics(up), {"price": up[-1]["c"], "stop": up[-1]["c"] * 0.9})
 assert sg["status"] == "Signal active" and sg["targets"][0] > up[-1]["c"] and "61%" in sg["tested"]
 assert not any("\u2014" in str(v) for v in list(pu.values()) + list(pd.values()) + list(sg.values()))
+# bottom watch
+crash = series(10, -0.06, 120) + [dict(x, l=x["c"] * 0.97) for x in series(2.9, 0.0, 60)]
+bb = market.bottom_score(crash)
+assert bb and bb["drawdown_pct"] >= 50 and bb["base_range_pct"] <= 40
+assert market.bottom_score(series(1, 0.01, 200)) is None  # not beaten down
+r = market.rsi([float(i) for i in range(40)])
+assert r[-1] == 100 and r[5] is None
+bl = market.bottoms({"CR": {"candles": crash}, "UP": {"candles": series(1, 0.01, 200)}})
+assert [x["symbol"] for x in bl] == ["CR"] and bl[0]["label"] and "confirmed" in bl[0]["note"]
+assert "no edge" in market.BOTTOM_TESTED
 print("OK")
