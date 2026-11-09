@@ -1,14 +1,14 @@
 {
-  "generated_utc": "2026-11-08 20:41",
-  "scanned": 29,
+  "generated_utc": "2026-11-09 07:02",
+  "scanned": 38,
   "market": {
     "BTC": {
-      "price": 75809.51,
-      "chg24h": 0.093
+      "price": 74163.99,
+      "chg24h": -2.234
     },
     "ETH": {
-      "price": 2227.51,
-      "chg24h": -0.232
+      "price": 2105.9,
+      "chg24h": -5.78
     }
   },
   "signals": [],
@@ -25,188 +25,188 @@
       {
         "symbol": "BTC",
         "trend": "Downtrend",
-        "price": 75867.59,
-        "ch7": -2.2,
-        "ch30": -7.2,
-        "from_high_pct": -13.2,
-        "note": "BTC is in a downtrend, below its 50 day average, -7% over 30 days. Buying a falling leader is a bet that the drop is over, and the data does not show that yet. Waiting for it to get back above the 50 day average is the safer rule."
+        "price": 74851.44,
+        "ch7": -4.5,
+        "ch30": -9.4,
+        "from_high_pct": -14.4,
+        "note": "BTC is in a downtrend, below its 50 day average, -9% over 30 days. Buying a falling leader is a bet that the drop is over, and the data does not show that yet. Waiting for it to get back above the 50 day average is the safer rule."
       },
       {
         "symbol": "ETH",
         "trend": "Downtrend",
-        "price": 2240.24,
-        "ch7": -0.7,
-        "ch30": -9.5,
-        "from_high_pct": -20.2,
-        "note": "ETH is in a downtrend, below its 50 day average, -10% over 30 days. Buying a falling leader is a bet that the drop is over, and the data does not show that yet. Waiting for it to get back above the 50 day average is the safer rule."
+        "price": 2127.46,
+        "ch7": -6.5,
+        "ch30": -14.5,
+        "from_high_pct": -24.2,
+        "note": "ETH is in a downtrend, below its 50 day average, -14% over 30 days. Buying a falling leader is a bet that the drop is over, and the data does not show that yet. Waiting for it to get back above the 50 day average is the safer rule."
       },
       {
         "symbol": "BNB",
         "trend": "Downtrend",
-        "price": 696.2,
-        "ch7": -1.1,
-        "ch30": -5.4,
-        "from_high_pct": -14.0,
-        "note": "BNB is in a downtrend, below its 50 day average, -5% over 30 days. Buying a falling leader is a bet that the drop is over, and the data does not show that yet. Waiting for it to get back above the 50 day average is the safer rule."
+        "price": 685.21,
+        "ch7": -3.9,
+        "ch30": -7.7,
+        "from_high_pct": -15.4,
+        "note": "BNB is in a downtrend, below its 50 day average, -8% over 30 days. Buying a falling leader is a bet that the drop is over, and the data does not show that yet. Waiting for it to get back above the 50 day average is the safer rule."
       },
       {
         "symbol": "XRP",
         "trend": "Downtrend",
-        "price": 1.164,
-        "ch7": -7.0,
-        "ch30": -15.7,
-        "from_high_pct": -31.5,
-        "note": "XRP is in a downtrend, below its 50 day average, -16% over 30 days. Buying a falling leader is a bet that the drop is over, and the data does not show that yet. Waiting for it to get back above the 50 day average is the safer rule."
+        "price": 1.1132,
+        "ch7": -11.0,
+        "ch30": -20.2,
+        "from_high_pct": -34.5,
+        "note": "XRP is in a downtrend, below its 50 day average, -20% over 30 days. Buying a falling leader is a bet that the drop is over, and the data does not show that yet. Waiting for it to get back above the 50 day average is the safer rule."
       },
       {
         "symbol": "SOL",
         "trend": "Downtrend",
-        "price": 89.81,
-        "ch7": -6.0,
-        "ch30": -18.1,
-        "from_high_pct": -28.1,
-        "note": "SOL is in a downtrend, below its 50 day average, -18% over 30 days. Buying a falling leader is a bet that the drop is over, and the data does not show that yet. Waiting for it to get back above the 50 day average is the safer rule."
+        "price": 86.54,
+        "ch7": -8.5,
+        "ch30": -20.7,
+        "from_high_pct": -30.7,
+        "note": "SOL is in a downtrend, below its 50 day average, -21% over 30 days. Buying a falling leader is a bet that the drop is over, and the data does not show that yet. Waiting for it to get back above the 50 day average is the safer rule."
       },
       {
         "symbol": "TRX",
         "trend": "Downtrend",
-        "price": 0.3201,
-        "ch7": 5.4,
+        "price": 0.3194,
+        "ch7": 2.0,
         "ch30": -3.8,
-        "from_high_pct": -15.2,
+        "from_high_pct": -15.4,
         "note": "TRX is in a downtrend, below its 50 day average, -4% over 30 days. Buying a falling leader is a bet that the drop is over, and the data does not show that yet. Waiting for it to get back above the 50 day average is the safer rule."
       },
       {
         "symbol": "ZEC",
         "trend": "Downtrend",
-        "price": 1261.51,
-        "ch7": 0.8,
-        "ch30": 6.3,
-        "from_high_pct": -25.7,
-        "note": "ZEC is in a downtrend, below its 50 day average, +6% over 30 days. Buying a falling leader is a bet that the drop is over, and the data does not show that yet. Waiting for it to get back above the 50 day average is the safer rule."
+        "price": 1213.5,
+        "ch7": -1.7,
+        "ch30": 0.6,
+        "from_high_pct": -28.5,
+        "note": "ZEC is in a downtrend, below its 50 day average, +1% over 30 days. Buying a falling leader is a bet that the drop is over, and the data does not show that yet. Waiting for it to get back above the 50 day average is the safer rule."
       },
       {
         "symbol": "DOGE",
         "trend": "Downtrend",
-        "price": 0.07165,
-        "ch7": -5.3,
-        "ch30": -14.7,
-        "from_high_pct": -39.6,
-        "note": "DOGE is in a downtrend, below its 50 day average, -15% over 30 days. Buying a falling leader is a bet that the drop is over, and the data does not show that yet. Waiting for it to get back above the 50 day average is the safer rule."
+        "price": 0.06896,
+        "ch7": -8.7,
+        "ch30": -19.2,
+        "from_high_pct": -41.9,
+        "note": "DOGE is in a downtrend, below its 50 day average, -19% over 30 days. Buying a falling leader is a bet that the drop is over, and the data does not show that yet. Waiting for it to get back above the 50 day average is the safer rule."
       },
       {
         "symbol": "LINK",
         "trend": "Downtrend",
-        "price": 10.837,
-        "ch7": -7.1,
-        "ch30": -14.7,
-        "from_high_pct": -31.3,
-        "note": "LINK is in a downtrend, below its 50 day average, -15% over 30 days. Buying a falling leader is a bet that the drop is over, and the data does not show that yet. Waiting for it to get back above the 50 day average is the safer rule."
+        "price": 10.411,
+        "ch7": -8.6,
+        "ch30": -18.7,
+        "from_high_pct": -34.0,
+        "note": "LINK is in a downtrend, below its 50 day average, -19% over 30 days. Buying a falling leader is a bet that the drop is over, and the data does not show that yet. Waiting for it to get back above the 50 day average is the safer rule."
       },
       {
         "symbol": "ADA",
         "trend": "Downtrend",
-        "price": 0.1818,
-        "ch7": -5.8,
-        "ch30": -21.7,
-        "from_high_pct": -37.0,
-        "note": "ADA is in a downtrend, below its 50 day average, -22% over 30 days. Buying a falling leader is a bet that the drop is over, and the data does not show that yet. Waiting for it to get back above the 50 day average is the safer rule."
+        "price": 0.1753,
+        "ch7": -9.2,
+        "ch30": -27.9,
+        "from_high_pct": -39.3,
+        "note": "ADA is in a downtrend, below its 50 day average, -28% over 30 days. Buying a falling leader is a bet that the drop is over, and the data does not show that yet. Waiting for it to get back above the 50 day average is the safer rule."
       }
     ],
     "growing": [
       {
+        "symbol": "BMT",
+        "trend": "Uptrend",
+        "price": 0.02506,
+        "ch7": 14.1,
+        "ch30": 28.6,
+        "from_high_pct": -51.3,
+        "note": "BMT is +29% over 30 days and +14% this week, above its 50 day average. It sits 51% under its recent high. Strength can continue, but buying after a run means a deeper fall if it turns."
+      },
+      {
         "symbol": "PEPE",
         "trend": "Uptrend",
-        "price": 4.87e-06,
-        "ch7": -2.6,
-        "ch30": 27.2,
-        "from_high_pct": -14.3,
-        "note": "PEPE is +27% over 30 days and -3% this week, above its 50 day average. It sits 14% under its recent high. Strength can continue, but buying after a run means a deeper fall if it turns."
+        "price": 4.96e-06,
+        "ch7": 1.6,
+        "ch30": 25.3,
+        "from_high_pct": -12.7,
+        "note": "PEPE is +25% over 30 days and +2% this week, above its 50 day average. It sits 13% under its recent high. Strength can continue, but buying after a run means a deeper fall if it turns."
       },
       {
         "symbol": "INJ",
         "trend": "Uptrend",
-        "price": 8.262,
-        "ch7": 14.3,
-        "ch30": 22.3,
-        "from_high_pct": -12.3,
-        "note": "INJ is +22% over 30 days and +14% this week, above its 50 day average. It sits 12% under its recent high. Strength can continue, but buying after a run means a deeper fall if it turns."
-      },
-      {
-        "symbol": "BMT",
-        "trend": "Uptrend",
-        "price": 0.02262,
-        "ch7": -0.2,
-        "ch30": 19.0,
-        "from_high_pct": -56.0,
-        "note": "BMT is +19% over 30 days and -0% this week, above its 50 day average. It sits 56% under its recent high. Strength can continue, but buying after a run means a deeper fall if it turns."
+        "price": 8.049,
+        "ch7": 12.0,
+        "ch30": 16.0,
+        "from_high_pct": -14.5,
+        "note": "INJ is +16% over 30 days and +12% this week, above its 50 day average. It sits 14% under its recent high. Strength can continue, but buying after a run means a deeper fall if it turns."
       }
     ],
     "new_listings": [
       {
         "symbol": "HYPE",
-        "days_listed": 45,
-        "price": 77.82,
-        "since_listing_pct": -15.4,
-        "from_high_pct": -20.4,
+        "days_listed": 46,
+        "price": 74.56,
+        "since_listing_pct": -19.0,
+        "from_high_pct": -23.7,
         "rank": 11,
-        "note": "HYPE is new on Binance (about 45 days) but not a new coin: it is ranked 11 by market cap and traded elsewhere before. It is -15% since its Binance listing and 20% below the high since then. Too little Binance history for the screener's rules, so judge it like a leader once it has 90 days of data."
+        "note": "HYPE is new on Binance (about 46 days) but not a new coin: it is ranked 11 by market cap and traded elsewhere before. It is -19% since its Binance listing and 24% below the high since then. Too little Binance history for the screener's rules, so judge it like a leader once it has 90 days of data."
       }
     ],
     "trending": [
       {
-        "symbol": "WASTED",
-        "name": "WASTED",
-        "rank": 858,
-        "ch24": -3.1,
-        "on_binance": false,
-        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top. It is a small coin (rank 858), so moves both ways are violent. Not in this screener's Binance list, so none of the checks here apply."
+        "symbol": "BTC",
+        "name": "Bitcoin",
+        "rank": 1,
+        "ch24": -1.9,
+        "on_binance": true,
+        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top."
       },
       {
-        "symbol": "JOS\u00c9",
-        "name": "Be Like Jos\u00e9",
-        "rank": 811,
-        "ch24": 0,
-        "on_binance": false,
-        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top. It is a small coin (rank 811), so moves both ways are violent. Not in this screener's Binance list, so none of the checks here apply."
-      },
-      {
-        "symbol": "DACITY",
-        "name": "Dacity Coin",
-        "rank": 722,
-        "ch24": 47.0,
-        "on_binance": false,
-        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top. It is a small coin (rank 722), so moves both ways are violent. Not in this screener's Binance list, so none of the checks here apply."
+        "symbol": "ETH",
+        "name": "Ethereum",
+        "rank": 2,
+        "ch24": -5.3,
+        "on_binance": true,
+        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top."
       },
       {
         "symbol": "JCT",
         "name": "Janction",
-        "rank": 194,
-        "ch24": 382.0,
+        "rank": 253,
+        "ch24": 202.8,
         "on_binance": false,
         "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top. Not in this screener's Binance list, so none of the checks here apply."
       },
       {
-        "symbol": "STONK",
-        "name": "STONK",
-        "rank": 529,
-        "ch24": -38.8,
+        "symbol": "AERO",
+        "name": "Aero",
+        "rank": 115,
+        "ch24": -6.5,
         "on_binance": false,
-        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top. It is a small coin (rank 529), so moves both ways are violent. Not in this screener's Binance list, so none of the checks here apply."
+        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top. Not in this screener's Binance list, so none of the checks here apply."
       },
       {
         "symbol": "PENGU",
         "name": "Pudgy Penguins",
         "rank": 116,
-        "ch24": -1.7,
+        "ch24": -2.5,
         "on_binance": false,
         "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top. Not in this screener's Binance list, so none of the checks here apply."
+      },
+      {
+        "symbol": "HYPE",
+        "name": "Hyperliquid",
+        "rank": 11,
+        "ch24": -4.0,
+        "on_binance": true,
+        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top."
       },
       {
         "symbol": "ZEC",
         "name": "Zcash",
         "rank": 10,
-        "ch24": -0.1,
+        "ch24": -3.5,
         "on_binance": true,
         "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top."
       }
@@ -219,6 +219,21 @@
       },
       {
         "source": "Cointelegraph",
+        "title": "Zcash devs propose another block time cut days after NU7 upgrade",
+        "link": "https://cointelegraph.com/news/zcash-developers-propose-20-second-blocks-nu7-upgrade?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
+      },
+      {
+        "source": "Cointelegraph",
+        "title": "tBTC bridge partially resumes as $120M Aave reserve remains frozen",
+        "link": "https://cointelegraph.com/news/tbtc-bridge-resumes-aave-120m-reserve-frozen?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
+      },
+      {
+        "source": "Cointelegraph",
+        "title": "Vitalik \u2018pivots\u2019 ETH to store of value, crypto suffers after US midterms: Hodler\u2019s Digest",
+        "link": "https://cointelegraph.com/magazine/vitaliks-pivots-to-eth-as-a-store-of-value-us-election-weighs-on-crypto-hodlers-digest?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
+      },
+      {
+        "source": "Cointelegraph",
         "title": "Binance France emails announce closure of its users\u2019 accounts on Dec. 31",
         "link": "https://cointelegraph.com/news/binance-france-emails-announce-closure-of-its-users-accounts-on-dec-31?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
       },
@@ -226,29 +241,14 @@
         "source": "Cointelegraph",
         "title": "Amsterdam protesters break into Microsoft data center construction site: Report",
         "link": "https://cointelegraph.com/news/amsterdam-data-center-protesters-break-into-construction-site-report?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
-      },
-      {
-        "source": "Cointelegraph",
-        "title": "Binance\u2019s  finance chief Kaiser Ng to leave company, report says",
-        "link": "https://cointelegraph.com/news/binances-finance-chief-kaiser-ng-to-leave-company-report-says?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
-      },
-      {
-        "source": "Cointelegraph",
-        "title": "Ex-FBI counterintelligence agent stole almost $2.5M in crypto",
-        "link": "https://cointelegraph.com/news/ex-fbi-counterintelligence-agent-stole-almost-25m-in-crypto?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
-      },
-      {
-        "source": "Cointelegraph",
-        "title": "Bitcoin holders have received eCash \u2014 What can you do with it?",
-        "link": "https://cointelegraph.com/magazine/bitcoin-holders-have-received-ecash-what-can-you-with-it?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
       }
     ],
     "regime": {
       "mood": "Downtrend",
-      "breadth_pct": 14,
+      "breadth_pct": 11,
       "btc_above_50d": false,
       "btc_above_200d": true,
-      "summary": "The market is weak. BTC is below its 50 day average and above its 200 day average, and 14% of coins are above their 50 day average. Most breakouts fail even in good markets, so in a weak market protecting cash matters more than finding a winner. There is no signal today, so by the rules there is nothing to buy. Use the lists below to learn the market and build your own watchlist, not as buy tips. Should you invest at all? Only money you can afford to lose completely, and only after a few weeks of paper trading these signals."
+      "summary": "The market is weak. BTC is below its 50 day average and above its 200 day average, and 11% of coins are above their 50 day average. Most breakouts fail even in good markets, so in a weak market protecting cash matters more than finding a winner. There is no signal today, so by the rules there is nothing to buy. Use the lists below to learn the market and build your own watchlist, not as buy tips. Should you invest at all? Only money you can afford to lose completely, and only after a few weeks of paper trading these signals."
     }
   }
 }
