@@ -1,14 +1,14 @@
 {
-  "generated_utc": "2026-11-09 14:17",
-  "scanned": 46,
+  "generated_utc": "2026-11-09 19:02",
+  "scanned": 52,
   "market": {
     "BTC": {
-      "price": 74622.01,
-      "chg24h": -1.782
+      "price": 74699.8,
+      "chg24h": -1.589
     },
     "ETH": {
-      "price": 2121.94,
-      "chg24h": -5.261
+      "price": 2125.81,
+      "chg24h": -4.868
     }
   },
   "signals": [],
@@ -467,32 +467,32 @@
       {
         "symbol": "DACITY",
         "name": "Dacity Coin",
-        "rank": 920,
-        "ch24": -29.2,
+        "rank": 762,
+        "ch24": -5.0,
         "on_binance": false,
-        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top. It is a small coin (rank 920), so moves both ways are violent. Not in this screener's Binance list, so none of the checks here apply."
+        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top. It is a small coin (rank 762), so moves both ways are violent. Not in this screener's Binance list, so none of the checks here apply."
       },
       {
         "symbol": "AVAX",
         "name": "Avalanche",
         "rank": 26,
-        "ch24": 7.5,
+        "ch24": 4.1,
         "on_binance": true,
         "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top."
       },
       {
-        "symbol": "HYPE",
-        "name": "Hyperliquid",
-        "rank": 11,
-        "ch24": -5.5,
-        "on_binance": true,
-        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top."
+        "symbol": "PENGU",
+        "name": "Pudgy Penguins",
+        "rank": 116,
+        "ch24": 0.5,
+        "on_binance": false,
+        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top. Not in this screener's Binance list, so none of the checks here apply."
       },
       {
         "symbol": "KNTQ",
         "name": "Kinetiq",
-        "rank": 235,
-        "ch24": -27.4,
+        "rank": 239,
+        "ch24": -19.0,
         "on_binance": false,
         "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top. Not in this screener's Binance list, so none of the checks here apply."
       },
@@ -505,18 +505,18 @@
         "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top."
       },
       {
-        "symbol": "GRAM",
-        "name": "Gram (prev. Toncoin)",
-        "rank": 33,
-        "ch24": -0.5,
-        "on_binance": true,
-        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top."
+        "symbol": "DRV",
+        "name": "Derive",
+        "rank": 126,
+        "ch24": -3.8,
+        "on_binance": false,
+        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top. Not in this screener's Binance list, so none of the checks here apply."
       },
       {
-        "symbol": "NEAR",
-        "name": "NEAR Protocol",
-        "rank": 22,
-        "ch24": -4.1,
+        "symbol": "ONDO",
+        "name": "Ondo",
+        "rank": 48,
+        "ch24": 4.5,
         "on_binance": true,
         "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top."
       }
@@ -629,6 +629,42 @@
         }
       },
       {
+        "drawdown_pct": 65,
+        "base_range_pct": 145,
+        "divergence": false,
+        "rsi_lows": null,
+        "div_days_ago": null,
+        "vol_pickup": 0.9,
+        "above20": false,
+        "base_low": 0.001542,
+        "base_high": 0.003774,
+        "score": 1.3,
+        "symbol": "ZIL",
+        "price": 0.001639,
+        "note": "ZIL is 65% below its 6 month high and has moved in a 145% range for 30 days. No bullish divergence yet. A bottom is only confirmed once price breaks above the base (0.003774) on a daily close. Below the base low (0.001542) the idea is wrong.",
+        "label": "Still swinging, no base yet",
+        "plan": {
+          "atr_pct": 9.9,
+          "resistance": [
+            0.002083,
+            0.00267,
+            0.002814
+          ],
+          "support": [
+            0.001542
+          ],
+          "trigger": 0.003828,
+          "ma20": 0.0019136000000000001,
+          "ma50": 0.0028022200000000002,
+          "ma200": 0.003059135,
+          "status": "No buy",
+          "entry_lo": null,
+          "entry_hi": null,
+          "stop": null,
+          "why": "Downtrend. No buy zone until price closes back above the 50 day average (0.00280222) or breaks the 42 day high (0.003828)."
+        }
+      },
+      {
         "drawdown_pct": 51,
         "base_range_pct": 44,
         "divergence": false,
@@ -663,44 +699,30 @@
           "stop": null,
           "why": "Downtrend. No buy zone until price closes back above the 50 day average (0.189348) or breaks the 42 day high (0.2371)."
         }
-      },
-      {
-        "drawdown_pct": 59,
-        "base_range_pct": 81,
-        "divergence": false,
-        "rsi_lows": null,
-        "div_days_ago": null,
-        "vol_pickup": 0.8,
-        "above20": false,
-        "base_low": 0.04967,
-        "base_high": 0.08978,
-        "score": 1.18,
-        "symbol": "XPL",
-        "price": 0.05147,
-        "note": "XPL is 59% below its 6 month high and has moved in a 81% range for 30 days. No bullish divergence yet. A bottom is only confirmed once price breaks above the base (0.08978) on a daily close. Below the base low (0.04967) the idea is wrong.",
-        "label": "Still swinging, no base yet",
-        "plan": {
-          "atr_pct": 13.8,
-          "resistance": [
-            0.08639,
-            0.08978,
-            0.0926
-          ],
-          "support": [],
-          "trigger": 0.11341,
-          "ma20": 0.070345,
-          "ma50": 0.08310840000000001,
-          "ma200": 0.08692335,
-          "status": "No buy",
-          "entry_lo": null,
-          "entry_hi": null,
-          "stop": null,
-          "why": "Downtrend. No buy zone until price closes back above the 50 day average (0.0831084) or breaks the 42 day high (0.11341)."
-        }
       }
     ],
     "bottoms_tested": "Tested on 2.7 years of these coins, 30 days later: the classic pattern (bullish divergence plus a tight base) averaged 5% down and rose only 32% of the time, worse than a random coin (up 44% of the time). Buying after the break above the base was worse still. Catching bottoms has no edge in this data.",
     "news": [
+      {
+        "source": "Cointelegraph",
+        "title": "Mercado Bitcoin begins post-hack reopening without a timeline for withdrawals",
+        "link": "https://cointelegraph.com/news/mercado-bitcoin-reopening-withdrawals-hack-suspended?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
+      },
+      {
+        "source": "Cointelegraph",
+        "title": "PNC Bank tests turning USDC payments into dollar deposits",
+        "link": "https://cointelegraph.com/news/pnc-bank-launches-usdc-payment-pilot-coinbase?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
+      },
+      {
+        "source": "Cointelegraph",
+        "title": "Avalanche\u2019s AVAX leads crypto gains following NYSE tokenization deal",
+        "link": "https://cointelegraph.com/news/avalanche-avax-crypto-nyse-tokenization-deal?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
+      },
+      {
+        "source": "Cointelegraph",
+        "title": "Bitcoin, tech stocks brush off Nvidia nerves as analyst mulls $68K target",
+        "link": "https://cointelegraph.com/markets/bitcoin-stocks-nvidia-analyst-68k-target?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
+      },
       {
         "source": "Cointelegraph",
         "title": "Analysts see no broader \u2018contagion\u2019 from $6.3B Binance hack",
@@ -710,34 +732,14 @@
         "source": "Cointelegraph",
         "title": "Here\u2019s what happened in crypto today",
         "link": "https://cointelegraph.com/news/what-happened-in-crypto-today?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
-      },
-      {
-        "source": "Cointelegraph",
-        "title": "The $2.85B Binance hackers lost shows why the UK needs stablecoin freeze rules",
-        "link": "https://cointelegraph.com/opinion/285b-binance-hackers-lost-shows-why-uk-needs-stablecoin-freeze-rules?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
-      },
-      {
-        "source": "Cointelegraph",
-        "title": "Strategy buys 1,036 Bitcoin as BTC holdings climb to 850,364",
-        "link": "https://cointelegraph.com/news/strategy-buy-1036-bitcoin-holdings-850364-btc?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
-      },
-      {
-        "source": "Cointelegraph",
-        "title": "EU taps industry to set standards for tokenized securities",
-        "link": "https://cointelegraph.com/news/eu-nominations-tokenization-standards-group?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
-      },
-      {
-        "source": "Cointelegraph",
-        "title": "Coinbase\u2019s US national trust bank charter takes effect",
-        "link": "https://cointelegraph.com/news/coinbase-occ-approval-national-trust-bank-charter?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
       }
     ],
     "regime": {
       "mood": "Downtrend",
-      "breadth_pct": 11,
+      "breadth_pct": 10,
       "btc_above_50d": false,
       "btc_above_200d": true,
-      "summary": "The market is weak. BTC is below its 50 day average and above its 200 day average, and 11% of coins are above their 50 day average. Most breakouts fail even in good markets, so in a weak market protecting cash matters more than finding a winner. There is no signal today, so by the rules there is nothing to buy. Use the lists below to learn the market and build your own watchlist, not as buy tips. Should you invest at all? Only money you can afford to lose completely, and only after a few weeks of paper trading these signals."
+      "summary": "The market is weak. BTC is below its 50 day average and above its 200 day average, and 10% of coins are above their 50 day average. Most breakouts fail even in good markets, so in a weak market protecting cash matters more than finding a winner. There is no signal today, so by the rules there is nothing to buy. Use the lists below to learn the market and build your own watchlist, not as buy tips. Should you invest at all? Only money you can afford to lose completely, and only after a few weeks of paper trading these signals."
     }
   }
 }
