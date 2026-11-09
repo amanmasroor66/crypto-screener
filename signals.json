@@ -1,14 +1,14 @@
 {
-  "generated_utc": "2026-11-09 07:02",
-  "scanned": 38,
+  "generated_utc": "2026-11-09 12:34",
+  "scanned": 45,
   "market": {
     "BTC": {
-      "price": 74163.99,
-      "chg24h": -2.234
+      "price": 74944.83,
+      "chg24h": -1.379
     },
     "ETH": {
-      "price": 2105.9,
-      "chg24h": -5.78
+      "price": 2126.44,
+      "chg24h": -5.065
     }
   },
   "signals": [],
@@ -158,89 +158,89 @@
         "symbol": "BTC",
         "name": "Bitcoin",
         "rank": 1,
-        "ch24": -1.9,
+        "ch24": -1.7,
         "on_binance": true,
         "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top."
       },
       {
-        "symbol": "ETH",
-        "name": "Ethereum",
-        "rank": 2,
-        "ch24": -5.3,
-        "on_binance": true,
-        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top."
-      },
-      {
-        "symbol": "JCT",
-        "name": "Janction",
-        "rank": 253,
-        "ch24": 202.8,
+        "symbol": "DACITY",
+        "name": "Dacity Coin",
+        "rank": 883,
+        "ch24": -12.0,
         "on_binance": false,
-        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top. Not in this screener's Binance list, so none of the checks here apply."
-      },
-      {
-        "symbol": "AERO",
-        "name": "Aero",
-        "rank": 115,
-        "ch24": -6.5,
-        "on_binance": false,
-        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top. Not in this screener's Binance list, so none of the checks here apply."
-      },
-      {
-        "symbol": "PENGU",
-        "name": "Pudgy Penguins",
-        "rank": 116,
-        "ch24": -2.5,
-        "on_binance": false,
-        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top. Not in this screener's Binance list, so none of the checks here apply."
+        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top. It is a small coin (rank 883), so moves both ways are violent. Not in this screener's Binance list, so none of the checks here apply."
       },
       {
         "symbol": "HYPE",
         "name": "Hyperliquid",
         "rank": 11,
-        "ch24": -4.0,
+        "ch24": -4.9,
         "on_binance": true,
         "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top."
       },
       {
-        "symbol": "ZEC",
-        "name": "Zcash",
-        "rank": 10,
-        "ch24": -3.5,
+        "symbol": "PENGU",
+        "name": "Pudgy Penguins",
+        "rank": 115,
+        "ch24": -2.2,
+        "on_binance": false,
+        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top. Not in this screener's Binance list, so none of the checks here apply."
+      },
+      {
+        "symbol": "PEPE",
+        "name": "Pepe",
+        "rank": 42,
+        "ch24": 1.0,
         "on_binance": true,
         "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top."
+      },
+      {
+        "symbol": "QNT",
+        "name": "Quant",
+        "rank": 34,
+        "ch24": 1.5,
+        "on_binance": true,
+        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top."
+      },
+      {
+        "symbol": "LIT",
+        "name": "Lighter",
+        "rank": 82,
+        "ch24": -3.6,
+        "on_binance": false,
+        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top. Not in this screener's Binance list, so none of the checks here apply."
       }
     ],
     "news": [
       {
         "source": "Cointelegraph",
+        "title": "Coinbase\u2019s US national trust bank charter takes effect",
+        "link": "https://cointelegraph.com/news/coinbase-occ-approval-national-trust-bank-charter?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
+      },
+      {
+        "source": "Cointelegraph",
+        "title": "Robinhood opens access to US IPOs for UK retail investors",
+        "link": "https://cointelegraph.com/news/robinhood-us-ipo-access-uk-retail-investors?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
+      },
+      {
+        "source": "Cointelegraph",
+        "title": "BTC price eyes $73K amid Nvidia volatility: Three things to know in Bitcoin this week",
+        "link": "https://cointelegraph.com/markets/btc-price-nvidia-volatility-three-things-bitcoin-this-week?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
+      },
+      {
+        "source": "Cointelegraph",
+        "title": "Binance, Tether and Trump crypto firms face Senate records deadline",
+        "link": "https://cointelegraph.com/news/binance-tether-wlfi-senate-crypto-investigation-records-deadline?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
+      },
+      {
+        "source": "Cointelegraph",
+        "title": "Bitcoin ETFs shed $1.3B in biggest weekly outflow since late June",
+        "link": "https://cointelegraph.com/markets/bitcoin-etfs-13b-biggest-weekly-outflow-late-june?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
+      },
+      {
+        "source": "Cointelegraph",
         "title": "Here\u2019s what happened in crypto today",
         "link": "https://cointelegraph.com/news/what-happened-in-crypto-today?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
-      },
-      {
-        "source": "Cointelegraph",
-        "title": "Zcash devs propose another block time cut days after NU7 upgrade",
-        "link": "https://cointelegraph.com/news/zcash-developers-propose-20-second-blocks-nu7-upgrade?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
-      },
-      {
-        "source": "Cointelegraph",
-        "title": "tBTC bridge partially resumes as $120M Aave reserve remains frozen",
-        "link": "https://cointelegraph.com/news/tbtc-bridge-resumes-aave-120m-reserve-frozen?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
-      },
-      {
-        "source": "Cointelegraph",
-        "title": "Vitalik \u2018pivots\u2019 ETH to store of value, crypto suffers after US midterms: Hodler\u2019s Digest",
-        "link": "https://cointelegraph.com/magazine/vitaliks-pivots-to-eth-as-a-store-of-value-us-election-weighs-on-crypto-hodlers-digest?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
-      },
-      {
-        "source": "Cointelegraph",
-        "title": "Binance France emails announce closure of its users\u2019 accounts on Dec. 31",
-        "link": "https://cointelegraph.com/news/binance-france-emails-announce-closure-of-its-users-accounts-on-dec-31?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
-      },
-      {
-        "source": "Cointelegraph",
-        "title": "Amsterdam protesters break into Microsoft data center construction site: Report",
-        "link": "https://cointelegraph.com/news/amsterdam-data-center-protesters-break-into-construction-site-report?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
       }
     ],
     "regime": {
