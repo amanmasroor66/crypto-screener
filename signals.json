@@ -1,14 +1,14 @@
 {
-  "generated_utc": "2026-11-10 12:11",
-  "scanned": 42,
+  "generated_utc": "2026-11-10 16:33",
+  "scanned": 44,
   "market": {
     "BTC": {
-      "price": 74324.95,
-      "chg24h": -0.216
+      "price": 73093.49,
+      "chg24h": -2.555
     },
     "ETH": {
-      "price": 2090.91,
-      "chg24h": -1.123
+      "price": 2017.77,
+      "chg24h": -5.432
     }
   },
   "signals": [],
@@ -464,58 +464,58 @@
     ],
     "trending": [
       {
-        "symbol": "SI",
-        "name": "Super Inu",
-        "rank": 930,
-        "ch24": 150.3,
-        "on_binance": false,
-        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top. It is a small coin (rank 930), so moves both ways are violent. Not in this screener's Binance list, so none of the checks here apply."
-      },
-      {
-        "symbol": "AVAX",
-        "name": "Avalanche",
-        "rank": 26,
-        "ch24": 3.2,
+        "symbol": "BTC",
+        "name": "Bitcoin",
+        "rank": 1,
+        "ch24": -2.5,
         "on_binance": true,
         "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top."
+      },
+      {
+        "symbol": "SI",
+        "name": "Super Inu",
+        "rank": 898,
+        "ch24": 171.0,
+        "on_binance": false,
+        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top. It is a small coin (rank 898), so moves both ways are violent. Not in this screener's Binance list, so none of the checks here apply."
+      },
+      {
+        "symbol": "INIT",
+        "name": "Initia",
+        "rank": 367,
+        "ch24": 112.0,
+        "on_binance": true,
+        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top. It is a small coin (rank 367), so moves both ways are violent."
       },
       {
         "symbol": "DACITY",
         "name": "Dacity Coin",
-        "rank": 884,
-        "ch24": -7.4,
+        "rank": 897,
+        "ch24": -5.1,
         "on_binance": false,
-        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top. It is a small coin (rank 884), so moves both ways are violent. Not in this screener's Binance list, so none of the checks here apply."
+        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top. It is a small coin (rank 897), so moves both ways are violent. Not in this screener's Binance list, so none of the checks here apply."
       },
       {
-        "symbol": "BTC",
-        "name": "Bitcoin",
-        "rank": 1,
-        "ch24": -0.1,
+        "symbol": "PEPE",
+        "name": "Pepe",
+        "rank": 42,
+        "ch24": -1.5,
         "on_binance": true,
         "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top."
       },
       {
-        "symbol": "PENGU",
-        "name": "Pudgy Penguins",
-        "rank": 116,
-        "ch24": 1.2,
-        "on_binance": false,
-        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top. Not in this screener's Binance list, so none of the checks here apply."
+        "symbol": "ETH",
+        "name": "Ethereum",
+        "rank": 2,
+        "ch24": -5.0,
+        "on_binance": true,
+        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top."
       },
       {
-        "symbol": "AERO",
-        "name": "Aero",
-        "rank": 117,
-        "ch24": -2.1,
-        "on_binance": false,
-        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top. Not in this screener's Binance list, so none of the checks here apply."
-      },
-      {
-        "symbol": "SOL",
-        "name": "Solana",
-        "rank": 7,
-        "ch24": -1.9,
+        "symbol": "HYPE",
+        "name": "Hyperliquid",
+        "rank": 11,
+        "ch24": -4.6,
         "on_binance": true,
         "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top."
       }
@@ -560,41 +560,39 @@
         }
       },
       {
-        "drawdown_pct": 52,
-        "base_range_pct": 70,
+        "drawdown_pct": 53,
+        "base_range_pct": 83,
         "divergence": false,
         "rsi_lows": null,
         "div_days_ago": null,
-        "vol_pickup": 2.6,
+        "vol_pickup": 5.5,
         "above20": false,
-        "base_low": 0.01074,
-        "base_high": 0.01824,
-        "score": 2.54,
-        "symbol": "TST",
-        "price": 0.01269,
-        "note": "TST is 52% below its 6 month high and has moved in a 70% range for 30 days. No bullish divergence yet. Volume is picking up (2.6x its recent average). A bottom is only confirmed once price breaks above the base (0.01824) on a daily close. Below the base low (0.01074) the idea is wrong.",
+        "base_low": 0.23,
+        "base_high": 0.42,
+        "score": 2.56,
+        "symbol": "CYBER",
+        "price": 0.26,
+        "note": "CYBER is 53% below its 6 month high and has moved in a 83% range for 30 days. No bullish divergence yet. Volume is picking up (5.5x its recent average). A bottom is only confirmed once price breaks above the base (0.42) on a daily close. Below the base low (0.23) the idea is wrong.",
         "label": "Still swinging, no base yet",
         "plan": {
-          "atr_pct": 10.3,
+          "atr_pct": 15.0,
           "resistance": [
-            0.01352,
-            0.01536,
-            0.0165
+            0.324,
+            0.334,
+            0.343
           ],
           "support": [
-            0.01204,
-            0.01106,
-            0.01064
+            0.232
           ],
-          "trigger": 0.02036,
-          "ma20": 0.013508000000000001,
-          "ma50": 0.0157812,
-          "ma200": 0.014871700000000002,
+          "trigger": 0.42,
+          "ma20": 0.2895,
+          "ma50": 0.31670000000000004,
+          "ma200": 0.36253,
           "status": "No buy",
           "entry_lo": null,
           "entry_hi": null,
           "stop": null,
-          "why": "Downtrend. No buy zone until price closes back above the 50 day average (0.0157812) or breaks the 42 day high (0.02036)."
+          "why": "Downtrend. No buy zone until price closes back above the 50 day average (0.3167) or breaks the 42 day high (0.42)."
         }
       },
       {
@@ -710,6 +708,26 @@
     "news": [
       {
         "source": "Cointelegraph",
+        "title": "Poland\u2019s lower house backs sanctions bill covering crypto freezes",
+        "link": "https://cointelegraph.com/news/poland-bill-freeze-sanctions-crypto-assets?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
+      },
+      {
+        "source": "Cointelegraph",
+        "title": "Here\u2019s what happened in crypto today",
+        "link": "https://cointelegraph.com/news/what-happened-in-crypto-today?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
+      },
+      {
+        "source": "Cointelegraph",
+        "title": "Bitcoin\u2019s \u2018best buying opportunity ever\u2019 has arrived: Mark Moss",
+        "link": "https://cointelegraph.com/magazine/bitcoins-best-buying-opportunity-ever-has-arrived-mark-moss?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
+      },
+      {
+        "source": "Cointelegraph",
+        "title": "Bitcoin may benefit as global tightening slows, Binance Research says",
+        "link": "https://cointelegraph.com/markets/bitcoin-price-global-tightening-binance-research?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
+      },
+      {
+        "source": "Cointelegraph",
         "title": "Coinbase, Kalshi join lawsuit backing CFTC over US stock perp futures",
         "link": "https://cointelegraph.com/news/coinbase-kalshi-cftc-stock-perpetual-futures-lawsuit?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
       },
@@ -717,26 +735,6 @@
         "source": "Cointelegraph",
         "title": "Binance warns iOS flaw could expose crypto wallet keys",
         "link": "https://cointelegraph.com/news/binance-warns-ios-flaw-could-expose-crypto-wallet-keys?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
-      },
-      {
-        "source": "Cointelegraph",
-        "title": "Ex-employee sues Ethereum Foundation and Vitalik Buterin over firing",
-        "link": "https://cointelegraph.com/news/ex-employee-sues-ethereum-foundation-vitalik-buterin-over-firing?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
-      },
-      {
-        "source": "Cointelegraph",
-        "title": "Bitcoin price eyes $74K as Fed rate-hike bets hit 96% after Waller speech",
-        "link": "https://cointelegraph.com/markets/bitcoin-price-eyes-74k-fed-rate-hike-expected-after-waller-speech?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
-      },
-      {
-        "source": "Cointelegraph",
-        "title": "BitGo Q3 profit nearly doubles on crypto gains as revenue falls 51%",
-        "link": "https://cointelegraph.com/news/bitgo-q3-2026-earnings-crypto-treasury-gains?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
-      },
-      {
-        "source": "Cointelegraph",
-        "title": "BlackRock Bitcoin ETF outflows hit $1.66B over seven trading sessions",
-        "link": "https://cointelegraph.com/markets/blackrock-ibit-bitcoin-etf-outflows?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
       }
     ],
     "regime": {
