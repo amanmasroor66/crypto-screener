@@ -1,14 +1,14 @@
 {
-  "generated_utc": "2026-11-11 00:49",
-  "scanned": 47,
+  "generated_utc": "2026-11-11 11:42",
+  "scanned": 49,
   "market": {
     "BTC": {
-      "price": 73575.4,
-      "chg24h": -1.933
+      "price": 74070.51,
+      "chg24h": -0.326
     },
     "ETH": {
-      "price": 2051.81,
-      "chg24h": -3.521
+      "price": 2058.82,
+      "chg24h": -1.626
     }
   },
   "signals": [
@@ -24,20 +24,22 @@
       "why": "Closed above the 42 day high (0.25793) on 7.1x average volume.",
       "symbol": "INIT",
       "pair": "INITUSDT",
-      "qvol_musd": 35.1,
-      "chg24h": 25.1,
+      "qvol_musd": 48.9,
+      "chg24h": -6.4,
       "score": 7,
       "research": {
         "source": "CoinGecko + news RSS",
-        "verified": true,
-        "mcap_musd": 59.5,
-        "rank": 378,
-        "ath_drop_pct": 81.0,
-        "circulating_pct": 22.0,
-        "news": [],
+        "verified": false,
+        "news": [
+          {
+            "source": "Cointelegraph",
+            "title": "Initia confirms second exploit in 3 weeks, $3.27M stolen in latest attack",
+            "link": "https://cointelegraph.com/news/initia-second-crypto-exploit-three-weeks?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
+          }
+        ],
         "flags": [
-          "Only 22% of supply is circulating. More tokens are still to unlock. Check the unlock calendar.",
-          "Up over 100% in 30 days. Late entries often reverse."
+          "CoinGecko may be showing a different coin with this ticker. Check the coin manually.",
+          "Recent headline with a risk word. Read it before buying."
         ],
         "verdict": "Caution"
       },
@@ -543,6 +545,47 @@
           "profit_plan": "Sell about a third at each target. After target 1, move your stop to your entry price so the rest cannot turn into a loss. If price closes a day below the 20 day average before the targets, sell the rest: that exit beat fixed holding in the backtest.",
           "cancel": "Plan is wrong if price closes below 0.0270757. Sell there, no exceptions."
         }
+      },
+      {
+        "symbol": "ERA",
+        "trend": "Uptrend",
+        "price": 0.0802,
+        "ch7": 25.3,
+        "ch30": 5.4,
+        "from_high_pct": -55.0,
+        "note": "ERA is +5% over 30 days and +25% this week, above its 50 day average. It sits 55% under its recent high. Strength can continue, but buying after a run means a deeper fall if it turns.",
+        "plan": {
+          "atr_pct": 11.0,
+          "resistance": [
+            0.0888,
+            0.0933,
+            0.1031
+          ],
+          "support": [
+            0.078,
+            0.0637,
+            0.0606
+          ],
+          "trigger": 0.1137,
+          "ma20": 0.072325,
+          "ma50": 0.069144,
+          "ma200": 0.08496100000000001,
+          "status": "Wait for a dip",
+          "entry_lo": 0.069144,
+          "entry_hi": 0.072325,
+          "stop": 0.06028685714285714,
+          "why": "Uptrend, but price is stretched above its 20 day average. Buying the dip to the zone gives a closer stop than buying now. Warning: this coin moves about 11% a day, so the stop is far away and the position must be very small. Many traders simply skip coins this wild.",
+          "tested": "Tested on the last 2.7 years of these coins: dip buys like this won 60% of the time but broke even on average, because the losses were bigger than the wins. Treat the zone as a better price, not an edge. Breakout signals tested better.",
+          "targets": [
+            0.0888,
+            0.0933,
+            0.1031
+          ],
+          "risk_pct": 14.8,
+          "size_for_1pct_loss": 6.8,
+          "profit_plan": "Sell about a third at each target. After target 1, move your stop to your entry price so the rest cannot turn into a loss. If price closes a day below the 20 day average before the targets, sell the rest: that exit beat fixed holding in the backtest.",
+          "cancel": "Plan is wrong if price closes below 0.0602869. Sell there, no exceptions."
+        }
       }
     ],
     "new_listings": [
@@ -552,64 +595,64 @@
         "price": 72.31,
         "since_listing_pct": -21.4,
         "from_high_pct": -26.0,
-        "rank": 11,
-        "note": "HYPE is new on Binance (about 48 days) but not a new coin: it is ranked 11 by market cap and traded elsewhere before. It is -21% since its Binance listing and 26% below the high since then. Too little Binance history for the screener's rules, so judge it like a leader once it has 90 days of data."
+        "rank": 10,
+        "note": "HYPE is new on Binance (about 48 days) but not a new coin: it is ranked 10 by market cap and traded elsewhere before. It is -21% since its Binance listing and 26% below the high since then. Too little Binance history for the screener's rules, so judge it like a leader once it has 90 days of data."
       }
     ],
     "trending": [
       {
-        "symbol": "SI",
-        "name": "Super Inu",
-        "rank": 946,
-        "ch24": 38.8,
-        "on_binance": false,
-        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top. It is a small coin (rank 946), so moves both ways are violent. Not in this screener's Binance list, so none of the checks here apply."
-      },
-      {
-        "symbol": "DACITY",
-        "name": "Dacity Coin",
-        "rank": 895,
-        "ch24": -30.7,
-        "on_binance": false,
-        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top. It is a small coin (rank 895), so moves both ways are violent. Not in this screener's Binance list, so none of the checks here apply."
-      },
-      {
-        "symbol": "XRP",
-        "name": "XRP",
-        "rank": 6,
-        "ch24": -4.0,
+        "symbol": "ZEC",
+        "name": "Zcash",
+        "rank": 11,
+        "ch24": -13.5,
         "on_binance": true,
         "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top."
       },
       {
-        "symbol": "SOL",
-        "name": "Solana",
-        "rank": 7,
-        "ch24": -3.5,
+        "symbol": "BTC",
+        "name": "Bitcoin",
+        "rank": 1,
+        "ch24": -0.3,
         "on_binance": true,
         "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top."
       },
       {
-        "symbol": "LIT",
-        "name": "Lighter",
-        "rank": 78,
-        "ch24": 7.9,
+        "symbol": "PEARL",
+        "name": "Pearl",
+        "rank": 100,
+        "ch24": -13.2,
         "on_binance": false,
         "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top. Not in this screener's Binance list, so none of the checks here apply."
       },
       {
-        "symbol": "ZEC",
-        "name": "Zcash",
-        "rank": 10,
-        "ch24": -11.0,
+        "symbol": "GRAM",
+        "name": "Gram (prev. Toncoin)",
+        "rank": 29,
+        "ch24": 9.9,
         "on_binance": true,
         "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top."
       },
       {
-        "symbol": "TAO",
-        "name": "Bittensor",
-        "rank": 39,
-        "ch24": -1.1,
+        "symbol": "UNI",
+        "name": "Uniswap",
+        "rank": 25,
+        "ch24": -6.6,
+        "on_binance": true,
+        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top."
+      },
+      {
+        "symbol": "HYPE",
+        "name": "Hyperliquid",
+        "rank": 10,
+        "ch24": -1.8,
+        "on_binance": true,
+        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top."
+      },
+      {
+        "symbol": "PUMP",
+        "name": "Pump.fun",
+        "rank": 54,
+        "ch24": 2.6,
         "on_binance": true,
         "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top."
       }
@@ -651,6 +694,54 @@
           "entry_hi": null,
           "stop": null,
           "why": "No clear trend. A daily close above 0.002944 (the 42 day high) on strong volume would make it a breakout signal."
+        }
+      },
+      {
+        "drawdown_pct": 55,
+        "base_range_pct": 83,
+        "divergence": false,
+        "rsi_lows": null,
+        "div_days_ago": null,
+        "vol_pickup": 0.5,
+        "above20": true,
+        "base_low": 0.0564,
+        "base_high": 0.1031,
+        "score": 2.1,
+        "symbol": "ERA",
+        "price": 0.0802,
+        "note": "ERA is 55% below its 6 month high and has moved in a 83% range for 30 days. No bullish divergence yet. A bottom is only confirmed once price breaks above the base (0.1031) on a daily close. Below the base low (0.0564) the idea is wrong.",
+        "label": "Still swinging, no base yet",
+        "plan": {
+          "atr_pct": 11.0,
+          "resistance": [
+            0.0888,
+            0.0933,
+            0.1031
+          ],
+          "support": [
+            0.078,
+            0.0637,
+            0.0606
+          ],
+          "trigger": 0.1137,
+          "ma20": 0.072325,
+          "ma50": 0.069144,
+          "ma200": 0.08496100000000001,
+          "status": "Wait for a dip",
+          "entry_lo": 0.069144,
+          "entry_hi": 0.072325,
+          "stop": 0.06028685714285714,
+          "why": "Uptrend, but price is stretched above its 20 day average. Buying the dip to the zone gives a closer stop than buying now. Warning: this coin moves about 11% a day, so the stop is far away and the position must be very small. Many traders simply skip coins this wild.",
+          "tested": "Tested on the last 2.7 years of these coins: dip buys like this won 60% of the time but broke even on average, because the losses were bigger than the wins. Treat the zone as a better price, not an edge. Breakout signals tested better.",
+          "targets": [
+            0.0888,
+            0.0933,
+            0.1031
+          ],
+          "risk_pct": 14.8,
+          "size_for_1pct_loss": 6.8,
+          "profit_plan": "Sell about a third at each target. After target 1, move your stop to your entry price so the rest cannot turn into a loss. If price closes a day below the 20 day average before the targets, sell the rest: that exit beat fixed holding in the backtest.",
+          "cancel": "Plan is wrong if price closes below 0.0602869. Sell there, no exceptions."
         }
       },
       {
@@ -760,84 +851,47 @@
           "stop": null,
           "why": "Downtrend. No buy zone until price closes back above the 50 day average (0.18694) or breaks the 42 day high (0.2371)."
         }
-      },
-      {
-        "drawdown_pct": 57,
-        "base_range_pct": 98,
-        "divergence": false,
-        "rsi_lows": null,
-        "div_days_ago": null,
-        "vol_pickup": 0.3,
-        "above20": false,
-        "base_low": 0.3029,
-        "base_high": 0.5983,
-        "score": 1.14,
-        "symbol": "WLD",
-        "price": 0.3116,
-        "note": "WLD is 57% below its 6 month high and has moved in a 98% range for 30 days. No bullish divergence yet. A bottom is only confirmed once price breaks above the base (0.5983) on a daily close. Below the base low (0.3029) the idea is wrong.",
-        "label": "Still swinging, no base yet",
-        "plan": {
-          "atr_pct": 10.1,
-          "resistance": [
-            0.3319,
-            0.3542,
-            0.4033
-          ],
-          "support": [
-            0.2952,
-            0.275
-          ],
-          "trigger": 0.6192,
-          "ma20": 0.396835,
-          "ma50": 0.470792,
-          "ma200": 0.400756,
-          "status": "No buy",
-          "entry_lo": null,
-          "entry_hi": null,
-          "stop": null,
-          "why": "Downtrend. No buy zone until price closes back above the 50 day average (0.470792) or breaks the 42 day high (0.6192)."
-        }
       }
     ],
     "bottoms_tested": "Tested on 2.7 years of these coins, 30 days later: the classic pattern (bullish divergence plus a tight base) averaged 5% down and rose only 32% of the time, worse than a random coin (up 44% of the time). Buying after the break above the base was worse still. Catching bottoms has no edge in this data.",
     "news": [
       {
         "source": "Cointelegraph",
-        "title": "CFTC warns Kalshi of imminent charges over notification of contracts: Politico",
-        "link": "https://cointelegraph.com/news/cftc-warns-kalshi-imminent-charges-over-contracts?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
+        "title": "Bitcoin short-term holders send 47K BTC to exchanges at a loss",
+        "link": "https://cointelegraph.com/markets/bitcoin-speculators-btc-exchanges-unrealized-loss-727k?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
       },
       {
         "source": "Cointelegraph",
-        "title": "Global banks commit $270M to stablecoin venture targeting 2027 launch",
-        "link": "https://cointelegraph.com/news/banks-270m-project-faro-stablecoin-2027?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
+        "title": "Bitget Wallet reports sevenfold jump in crypto phishing risk alerts",
+        "link": "https://cointelegraph.com/news/bitget-wallet-crypto-phishing-risk-detections-surge?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
       },
       {
         "source": "Cointelegraph",
-        "title": "Here\u2019s what happened in crypto today",
-        "link": "https://cointelegraph.com/news/what-happened-in-crypto-today?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
+        "title": "Bitmine posts $6.3B net loss for fiscal 2026 as Ether prices slide",
+        "link": "https://cointelegraph.com/news/bitmine-6b-net-loss-eth-treasury-holdings?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
       },
       {
         "source": "Cointelegraph",
-        "title": "Can crypto trust firms compete with banks in US derivatives settlements?",
-        "link": "https://cointelegraph.com/news/crypto-trust-firms-compete-banks-us-derivatives-settlements?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
+        "title": "ECB warns legislative delays could postpone digital euro launch",
+        "link": "https://cointelegraph.com/news/ecb-warns-legislative-delays-digital-euro-launch?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
       },
       {
         "source": "Cointelegraph",
-        "title": "Across Protocol warns users to avoid app amid reports of drained wallets",
-        "link": "https://cointelegraph.com/news/across-protocol-warns-avoid-app-drained-wallets?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
+        "title": "Stock ETF buyers pounce on dip as Bitcoin funds bleed $1.6 billion",
+        "link": "https://cointelegraph.com/markets/bitcoin-etf-outflows-persist-while-equity-investors-buy-the-dip?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
       },
       {
         "source": "Cointelegraph",
-        "title": "Ava Labs exec says NYSE deal marks end of blockchain\u2019s \u2018general purpose era\u2019",
-        "link": "https://cointelegraph.com/interview/ava-labs-nyse-general-purpose-chains?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
+        "title": "SEC enforcement actions fall 24%, crypto cases in spotlight",
+        "link": "https://cointelegraph.com/news/sec-crypto-cases-enforcement-actions-fall-23-2025?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
       }
     ],
     "regime": {
       "mood": "Downtrend",
-      "breadth_pct": 13,
+      "breadth_pct": 15,
       "btc_above_50d": false,
       "btc_above_200d": true,
-      "summary": "The market is weak. BTC is below its 50 day average and above its 200 day average, and 13% of coins are above their 50 day average. Most breakouts fail even in good markets, so in a weak market protecting cash matters more than finding a winner. Today there is 1 signal. If you act, act only on those: read the caution flags, size so a stop out costs about 1% of your capital, and note the sell level. Should you invest at all? Only money you can afford to lose completely, and only after a few weeks of paper trading these signals."
+      "summary": "The market is weak. BTC is below its 50 day average and above its 200 day average, and 15% of coins are above their 50 day average. Most breakouts fail even in good markets, so in a weak market protecting cash matters more than finding a winner. Today there is 1 signal. If you act, act only on those: read the caution flags, size so a stop out costs about 1% of your capital, and note the sell level. Should you invest at all? Only money you can afford to lose completely, and only after a few weeks of paper trading these signals."
     }
   }
 }
