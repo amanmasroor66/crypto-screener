@@ -1,14 +1,14 @@
 {
-  "generated_utc": "2026-11-11 16:29",
-  "scanned": 44,
+  "generated_utc": "2026-11-11 22:59",
+  "scanned": 41,
   "market": {
     "BTC": {
-      "price": 74379.95,
-      "chg24h": 1.544
+      "price": 73883.0,
+      "chg24h": 0.284
     },
     "ETH": {
-      "price": 2081.93,
-      "chg24h": 2.815
+      "price": 2056.09,
+      "chg24h": 0.402
     }
   },
   "signals": [
@@ -24,8 +24,8 @@
       "why": "Closed above the 42 day high (0.25793) on 7.1x average volume.",
       "symbol": "INIT",
       "pair": "INITUSDT",
-      "qvol_musd": 43.6,
-      "chg24h": -49.7,
+      "qvol_musd": 40.6,
+      "chg24h": -50.8,
       "score": 7,
       "research": {
         "source": "CoinGecko + news RSS",
@@ -521,32 +521,16 @@
       {
         "symbol": "ZIG",
         "name": "ZIG Finance",
-        "rank": 416,
-        "ch24": -0.8,
+        "rank": 419,
+        "ch24": -2.0,
         "on_binance": false,
-        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top. It is a small coin (rank 416), so moves both ways are violent. Not in this screener's Binance list, so none of the checks here apply."
+        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top. It is a small coin (rank 419), so moves both ways are violent. Not in this screener's Binance list, so none of the checks here apply."
       },
       {
         "symbol": "BTC",
         "name": "Bitcoin",
         "rank": 1,
-        "ch24": 1.2,
-        "on_binance": true,
-        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top."
-      },
-      {
-        "symbol": "ZEC",
-        "name": "Zcash",
-        "rank": 11,
-        "ch24": -6.1,
-        "on_binance": true,
-        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top."
-      },
-      {
-        "symbol": "AVAX",
-        "name": "Avalanche",
-        "rank": 26,
-        "ch24": 4.5,
+        "ch24": 0.2,
         "on_binance": true,
         "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top."
       },
@@ -554,25 +538,41 @@
         "symbol": "GRAM",
         "name": "Gram (prev. Toncoin)",
         "rank": 29,
-        "ch24": 8.8,
+        "ch24": 3.4,
+        "on_binance": true,
+        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top."
+      },
+      {
+        "symbol": "PENGU",
+        "name": "Pudgy Penguins",
+        "rank": 116,
+        "ch24": 0.4,
+        "on_binance": false,
+        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top. Not in this screener's Binance list, so none of the checks here apply."
+      },
+      {
+        "symbol": "AVAX",
+        "name": "Avalanche",
+        "rank": 26,
+        "ch24": 1.5,
+        "on_binance": true,
+        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top."
+      },
+      {
+        "symbol": "DOGE",
+        "name": "Dogecoin",
+        "rank": 13,
+        "ch24": -0.9,
         "on_binance": true,
         "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top."
       },
       {
         "symbol": "PEARL",
         "name": "Pearl",
-        "rank": 98,
-        "ch24": 1.9,
+        "rank": 92,
+        "ch24": 6.4,
         "on_binance": false,
         "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top. Not in this screener's Binance list, so none of the checks here apply."
-      },
-      {
-        "symbol": "HYPE",
-        "name": "Hyperliquid",
-        "rank": 10,
-        "ch24": 2.8,
-        "on_binance": true,
-        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top."
       }
     ],
     "bottoms": [
@@ -777,8 +777,8 @@
     "news": [
       {
         "source": "Cointelegraph",
-        "title": "Deutsche Bank launches crypto custody for companies and institutions",
-        "link": "https://cointelegraph.com/news/deutsche-bank-debuts-digital-asset-custody-services-eu?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
+        "title": "Nvidia preparing to oust CEO Jensen Huang: WSJ",
+        "link": "https://cointelegraph.com/news/nvidia-preparing-to-oust-ceo-jensen-huang-reports?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
       },
       {
         "source": "Cointelegraph",
@@ -787,31 +787,31 @@
       },
       {
         "source": "Cointelegraph",
-        "title": "Paraguay bank collapse shows stablecoins can offer a lifeline... of sorts",
-        "link": "https://cointelegraph.com/magazine/paraguay-bank-collapse-shows-stablecoins-can-offer-a-lifeline-of-sorts?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
+        "title": "Uncalled US House races could send more crypto allies to Congress",
+        "link": "https://cointelegraph.com/news/uncalled-midterm-races-add-more-crypto-supporters-congress?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
       },
       {
         "source": "Cointelegraph",
-        "title": "Bitcoin Covenants Part 5: MATT and OP_CHECKCONTRACTVERIFY \u2014 How Bitcoin could carry state across transactions",
-        "link": "https://cointelegraph.com/research/bitcoin-covenants-part-5-matt-op-ccv?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
+        "title": "Nomura explores sale of crypto unit Laser Digital: Bloomberg",
+        "link": "https://cointelegraph.com/news/nomura-sale-crypto-unit-laser-digital?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
       },
       {
         "source": "Cointelegraph",
-        "title": "CoreWeave stock jumps 15% premarket after Q3 revenue beats estimates",
-        "link": "https://cointelegraph.com/markets/coreweave-stock-surges-pre-market-q3-revenue?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
+        "title": "US data center restrictions could give Bitcoin miners an edge in AI, though challenges remain",
+        "link": "https://cointelegraph.com/news/us-data-center-restrictions-bitcoin-miners-edge-ai?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
       },
       {
         "source": "Cointelegraph",
-        "title": "FSB urgest Turkey to tighten crypto oversight, set stablecoin rules",
-        "link": "https://cointelegraph.com/news/fsb-turkey-crypto-oversight-stablecoin-regulation?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
+        "title": "OKXICE moves ahead with tokenized stocks as blue chips push back",
+        "link": "https://cointelegraph.com/news/okxice-tokenized-stocks-blue-chips-push-back?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
       }
     ],
     "regime": {
       "mood": "Downtrend",
-      "breadth_pct": 15,
+      "breadth_pct": 18,
       "btc_above_50d": false,
       "btc_above_200d": true,
-      "summary": "The market is weak. BTC is below its 50 day average and above its 200 day average, and 15% of coins are above their 50 day average. Most breakouts fail even in good markets, so in a weak market protecting cash matters more than finding a winner. Today there is 1 signal. If you act, act only on those: read the caution flags, size so a stop out costs about 1% of your capital, and note the sell level. Should you invest at all? Only money you can afford to lose completely, and only after a few weeks of paper trading these signals."
+      "summary": "The market is weak. BTC is below its 50 day average and above its 200 day average, and 18% of coins are above their 50 day average. Most breakouts fail even in good markets, so in a weak market protecting cash matters more than finding a winner. Today there is 1 signal. If you act, act only on those: read the caution flags, size so a stop out costs about 1% of your capital, and note the sell level. Should you invest at all? Only money you can afford to lose completely, and only after a few weeks of paper trading these signals."
     }
   }
 }
