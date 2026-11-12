@@ -1,14 +1,14 @@
 {
-  "generated_utc": "2026-11-12 12:15",
-  "scanned": 40,
+  "generated_utc": "2026-11-12 17:00",
+  "scanned": 46,
   "market": {
     "BTC": {
-      "price": 73119.57,
-      "chg24h": -1.134
+      "price": 71768.52,
+      "chg24h": -3.398
     },
     "ETH": {
-      "price": 2029.13,
-      "chg24h": -1.258
+      "price": 2007.88,
+      "chg24h": -3.383
     }
   },
   "signals": [],
@@ -460,63 +460,100 @@
     ],
     "trending": [
       {
+        "symbol": "MIHAO",
+        "name": "ni hao cat",
+        "rank": 867,
+        "ch24": 356.0,
+        "on_binance": false,
+        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top. It is a small coin (rank 867), so moves both ways are violent. Not in this screener's Binance list, so none of the checks here apply."
+      },
+      {
         "symbol": "SEPPUKU",
         "name": "Seppuku",
-        "rank": 806,
-        "ch24": 14.8,
+        "rank": 815,
+        "ch24": 26.4,
         "on_binance": false,
-        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top. It is a small coin (rank 806), so moves both ways are violent. Not in this screener's Binance list, so none of the checks here apply."
+        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top. It is a small coin (rank 815), so moves both ways are violent. Not in this screener's Binance list, so none of the checks here apply."
+      },
+      {
+        "symbol": "ROCCO",
+        "name": "Rocco",
+        "rank": 1516,
+        "ch24": -60.1,
+        "on_binance": false,
+        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top. It is a small coin (rank 1516), so moves both ways are violent. Not in this screener's Binance list, so none of the checks here apply."
       },
       {
         "symbol": "BTC",
         "name": "Bitcoin",
         "rank": 1,
-        "ch24": -1.3,
+        "ch24": -3.4,
         "on_binance": true,
         "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top."
-      },
-      {
-        "symbol": "ZIG",
-        "name": "ZIG Finance",
-        "rank": 418,
-        "ch24": -3.0,
-        "on_binance": false,
-        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top. It is a small coin (rank 418), so moves both ways are violent. Not in this screener's Binance list, so none of the checks here apply."
       },
       {
         "symbol": "PENGU",
         "name": "Pudgy Penguins",
-        "rank": 115,
-        "ch24": -2.7,
+        "rank": 116,
+        "ch24": -5.2,
         "on_binance": false,
         "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top. Not in this screener's Binance list, so none of the checks here apply."
       },
       {
-        "symbol": "ZEC",
-        "name": "Zcash",
-        "rank": 11,
-        "ch24": -1.6,
-        "on_binance": true,
-        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top."
+        "symbol": "PEARL",
+        "name": "Pearl",
+        "rank": 102,
+        "ch24": -10.4,
+        "on_binance": false,
+        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top. Not in this screener's Binance list, so none of the checks here apply."
       },
       {
-        "symbol": "SOL",
-        "name": "Solana",
-        "rank": 7,
-        "ch24": -1.7,
-        "on_binance": true,
-        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top."
-      },
-      {
-        "symbol": "TAO",
-        "name": "Bittensor",
-        "rank": 38,
-        "ch24": -3.7,
+        "symbol": "HYPE",
+        "name": "Hyperliquid",
+        "rank": 10,
+        "ch24": -4.1,
         "on_binance": true,
         "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top."
       }
     ],
     "bottoms": [
+      {
+        "drawdown_pct": 50,
+        "base_range_pct": 40,
+        "divergence": true,
+        "rsi_lows": [
+          27,
+          30
+        ],
+        "div_days_ago": 3,
+        "vol_pickup": 0.4,
+        "above20": false,
+        "base_low": 0.06421,
+        "base_high": 0.08977,
+        "score": 4.41,
+        "symbol": "HBAR",
+        "price": 0.06546,
+        "note": "HBAR is 50% below its 6 month high and has moved in a 40% range for 30 days. Bullish divergence: price made a lower low but RSI made a higher low (27 then 30), which means selling pressure is weakening. A bottom is only confirmed once price breaks above the base (0.08977) on a daily close. Below the base low (0.06421) the idea is wrong.",
+        "label": "Bottoming pattern",
+        "plan": {
+          "atr_pct": 5.9,
+          "resistance": [
+            0.07006,
+            0.07156,
+            0.07408
+          ],
+          "support": [],
+          "trigger": 0.11006,
+          "ma20": 0.07120299999999999,
+          "ma50": 0.0845112,
+          "ma200": 0.079936,
+          "status": "No buy",
+          "entry_lo": null,
+          "entry_hi": null,
+          "stop": null,
+          "why": "Downtrend. No buy zone until price closes back above the 50 day average (0.0845112) or breaks the 42 day high (0.11006)."
+        }
+      },
       {
         "drawdown_pct": 72,
         "base_range_pct": 141,
@@ -677,85 +714,47 @@
           "profit_plan": "Sell about a third at each target. After target 1, move your stop to your entry price so the rest cannot turn into a loss. If price closes a day below the 20 day average before the targets, sell the rest: that exit beat fixed holding in the backtest.",
           "cancel": "Plan is wrong if price closes below 0.0601497. Sell there, no exceptions."
         }
-      },
-      {
-        "drawdown_pct": 54,
-        "base_range_pct": 38,
-        "divergence": false,
-        "rsi_lows": null,
-        "div_days_ago": null,
-        "vol_pickup": 0.6,
-        "above20": false,
-        "base_low": 168.05,
-        "base_high": 231.67,
-        "score": 1.57,
-        "symbol": "QNT",
-        "price": 171.0,
-        "note": "QNT is 54% below its 6 month high and has moved in a 38% range for 30 days. No bullish divergence yet. A bottom is only confirmed once price breaks above the base (231.67) on a daily close. Below the base low (168.05) the idea is wrong.",
-        "label": "Basing, no divergence",
-        "plan": {
-          "atr_pct": 9.5,
-          "resistance": [
-            208.67,
-            212.87,
-            223.96
-          ],
-          "support": [
-            72.32,
-            69.3,
-            67.63
-          ],
-          "trigger": 329.0,
-          "ma20": 192.3175,
-          "ma50": 205.83579999999998,
-          "ma200": 101.48424999999999,
-          "status": "No buy",
-          "entry_lo": null,
-          "entry_hi": null,
-          "stop": null,
-          "why": "Downtrend. No buy zone until price closes back above the 50 day average (205.836) or breaks the 42 day high (329)."
-        }
       }
     ],
     "bottoms_tested": "Tested on 2.7 years of these coins, 30 days later: the classic pattern (bullish divergence plus a tight base) averaged 5% down and rose only 32% of the time, worse than a random coin (up 44% of the time). Buying after the break above the base was worse still. Catching bottoms has no edge in this data.",
     "news": [
       {
         "source": "Cointelegraph",
-        "title": "Stablecoin supply falls $14.2B in biggest 30-day drop since June 2022",
-        "link": "https://cointelegraph.com/markets/stablecoin-supply-drops-worst-slump-since-mid-2022?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
+        "title": "Bitcoin slides toward $71K as Nvidia stock tumbles after Huang steps down",
+        "link": "https://cointelegraph.com/markets/bitcoin-price-drops-71k-stocks-nvidia-huang-resignation?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
       },
       {
         "source": "Cointelegraph",
-        "title": "Tron and Tether bring in Chainalysis after T3 crime unit folds",
-        "link": "https://cointelegraph.com/news/tron-tether-chainalysis-cybercrime-task-force-laundering?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
+        "title": "Jensen Huang resigns as Nvidia CEO, exits board; shares plunge",
+        "link": "https://cointelegraph.com/news/jensen-huang-resigns-nvidia-ceo-board-member?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
       },
       {
         "source": "Cointelegraph",
-        "title": "Ethlabs drops Hegot\u00e1 slot proposal in push for 2027 quantum readiness",
-        "link": "https://cointelegraph.com/news/ethlabs-ethereum-quantum-security-2027-quick-slots?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
+        "title": "Bit Digital stock falls 5% in pre-market after Q3 revenue miss",
+        "link": "https://cointelegraph.com/news/bit-digital-stock-falls-q3-revenue-miss?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
       },
       {
         "source": "Cointelegraph",
-        "title": "BlackRock Bitcoin ETF outflows hit $2B over nine sessions",
-        "link": "https://cointelegraph.com/markets/blackrock-bitcoin-etf-ibit-outflows-nine-day-streak?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
+        "title": "Thailand proposes $148K daily cap on stablecoin deposits and withdrawals",
+        "link": "https://cointelegraph.com/news/thailand-tighter-stablecoin-rules-crypto-exchange?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
       },
       {
         "source": "Cointelegraph",
-        "title": "Here\u2019s what happened in crypto today",
-        "link": "https://cointelegraph.com/news/what-happened-in-crypto-today?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
+        "title": "Crypto hack losses equal 57 cents per $1 earned onchain: Ark\u2019s Valente",
+        "link": "https://cointelegraph.com/news/crypto-hackers-stole-57-cents-every-1-earned-ark?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
       },
       {
         "source": "Cointelegraph",
-        "title": "South Korea to permit crypto withdrawal freezes during hacking threats",
-        "link": "https://cointelegraph.com/news/south-korea-crypto-withdrawal-freezes-suspected-hacks?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
+        "title": "Are Alt-L1s over? Security, costs drive smaller chains to Ethereum",
+        "link": "https://cointelegraph.com/magazine/are-alt-l1s-over-security-costs-drive-smaller-chains-to-ethereum?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
       }
     ],
     "regime": {
       "mood": "Downtrend",
-      "breadth_pct": 11,
+      "breadth_pct": 10,
       "btc_above_50d": false,
       "btc_above_200d": true,
-      "summary": "The market is weak. BTC is below its 50 day average and above its 200 day average, and 11% of coins are above their 50 day average. Most breakouts fail even in good markets, so in a weak market protecting cash matters more than finding a winner. There is no signal today, so by the rules there is nothing to buy. Use the lists below to learn the market and build your own watchlist, not as buy tips. Should you invest at all? Only money you can afford to lose completely, and only after a few weeks of paper trading these signals."
+      "summary": "The market is weak. BTC is below its 50 day average and above its 200 day average, and 10% of coins are above their 50 day average. Most breakouts fail even in good markets, so in a weak market protecting cash matters more than finding a winner. There is no signal today, so by the rules there is nothing to buy. Use the lists below to learn the market and build your own watchlist, not as buy tips. Should you invest at all? Only money you can afford to lose completely, and only after a few weeks of paper trading these signals."
     }
   }
 }
