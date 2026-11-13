@@ -1,14 +1,14 @@
 {
-  "generated_utc": "2026-11-13 11:53",
-  "scanned": 48,
+  "generated_utc": "2026-11-13 12:32",
+  "scanned": 47,
   "market": {
     "BTC": {
-      "price": 69322.01,
-      "chg24h": -4.805
+      "price": 69369.33,
+      "chg24h": -4.908
     },
     "ETH": {
-      "price": 1959.22,
-      "chg24h": -2.837
+      "price": 1962.0,
+      "chg24h": -3.079
     }
   },
   "signals": [],
@@ -446,45 +446,6 @@
           "profit_plan": "Sell about a third at each target. After target 1, move your stop to your entry price so the rest cannot turn into a loss. If price closes a day below the 20 day average before the targets, sell the rest: that exit beat fixed holding in the backtest.",
           "cancel": "Plan is wrong if price closes below 3.9614e-06. Sell there, no exceptions."
         }
-      },
-      {
-        "symbol": "NIGHT",
-        "trend": "Uptrend",
-        "price": 0.04601,
-        "ch7": 18.4,
-        "ch30": 3.6,
-        "from_high_pct": -13.4,
-        "note": "NIGHT is +4% over 30 days and +18% this week, above its 50 day average. It sits 13% under its recent high. Strength can continue, but buying after a run means a deeper fall if it turns.",
-        "plan": {
-          "atr_pct": 8.0,
-          "resistance": [
-            0.05242
-          ],
-          "support": [
-            0.04085,
-            0.03807,
-            0.03721
-          ],
-          "trigger": 0.05315,
-          "ma20": 0.0407875,
-          "ma50": 0.0406238,
-          "ma200": 0.030365700000000002,
-          "status": "Wait for a dip",
-          "entry_lo": 0.0406238,
-          "entry_hi": 0.0407875,
-          "stop": 0.03692951428571429,
-          "why": "Uptrend, but price is stretched above its 20 day average. Buying the dip to the zone gives a closer stop than buying now.",
-          "tested": "Tested on the last 2.7 years of these coins: dip buys like this won 60% of the time but broke even on average, because the losses were bigger than the wins. Treat the zone as a better price, not an edge. Breakout signals tested better.",
-          "targets": [
-            0.04636985357142856,
-            0.05014598928571426,
-            0.05242
-          ],
-          "risk_pct": 9.3,
-          "size_for_1pct_loss": 10.8,
-          "profit_plan": "Sell about a third at each target. After target 1, move your stop to your entry price so the rest cannot turn into a loss. If price closes a day below the 20 day average before the targets, sell the rest: that exit beat fixed holding in the backtest.",
-          "cancel": "Plan is wrong if price closes below 0.0369295. Sell there, no exceptions."
-        }
       }
     ],
     "new_listings": [
@@ -511,58 +472,58 @@
       {
         "symbol": "SEPPUKU",
         "name": "Seppuku",
-        "rank": 798,
-        "ch24": 6.4,
+        "rank": 835,
+        "ch24": 0.4,
         "on_binance": false,
-        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top. It is a small coin (rank 798), so moves both ways are violent. Not in this screener's Binance list, so none of the checks here apply."
+        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top. It is a small coin (rank 835), so moves both ways are violent. Not in this screener's Binance list, so none of the checks here apply."
       },
       {
         "symbol": "BTC",
         "name": "Bitcoin",
         "rank": 1,
-        "ch24": -5.0,
-        "on_binance": true,
-        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top."
-      },
-      {
-        "symbol": "HYPE",
-        "name": "Hyperliquid",
-        "rank": 10,
-        "ch24": 4.1,
-        "on_binance": true,
-        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top."
-      },
-      {
-        "symbol": "PEARL",
-        "name": "Pearl",
-        "rank": 98,
-        "ch24": 0.1,
-        "on_binance": false,
-        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top. Not in this screener's Binance list, so none of the checks here apply."
-      },
-      {
-        "symbol": "ENA",
-        "name": "Ethena",
-        "rank": 46,
-        "ch24": -1.6,
+        "ch24": -4.8,
         "on_binance": true,
         "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top."
       },
       {
         "symbol": "AKE",
         "name": "Akedo",
-        "rank": 210,
-        "ch24": 149.3,
+        "rank": 200,
+        "ch24": 143.6,
         "on_binance": false,
         "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top. Not in this screener's Binance list, so none of the checks here apply."
+      },
+      {
+        "symbol": "HYPE",
+        "name": "Hyperliquid",
+        "rank": 10,
+        "ch24": 5.2,
+        "on_binance": true,
+        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top."
+      },
+      {
+        "symbol": "SOL",
+        "name": "Solana",
+        "rank": 7,
+        "ch24": -1.8,
+        "on_binance": true,
+        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top."
       },
       {
         "symbol": "PENGU",
         "name": "Pudgy Penguins",
         "rank": 115,
-        "ch24": -0.4,
+        "ch24": 0.4,
         "on_binance": true,
         "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top."
+      },
+      {
+        "symbol": "LIT",
+        "name": "Lighter",
+        "rank": 79,
+        "ch24": 5.3,
+        "on_binance": false,
+        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top. Not in this screener's Binance list, so none of the checks here apply."
       }
     ],
     "bottoms": [
@@ -769,6 +730,11 @@
     "news": [
       {
         "source": "Cointelegraph",
+        "title": "Israeli police arrest five in $5M WhatsApp crypto trading probe",
+        "link": "https://cointelegraph.com/news/israel-police-arrest-five-5m-whatsapp-crypto-scheme?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
+      },
+      {
+        "source": "Cointelegraph",
         "title": "Unocoin keeps deposits and withdrawals halted over suspect transfers",
         "link": "https://cointelegraph.com/news/unocoin-withdrawals-halted-bitgo-wallet-transfer-probe?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
       },
@@ -791,19 +757,103 @@
         "source": "Cointelegraph",
         "title": "Microsoft 365 outage hits Outlook email and Teams calendars worldwide",
         "link": "https://cointelegraph.com/news/microsoft-365-global-outage-outlook-teams-ai-services?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
-      },
-      {
-        "source": "Cointelegraph",
-        "title": "Here\u2019s what happened in crypto today",
-        "link": "https://cointelegraph.com/news/what-happened-in-crypto-today?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
       }
     ],
     "regime": {
       "mood": "Downtrend",
-      "breadth_pct": 11,
+      "breadth_pct": 9,
       "btc_above_50d": false,
       "btc_above_200d": false,
-      "summary": "The market is weak. BTC is below its 50 day average and below its 200 day average, and 11% of coins are above their 50 day average. Most breakouts fail even in good markets, so in a weak market protecting cash matters more than finding a winner. There is no signal today, so by the rules there is nothing to buy. Use the lists below to learn the market and build your own watchlist, not as buy tips. Should you invest at all? Only money you can afford to lose completely, and only after a few weeks of paper trading these signals."
-    }
+      "summary": "The market is weak. BTC is below its 50 day average and below its 200 day average, and 9% of coins are above their 50 day average. Most breakouts fail even in good markets, so in a weak market protecting cash matters more than finding a winner. There is no signal today, so by the rules there is nothing to buy. Use the lists below to learn the market and build your own watchlist, not as buy tips. Should you invest at all? Only money you can afford to lose completely, and only after a few weeks of paper trading these signals."
+    },
+    "global": {
+      "total_usd": 2353993298531.5356,
+      "btc_dom": 59.0,
+      "eth_dom": 10.1,
+      "total3_usd": 726685937307.4553,
+      "chg24h": -6.2
+    },
+    "sectors": [
+      {
+        "name": "AI Applications",
+        "chg24h": 5.9,
+        "mcap_busd": 2.4,
+        "top": [
+          "Venice Token",
+          "Pieverse",
+          "Quack Ai"
+        ]
+      },
+      {
+        "name": "Derivatives",
+        "chg24h": 3.4,
+        "mcap_busd": 19.8,
+        "top": [
+          "Hyperliquid",
+          "Lighter",
+          "Derive"
+        ]
+      },
+      {
+        "name": "Perpetuals",
+        "chg24h": 3.2,
+        "mcap_busd": 23.0,
+        "top": [
+          "Hyperliquid",
+          "Aster 2",
+          "Jupiter Exchange Solana"
+        ]
+      },
+      {
+        "name": "SocialFi",
+        "chg24h": 2.9,
+        "mcap_busd": 2.1,
+        "top": [
+          "Pump Fun",
+          "Swop 2",
+          "Project Galaxy"
+        ]
+      },
+      {
+        "name": "Analytics",
+        "chg24h": 2.2,
+        "mcap_busd": 1.4,
+        "top": [
+          "Pyth Network",
+          "The Graph",
+          "Sosovalue"
+        ]
+      },
+      {
+        "name": "Data Availability",
+        "chg24h": 2.1,
+        "mcap_busd": 5.5,
+        "top": [
+          "Near",
+          "Celestia",
+          "Unibase"
+        ]
+      },
+      {
+        "name": "AI Agents",
+        "chg24h": 1.8,
+        "mcap_busd": 2.9,
+        "top": [
+          "Venice Token",
+          "Virtual Protocol",
+          "Fetch Ai"
+        ]
+      },
+      {
+        "name": "Masternodes",
+        "chg24h": 1.8,
+        "mcap_busd": 1.2,
+        "top": [
+          "Beldex",
+          "Dash",
+          "Ontology"
+        ]
+      }
+    ]
   }
 }
