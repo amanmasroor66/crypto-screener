@@ -1,14 +1,14 @@
 {
-  "generated_utc": "2026-11-13 01:23",
-  "scanned": 44,
+  "generated_utc": "2026-11-13 11:53",
+  "scanned": 48,
   "market": {
     "BTC": {
-      "price": 70981.24,
-      "chg24h": -3.685
+      "price": 69322.01,
+      "chg24h": -4.805
     },
     "ETH": {
-      "price": 2011.5,
-      "chg24h": -1.905
+      "price": 1959.22,
+      "chg24h": -2.837
     }
   },
   "signals": [],
@@ -446,6 +446,45 @@
           "profit_plan": "Sell about a third at each target. After target 1, move your stop to your entry price so the rest cannot turn into a loss. If price closes a day below the 20 day average before the targets, sell the rest: that exit beat fixed holding in the backtest.",
           "cancel": "Plan is wrong if price closes below 3.9614e-06. Sell there, no exceptions."
         }
+      },
+      {
+        "symbol": "NIGHT",
+        "trend": "Uptrend",
+        "price": 0.04601,
+        "ch7": 18.4,
+        "ch30": 3.6,
+        "from_high_pct": -13.4,
+        "note": "NIGHT is +4% over 30 days and +18% this week, above its 50 day average. It sits 13% under its recent high. Strength can continue, but buying after a run means a deeper fall if it turns.",
+        "plan": {
+          "atr_pct": 8.0,
+          "resistance": [
+            0.05242
+          ],
+          "support": [
+            0.04085,
+            0.03807,
+            0.03721
+          ],
+          "trigger": 0.05315,
+          "ma20": 0.0407875,
+          "ma50": 0.0406238,
+          "ma200": 0.030365700000000002,
+          "status": "Wait for a dip",
+          "entry_lo": 0.0406238,
+          "entry_hi": 0.0407875,
+          "stop": 0.03692951428571429,
+          "why": "Uptrend, but price is stretched above its 20 day average. Buying the dip to the zone gives a closer stop than buying now.",
+          "tested": "Tested on the last 2.7 years of these coins: dip buys like this won 60% of the time but broke even on average, because the losses were bigger than the wins. Treat the zone as a better price, not an edge. Breakout signals tested better.",
+          "targets": [
+            0.04636985357142856,
+            0.05014598928571426,
+            0.05242
+          ],
+          "risk_pct": 9.3,
+          "size_for_1pct_loss": 10.8,
+          "profit_plan": "Sell about a third at each target. After target 1, move your stop to your entry price so the rest cannot turn into a loss. If price closes a day below the 20 day average before the targets, sell the rest: that exit beat fixed holding in the backtest.",
+          "cancel": "Plan is wrong if price closes below 0.0369295. Sell there, no exceptions."
+        }
       }
     ],
     "new_listings": [
@@ -457,64 +496,73 @@
         "from_high_pct": -25.5,
         "rank": 10,
         "note": "HYPE is new on Binance (about 50 days) but not a new coin: it is ranked 10 by market cap and traded elsewhere before. It is -21% since its Binance listing and 26% below the high since then. Too little Binance history for the screener's rules, so judge it like a leader once it has 90 days of data."
+      },
+      {
+        "symbol": "\u725b\u6765",
+        "days_listed": 65,
+        "price": 0.05778,
+        "since_listing_pct": -40.0,
+        "from_high_pct": -64.7,
+        "rank": null,
+        "note": "\u725b\u6765 was listed about 65 days ago and is -40% since its first day, 65% below its high. New coins are the riskiest group: early investors, team tokens and airdrop holders often sell for months. Too little history for the screener's rules. If you want exposure, use a very small amount you can lose."
       }
     ],
     "trending": [
       {
-        "symbol": "MIHAO",
-        "name": "ni hao cat",
-        "rank": 955,
-        "ch24": -3.0,
+        "symbol": "SEPPUKU",
+        "name": "Seppuku",
+        "rank": 798,
+        "ch24": 6.4,
         "on_binance": false,
-        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top. It is a small coin (rank 955), so moves both ways are violent. Not in this screener's Binance list, so none of the checks here apply."
-      },
-      {
-        "symbol": "DACITYCOIN",
-        "name": "AudaCity",
-        "rank": 886,
-        "ch24": 13.2,
-        "on_binance": false,
-        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top. It is a small coin (rank 886), so moves both ways are violent. Not in this screener's Binance list, so none of the checks here apply."
+        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top. It is a small coin (rank 798), so moves both ways are violent. Not in this screener's Binance list, so none of the checks here apply."
       },
       {
         "symbol": "BTC",
         "name": "Bitcoin",
         "rank": 1,
-        "ch24": -4.0,
+        "ch24": -5.0,
+        "on_binance": true,
+        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top."
+      },
+      {
+        "symbol": "HYPE",
+        "name": "Hyperliquid",
+        "rank": 10,
+        "ch24": 4.1,
         "on_binance": true,
         "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top."
       },
       {
         "symbol": "PEARL",
         "name": "Pearl",
-        "rank": 100,
-        "ch24": -8.5,
+        "rank": 98,
+        "ch24": 0.1,
         "on_binance": false,
         "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top. Not in this screener's Binance list, so none of the checks here apply."
       },
       {
-        "symbol": "XRP",
-        "name": "XRP",
-        "rank": 6,
-        "ch24": -2.0,
+        "symbol": "ENA",
+        "name": "Ethena",
+        "rank": 46,
+        "ch24": -1.6,
         "on_binance": true,
         "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top."
       },
       {
-        "symbol": "SOL",
-        "name": "Solana",
-        "rank": 7,
-        "ch24": -2.3,
-        "on_binance": true,
-        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top."
+        "symbol": "AKE",
+        "name": "Akedo",
+        "rank": 210,
+        "ch24": 149.3,
+        "on_binance": false,
+        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top. Not in this screener's Binance list, so none of the checks here apply."
       },
       {
         "symbol": "PENGU",
         "name": "Pudgy Penguins",
         "rank": 115,
-        "ch24": -0.3,
-        "on_binance": false,
-        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top. Not in this screener's Binance list, so none of the checks here apply."
+        "ch24": -0.4,
+        "on_binance": true,
+        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top."
       }
     ],
     "bottoms": [
@@ -721,41 +769,41 @@
     "news": [
       {
         "source": "Cointelegraph",
-        "title": "Gemini\u2019s quarterly retail trading volume sinks to 3-year low",
-        "link": "https://cointelegraph.com/markets/geminis-quarterly-retail-trading-volume-sinks-to-3-year-low?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
+        "title": "Unocoin keeps deposits and withdrawals halted over suspect transfers",
+        "link": "https://cointelegraph.com/news/unocoin-withdrawals-halted-bitgo-wallet-transfer-probe?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
       },
       {
         "source": "Cointelegraph",
-        "title": "Maple Finance\u2019s strategy rift sends co-founder, COO to the exits",
-        "link": "https://cointelegraph.com/news/maple-finance-strategy-rift-co-founder-coo-exit?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
+        "title": "Bitcoin returns to 200-week trend line as analyst sees risk of $57.7K next",
+        "link": "https://cointelegraph.com/markets/bitcoin-returns-200-week-trend-line-analyst-sees-risk-57k-next?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
       },
       {
         "source": "Cointelegraph",
-        "title": "NK hackers join memecoin trenches, xStocks adds Hong Kong equities: Asia Express",
-        "link": "https://cointelegraph.com/magazine/nk-hackers-join-memecoin-trenches-xstocks-adds-hong-kong-equities-asia-express?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
+        "title": "DOJ moves to seize $1.2B from Binance hack, disrupts FaceStealer scam",
+        "link": "https://cointelegraph.com/news/doj-12b-north-korean-crypto-seizure-400m-facestealer-scheme?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
+      },
+      {
+        "source": "Cointelegraph",
+        "title": "Jane Street boosts Fidelity Bitcoin ETF holdings nearly 8x, trims IBIT",
+        "link": "https://cointelegraph.com/news/jane-street-add-fidelity-bitcoin-etf-ibit-cut-q3-2026?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
+      },
+      {
+        "source": "Cointelegraph",
+        "title": "Microsoft 365 outage hits Outlook email and Teams calendars worldwide",
+        "link": "https://cointelegraph.com/news/microsoft-365-global-outage-outlook-teams-ai-services?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
       },
       {
         "source": "Cointelegraph",
         "title": "Here\u2019s what happened in crypto today",
         "link": "https://cointelegraph.com/news/what-happened-in-crypto-today?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
-      },
-      {
-        "source": "Cointelegraph",
-        "title": "Kalshi ends Donald Trump Jr. advisory role over Polymarket investment: Reuters",
-        "link": "https://cointelegraph.com/news/kalshi-ends-donald-trump-jr-advisory-role-polymarket-investment?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
-      },
-      {
-        "source": "Cointelegraph",
-        "title": "Strategy stock sheds 5% amid MSCI index removal, Bitcoin sell-off",
-        "link": "https://cointelegraph.com/markets/strategy-shares-fall-5-msci-index-removal-bitcoin?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
       }
     ],
     "regime": {
       "mood": "Downtrend",
-      "breadth_pct": 10,
+      "breadth_pct": 11,
       "btc_above_50d": false,
       "btc_above_200d": false,
-      "summary": "The market is weak. BTC is below its 50 day average and below its 200 day average, and 10% of coins are above their 50 day average. Most breakouts fail even in good markets, so in a weak market protecting cash matters more than finding a winner. There is no signal today, so by the rules there is nothing to buy. Use the lists below to learn the market and build your own watchlist, not as buy tips. Should you invest at all? Only money you can afford to lose completely, and only after a few weeks of paper trading these signals."
+      "summary": "The market is weak. BTC is below its 50 day average and below its 200 day average, and 11% of coins are above their 50 day average. Most breakouts fail even in good markets, so in a weak market protecting cash matters more than finding a winner. There is no signal today, so by the rules there is nothing to buy. Use the lists below to learn the market and build your own watchlist, not as buy tips. Should you invest at all? Only money you can afford to lose completely, and only after a few weeks of paper trading these signals."
     }
   }
 }
