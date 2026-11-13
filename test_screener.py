@@ -132,4 +132,18 @@ assert r[-1] == 100 and r[5] is None
 bl = market.bottoms({"CR": {"candles": crash}, "UP": {"candles": series(1, 0.01, 200)}})
 assert [x["symbol"] for x in bl] == ["CR"] and bl[0]["label"] and "confirmed" in bl[0]["note"]
 assert "no edge" in market.BOTTOM_TESTED
+# sectors and global, offline
+import research
+_g = research._gecko
+research._gecko = lambda url: ({"data": {"total_market_cap": {"usd": 3e12}, "market_cap_percentage": {"btc": 60, "eth": 10},
+                                         "market_cap_change_percentage_24h_usd": -1.234}} if url.endswith("/global") else [
+    {"name": "Artificial Intelligence (AI)", "market_cap": 2e10, "market_cap_change_24h": 3.1, "top_3_coins_id": ["fetch-ai", "render-token"]},
+    {"name": "Solana Ecosystem", "market_cap": 9e10, "market_cap_change_24h": 9.0, "top_3_coins_id": []},
+    {"name": "Tiny", "market_cap": 1e8, "market_cap_change_24h": 50, "top_3_coins_id": []},
+    {"name": "Meme", "market_cap": 5e10, "market_cap_change_24h": -2.0, "top_3_coins_id": ["dogecoin"]}])
+g = research.fetch_global()
+assert g["btc_dom"] == 60 and abs(g["total3_usd"] - 9e11) < 1 and g["chg24h"] == -1.2
+sx = research.fetch_sectors()
+assert [x["name"] for x in sx] == ["Artificial Intelligence (AI)", "Meme"] and sx[0]["top"] == ["Fetch Ai", "Render Token"]
+research._gecko = _g
 print("OK")

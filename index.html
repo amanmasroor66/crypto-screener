@@ -5,126 +5,251 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Crypto Screener</title>
 <style>
-:root{--bg:#f6f7f9;--card:#fff;--ink:#14171c;--mute:#667085;--line:#e4e7ec;--up:#12805c;--warn:#b54708;--acc:#2f5fd0}
+:root{--bg:#f4f6f9;--card:#fff;--ink:#14171c;--mute:#667085;--line:#e4e7ec;--soft:#f8f9fb;--up:#12805c;--upbg:#ecfdf3;--dn:#c0362c;--dnbg:#fef3f2;
+  --warn:#b54708;--warnbg:#fff4e5;--acc:#2f5fd0;--accbg:#eef3ff;--bar:#fff;--grid:#eef0f3}
+:root[data-theme="dark"]{--bg:#0e1116;--card:#161b22;--ink:#e6e8eb;--mute:#8b949e;--line:#262c36;--soft:#1c222b;--up:#2fbf71;--upbg:#12261b;--dn:#f05252;--dnbg:#2a1514;
+  --warn:#f0a03c;--warnbg:#2a1f10;--acc:#5b8cff;--accbg:#18223a;--bar:#11161d;--grid:#1f252e}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
-.wrap{max-width:900px;margin:0 auto;padding:20px 16px 48px}
+a{color:var(--acc)}
+.up{color:var(--up)}.dn{color:var(--dn)}
+/* ticker bar */
+.bar{position:sticky;top:0;z-index:5;background:var(--bar);border-bottom:1px solid var(--line)}
+.bar .in{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:6px;padding:8px 16px}
+.tick{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;flex:1}.tick::-webkit-scrollbar{display:none}
+.tk{padding:4px 14px;border-right:1px solid var(--line);white-space:nowrap}.tk:last-child{border-right:0}
+.tk .l{font-size:11px;color:var(--mute);font-weight:600;letter-spacing:.3px}.tk .n{font-size:14px;font-weight:600}
+.tbtn{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:8px;padding:6px 10px;cursor:pointer;font:inherit;font-size:13px}
+.wrap{max-width:1200px;margin:0 auto;padding:18px 16px 48px}
 h1{font-size:22px;margin:0 0 2px}
-.sub{color:var(--mute);font-size:13px;margin-bottom:16px}
-.mk{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px}
-.pill{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:8px 12px;font-size:14px}
-.up{color:var(--up)}.dn{color:#b42318}
-.tabs{display:flex;gap:8px;margin-bottom:12px}
-.tabs button{border:1px solid var(--line);background:var(--card);border-radius:8px;padding:6px 12px;cursor:pointer;font:inherit}
-.tabs button.on{background:var(--acc);color:#fff;border-color:var(--acc)}
+h2{font-size:17px;margin:28px 0 4px}
+.sub{color:var(--mute);font-size:13px;margin-bottom:12px}
+.live{display:inline-block;width:8px;height:8px;border-radius:50%;background:#98a2b3;margin-right:6px}
+.live.on{background:var(--up);animation:p 2s infinite}@keyframes p{50%{opacity:.3}}
 .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-bottom:10px}
 .top{display:flex;justify-content:space-between;align-items:baseline;gap:8px;flex-wrap:wrap}
 .sym{font-weight:700;font-size:17px}
-.tag{font-size:12px;border-radius:6px;padding:2px 8px;background:#eef3ff;color:var(--acc);margin-left:8px}
-.tag.rev{background:#fff4e5;color:var(--warn)}
-.tag.exp{background:#fef3f2;color:#b42318}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px;margin:10px 0 6px}
 .k{color:var(--mute);font-size:12px}.v{font-weight:600}
+.sum{border-left:4px solid var(--acc)}.sum.Downtrend{border-left-color:var(--dn)}.sum.Uptrend{border-left-color:var(--up)}.sum p{margin:6px 0 0}
+/* timeframe */
+.tf{display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin:6px 0 12px}
+.tf button{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:8px;padding:5px 12px;cursor:pointer;font:inherit;font-size:13px}
+.tf button.on{background:var(--acc);color:#fff;border-color:var(--acc)}
+/* coin board */
+.board{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px}
+.coin{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;position:relative}
+.coin.go{border-color:var(--up)}.coin.sig{border-color:var(--up);box-shadow:0 0 0 1px var(--up) inset}
+.coin .hd{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.coin .pair{font-weight:700;font-size:18px}.coin .pair span{color:var(--mute);font-weight:500;font-size:14px}
+.badge{font-size:12px;font-weight:600;border-radius:7px;padding:3px 9px;white-space:nowrap}
+.badge.go{background:var(--upbg);color:var(--up)}.badge.wait{background:var(--warnbg);color:var(--warn)}.badge.no{background:var(--dnbg);color:var(--dn)}
+.coin .px{display:flex;justify-content:space-between;align-items:baseline;margin-top:2px}
+.coin .px b{font-size:16px}
+.chart{width:100%;height:120px;display:block;margin:8px 0 6px}
+.lvls{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin:6px 0}
+.lv{background:var(--soft);border:1px solid var(--line);border-radius:8px;padding:6px 9px;font-size:13px}
+.lv .k{display:block;font-size:11px}.lv b.e{color:var(--up)}.lv b.s{color:var(--dn)}
+.ob{margin-top:8px;font-size:12.5px}.ob .r{display:flex;justify-content:space-between;color:var(--mute)}
+.obar{display:flex;height:7px;border-radius:5px;overflow:hidden;margin-top:4px;background:var(--line)}
+.obar i{display:block;height:100%}.obar .b{background:var(--up)}.obar .a{background:var(--dn)}
+.coin details{margin-top:8px}.coin details>summary{cursor:pointer;color:var(--acc);font-size:13px;list-style:none}
+.coin details>summary::-webkit-details-marker{display:none}
+/* sectors */
+.sect{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:10px}
+.sec{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+.sec .nm{font-weight:700}.sec .tp{font-size:12.5px;color:var(--mute);margin-top:4px}
+/* lists */
+.tabs{display:flex;gap:8px;margin-bottom:12px}
+.tabs button{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:8px;padding:6px 12px;cursor:pointer;font:inherit}
+.tabs button.on{background:var(--acc);color:#fff;border-color:var(--acc)}
+.tag{font-size:12px;border-radius:6px;padding:2px 8px;background:var(--accbg);color:var(--acc);margin-left:8px}
+.tag.rev{background:var(--warnbg);color:var(--warn)}.tag.exp{background:var(--dnbg);color:var(--dn)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px;margin:10px 0 6px}
 .why{color:var(--mute);font-size:13px}
 .res{margin-top:10px;padding-top:10px;border-top:1px solid var(--line);font-size:13px}
 .res .ok{color:var(--up);font-weight:600}.res .cau{color:var(--warn);font-weight:600}
 .res ul{margin:4px 0 0;padding-left:18px}.res li{margin:2px 0}
-.live{display:inline-block;width:8px;height:8px;border-radius:50%;background:#98a2b3;margin-right:6px}
-.live.on{background:var(--up);animation:p 2s infinite}@keyframes p{50%{opacity:.3}}
-.st{font-weight:600}.st.bad{color:#b42318}.st.ok{color:var(--up)}.st.mid{color:var(--warn)}
-.sum{border-left:4px solid var(--acc)}.sum.Downtrend{border-left-color:#b42318}.sum.Uptrend{border-left-color:var(--up)}
-.sum p{margin:6px 0 0}
-.tr{font-size:12px;border-radius:6px;padding:2px 8px;margin-left:8px;background:#f2f4f7;color:var(--mute)}
-.tr.Uptrend{background:#ecfdf3;color:var(--up)}.tr.Downtrend{background:#fef3f2;color:#b42318}
-h2{font-size:16px;margin:26px 0 4px}
+.st{font-weight:600}.st.bad{color:var(--dn)}.st.ok{color:var(--up)}.st.mid{color:var(--warn)}
+.tr{font-size:12px;border-radius:6px;padding:2px 8px;margin-left:8px;background:var(--soft);color:var(--mute)}
+.tr.Uptrend{background:var(--upbg);color:var(--up)}.tr.Downtrend{background:var(--dnbg);color:var(--dn)}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:0 18px}
 .row{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin-bottom:8px}
-.row .nums{color:var(--mute);font-size:13px;margin:2px 0 4px}
-.row .note{font-size:13.5px}
+.row .nums{color:var(--mute);font-size:13px;margin:2px 0 4px}.row .note{font-size:13.5px}
 details.row>summary{list-style:none;cursor:pointer}details.row>summary::-webkit-details-marker{display:none}
-details.row>summary .tap{color:var(--acc);font-size:12.5px;margin-top:6px}
-details.row[open]>summary .tap{display:none}
-.plan{margin-top:10px;padding:12px;background:#f8f9fb;border:1px solid var(--line);border-radius:10px;font-size:13.5px}
+details.row>summary .tap{color:var(--acc);font-size:12.5px;margin-top:6px}details.row[open]>summary .tap{display:none}
+.plan{margin-top:10px;padding:12px;background:var(--soft);border:1px solid var(--line);border-radius:10px;font-size:13.5px}
 .plan p{margin:6px 0}.plan ol{margin:4px 0;padding-left:22px}
-.plan .lv{display:grid;grid-template-columns:auto 1fr;gap:2px 10px;margin:6px 0}
-.pls{font-weight:700}.pls.go{color:var(--up)}.pls.wait{color:var(--warn)}.pls.no{color:#b42318}
+.plan .lvg{display:grid;grid-template-columns:auto 1fr;gap:2px 10px;margin:6px 0}
+.pls{font-weight:700}.pls.go{color:var(--up)}.pls.wait{color:var(--warn)}.pls.no{color:var(--dn)}
 details.pl{margin-top:10px}details.pl>summary{cursor:pointer;color:var(--acc);font-size:13px}
 .empty{background:var(--card);border:1px dashed var(--line);border-radius:12px;padding:20px;color:var(--mute)}
 .notes{margin-top:18px;color:var(--mute);font-size:13px}
-a{color:var(--acc)}
+@media (max-width:420px){.board{grid-template-columns:1fr}.cols{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
+<div class="bar"><div class="in">
+  <div class="tick" id="tick"></div>
+  <button class="tbtn" id="theme" title="Light or dark">Dark</button>
+</div></div>
 <div class="wrap">
   <h1>Crypto Screener</h1>
   <div class="sub" id="sub">Loading...</div>
   <div class="sub"><span class="live" id="dot"></span><span id="liveTxt">Connecting to live prices...</span></div>
-  <div class="mk" id="mk"></div>
   <div class="card sum" id="summary" style="display:none"></div>
-  <h2 style="margin-top:8px">Signals</h2>
-  <div class="tabs" id="tabs">
-    <button data-f="All" class="on">All</button>
-    <button data-f="Breakout">Breakouts</button>
-    <button data-f="Reversal">Reversals</button>
-  </div>
+
+  <h2>Coin board</h2>
+  <div class="sub">Signals first, then the biggest coins. Tap a card for the full trade plan. Spot only.</div>
+  <div class="tf" id="tf"><span class="k">Chart</span>
+    <button data-i="4h">4H</button><button data-i="1d" class="on">1D</button><button data-i="1w">1W</button>
+    <span class="k">Charts only. Signals and plans always use daily closes.</span></div>
+  <div class="board" id="board"></div>
+  <div class="k" style="margin-top:8px">Order book pressure: buy vs sell orders near the price, live from Binance. It changes by the second and large orders can be pulled, so it is context only and not part of any tested rule.</div>
+
+  <h2>Narratives today</h2>
+  <div class="sub">Crypto sectors over $1B, ranked by 24 hour market cap change (CoinGecko). Shows what is moving now, not future winners.</div>
+  <div class="sect" id="sectors"></div>
+
+  <h2>Signals</h2>
+  <div class="tabs" id="tabs"><button data-f="All" class="on">All</button><button data-f="Breakout">Breakouts</button><button data-f="Reversal">Reversals</button></div>
   <div id="list"></div>
-  <h2 style="font-size:16px;margin:22px 0 4px">Watchlist: close to triggering</h2>
+  <h2>Watchlist: close to triggering</h2>
   <div class="sub">Not signals. These sit within 3% under their 42 day high. They trigger only on a daily close above it with strong volume.</div>
   <div id="watch"></div>
-  <h2>Market leaders</h2>
-  <div class="sub">The biggest coins by market cap that trade on Binance, with their trend today.</div>
-  <div id="leaders"></div>
-  <h2>Growing coins</h2>
-  <div class="sub">In an uptrend and up over 30 days, strongest first. Strength, not a buy signal.</div>
-  <div id="growing"></div>
+
+  <div class="cols">
+    <div><h2>Growing coins</h2><div class="sub">In an uptrend and up over 30 days. Strength, not a buy signal.</div><div id="growing"></div></div>
+    <div><h2>Market leaders</h2><div class="sub">The biggest coins on Binance and their trend.</div><div id="leaders"></div></div>
+  </div>
   <h2>Bottom watch: 5 beaten down coins</h2>
   <div class="sub">Down 50%+ from their 6 month high, ranked by base tightness, bullish divergence and volume. Read the test result first.</div>
-  <div class="card" id="bottest" style="border-left:4px solid #b42318;font-size:13.5px;display:none"></div>
+  <div class="card" id="bottest" style="border-left:4px solid var(--dn);font-size:13.5px;display:none"></div>
   <div id="bottoms"></div>
-  <h2>New on Binance</h2>
-  <div class="sub">Listed in the last 90 days. The riskiest group. Too new for the screener rules.</div>
-  <div id="newl"></div>
-  <h2>Trending searches</h2>
-  <div class="sub">Most searched coins on CoinGecko in the last 24 hours. Attention, not quality.</div>
-  <div id="trending"></div>
+  <div class="cols">
+    <div><h2>New on Binance</h2><div class="sub">Listed in the last 90 days. The riskiest group.</div><div id="newl"></div></div>
+    <div><h2>Trending searches</h2><div class="sub">Most searched on CoinGecko in 24 hours. Attention, not quality.</div><div id="trending"></div></div>
+  </div>
   <h2>Market news</h2>
   <div class="sub">Latest headlines from Cointelegraph and Decrypt.</div>
   <div id="news"></div>
   <div class="notes" id="notes"></div>
 </div>
 <script>
-let DATA=null,F="All";
+let DATA=null,F="All",TF="1d";const BOARD_MAX=12;
+const API="https://data-api.binance.vision/api/v3/";
 const fmt=x=>{const t=Number(x).toPrecision(5);return t.includes(".")&&!t.includes("e")?t.replace(/\.?0+$/,""):String(parseFloat(t))};
 const esc=t=>String(t).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const pct=x=>`<span class="${x>=0?"up":"dn"}">${x>=0?"+":""}${x.toFixed(1)}%</span>`;
+const p7=x=>x==null?"n/a":pct(x);
+const big=x=>x>=1e12?(x/1e12).toFixed(2)+"T":x>=1e9?(x/1e9).toFixed(1)+"B":(x/1e6).toFixed(0)+"M";
+
+/* theme: light by default, remembered per device */
+function setTheme(t){document.documentElement.dataset.theme=t;document.getElementById("theme").textContent=t==="dark"?"Light":"Dark";try{localStorage.setItem("theme",t)}catch(e){}}
+try{setTheme(localStorage.getItem("theme")||"light")}catch(e){setTheme("light")}
+document.getElementById("theme").onclick=()=>setTheme(document.documentElement.dataset.theme==="dark"?"light":"dark");
+
 function res(s){const r=s.research;if(!r)return"";
   const facts=[r.mcap_musd!=null?`Market cap $${r.mcap_musd}M (rank ${r.rank||"n/a"})`:"",r.circulating_pct!=null?`${r.circulating_pct}% of supply circulating`:"",r.ath_drop_pct!=null?`${r.ath_drop_pct}% below all time high`:""].filter(Boolean).join(" | ");
   const fl=r.flags.map(f=>`<li>${esc(f)}</li>`).join("");
   const nw=(r.news||[]).map(n=>`<li><a href="${esc(n.link)}" target="_blank" rel="noopener">${esc(n.title)}</a> <span class="k">${esc(n.source)}</span></li>`).join("");
   return `<div class="res"><span class="${r.flags.length?"cau":"ok"}">${esc(r.verdict)}</span> <span class="k">${esc(facts)}</span>${fl?`<ul>${fl}</ul>`:""}${nw?`<div class="k" style="margin-top:6px">Recent headlines</div><ul>${nw}</ul>`:`<div class="k" style="margin-top:6px">No recent headlines found in the feeds checked.</div>`}</div>`}
+const stCls=s=>s==="Signal active"||s==="In buy zone"?"go":s==="No buy"?"no":"wait";
 function planHtml(p){if(!p)return"";
-  const cls=p.status==="Signal active"||p.status==="In buy zone"?"go":p.status==="No buy"?"no":"wait";
   const mid=p.entry_lo!=null?(p.entry_lo+p.entry_hi)/2:null;
   const rel=v=>mid?` <span class="k">(${v>=mid?"+":""}${((v/mid-1)*100).toFixed(1)}%)</span>`:"";
   const list=a=>a&&a.length?a.map(fmt).join(", "):"none nearby";
-  let h=`<div class="plan"><div><span class="k">Status</span> <span class="pls ${cls}">${esc(p.status)}</span></div><p>${esc(p.why)}</p>`;
+  let h=`<div class="plan"><div><span class="k">Status</span> <span class="pls ${stCls(p.status)}">${esc(p.status)}</span></div><p>${esc(p.why)}</p>`;
   if(p.entry_lo!=null){
-    h+=`<div class="lv"><span class="k">Buy zone</span><b>${fmt(p.entry_lo)} to ${fmt(p.entry_hi)}</b>
+    h+=`<div class="lvg"><span class="k">Buy zone</span><b>${fmt(p.entry_lo)} to ${fmt(p.entry_hi)}</b>
       <span class="k">Stop</span><b>${fmt(p.stop)}${rel(p.stop)}</b>
       <span class="k">Size</span><span>${p.size_for_1pct_loss}% of capital, so a stop out costs about 1%</span></div>
       <div class="k">Targets (where price turned down before)</div><ol>${(p.targets||[]).map(t=>`<li><b>${fmt(t)}</b>${rel(t)}</li>`).join("")}</ol>
       <p><b>Taking profit:</b> ${esc(p.profit_plan)}</p><p><b>Cancel:</b> ${esc(p.cancel)}</p>`}
-  h+=`<div class="lv"><span class="k">Resistance</span><span>${list(p.resistance)}</span>
+  h+=`<div class="lvg"><span class="k">Resistance</span><span>${list(p.resistance)}</span>
     <span class="k">Support</span><span>${list(p.support)}</span>
     <span class="k">Averages</span><span>20d ${p.ma20?fmt(p.ma20):"n/a"} | 50d ${p.ma50?fmt(p.ma50):"n/a"} | 200d ${p.ma200?fmt(p.ma200):"n/a"}</span>
     <span class="k">Breakout at</span><span>${fmt(p.trigger)} (42 day high)</span>
     <span class="k">Daily swing</span><span>about ${p.atr_pct}% a day</span></div>`;
   if(p.tested)h+=`<p class="k">${esc(p.tested)}</p>`;
   return h+`<p class="k">Spot only. No leverage. Levels come from past prices, not predictions.</p></div>`}
-const pct=x=>`<span class="${x>=0?"up":"dn"}">${x>=0?"+":""}${x.toFixed(1)}%</span>`;
+
+/* ---------- coin board ---------- */
+function boardCoins(){
+  const d=DATA,ov=d.overview||{},out=[],seen=new Set();
+  (d.signals||[]).forEach(s=>{if(!seen.has(s.symbol)){seen.add(s.symbol);out.push({symbol:s.symbol,plan:s.plan,signal:s,trend:"Signal",ch30:null})}});
+  (ov.leaders||[]).forEach(s=>{if(!seen.has(s.symbol)){seen.add(s.symbol);out.push(s)}});
+  (ov.growing||[]).forEach(s=>{if(!seen.has(s.symbol)){seen.add(s.symbol);out.push(s)}});
+  return out.slice(0,BOARD_MAX)}
+function renderBoard(){
+  const coins=boardCoins(),el=document.getElementById("board");
+  if(!coins.length){el.innerHTML=`<div class="empty">No coin data this run.</div>`;return}
+  el.innerHTML=coins.map(c=>{const p=c.plan||{},st=c.signal?"Breakout signal":(p.status||c.trend||""),cls=c.signal?"go":stCls(p.status);
+    const ent=p.entry_lo!=null?`${fmt(p.entry_lo)} to ${fmt(p.entry_hi)}`:"None now",stp=p.stop!=null?fmt(p.stop):"n/a";
+    return `<div class="coin ${c.signal?"sig":cls==="go"?"go":""}" id="c_${esc(c.symbol)}">
+      <div class="hd"><div class="pair">${esc(c.symbol)}<span>/USDT</span></div><span class="badge ${cls}">${esc(st)}</span></div>
+      <div class="px"><b class="live-px" data-p="${esc(c.symbol)}USDT">...</b><span class="k" data-ch="${esc(c.symbol)}USDT"></span></div>
+      <svg class="chart" data-chart="${esc(c.symbol)}" viewBox="0 0 300 120" preserveAspectRatio="none"></svg>
+      <div class="lvls"><div class="lv"><span class="k">Buy zone</span><b class="e">${ent}</b></div><div class="lv"><span class="k">Stop</span><b class="s">${stp}</b></div></div>
+      ${p.entry_lo==null&&p.why?`<div class="k">${esc(p.why)}</div>`:""}
+      <div class="ob" data-ob="${esc(c.symbol)}USDT"><div class="r"><span>Order book</span><span class="t">loading...</span></div><div class="obar"><i class="b" style="width:50%"></i><i class="a" style="width:50%"></i></div></div>
+      ${c.plan?`<details><summary>Trade plan and levels</summary>${planHtml(c.plan)}</details>`:""}</div>`}).join("");
+  drawCharts();depth()}
+function drawCharts(){
+  document.querySelectorAll("[data-chart]").forEach(svg=>{
+    const sym=svg.dataset.chart,c=boardCoins().find(x=>x.symbol===sym),p=(c&&c.plan)||{};
+    fetch(`${API}klines?symbol=${sym}USDT&interval=${TF}&limit=60`).then(r=>r.json()).then(k=>{
+      const cs=k.map(x=>({o:+x[1],h:+x[2],l:+x[3],c:+x[4]}));if(!cs.length)return;
+      let lo=Math.min(...cs.map(x=>x.l)),hi=Math.max(...cs.map(x=>x.h));
+      const lines=[];
+      if(p.entry_lo!=null)lines.push({y1:p.entry_lo,y2:p.entry_hi,t:"zone"});
+      if(p.stop!=null)lines.push({y1:p.stop,t:"stop"});
+      if(p.trigger)lines.push({y1:p.trigger,t:"trig"});
+      lines.forEach(l=>{[l.y1,l.y2].forEach(v=>{if(v!=null&&v>lo*0.85&&v<hi*1.15){lo=Math.min(lo,v);hi=Math.max(hi,v)}})});
+      const pad=(hi-lo)*0.06||1;lo-=pad;hi+=pad;
+      const W=300,H=120,n=cs.length,bw=W/n,Y=v=>H-(v-lo)/(hi-lo)*H;
+      const css=getComputedStyle(document.documentElement),up=css.getPropertyValue("--up"),dn=css.getPropertyValue("--dn"),mu=css.getPropertyValue("--mute");
+      let g="";
+      lines.forEach(l=>{if(l.y1<lo||l.y1>hi)return;
+        if(l.t==="zone")g+=`<rect x="0" width="${W}" y="${Y(l.y2)}" height="${Math.max(1,Y(l.y1)-Y(l.y2))}" fill="${up}" opacity=".13"/>`;
+        else g+=`<line x1="0" x2="${W}" y1="${Y(l.y1)}" y2="${Y(l.y1)}" stroke="${l.t==="stop"?dn:mu}" stroke-width="1" stroke-dasharray="4 3" opacity=".8"/>`});
+      cs.forEach((x,i)=>{const col=x.c>=x.o?up:dn,cx=i*bw+bw/2;
+        g+=`<line x1="${cx}" x2="${cx}" y1="${Y(x.h)}" y2="${Y(x.l)}" stroke="${col}" stroke-width="1"/>`+
+           `<rect x="${i*bw+bw*0.18}" width="${bw*0.64}" y="${Y(Math.max(x.o,x.c))}" height="${Math.max(1,Math.abs(Y(x.o)-Y(x.c)))}" fill="${col}"/>`});
+      svg.innerHTML=g}).catch(()=>{svg.innerHTML=""})})}
+function depth(){
+  document.querySelectorAll("[data-ob]").forEach(el=>{const pair=el.dataset.ob;
+    fetch(`${API}depth?symbol=${pair}&limit=500`).then(r=>r.json()).then(d=>{
+      const mid=(+d.bids[0][0]+ +d.asks[0][0])/2;
+      const sum=(a,f)=>a.filter(x=>f(+x[0])).reduce((s,x)=>s+ +x[0]*+x[1],0);
+      const b=sum(d.bids,p=>p>=mid*0.98),a=sum(d.asks,p=>p<=mid*1.02),t=b+a||1,bp=Math.round(b/t*100);
+      el.querySelector(".t").innerHTML=`<span class="up">${bp}% buy</span> / <span class="dn">${100-bp}% sell</span>`;
+      el.querySelector(".b").style.width=bp+"%";el.querySelector(".a").style.width=(100-bp)+"%"}).catch(()=>{el.querySelector(".t").textContent="unavailable"})})}
+document.getElementById("tf").onclick=e=>{if(e.target.dataset.i){TF=e.target.dataset.i;
+  document.querySelectorAll("#tf button").forEach(b=>b.classList.toggle("on",b===e.target));drawCharts()}};
+
+/* ---------- ticker bar ---------- */
+function renderTick(P,C){
+  const d=DATA,ov=d.overview||{},g=ov.global,t=[];
+  ["BTC","ETH","SOL"].forEach(k=>{const p=P&&P[k+"USDT"],c=C&&C[k+"USDT"];const m=d.market[k]||{};const price=p!=null?p:m.price,ch=c!=null?c:m.chg24h;
+    if(price!=null)t.push(`<div class="tk"><div class="l">${k}</div><div class="n">$${fmt(price)} ${ch!=null?pct(ch):""}</div></div>`)});
+  if(g){t.push(`<div class="tk"><div class="l">BTC.D</div><div class="n">${g.btc_dom}%</div></div>`);
+    t.push(`<div class="tk"><div class="l">TOTAL3</div><div class="n">$${big(g.total3_usd)}</div></div>`);
+    t.push(`<div class="tk"><div class="l">TOTAL MCAP</div><div class="n">$${big(g.total_usd)} ${pct(g.chg24h)}</div></div>`)}
+  if(ov.regime)t.push(`<div class="tk"><div class="l">MARKET</div><div class="n ${ov.regime.mood==="Uptrend"?"up":ov.regime.mood==="Downtrend"?"dn":""}">${esc(ov.regime.mood)}</div></div>`);
+  document.getElementById("tick").innerHTML=t.join("")}
+
+/* ---------- everything else ---------- */
 function render(){
-  const d=DATA;
+  const d=DATA,ov=d.overview||{};
   document.getElementById("sub").textContent=d.generated_utc?`Updated ${d.generated_utc} UTC | scanned ${d.scanned} spot pairs on Binance`:"No scan yet";
-  const mk=document.getElementById("mk");mk.innerHTML="";
-  for(const k of ["BTC","ETH"]){const m=d.market[k];if(m)mk.innerHTML+=`<div class="pill"><b>${k}</b> ${fmt(m.price)} ${pct(m.chg24h)}</div>`}
+  renderTick();
+  const sm=document.getElementById("summary");
+  if(ov.regime){sm.style.display="";sm.className="card sum "+ov.regime.mood;
+    sm.innerHTML=`<div class="top"><b>Market today: ${esc(ov.regime.mood)}</b><span class="k">${ov.regime.breadth_pct}% of coins above their 50 day average</span></div><p>${esc(ov.regime.summary)}</p>`}
+  renderBoard();
+  const se=ov.sectors||[];
+  document.getElementById("sectors").innerHTML=se.length?se.map(s=>`<div class="sec"><div class="top"><span class="nm">${esc(s.name)}</span>${pct(s.chg24h)}</div>
+    <div class="k">Market cap $${s.mcap_busd}B</div><div class="tp">${s.top.map(esc).join(", ")}</div></div>`).join(""):`<div class="empty">Sector data unavailable this run.</div>`;
   const rows=d.signals.filter(s=>F==="All"||s.type===F);
   const el=document.getElementById("list");
   if(!rows.length){el.innerHTML=`<div class="empty">No clean setups right now. Waiting is a valid position.</div>`}
@@ -142,7 +267,7 @@ function render(){
       <div><div class="k">Volume vs avg</div><div class="v">${s.vol_ratio}x</div></div>
       <div><div class="k">24h</div><div class="v">${pct(s.chg24h)}</div></div>
     </div>
-    <div class="why">${s.why} 24h volume $${s.qvol_musd}M.</div>${res(s)}${s.plan?`<details class="pl" open><summary>Trade plan</summary>${planHtml(s.plan)}</details>`:""}</div>`).join("");
+    <div class="why">${s.why} 24h volume $${s.qvol_musd}M.</div>${res(s)}${s.plan?`<details class="pl"><summary>Trade plan</summary>${planHtml(s.plan)}</details>`:""}</div>`).join("");
   const w=d.watchlist||[];
   document.getElementById("watch").innerHTML=w.length?w.map(s=>`<div class="card"><div class="top"><span class="sym">${s.symbol}</span><span class="k">${s.gap_pct}% below trigger</span></div>
     <div class="grid"><div><div class="k">Live price</div><div class="v live-px" data-p="${s.pair}">...</div></div>
@@ -151,11 +276,6 @@ function render(){
     <div><div class="k">Volume vs avg</div><div class="v">${s.vol_ratio}x</div></div>
     <div><div class="k">24h</div><div class="v">${pct(s.chg24h)}</div></div></div>
     <div class="why">${s.why} 24h volume $${s.qvol_musd}M.</div>${res(s)}</div>`).join(""):`<div class="empty">Nothing close to triggering.</div>`;
-  const ov=d.overview||{};
-  const sm=document.getElementById("summary");
-  if(ov.regime){sm.style.display="";sm.className="card sum "+ov.regime.mood;
-    sm.innerHTML=`<div class="top"><b>Market today: ${esc(ov.regime.mood)}</b><span class="k">${ov.regime.breadth_pct}% of coins above their 50 day average</span></div><p>${esc(ov.regime.summary)}</p>`}
-  const p7=x=>x==null?"n/a":pct(x);
   const sect=(id,list,fn,empty)=>{document.getElementById(id).innerHTML=(list&&list.length)?list.map(fn).join(""):`<div class="empty">${empty}</div>`};
   const pc=s=>`<span class="v live-px" data-p="${esc(s.symbol)}USDT">${fmt(s.price)}</span>`;
   sect("leaders",ov.leaders,s=>`<details class="row"><summary><div class="top"><div><span class="sym">${esc(s.symbol)}</span><span class="tr ${s.trend}">${s.trend}</span></div>${pc(s)}</div>
@@ -170,30 +290,33 @@ function render(){
   sect("trending",ov.trending,s=>`<div class="row"><div class="top"><div><span class="sym">${esc(s.symbol)}</span><span class="k" style="margin-left:8px">${esc(s.name||"")}${s.rank?" | rank "+s.rank:""}</span></div><span class="k">24h ${p7(s.ch24)}</span></div>
     <div class="note">${esc(s.note)}</div></div>`,"Trending data unavailable this run.");
   sect("news",ov.news,n=>`<div class="row"><a href="${esc(n.link)}" target="_blank" rel="noopener">${esc(n.title)}</a> <span class="k">${esc(n.source)}</span></div>`,"News unavailable this run.");
-  document.getElementById("notes").innerHTML=d.notes.map(n=>`<div>${n}</div>`).join("");
+  document.getElementById("notes").innerHTML=d.notes.map(n=>`<div>${esc(n)}</div>`).join("");
 }
 document.getElementById("tabs").onclick=e=>{if(e.target.dataset.f){F=e.target.dataset.f;
   document.querySelectorAll(".tabs button").forEach(b=>b.classList.toggle("on",b===e.target));render()}};
+
+/* ---------- live prices every 15 seconds ---------- */
 function live(){
-  const ov=DATA.overview||{};const pairs=[...new Set([...(DATA.signals||[]),...(DATA.watchlist||[])].map(x=>x.pair).concat(["BTCUSDT","ETHUSDT"]).concat([...(ov.leaders||[]),...(ov.growing||[]),...(ov.new_listings||[]),...(ov.bottoms||[])].map(x=>x.symbol+"USDT")))];
-  fetch("https://data-api.binance.vision/api/v3/ticker/price?symbols="+encodeURIComponent(JSON.stringify(pairs))).then(r=>r.json()).then(a=>{
-    const P={};a.forEach(x=>P[x.symbol]=parseFloat(x.price));
+  const ov=DATA.overview||{};
+  const pairs=[...new Set([...(DATA.signals||[]),...(DATA.watchlist||[])].map(x=>x.pair).concat(["BTCUSDT","ETHUSDT","SOLUSDT"])
+    .concat([...(ov.leaders||[]),...(ov.growing||[]),...(ov.new_listings||[]),...(ov.bottoms||[])].map(x=>x.symbol+"USDT")))];
+  fetch(API+"ticker/24hr?type=MINI&symbols="+encodeURIComponent(JSON.stringify(pairs))).then(r=>r.json()).then(a=>{
+    const P={},C={};a.forEach(x=>{P[x.symbol]=parseFloat(x.lastPrice);const o=parseFloat(x.openPrice);C[x.symbol]=o?(P[x.symbol]/o-1)*100:0});
     document.querySelectorAll("[data-p]").forEach(el=>{const p=P[el.dataset.p];if(p!=null)el.textContent=fmt(p)});
+    document.querySelectorAll("[data-ch]").forEach(el=>{const c=C[el.dataset.ch];if(c!=null)el.innerHTML="24h "+pct(c)});
     (DATA.signals||[]).forEach(s=>{const p=P[s.pair],el=document.querySelector(`[data-st="${s.pair}"]`);if(p==null||!el)return;
       let t,c;if(p<=s.stop){t="Below stop: exit";c="bad"}else if(p<s.exit_below){t="Below sell level: exit if the day closes here";c="mid"}else{t=`${((p/s.price-1)*100).toFixed(1)}% since signal. Hold`;c="ok"}
       el.textContent=t;el.className="v st "+c});
     (DATA.watchlist||[]).forEach(w=>{const p=P[w.pair],el=document.querySelector(`[data-wt="${w.pair}"]`);if(p==null||!el)return;
       const g=(w.trigger/p-1)*100;el.textContent=g<=0?"Above trigger now. Needs a daily close":`${g.toFixed(1)}% below trigger`;el.className="v st "+(g<=0?"mid":"")});
-    ["BTC","ETH"].forEach(k=>{const p=P[k+"USDT"];if(p!=null&&DATA.market[k]){DATA.market[k].price=p;}});
-    const mk=document.getElementById("mk");mk.innerHTML="";
-    for(const k of ["BTC","ETH"]){const m=DATA.market[k];if(m)mk.innerHTML+=`<div class="pill"><b>${k}</b> ${fmt(m.price)} ${pct(m.chg24h)}</div>`}
+    renderTick(P,C);
     document.getElementById("dot").className="live on";
     document.getElementById("liveTxt").textContent="Live prices, updated "+new Date().toLocaleTimeString()+". Signals refresh several times a day.";
   }).catch(()=>{document.getElementById("dot").className="live";document.getElementById("liveTxt").textContent="Live prices unavailable. Showing the last saved scan."});
 }
 function load(){fetch("signals.json?t="+Date.now()).then(r=>r.json()).then(d=>{DATA=d;render();live()})
  .catch(()=>{document.getElementById("sub").textContent="Could not load signals.json"})}
-load();setInterval(()=>{if(DATA)live()},15000);setInterval(load,10*60*1000);
+load();setInterval(()=>{if(DATA)live()},15000);setInterval(()=>{if(DATA)depth()},30000);setInterval(load,10*60*1000);
 </script>
 </body>
 </html>

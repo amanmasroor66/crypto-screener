@@ -49,6 +49,38 @@ def fetch_top(n=40):
     return _gecko(GECKO + "?" + q)
 
 
+def fetch_global():
+    """Whole market: total market cap, BTC and ETH dominance, TOTAL3 (everything except BTC and ETH)."""
+    d = _gecko("https://api.coingecko.com/api/v3/global")["data"]
+    tot = d["total_market_cap"]["usd"]
+    btc, eth = d["market_cap_percentage"]["btc"], d["market_cap_percentage"]["eth"]
+    return {"total_usd": tot, "btc_dom": round(btc, 1), "eth_dom": round(eth, 1),
+            "total3_usd": tot * (100 - btc - eth) / 100, "chg24h": round(d.get("market_cap_change_percentage_24h_usd") or 0, 1)}
+
+
+SECTOR_SKIP = ("ecosystem", "portfolio", "binance", "coinbase", "alleged", "ftx", "made in", "launchpad", "launchpool",
+               "stablecoin", "wrapped", "bridged", "tokenized", "holdings", "index", "proof of", "smart contract", "layer 1",
+               "exchange-based", "centralized exchange", "world liberty", "a16z", "galaxy", "pantera", "dwf", "multicoin",
+               "paradigm", "delphi", "animoca", "polychain", "gmci", "yzi", "spartan", "blockchain capital", "framework",
+               "coinlist", "kucoin", "okx", "bybit", "gate", "bitget", "mexc", "upbit", "robinhood", "us strategic", "presale")
+
+
+def fetch_sectors(n=8, min_cap=1e9):
+    """Narratives (AI, DePIN, Gaming, Memes...) ranked by their 24 hour market cap change."""
+    rows = _gecko("https://api.coingecko.com/api/v3/coins/categories")
+    out = []
+    for r in rows:
+        name = (r.get("name") or "").lower()
+        if (r.get("market_cap") or 0) < min_cap or r.get("market_cap_change_24h") is None:
+            continue
+        if any(w in name for w in SECTOR_SKIP):
+            continue
+        out.append({"name": r["name"], "chg24h": round(r["market_cap_change_24h"], 1), "mcap_busd": round(r["market_cap"] / 1e9, 1),
+                    "top": [i.replace("-", " ").title() for i in (r.get("top_3_coins_id") or [])][:3]})
+    out.sort(key=lambda x: x["chg24h"], reverse=True)
+    return out[:n]
+
+
 def fetch_trending():
     """Coins most searched on CoinGecko in the last 24 hours."""
     return _gecko("https://api.coingecko.com/api/v3/search/trending").get("coins", [])

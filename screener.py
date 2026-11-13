@@ -234,7 +234,7 @@ def run(fetch=get, enrich_with_research=True):
             "Backtest of 8 months: breakouts won about 1 in 3 trades, and most profit came from a few big winners. Reversals lost money, so treat them as experimental.",
         ],
     }
-    news = top = trending = None
+    news = top = trending = glob = sectors = None
     if enrich_with_research:
         import research
 
@@ -250,7 +250,13 @@ def run(fetch=get, enrich_with_research=True):
         top = safe("top coins", research.fetch_top)
         time.sleep(3)
         trending = safe("trending", research.fetch_trending)
+        time.sleep(3)
+        glob = safe("global", research.fetch_global)
+        time.sleep(3)
+        sectors = safe("sectors", research.fetch_sectors)
     out["overview"] = overview(allc, len(results), top, trending, news)
+    out["overview"]["global"] = glob
+    out["overview"]["sectors"] = sectors or []
     attach_plans(results, allc)
     return out
 
