@@ -1,14 +1,14 @@
 {
-  "generated_utc": "2026-11-12 17:00",
-  "scanned": 46,
+  "generated_utc": "2026-11-13 01:23",
+  "scanned": 44,
   "market": {
     "BTC": {
-      "price": 71768.52,
-      "chg24h": -3.398
+      "price": 70981.24,
+      "chg24h": -3.685
     },
     "ETH": {
-      "price": 2007.88,
-      "chg24h": -3.383
+      "price": 2011.5,
+      "chg24h": -1.905
     }
   },
   "signals": [],
@@ -25,11 +25,11 @@
       {
         "symbol": "BTC",
         "trend": "Downtrend",
-        "price": 74015.19,
-        "ch7": -8.1,
-        "ch30": -9.6,
-        "from_high_pct": -15.3,
-        "note": "BTC is in a downtrend, below its 50 day average, -10% over 30 days. Buying a falling leader is a bet that the drop is over, and the data does not show that yet. Waiting for it to get back above the 50 day average is the safer rule.",
+        "price": 71460.0,
+        "ch7": -6.1,
+        "ch30": -14.1,
+        "from_high_pct": -18.2,
+        "note": "BTC is in a downtrend, below its 50 day average, -14% over 30 days. Buying a falling leader is a bet that the drop is over, and the data does not show that yet. Waiting for it to get back above the 50 day average is the safer rule.",
         "plan": {
           "atr_pct": 3.3,
           "resistance": [
@@ -43,61 +43,61 @@
             57800.19
           ],
           "trigger": 87220.0,
-          "ma20": 77826.838,
-          "ma50": 81205.087,
-          "ma200": 73172.85545,
+          "ma20": 77340.3665,
+          "ma50": 80946.335,
+          "ma200": 73136.8677,
           "status": "No buy",
           "entry_lo": null,
           "entry_hi": null,
           "stop": null,
-          "why": "Downtrend. No buy zone until price closes back above the 50 day average (81205.1) or breaks the 42 day high (87220)."
+          "why": "Downtrend. No buy zone until price closes back above the 50 day average (80946.3) or breaks the 42 day high (87220)."
         }
       },
       {
         "symbol": "ETH",
         "trend": "Downtrend",
-        "price": 2056.36,
-        "ch7": -15.2,
-        "ch30": -16.0,
-        "from_high_pct": -26.8,
-        "note": "ETH is in a downtrend, below its 50 day average, -16% over 30 days. Buying a falling leader is a bet that the drop is over, and the data does not show that yet. Waiting for it to get back above the 50 day average is the safer rule.",
+        "price": 2019.74,
+        "ch7": -9.8,
+        "ch30": -19.1,
+        "from_high_pct": -28.1,
+        "note": "ETH is in a downtrend, below its 50 day average, -19% over 30 days. Buying a falling leader is a bet that the drop is over, and the data does not show that yet. Waiting for it to get back above the 50 day average is the safer rule.",
         "plan": {
-          "atr_pct": 5.0,
+          "atr_pct": 4.8,
           "resistance": [
             2157.5,
             2391.55,
             2450.0
           ],
           "support": [
-            2009.3,
             1967.0,
-            1853.62
+            1853.62,
+            1713.44
           ],
           "trigger": 2777.33,
-          "ma20": 2259.1189999999997,
-          "ma50": 2444.5352,
-          "ma200": 2152.4033,
+          "ma20": 2240.7259999999997,
+          "ma50": 2431.2358,
+          "ma200": 2150.6548000000003,
           "status": "No buy",
           "entry_lo": null,
           "entry_hi": null,
           "stop": null,
-          "why": "Downtrend. No buy zone until price closes back above the 50 day average (2444.54) or breaks the 42 day high (2777.33)."
+          "why": "Downtrend. No buy zone until price closes back above the 50 day average (2431.24) or breaks the 42 day high (2777.33)."
         }
       },
       {
         "symbol": "BNB",
         "trend": "Downtrend",
-        "price": 679.76,
-        "ch7": -5.6,
-        "ch30": -7.3,
-        "from_high_pct": -16.1,
-        "note": "BNB is in a downtrend, below its 50 day average, -7% over 30 days. Buying a falling leader is a bet that the drop is over, and the data does not show that yet. Waiting for it to get back above the 50 day average is the safer rule.",
+        "price": 656.97,
+        "ch7": -4.7,
+        "ch30": -11.4,
+        "from_high_pct": -18.9,
+        "note": "BNB is in a downtrend, below its 50 day average, -11% over 30 days. Buying a falling leader is a bet that the drop is over, and the data does not show that yet. Waiting for it to get back above the 50 day average is the safer rule.",
         "plan": {
-          "atr_pct": 3.8,
+          "atr_pct": 3.4,
           "resistance": [
+            673.07,
             719.99,
-            745.74,
-            762.2
+            745.74
           ],
           "support": [
             635.29,
@@ -105,87 +105,87 @@
             585.3
           ],
           "trigger": 809.99,
-          "ma20": 710.9715,
-          "ma50": 737.5542,
-          "ma200": 658.66835,
+          "ma20": 706.8405,
+          "ma50": 735.346,
+          "ma200": 658.7744,
           "status": "No buy",
           "entry_lo": null,
           "entry_hi": null,
           "stop": null,
-          "why": "Downtrend. No buy zone until price closes back above the 50 day average (737.554) or breaks the 42 day high (809.99)."
+          "why": "Downtrend. No buy zone until price closes back above the 50 day average (735.346) or breaks the 42 day high (809.99)."
         }
       },
       {
         "symbol": "XRP",
         "trend": "Downtrend",
-        "price": 1.0524,
-        "ch7": -19.4,
-        "ch30": -21.6,
-        "from_high_pct": -38.1,
-        "note": "XRP is in a downtrend, below its 50 day average, -22% over 30 days. Buying a falling leader is a bet that the drop is over, and the data does not show that yet. Waiting for it to get back above the 50 day average is the safer rule.",
+        "price": 1.0413,
+        "ch7": -13.7,
+        "ch30": -23.8,
+        "from_high_pct": -38.7,
+        "note": "XRP is in a downtrend, below its 50 day average, -24% over 30 days. Buying a falling leader is a bet that the drop is over, and the data does not show that yet. Waiting for it to get back above the 50 day average is the safer rule.",
         "plan": {
-          "atr_pct": 5.7,
+          "atr_pct": 5.4,
           "resistance": [
             1.1302,
             1.1639,
             1.2935
           ],
           "support": [
-            1.022,
+            1.0092,
             0.9862
           ],
           "trigger": 1.555,
-          "ma20": 1.22788,
-          "ma50": 1.34573,
-          "ma200": 1.263562,
+          "ma20": 1.215195,
+          "ma50": 1.3365360000000002,
+          "ma200": 1.261615,
           "status": "No buy",
           "entry_lo": null,
           "entry_hi": null,
           "stop": null,
-          "why": "Downtrend. No buy zone until price closes back above the 50 day average (1.34573) or breaks the 42 day high (1.555)."
+          "why": "Downtrend. No buy zone until price closes back above the 50 day average (1.33654) or breaks the 42 day high (1.555)."
         }
       },
       {
         "symbol": "SOL",
         "trend": "Downtrend",
-        "price": 83.28,
-        "ch7": -12.9,
-        "ch30": -21.3,
-        "from_high_pct": -33.3,
-        "note": "SOL is in a downtrend, below its 50 day average, -21% over 30 days. Buying a falling leader is a bet that the drop is over, and the data does not show that yet. Waiting for it to get back above the 50 day average is the safer rule.",
+        "price": 81.72,
+        "ch7": -8.5,
+        "ch30": -23.5,
+        "from_high_pct": -34.6,
+        "note": "SOL is in a downtrend, below its 50 day average, -24% over 30 days. Buying a falling leader is a bet that the drop is over, and the data does not show that yet. Waiting for it to get back above the 50 day average is the safer rule.",
         "plan": {
-          "atr_pct": 5.7,
+          "atr_pct": 5.4,
           "resistance": [
+            83.42,
             88.0,
-            98.14,
-            103.85
+            98.14
           ],
           "support": [
-            81.5,
+            80.0,
             76.29,
             74.1
           ],
           "trigger": 123.76,
-          "ma20": 94.15299999999999,
-          "ma50": 105.39299999999999,
-          "ma200": 89.02844999999999,
+          "ma20": 93.0965,
+          "ma50": 104.7276,
+          "ma200": 89.0024,
           "status": "No buy",
           "entry_lo": null,
           "entry_hi": null,
           "stop": null,
-          "why": "Downtrend. No buy zone until price closes back above the 50 day average (105.393) or breaks the 42 day high (123.76)."
+          "why": "Downtrend. No buy zone until price closes back above the 50 day average (104.728) or breaks the 42 day high (123.76)."
         }
       },
       {
         "symbol": "TRX",
         "trend": "Downtrend",
-        "price": 0.317,
-        "ch7": -0.9,
-        "ch30": -3.7,
-        "from_high_pct": -16.0,
+        "price": 0.3158,
+        "ch7": -0.8,
+        "ch30": -3.5,
+        "from_high_pct": -16.3,
         "note": "TRX is in a downtrend, below its 50 day average, -4% over 30 days. Buying a falling leader is a bet that the drop is over, and the data does not show that yet. Waiting for it to get back above the 50 day average is the safer rule.",
         "plan": {
-          "atr_pct": 3.5,
+          "atr_pct": 2.7,
           "resistance": [
             0.3246,
             0.3312,
@@ -193,26 +193,26 @@
           ],
           "support": [],
           "trigger": 0.3654,
-          "ma20": 0.32336,
-          "ma50": 0.329658,
-          "ma200": 0.333296,
+          "ma20": 0.322645,
+          "ma50": 0.32913,
+          "ma200": 0.333258,
           "status": "No buy",
           "entry_lo": null,
           "entry_hi": null,
           "stop": null,
-          "why": "Downtrend. No buy zone until price closes back above the 50 day average (0.329658) or breaks the 42 day high (0.3654)."
+          "why": "Downtrend. No buy zone until price closes back above the 50 day average (0.32913) or breaks the 42 day high (0.3654)."
         }
       },
       {
         "symbol": "ZEC",
         "trend": "Downtrend",
-        "price": 964.38,
-        "ch7": -25.6,
-        "ch30": -17.4,
-        "from_high_pct": -43.2,
-        "note": "ZEC is in a downtrend, below its 50 day average, -17% over 30 days. Buying a falling leader is a bet that the drop is over, and the data does not show that yet. Waiting for it to get back above the 50 day average is the safer rule.",
+        "price": 957.33,
+        "ch7": -25.3,
+        "ch30": -21.4,
+        "from_high_pct": -43.6,
+        "note": "ZEC is in a downtrend, below its 50 day average, -21% over 30 days. Buying a falling leader is a bet that the drop is over, and the data does not show that yet. Waiting for it to get back above the 50 day average is the safer rule.",
         "plan": {
-          "atr_pct": 13.2,
+          "atr_pct": 12.5,
           "resistance": [
             1296.02,
             1349.3,
@@ -223,54 +223,54 @@
             502.6,
             465.97
           ],
-          "trigger": 1494.52,
-          "ma20": 1217.0149999999999,
-          "ma50": 1276.9026,
-          "ma200": 785.83905,
+          "trigger": 1449.75,
+          "ma20": 1205.7325,
+          "ma50": 1266.0839999999998,
+          "ma200": 788.85025,
           "status": "No buy",
           "entry_lo": null,
           "entry_hi": null,
           "stop": null,
-          "why": "Downtrend. No buy zone until price closes back above the 50 day average (1276.9) or breaks the 42 day high (1494.52)."
+          "why": "Downtrend. No buy zone until price closes back above the 50 day average (1266.08) or breaks the 42 day high (1449.75)."
         }
       },
       {
         "symbol": "DOGE",
         "trend": "Downtrend",
-        "price": 0.06751,
-        "ch7": -12.4,
-        "ch30": -17.9,
-        "from_high_pct": -43.1,
-        "note": "DOGE is in a downtrend, below its 50 day average, -18% over 30 days. Buying a falling leader is a bet that the drop is over, and the data does not show that yet. Waiting for it to get back above the 50 day average is the safer rule.",
+        "price": 0.06651,
+        "ch7": -6.5,
+        "ch30": -21.2,
+        "from_high_pct": -43.9,
+        "note": "DOGE is in a downtrend, below its 50 day average, -21% over 30 days. Buying a falling leader is a bet that the drop is over, and the data does not show that yet. Waiting for it to get back above the 50 day average is the safer rule.",
         "plan": {
-          "atr_pct": 5.5,
+          "atr_pct": 5.2,
           "resistance": [
             0.07147,
             0.07315,
             0.0756
           ],
           "support": [],
-          "trigger": 0.09819,
-          "ma20": 0.074429,
-          "ma50": 0.0828014,
-          "ma200": 0.0850472,
+          "trigger": 0.09796,
+          "ma20": 0.0738225,
+          "ma50": 0.0822772,
+          "ma200": 0.08488365,
           "status": "No buy",
           "entry_lo": null,
           "entry_hi": null,
           "stop": null,
-          "why": "Downtrend. No buy zone until price closes back above the 50 day average (0.0828014) or breaks the 42 day high (0.09819)."
+          "why": "Downtrend. No buy zone until price closes back above the 50 day average (0.0822772) or breaks the 42 day high (0.09796)."
         }
       },
       {
         "symbol": "LINK",
         "trend": "Downtrend",
-        "price": 10.19,
-        "ch7": -11.0,
-        "ch30": -19.3,
-        "from_high_pct": -35.4,
-        "note": "LINK is in a downtrend, below its 50 day average, -19% over 30 days. Buying a falling leader is a bet that the drop is over, and the data does not show that yet. Waiting for it to get back above the 50 day average is the safer rule.",
+        "price": 10.149,
+        "ch7": -4.9,
+        "ch30": -21.2,
+        "from_high_pct": -35.7,
+        "note": "LINK is in a downtrend, below its 50 day average, -21% over 30 days. Buying a falling leader is a bet that the drop is over, and the data does not show that yet. Waiting for it to get back above the 50 day average is the safer rule.",
         "plan": {
-          "atr_pct": 7.1,
+          "atr_pct": 6.4,
           "resistance": [
             12.016,
             12.62,
@@ -281,27 +281,27 @@
             8.762,
             8.068
           ],
-          "trigger": 14.814,
-          "ma20": 11.1202,
-          "ma50": 12.394639999999999,
-          "ma200": 10.10342,
+          "trigger": 14.652,
+          "ma20": 11.03615,
+          "ma50": 12.35052,
+          "ma200": 10.106765000000001,
           "status": "No buy",
           "entry_lo": null,
           "entry_hi": null,
           "stop": null,
-          "why": "Downtrend. No buy zone until price closes back above the 50 day average (12.3946) or breaks the 42 day high (14.814)."
+          "why": "Downtrend. No buy zone until price closes back above the 50 day average (12.3505) or breaks the 42 day high (14.652)."
         }
       },
       {
         "symbol": "ADA",
         "trend": "Downtrend",
-        "price": 0.1745,
-        "ch7": -11.6,
-        "ch30": -25.1,
+        "price": 0.1744,
+        "ch7": -3.6,
+        "ch30": -26.1,
         "from_high_pct": -39.6,
-        "note": "ADA is in a downtrend, below its 50 day average, -25% over 30 days. Buying a falling leader is a bet that the drop is over, and the data does not show that yet. Waiting for it to get back above the 50 day average is the safer rule.",
+        "note": "ADA is in a downtrend, below its 50 day average, -26% over 30 days. Buying a falling leader is a bet that the drop is over, and the data does not show that yet. Waiting for it to get back above the 50 day average is the safer rule.",
         "plan": {
-          "atr_pct": 6.4,
+          "atr_pct": 5.9,
           "resistance": [
             0.1808,
             0.19,
@@ -313,30 +313,70 @@
             0.1486
           ],
           "trigger": 0.2824,
-          "ma20": 0.19187,
-          "ma50": 0.22139399999999998,
-          "ma200": 0.20590250000000002,
+          "ma20": 0.190045,
+          "ma50": 0.22011399999999998,
+          "ma200": 0.2055135,
           "status": "No buy",
           "entry_lo": null,
           "entry_hi": null,
           "stop": null,
-          "why": "Downtrend. No buy zone until price closes back above the 50 day average (0.221394) or breaks the 42 day high (0.2824)."
+          "why": "Downtrend. No buy zone until price closes back above the 50 day average (0.220114) or breaks the 42 day high (0.2824)."
         }
       }
     ],
     "growing": [
       {
+        "symbol": "DODO",
+        "trend": "Uptrend",
+        "price": 0.02824,
+        "ch7": 29.0,
+        "ch30": 38.4,
+        "from_high_pct": -13.9,
+        "note": "DODO is +38% over 30 days and +29% this week, above its 50 day average. It sits 14% under its recent high. Strength can continue, but buying after a run means a deeper fall if it turns.",
+        "plan": {
+          "atr_pct": 6.2,
+          "resistance": [
+            0.02977,
+            0.03281
+          ],
+          "support": [
+            0.02124,
+            0.0194,
+            0.01805
+          ],
+          "trigger": 0.02988,
+          "ma20": 0.0232925,
+          "ma50": 0.0210496,
+          "ma200": 0.01927345,
+          "status": "Wait for a dip",
+          "entry_lo": 0.0215475,
+          "entry_hi": 0.0232925,
+          "stop": 0.0198025,
+          "why": "Uptrend, but price is stretched above its 20 day average. Buying the dip to the zone gives a closer stop than buying now.",
+          "tested": "Tested on the last 2.7 years of these coins: dip buys like this won 60% of the time but broke even on average, because the losses were bigger than the wins. Treat the zone as a better price, not an edge. Breakout signals tested better.",
+          "targets": [
+            0.026346250000000005,
+            0.02977,
+            0.03281
+          ],
+          "risk_pct": 11.7,
+          "size_for_1pct_loss": 8.6,
+          "profit_plan": "Sell about a third at each target. After target 1, move your stop to your entry price so the rest cannot turn into a loss. If price closes a day below the 20 day average before the targets, sell the rest: that exit beat fixed holding in the backtest.",
+          "cancel": "Plan is wrong if price closes below 0.0198025. Sell there, no exceptions."
+        }
+      },
+      {
         "symbol": "ERA",
         "trend": "Uptrend",
-        "price": 0.0875,
-        "ch7": 27.6,
-        "ch30": 31.2,
-        "from_high_pct": -51.0,
-        "note": "ERA is +31% over 30 days and +28% this week, above its 50 day average. It sits 51% under its recent high. Strength can continue, but buying after a run means a deeper fall if it turns.",
+        "price": 0.0799,
+        "ch7": 13.7,
+        "ch30": 23.9,
+        "from_high_pct": -55.2,
+        "note": "ERA is +24% over 30 days and +14% this week, above its 50 day average. It sits 55% under its recent high. Strength can continue, but buying after a run means a deeper fall if it turns.",
         "plan": {
-          "atr_pct": 10.7,
+          "atr_pct": 12.6,
           "resistance": [
-            0.09,
+            0.0888,
             0.0933,
             0.1031
           ],
@@ -346,36 +386,36 @@
             0.0606
           ],
           "trigger": 0.1137,
-          "ma20": 0.073465,
-          "ma50": 0.069514,
-          "ma200": 0.08466,
+          "ma20": 0.07365000000000001,
+          "ma50": 0.069786,
+          "ma200": 0.0843425,
           "status": "Wait for a dip",
-          "entry_lo": 0.069514,
-          "entry_hi": 0.073465,
-          "stop": 0.06014971428571429,
-          "why": "Uptrend, but price is stretched above its 20 day average. Buying the dip to the zone gives a closer stop than buying now. Warning: this coin moves about 11% a day, so the stop is far away and the position must be very small. Many traders simply skip coins this wild.",
+          "entry_lo": 0.069786,
+          "entry_hi": 0.07365000000000001,
+          "stop": 0.059678857142857145,
+          "why": "Uptrend, but price is stretched above its 20 day average. Buying the dip to the zone gives a closer stop than buying now. Warning: this coin moves about 13% a day, so the stop is far away and the position must be very small. Many traders simply skip coins this wild.",
           "tested": "Tested on the last 2.7 years of these coins: dip buys like this won 60% of the time but broke even on average, because the losses were bigger than the wins. Treat the zone as a better price, not an edge. Breakout signals tested better.",
           "targets": [
-            0.09,
+            0.0888,
             0.0933,
             0.1031
           ],
-          "risk_pct": 15.9,
-          "size_for_1pct_loss": 6.3,
+          "risk_pct": 16.8,
+          "size_for_1pct_loss": 6.0,
           "profit_plan": "Sell about a third at each target. After target 1, move your stop to your entry price so the rest cannot turn into a loss. If price closes a day below the 20 day average before the targets, sell the rest: that exit beat fixed holding in the backtest.",
-          "cancel": "Plan is wrong if price closes below 0.0601497. Sell there, no exceptions."
+          "cancel": "Plan is wrong if price closes below 0.0596789. Sell there, no exceptions."
         }
       },
       {
         "symbol": "PEPE",
         "trend": "Uptrend",
-        "price": 4.52e-06,
-        "ch7": -9.1,
-        "ch30": 15.3,
-        "from_high_pct": -20.4,
-        "note": "PEPE is +15% over 30 days and -9% this week, above its 50 day average. It sits 20% under its recent high. Strength can continue, but buying after a run means a deeper fall if it turns.",
+        "price": 4.54e-06,
+        "ch7": -5.4,
+        "ch30": 8.1,
+        "from_high_pct": -20.1,
+        "note": "PEPE is +8% over 30 days and -5% this week, above its 50 day average. It sits 20% under its recent high. Strength can continue, but buying after a run means a deeper fall if it turns.",
         "plan": {
-          "atr_pct": 12.6,
+          "atr_pct": 11.0,
           "resistance": [
             4.75e-06,
             5.11e-06,
@@ -387,190 +427,114 @@
             3.77e-06
           ],
           "trigger": 5.68e-06,
-          "ma20": 4.7975e-06,
-          "ma50": 4.4574e-06,
-          "ma200": 3.5426e-06,
+          "ma20": 4.796e-06,
+          "ma50": 4.4614e-06,
+          "ma200": 3.5458e-06,
           "status": "In buy zone",
-          "entry_lo": 4.4574e-06,
-          "entry_hi": 4.7975e-06,
-          "stop": 3.889542857142857e-06,
-          "why": "Uptrend, and price has pulled back to its 20 day average. This is where trend buyers usually step in. Warning: this coin moves about 13% a day, so the stop is far away and the position must be very small. Many traders simply skip coins this wild.",
+          "entry_lo": 4.4614e-06,
+          "entry_hi": 4.796e-06,
+          "stop": 3.9614e-06,
+          "why": "Uptrend, and price has pulled back to its 20 day average. This is where trend buyers usually step in. Warning: this coin moves about 11% a day, so the stop is far away and the position must be very small. Many traders simply skip coins this wild.",
           "tested": "Tested on the last 2.7 years of these coins: dip buys like this won 60% of the time but broke even on average, because the losses were bigger than the wins. Treat the zone as a better price, not an edge. Breakout signals tested better.",
           "targets": [
             5.11e-06,
             5.33e-06,
-            5.734310714285714e-06
+            5.629650000000001e-06
           ],
-          "risk_pct": 15.9,
-          "size_for_1pct_loss": 6.3,
+          "risk_pct": 14.4,
+          "size_for_1pct_loss": 6.9,
           "profit_plan": "Sell about a third at each target. After target 1, move your stop to your entry price so the rest cannot turn into a loss. If price closes a day below the 20 day average before the targets, sell the rest: that exit beat fixed holding in the backtest.",
-          "cancel": "Plan is wrong if price closes below 3.88954e-06. Sell there, no exceptions."
-        }
-      },
-      {
-        "symbol": "NIGHT",
-        "trend": "Uptrend",
-        "price": 0.04746,
-        "ch7": 9.4,
-        "ch30": 5.8,
-        "from_high_pct": -10.7,
-        "note": "NIGHT is +6% over 30 days and +9% this week, above its 50 day average. It sits 11% under its recent high. Strength can continue, but buying after a run means a deeper fall if it turns.",
-        "plan": {
-          "atr_pct": 7.9,
-          "resistance": [
-            0.05242
-          ],
-          "support": [
-            0.04085,
-            0.03807,
-            0.03606
-          ],
-          "trigger": 0.05315,
-          "ma20": 0.0404345,
-          "ma50": 0.040164799999999994,
-          "ma200": 0.03031375,
-          "status": "Wait for a dip",
-          "entry_lo": 0.040164799999999994,
-          "entry_hi": 0.0404345,
-          "stop": 0.03639337142857142,
-          "why": "Uptrend, but price is stretched above its 20 day average. Buying the dip to the zone gives a closer stop than buying now.",
-          "tested": "Tested on the last 2.7 years of these coins: dip buys like this won 60% of the time but broke even on average, because the losses were bigger than the wins. Treat the zone as a better price, not an edge. Breakout signals tested better.",
-          "targets": [
-            0.04615906785714285,
-            0.05006534642857142,
-            0.05242
-          ],
-          "risk_pct": 9.7,
-          "size_for_1pct_loss": 10.3,
-          "profit_plan": "Sell about a third at each target. After target 1, move your stop to your entry price so the rest cannot turn into a loss. If price closes a day below the 20 day average before the targets, sell the rest: that exit beat fixed holding in the backtest.",
-          "cancel": "Plan is wrong if price closes below 0.0363934. Sell there, no exceptions."
+          "cancel": "Plan is wrong if price closes below 3.9614e-06. Sell there, no exceptions."
         }
       }
     ],
     "new_listings": [
       {
         "symbol": "HYPE",
-        "days_listed": 49,
-        "price": 72.1,
-        "since_listing_pct": -21.6,
-        "from_high_pct": -26.2,
+        "days_listed": 50,
+        "price": 72.79,
+        "since_listing_pct": -20.9,
+        "from_high_pct": -25.5,
         "rank": 10,
-        "note": "HYPE is new on Binance (about 49 days) but not a new coin: it is ranked 10 by market cap and traded elsewhere before. It is -22% since its Binance listing and 26% below the high since then. Too little Binance history for the screener's rules, so judge it like a leader once it has 90 days of data."
+        "note": "HYPE is new on Binance (about 50 days) but not a new coin: it is ranked 10 by market cap and traded elsewhere before. It is -21% since its Binance listing and 26% below the high since then. Too little Binance history for the screener's rules, so judge it like a leader once it has 90 days of data."
       }
     ],
     "trending": [
       {
         "symbol": "MIHAO",
         "name": "ni hao cat",
-        "rank": 867,
-        "ch24": 356.0,
+        "rank": 955,
+        "ch24": -3.0,
         "on_binance": false,
-        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top. It is a small coin (rank 867), so moves both ways are violent. Not in this screener's Binance list, so none of the checks here apply."
+        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top. It is a small coin (rank 955), so moves both ways are violent. Not in this screener's Binance list, so none of the checks here apply."
       },
       {
-        "symbol": "SEPPUKU",
-        "name": "Seppuku",
-        "rank": 815,
-        "ch24": 26.4,
+        "symbol": "DACITYCOIN",
+        "name": "AudaCity",
+        "rank": 886,
+        "ch24": 13.2,
         "on_binance": false,
-        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top. It is a small coin (rank 815), so moves both ways are violent. Not in this screener's Binance list, so none of the checks here apply."
-      },
-      {
-        "symbol": "ROCCO",
-        "name": "Rocco",
-        "rank": 1516,
-        "ch24": -60.1,
-        "on_binance": false,
-        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top. It is a small coin (rank 1516), so moves both ways are violent. Not in this screener's Binance list, so none of the checks here apply."
+        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top. It is a small coin (rank 886), so moves both ways are violent. Not in this screener's Binance list, so none of the checks here apply."
       },
       {
         "symbol": "BTC",
         "name": "Bitcoin",
         "rank": 1,
-        "ch24": -3.4,
+        "ch24": -4.0,
+        "on_binance": true,
+        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top."
+      },
+      {
+        "symbol": "PEARL",
+        "name": "Pearl",
+        "rank": 100,
+        "ch24": -8.5,
+        "on_binance": false,
+        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top. Not in this screener's Binance list, so none of the checks here apply."
+      },
+      {
+        "symbol": "XRP",
+        "name": "XRP",
+        "rank": 6,
+        "ch24": -2.0,
+        "on_binance": true,
+        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top."
+      },
+      {
+        "symbol": "SOL",
+        "name": "Solana",
+        "rank": 7,
+        "ch24": -2.3,
         "on_binance": true,
         "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top."
       },
       {
         "symbol": "PENGU",
         "name": "Pudgy Penguins",
-        "rank": 116,
-        "ch24": -5.2,
+        "rank": 115,
+        "ch24": -0.3,
         "on_binance": false,
         "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top. Not in this screener's Binance list, so none of the checks here apply."
-      },
-      {
-        "symbol": "PEARL",
-        "name": "Pearl",
-        "rank": 102,
-        "ch24": -10.4,
-        "on_binance": false,
-        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top. Not in this screener's Binance list, so none of the checks here apply."
-      },
-      {
-        "symbol": "HYPE",
-        "name": "Hyperliquid",
-        "rank": 10,
-        "ch24": -4.1,
-        "on_binance": true,
-        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top."
       }
     ],
     "bottoms": [
       {
-        "drawdown_pct": 50,
-        "base_range_pct": 40,
-        "divergence": true,
-        "rsi_lows": [
-          27,
-          30
-        ],
-        "div_days_ago": 3,
-        "vol_pickup": 0.4,
-        "above20": false,
-        "base_low": 0.06421,
-        "base_high": 0.08977,
-        "score": 4.41,
-        "symbol": "HBAR",
-        "price": 0.06546,
-        "note": "HBAR is 50% below its 6 month high and has moved in a 40% range for 30 days. Bullish divergence: price made a lower low but RSI made a higher low (27 then 30), which means selling pressure is weakening. A bottom is only confirmed once price breaks above the base (0.08977) on a daily close. Below the base low (0.06421) the idea is wrong.",
-        "label": "Bottoming pattern",
-        "plan": {
-          "atr_pct": 5.9,
-          "resistance": [
-            0.07006,
-            0.07156,
-            0.07408
-          ],
-          "support": [],
-          "trigger": 0.11006,
-          "ma20": 0.07120299999999999,
-          "ma50": 0.0845112,
-          "ma200": 0.079936,
-          "status": "No buy",
-          "entry_lo": null,
-          "entry_hi": null,
-          "stop": null,
-          "why": "Downtrend. No buy zone until price closes back above the 50 day average (0.0845112) or breaks the 42 day high (0.11006)."
-        }
-      },
-      {
-        "drawdown_pct": 72,
+        "drawdown_pct": 71,
         "base_range_pct": 141,
         "divergence": false,
         "rsi_lows": null,
         "div_days_ago": null,
-        "vol_pickup": 10.7,
+        "vol_pickup": 4.4,
         "above20": true,
         "base_low": 0.001027,
         "base_high": 0.002476,
-        "score": 3.93,
+        "score": 3.91,
         "symbol": "ONE",
-        "price": 0.001471,
-        "note": "ONE is 72% below its 6 month high and has moved in a 141% range for 30 days. No bullish divergence yet. Volume is picking up (10.7x its recent average). A bottom is only confirmed once price breaks above the base (0.002476) on a daily close. Below the base low (0.001027) the idea is wrong.",
+        "price": 0.00152,
+        "note": "ONE is 71% below its 6 month high and has moved in a 141% range for 30 days. No bullish divergence yet. Volume is picking up (4.4x its recent average). A bottom is only confirmed once price breaks above the base (0.002476) on a daily close. Below the base low (0.001027) the idea is wrong.",
         "label": "Still swinging, no base yet",
         "plan": {
-          "atr_pct": 22.8,
+          "atr_pct": 23.0,
           "resistance": [
             0.001568,
             0.0016,
@@ -582,110 +546,111 @@
             0.00117
           ],
           "trigger": 0.002944,
-          "ma20": 0.0013705500000000001,
-          "ma50": 0.0017616,
-          "ma200": 0.00153955,
+          "ma20": 0.0013769,
+          "ma50": 0.0017391400000000001,
+          "ma200": 0.0015357,
           "status": "No buy",
           "entry_lo": null,
           "entry_hi": null,
           "stop": null,
-          "why": "Downtrend. No buy zone until price closes back above the 50 day average (0.0017616) or breaks the 42 day high (0.002944)."
+          "why": "Downtrend. No buy zone until price closes back above the 50 day average (0.00173914) or breaks the 42 day high (0.002944)."
         }
       },
       {
-        "drawdown_pct": 61,
-        "base_range_pct": 53,
+        "drawdown_pct": 50,
+        "base_range_pct": 79,
         "divergence": false,
         "rsi_lows": null,
         "div_days_ago": null,
-        "vol_pickup": 3.3,
+        "vol_pickup": 12.3,
         "above20": true,
-        "base_low": 0.1076,
-        "base_high": 0.1641,
-        "score": 3.72,
-        "symbol": "OPG",
-        "price": 0.135,
-        "note": "OPG is 61% below its 6 month high and has moved in a 53% range for 30 days. No bullish divergence yet. Volume is picking up (3.3x its recent average). A bottom is only confirmed once price breaks above the base (0.1641) on a daily close. Below the base low (0.1076) the idea is wrong.",
+        "base_low": 0.0801,
+        "base_high": 0.143,
+        "score": 3.51,
+        "symbol": "BARD",
+        "price": 0.1259,
+        "note": "BARD is 50% below its 6 month high and has moved in a 79% range for 30 days. No bullish divergence yet. Volume is picking up (12.3x its recent average). A bottom is only confirmed once price breaks above the base (0.143) on a daily close. Below the base low (0.0801) the idea is wrong.",
         "label": "Still swinging, no base yet",
         "plan": {
-          "atr_pct": 8.2,
+          "atr_pct": 9.3,
           "resistance": [
-            0.148,
-            0.1519,
-            0.1563
+            0.13,
+            0.1334,
+            0.1372
           ],
           "support": [
-            0.1263,
-            0.1167,
-            0.1128
+            0.1199,
+            0.117,
+            0.1143
           ],
-          "trigger": 0.1563,
-          "ma20": 0.12122,
-          "ma50": 0.127906,
-          "ma200": null,
+          "trigger": 0.1443,
+          "ma20": 0.108565,
+          "ma50": 0.11889,
+          "ma200": 0.14856350000000001,
           "status": "No buy",
           "entry_lo": null,
           "entry_hi": null,
           "stop": null,
-          "why": "No clear trend. A daily close above 0.1563 (the 42 day high) on strong volume would make it a breakout signal."
+          "why": "No clear trend. A daily close above 0.1443 (the 42 day high) on strong volume would make it a breakout signal."
         }
       },
       {
-        "drawdown_pct": 66,
-        "base_range_pct": 248,
+        "drawdown_pct": 71,
+        "base_range_pct": 266,
         "divergence": false,
         "rsi_lows": null,
         "div_days_ago": null,
-        "vol_pickup": 4.3,
+        "vol_pickup": 5.1,
         "above20": false,
-        "base_low": 0.11337,
+        "base_low": 0.10799,
         "base_high": 0.395,
-        "score": 2.82,
+        "score": 2.92,
         "symbol": "INIT",
-        "price": 0.13416,
-        "note": "INIT is 66% below its 6 month high and has moved in a 248% range for 30 days. No bullish divergence yet. Volume is picking up (4.3x its recent average). A bottom is only confirmed once price breaks above the base (0.395) on a daily close. Below the base low (0.11337) the idea is wrong.",
+        "price": 0.11464,
+        "note": "INIT is 71% below its 6 month high and has moved in a 266% range for 30 days. No bullish divergence yet. Volume is picking up (5.1x its recent average). A bottom is only confirmed once price breaks above the base (0.395) on a daily close. Below the base low (0.10799) the idea is wrong.",
         "label": "Still swinging, no base yet",
         "plan": {
-          "atr_pct": 44.5,
+          "atr_pct": 52.3,
           "resistance": [
+            0.12208,
             0.14491,
             0.25793
           ],
           "support": [
-            0.12131,
-            0.11752,
-            0.1137
+            0.10544,
+            0.08464,
+            0.06336
           ],
-          "trigger": 0.33193,
-          "ma20": 0.1644865,
-          "ma50": 0.1342448,
-          "ma200": 0.0823829,
+          "trigger": 0.395,
+          "ma20": 0.1627045,
+          "ma50": 0.1347582,
+          "ma200": 0.08250260000000001,
           "status": "No buy",
           "entry_lo": null,
           "entry_hi": null,
           "stop": null,
-          "why": "No clear trend. A daily close above 0.33193 (the 42 day high) on strong volume would make it a breakout signal."
+          "why": "No clear trend. A daily close above 0.395 (the 42 day high) on strong volume would make it a breakout signal."
         }
       },
       {
-        "drawdown_pct": 51,
+        "drawdown_pct": 55,
         "base_range_pct": 83,
         "divergence": false,
         "rsi_lows": null,
         "div_days_ago": null,
-        "vol_pickup": 0.8,
+        "vol_pickup": 1.1,
         "above20": true,
         "base_low": 0.0564,
         "base_high": 0.1031,
-        "score": 2.02,
+        "score": 2.24,
         "symbol": "ERA",
-        "price": 0.0875,
-        "note": "ERA is 51% below its 6 month high and has moved in a 83% range for 30 days. No bullish divergence yet. A bottom is only confirmed once price breaks above the base (0.1031) on a daily close. Below the base low (0.0564) the idea is wrong.",
+        "price": 0.0799,
+        "note": "ERA is 55% below its 6 month high and has moved in a 83% range for 30 days. No bullish divergence yet. A bottom is only confirmed once price breaks above the base (0.1031) on a daily close. Below the base low (0.0564) the idea is wrong.",
         "label": "Still swinging, no base yet",
         "plan": {
-          "atr_pct": 10.7,
+          "atr_pct": 12.6,
           "resistance": [
-            0.09,
+            0.0888,
             0.0933,
             0.1031
           ],
@@ -695,24 +660,60 @@
             0.0606
           ],
           "trigger": 0.1137,
-          "ma20": 0.073465,
-          "ma50": 0.069514,
-          "ma200": 0.08466,
+          "ma20": 0.07365000000000001,
+          "ma50": 0.069786,
+          "ma200": 0.0843425,
           "status": "Wait for a dip",
-          "entry_lo": 0.069514,
-          "entry_hi": 0.073465,
-          "stop": 0.06014971428571429,
-          "why": "Uptrend, but price is stretched above its 20 day average. Buying the dip to the zone gives a closer stop than buying now. Warning: this coin moves about 11% a day, so the stop is far away and the position must be very small. Many traders simply skip coins this wild.",
+          "entry_lo": 0.069786,
+          "entry_hi": 0.07365000000000001,
+          "stop": 0.059678857142857145,
+          "why": "Uptrend, but price is stretched above its 20 day average. Buying the dip to the zone gives a closer stop than buying now. Warning: this coin moves about 13% a day, so the stop is far away and the position must be very small. Many traders simply skip coins this wild.",
           "tested": "Tested on the last 2.7 years of these coins: dip buys like this won 60% of the time but broke even on average, because the losses were bigger than the wins. Treat the zone as a better price, not an edge. Breakout signals tested better.",
           "targets": [
-            0.09,
+            0.0888,
             0.0933,
             0.1031
           ],
-          "risk_pct": 15.9,
-          "size_for_1pct_loss": 6.3,
+          "risk_pct": 16.8,
+          "size_for_1pct_loss": 6.0,
           "profit_plan": "Sell about a third at each target. After target 1, move your stop to your entry price so the rest cannot turn into a loss. If price closes a day below the 20 day average before the targets, sell the rest: that exit beat fixed holding in the backtest.",
-          "cancel": "Plan is wrong if price closes below 0.0601497. Sell there, no exceptions."
+          "cancel": "Plan is wrong if price closes below 0.0596789. Sell there, no exceptions."
+        }
+      },
+      {
+        "drawdown_pct": 50,
+        "base_range_pct": 37,
+        "divergence": false,
+        "rsi_lows": null,
+        "div_days_ago": null,
+        "vol_pickup": 0.8,
+        "above20": false,
+        "base_low": 0.1408,
+        "base_high": 0.1922,
+        "score": 1.54,
+        "symbol": "XLM",
+        "price": 0.1484,
+        "note": "XLM is 50% below its 6 month high and has moved in a 37% range for 30 days. No bullish divergence yet. A bottom is only confirmed once price breaks above the base (0.1922) on a daily close. Below the base low (0.1408) the idea is wrong.",
+        "label": "Basing, no divergence",
+        "plan": {
+          "atr_pct": 5.7,
+          "resistance": [
+            0.1711,
+            0.1752,
+            0.1872
+          ],
+          "support": [
+            0.1395
+          ],
+          "trigger": 0.2311,
+          "ma20": 0.160395,
+          "ma50": 0.18448599999999998,
+          "ma200": 0.182395,
+          "status": "No buy",
+          "entry_lo": null,
+          "entry_hi": null,
+          "stop": null,
+          "why": "Downtrend. No buy zone until price closes back above the 50 day average (0.184486) or breaks the 42 day high (0.2311)."
         }
       }
     ],
@@ -720,41 +721,41 @@
     "news": [
       {
         "source": "Cointelegraph",
-        "title": "Bitcoin slides toward $71K as Nvidia stock tumbles after Huang steps down",
-        "link": "https://cointelegraph.com/markets/bitcoin-price-drops-71k-stocks-nvidia-huang-resignation?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
+        "title": "Gemini\u2019s quarterly retail trading volume sinks to 3-year low",
+        "link": "https://cointelegraph.com/markets/geminis-quarterly-retail-trading-volume-sinks-to-3-year-low?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
       },
       {
         "source": "Cointelegraph",
-        "title": "Jensen Huang resigns as Nvidia CEO, exits board; shares plunge",
-        "link": "https://cointelegraph.com/news/jensen-huang-resigns-nvidia-ceo-board-member?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
+        "title": "Maple Finance\u2019s strategy rift sends co-founder, COO to the exits",
+        "link": "https://cointelegraph.com/news/maple-finance-strategy-rift-co-founder-coo-exit?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
       },
       {
         "source": "Cointelegraph",
-        "title": "Bit Digital stock falls 5% in pre-market after Q3 revenue miss",
-        "link": "https://cointelegraph.com/news/bit-digital-stock-falls-q3-revenue-miss?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
+        "title": "NK hackers join memecoin trenches, xStocks adds Hong Kong equities: Asia Express",
+        "link": "https://cointelegraph.com/magazine/nk-hackers-join-memecoin-trenches-xstocks-adds-hong-kong-equities-asia-express?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
       },
       {
         "source": "Cointelegraph",
-        "title": "Thailand proposes $148K daily cap on stablecoin deposits and withdrawals",
-        "link": "https://cointelegraph.com/news/thailand-tighter-stablecoin-rules-crypto-exchange?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
+        "title": "Here\u2019s what happened in crypto today",
+        "link": "https://cointelegraph.com/news/what-happened-in-crypto-today?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
       },
       {
         "source": "Cointelegraph",
-        "title": "Crypto hack losses equal 57 cents per $1 earned onchain: Ark\u2019s Valente",
-        "link": "https://cointelegraph.com/news/crypto-hackers-stole-57-cents-every-1-earned-ark?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
+        "title": "Kalshi ends Donald Trump Jr. advisory role over Polymarket investment: Reuters",
+        "link": "https://cointelegraph.com/news/kalshi-ends-donald-trump-jr-advisory-role-polymarket-investment?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
       },
       {
         "source": "Cointelegraph",
-        "title": "Are Alt-L1s over? Security, costs drive smaller chains to Ethereum",
-        "link": "https://cointelegraph.com/magazine/are-alt-l1s-over-security-costs-drive-smaller-chains-to-ethereum?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
+        "title": "Strategy stock sheds 5% amid MSCI index removal, Bitcoin sell-off",
+        "link": "https://cointelegraph.com/markets/strategy-shares-fall-5-msci-index-removal-bitcoin?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
       }
     ],
     "regime": {
       "mood": "Downtrend",
       "breadth_pct": 10,
       "btc_above_50d": false,
-      "btc_above_200d": true,
-      "summary": "The market is weak. BTC is below its 50 day average and above its 200 day average, and 10% of coins are above their 50 day average. Most breakouts fail even in good markets, so in a weak market protecting cash matters more than finding a winner. There is no signal today, so by the rules there is nothing to buy. Use the lists below to learn the market and build your own watchlist, not as buy tips. Should you invest at all? Only money you can afford to lose completely, and only after a few weeks of paper trading these signals."
+      "btc_above_200d": false,
+      "summary": "The market is weak. BTC is below its 50 day average and below its 200 day average, and 10% of coins are above their 50 day average. Most breakouts fail even in good markets, so in a weak market protecting cash matters more than finding a winner. There is no signal today, so by the rules there is nothing to buy. Use the lists below to learn the market and build your own watchlist, not as buy tips. Should you invest at all? Only money you can afford to lose completely, and only after a few weeks of paper trading these signals."
     }
   }
 }
