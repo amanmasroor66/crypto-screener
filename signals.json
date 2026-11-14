@@ -1,14 +1,14 @@
 {
-  "generated_utc": "2026-11-14 15:18",
-  "scanned": 52,
+  "generated_utc": "2026-11-14 20:54",
+  "scanned": 54,
   "market": {
     "BTC": {
-      "price": 65742.71,
-      "chg24h": -4.626
+      "price": 65204.66,
+      "chg24h": -5.435
     },
     "ETH": {
-      "price": 1847.09,
-      "chg24h": -4.907
+      "price": 1813.89,
+      "chg24h": -6.991
     }
   },
   "signals": [],
@@ -21,13 +21,13 @@
       "why": "Needs a daily close above 0.02988 on strong volume to trigger.",
       "symbol": "DODO",
       "pair": "DODOUSDT",
-      "qvol_musd": 8.2,
-      "chg24h": 15.4,
+      "qvol_musd": 9.6,
+      "chg24h": 9.2,
       "research": {
         "source": "CoinGecko + news RSS",
         "verified": true,
-        "mcap_musd": 32.1,
-        "rank": 562,
+        "mcap_musd": 32.0,
+        "rank": 550,
         "ath_drop_pct": 100.0,
         "circulating_pct": 100.0,
         "news": [],
@@ -532,18 +532,42 @@
     ],
     "trending": [
       {
-        "symbol": "KAVA",
-        "name": "Kava",
-        "rank": 459,
-        "ch24": -43.1,
-        "on_binance": true,
-        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top. It is a small coin (rank 459), so moves both ways are violent."
+        "symbol": "MIHAO",
+        "name": "ni hao cat",
+        "rank": 724,
+        "ch24": -2.1,
+        "on_binance": false,
+        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top. It is a small coin (rank 724), so moves both ways are violent. Not in this screener's Binance list, so none of the checks here apply."
       },
       {
         "symbol": "BTC",
         "name": "Bitcoin",
         "rank": 1,
-        "ch24": -4.2,
+        "ch24": -5.0,
+        "on_binance": true,
+        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top."
+      },
+      {
+        "symbol": "SOL",
+        "name": "Solana",
+        "rank": 7,
+        "ch24": -10.6,
+        "on_binance": true,
+        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top."
+      },
+      {
+        "symbol": "ZEC",
+        "name": "Zcash",
+        "rank": 11,
+        "ch24": -12.9,
+        "on_binance": true,
+        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top."
+      },
+      {
+        "symbol": "ASTER",
+        "name": "Aster",
+        "rank": 59,
+        "ch24": -24.4,
         "on_binance": true,
         "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top."
       },
@@ -551,39 +575,15 @@
         "symbol": "HYPE",
         "name": "Hyperliquid",
         "rank": 10,
-        "ch24": -8.2,
+        "ch24": -12.6,
         "on_binance": true,
         "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top."
       },
       {
-        "symbol": "XRP",
-        "name": "XRP",
-        "rank": 6,
-        "ch24": -4.8,
-        "on_binance": true,
-        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top."
-      },
-      {
-        "symbol": "PEARL",
-        "name": "Pearl",
-        "rank": 92,
-        "ch24": 4.5,
-        "on_binance": false,
-        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top. Not in this screener's Binance list, so none of the checks here apply."
-      },
-      {
-        "symbol": "SOL",
-        "name": "Solana",
-        "rank": 7,
-        "ch24": -7.6,
-        "on_binance": true,
-        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top."
-      },
-      {
-        "symbol": "TAO",
-        "name": "Bittensor",
-        "rank": 39,
-        "ch24": -7.2,
+        "symbol": "AVAX",
+        "name": "Avalanche",
+        "rank": 25,
+        "ch24": -12.8,
         "on_binance": true,
         "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top."
       }
@@ -624,42 +624,6 @@
           "entry_hi": null,
           "stop": null,
           "why": "Downtrend. No buy zone until price closes back above the 50 day average (0.0024084) or breaks the 42 day high (0.00388)."
-        }
-      },
-      {
-        "drawdown_pct": 70,
-        "base_range_pct": 48,
-        "divergence": false,
-        "rsi_lows": null,
-        "div_days_ago": null,
-        "vol_pickup": 3.3,
-        "above20": false,
-        "base_low": 0.0244,
-        "base_high": 0.036,
-        "score": 3.01,
-        "symbol": "STO",
-        "price": 0.0272,
-        "note": "STO is 70% below its 6 month high and has moved in a 48% range for 30 days. No bullish divergence yet. Volume is picking up (3.3x its recent average). A bottom is only confirmed once price breaks above the base (0.036) on a daily close. Below the base low (0.0244) the idea is wrong.",
-        "label": "Still swinging, no base yet",
-        "plan": {
-          "atr_pct": 9.4,
-          "resistance": [
-            0.0341,
-            0.0407,
-            0.0428
-          ],
-          "support": [
-            0.0244
-          ],
-          "trigger": 0.0436,
-          "ma20": 0.028894999999999997,
-          "ma50": 0.034816,
-          "ma200": 0.047158,
-          "status": "No buy",
-          "entry_lo": null,
-          "entry_hi": null,
-          "stop": null,
-          "why": "Downtrend. No buy zone until price closes back above the 50 day average (0.034816) or breaks the 42 day high (0.0436)."
         }
       },
       {
@@ -769,6 +733,40 @@
           "stop": null,
           "why": "Downtrend. No buy zone until price closes back above the 50 day average (0.183056) or breaks the 42 day high (0.2271)."
         }
+      },
+      {
+        "drawdown_pct": 70,
+        "base_range_pct": 83,
+        "divergence": false,
+        "rsi_lows": null,
+        "div_days_ago": null,
+        "vol_pickup": 0.7,
+        "above20": false,
+        "base_low": 1.05,
+        "base_high": 1.922,
+        "score": 1.41,
+        "symbol": "TRUMP",
+        "price": 1.094,
+        "note": "TRUMP is 70% below its 6 month high and has moved in a 83% range for 30 days. No bullish divergence yet. A bottom is only confirmed once price breaks above the base (1.922) on a daily close. Below the base low (1.05) the idea is wrong.",
+        "label": "Still swinging, no base yet",
+        "plan": {
+          "atr_pct": 10.6,
+          "resistance": [
+            1.51,
+            1.67,
+            1.711
+          ],
+          "support": [],
+          "trigger": 2.212,
+          "ma20": 1.39945,
+          "ma50": 1.7102000000000002,
+          "ma200": 1.85832,
+          "status": "No buy",
+          "entry_lo": null,
+          "entry_hi": null,
+          "stop": null,
+          "why": "Downtrend. No buy zone until price closes back above the 50 day average (1.7102) or breaks the 42 day high (2.212)."
+        }
       }
     ],
     "bottoms_tested": "Tested on 2.7 years of these coins, 30 days later: the classic pattern (bullish divergence plus a tight base) averaged 5% down and rose only 32% of the time, worse than a random coin (up 44% of the time). Buying after the break above the base was worse still. Catching bottoms has no edge in this data.",
@@ -806,32 +804,22 @@
     ],
     "regime": {
       "mood": "Downtrend",
-      "breadth_pct": 14,
+      "breadth_pct": 13,
       "btc_above_50d": false,
       "btc_above_200d": false,
-      "summary": "The market is weak. BTC is below its 50 day average and below its 200 day average, and 14% of coins are above their 50 day average. Most breakouts fail even in good markets, so in a weak market protecting cash matters more than finding a winner. There is no signal today, so by the rules there is nothing to buy. Use the lists below to learn the market and build your own watchlist, not as buy tips. Should you invest at all? Only money you can afford to lose completely, and only after a few weeks of paper trading these signals."
+      "summary": "The market is weak. BTC is below its 50 day average and below its 200 day average, and 13% of coins are above their 50 day average. Most breakouts fail even in good markets, so in a weak market protecting cash matters more than finding a winner. There is no signal today, so by the rules there is nothing to buy. Use the lists below to learn the market and build your own watchlist, not as buy tips. Should you invest at all? Only money you can afford to lose completely, and only after a few weeks of paper trading these signals."
     },
     "global": {
-      "total_usd": 2242804912618.271,
-      "btc_dom": 58.6,
+      "total_usd": 2224799365064.195,
+      "btc_dom": 59.0,
       "eth_dom": 10.0,
-      "total3_usd": 702743983733.5447,
-      "chg24h": -6.8
+      "total3_usd": 690400015080.7013,
+      "chg24h": -7.8
     },
     "sectors": [
       {
-        "name": "AI Applications",
-        "chg24h": 1.0,
-        "mcap_busd": 2.4,
-        "top": [
-          "Venice Token",
-          "Pieverse",
-          "Akedo"
-        ]
-      },
-      {
         "name": "Synthetic Dollar",
-        "chg24h": 0.2,
+        "chg24h": 0.1,
         "mcap_busd": 6.9,
         "top": [
           "Ethena Usde",
@@ -850,38 +838,8 @@
         ]
       },
       {
-        "name": "Real World Assets (RWA)",
-        "chg24h": -0.4,
-        "mcap_busd": 70.6,
-        "top": [
-          "Figure Heloc",
-          "Chainlink",
-          "Stellar"
-        ]
-      },
-      {
-        "name": "Base Native",
-        "chg24h": -1.7,
-        "mcap_busd": 104.8,
-        "top": [
-          "Usd Coin",
-          "Usds",
-          "Chainlink"
-        ]
-      },
-      {
-        "name": "Trump-Affiliated",
-        "chg24h": -1.7,
-        "mcap_busd": 4.9,
-        "top": [
-          "Usd1 Wlfi",
-          "World Liberty Financial",
-          "Official Trump"
-        ]
-      },
-      {
         "name": "Gambling (GambleFi)",
-        "chg24h": -1.8,
+        "chg24h": -1.4,
         "mcap_busd": 3.2,
         "top": [
           "Rain",
@@ -891,12 +849,52 @@
       },
       {
         "name": "Prediction Markets",
-        "chg24h": -2.2,
+        "chg24h": -1.4,
         "mcap_busd": 2.7,
         "top": [
           "Rain",
           "True",
           "Overtime"
+        ]
+      },
+      {
+        "name": "Real World Assets (RWA)",
+        "chg24h": -1.6,
+        "mcap_busd": 69.7,
+        "top": [
+          "Figure Heloc",
+          "Chainlink",
+          "Stellar"
+        ]
+      },
+      {
+        "name": "Options",
+        "chg24h": -1.8,
+        "mcap_busd": 2.9,
+        "top": [
+          "Rain",
+          "Derive",
+          "Hegic"
+        ]
+      },
+      {
+        "name": "Base Native",
+        "chg24h": -2.2,
+        "mcap_busd": 104.1,
+        "top": [
+          "Usd Coin",
+          "Usds",
+          "Chainlink"
+        ]
+      },
+      {
+        "name": "Trump-Affiliated",
+        "chg24h": -2.2,
+        "mcap_busd": 4.9,
+        "top": [
+          "Usd1 Wlfi",
+          "World Liberty Financial",
+          "Official Trump"
         ]
       }
     ]
