@@ -1,18 +1,39 @@
 {
-  "generated_utc": "2026-11-14 00:58",
-  "scanned": 48,
+  "generated_utc": "2026-11-14 11:14",
+  "scanned": 49,
   "market": {
     "BTC": {
-      "price": 68264.01,
-      "chg24h": -4.023
+      "price": 67242.0,
+      "chg24h": -2.955
     },
     "ETH": {
-      "price": 1931.21,
-      "chg24h": -4.01
+      "price": 1907.09,
+      "chg24h": -2.309
     }
   },
   "signals": [],
-  "watchlist": [],
+  "watchlist": [
+    {
+      "price": 0.02945,
+      "trigger": 0.02988,
+      "gap_pct": 1.4,
+      "vol_ratio": 2.3,
+      "why": "Needs a daily close above 0.02988 on strong volume to trigger.",
+      "symbol": "DODO",
+      "pair": "DODOUSDT",
+      "qvol_musd": 7.2,
+      "chg24h": 19.5,
+      "research": {
+        "source": "CoinGecko + news RSS",
+        "verified": false,
+        "news": [],
+        "flags": [
+          "CoinGecko may be showing a different coin with this ticker. Check the coin manually."
+        ],
+        "verdict": "Caution"
+      }
+    }
+  ],
   "notes": [
     "Filters only. Not advice and not a prediction.",
     "Check token unlock dates (tokenomist.ai) before any buy.",
@@ -325,6 +346,45 @@
     ],
     "growing": [
       {
+        "symbol": "DODO",
+        "trend": "Uptrend",
+        "price": 0.02945,
+        "ch7": 33.4,
+        "ch30": 46.0,
+        "from_high_pct": -10.2,
+        "note": "DODO is +46% over 30 days and +33% this week, above its 50 day average. It sits 10% under its recent high. Strength can continue, but buying after a run means a deeper fall if it turns.",
+        "plan": {
+          "atr_pct": 6.1,
+          "resistance": [
+            0.03281
+          ],
+          "support": [
+            0.02124,
+            0.0194,
+            0.01805
+          ],
+          "trigger": 0.02988,
+          "ma20": 0.0236595,
+          "ma50": 0.0212706,
+          "ma200": 0.019323049999999998,
+          "status": "Wait for a dip",
+          "entry_lo": 0.021858071428571428,
+          "entry_hi": 0.0236595,
+          "stop": 0.020056642857142856,
+          "why": "Uptrend, but price is stretched above its 20 day average. Buying the dip to the zone gives a closer stop than buying now.",
+          "tested": "Tested on the last 2.7 years of these coins: dip buys like this won 60% of the time but broke even on average, because the losses were bigger than the wins. Treat the zone as a better price, not an edge. Breakout signals tested better.",
+          "targets": [
+            0.026812000000000002,
+            0.029514142857142857,
+            0.03281
+          ],
+          "risk_pct": 11.9,
+          "size_for_1pct_loss": 8.4,
+          "profit_plan": "Sell about a third at each target. After target 1, move your stop to your entry price so the rest cannot turn into a loss. If price closes a day below the 20 day average before the targets, sell the rest: that exit beat fixed holding in the backtest.",
+          "cancel": "Plan is wrong if price closes below 0.0200566. Sell there, no exceptions."
+        }
+      },
+      {
         "symbol": "BMT",
         "trend": "Uptrend",
         "price": 0.02253,
@@ -429,34 +489,26 @@
     ],
     "trending": [
       {
-        "symbol": "MIHAO",
-        "name": "ni hao cat",
-        "rank": 942,
-        "ch24": 0.8,
+        "symbol": "AKE",
+        "name": "Akedo",
+        "rank": 124,
+        "ch24": 117.3,
         "on_binance": false,
-        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top. It is a small coin (rank 942), so moves both ways are violent. Not in this screener's Binance list, so none of the checks here apply."
+        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top. Not in this screener's Binance list, so none of the checks here apply."
       },
       {
         "symbol": "BTC",
         "name": "Bitcoin",
         "rank": 1,
-        "ch24": -3.8,
+        "ch24": -3.1,
         "on_binance": true,
         "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top."
-      },
-      {
-        "symbol": "AKE",
-        "name": "Akedo",
-        "rank": 139,
-        "ch24": 329.8,
-        "on_binance": false,
-        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top. Not in this screener's Binance list, so none of the checks here apply."
       },
       {
         "symbol": "SOL",
         "name": "Solana",
         "rank": 7,
-        "ch24": -4.2,
+        "ch24": -6.0,
         "on_binance": true,
         "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top."
       },
@@ -464,23 +516,31 @@
         "symbol": "HYPE",
         "name": "Hyperliquid",
         "rank": 10,
-        "ch24": -1.1,
+        "ch24": -5.9,
+        "on_binance": true,
+        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top."
+      },
+      {
+        "symbol": "ETH",
+        "name": "Ethereum",
+        "rank": 2,
+        "ch24": -2.4,
         "on_binance": true,
         "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top."
       },
       {
         "symbol": "PENGU",
         "name": "Pudgy Penguins",
-        "rank": 114,
-        "ch24": -1.5,
+        "rank": 115,
+        "ch24": -4.4,
         "on_binance": false,
         "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top. Not in this screener's Binance list, so none of the checks here apply."
       },
       {
-        "symbol": "INJ",
-        "name": "Injective",
-        "rank": 80,
-        "ch24": 9.2,
+        "symbol": "XRP",
+        "name": "XRP",
+        "rank": 6,
+        "ch24": -3.0,
         "on_binance": true,
         "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top."
       }
@@ -672,6 +732,21 @@
     "news": [
       {
         "source": "Cointelegraph",
+        "title": "Microsoft confirms global outage resolved, rules out cyberattack",
+        "link": "https://cointelegraph.com/news/microsoft-365-outage-resolved-cyberattack-ruled-out?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
+      },
+      {
+        "source": "Cointelegraph",
+        "title": "MegaETH parent cuts 20% of staff amid restructuring, AI push",
+        "link": "https://cointelegraph.com/news/megaeth-parent-cuts-20-percent-staff-ai-push?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
+      },
+      {
+        "source": "Cointelegraph",
+        "title": "Bitcoin ETFs shed $2.35B in 2 weeks, BlackRock\u2019s losing streak hits 11",
+        "link": "https://cointelegraph.com/markets/bitcoin-etf-outflows-2-35-billion-blackrock-11-session-streak?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
+      },
+      {
+        "source": "Cointelegraph",
         "title": "Here\u2019s what happened in crypto today",
         "link": "https://cointelegraph.com/news/what-happened-in-crypto-today?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
       },
@@ -684,41 +759,26 @@
         "source": "Cointelegraph",
         "title": "Adam Back makes case for simpler security as Blockstream launches Bitcoin custody system",
         "link": "https://cointelegraph.com/news/adam-back-simpler-security-blockstream-bitcoin-custody-system?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
-      },
-      {
-        "source": "Cointelegraph",
-        "title": "Kraken parent Payward gains market share as slower trading weighs on earnings",
-        "link": "https://cointelegraph.com/news/kraken-parent-payward-gains-market-share-slower-trading-earnings?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
-      },
-      {
-        "source": "Cointelegraph",
-        "title": "US regulators move ahead on crypto trust charters as Senate scrutiny grows",
-        "link": "https://cointelegraph.com/news/us-regulators-crypto-trust-charters-senate-scrutiny-grows?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
-      },
-      {
-        "source": "Cointelegraph",
-        "title": "Metaplanet swings to $170M loss as Bitcoin sale hits earnings",
-        "link": "https://cointelegraph.com/news/metaplanet-swings-170m-loss-bitcoin-sale-earnings?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
       }
     ],
     "regime": {
       "mood": "Downtrend",
-      "breadth_pct": 11,
+      "breadth_pct": 13,
       "btc_above_50d": false,
       "btc_above_200d": false,
-      "summary": "The market is weak. BTC is below its 50 day average and below its 200 day average, and 11% of coins are above their 50 day average. Most breakouts fail even in good markets, so in a weak market protecting cash matters more than finding a winner. There is no signal today, so by the rules there is nothing to buy. Use the lists below to learn the market and build your own watchlist, not as buy tips. Should you invest at all? Only money you can afford to lose completely, and only after a few weeks of paper trading these signals."
+      "summary": "The market is weak. BTC is below its 50 day average and below its 200 day average, and 13% of coins are above their 50 day average. Most breakouts fail even in good markets, so in a weak market protecting cash matters more than finding a winner. There is no signal today, so by the rules there is nothing to buy. Use the lists below to learn the market and build your own watchlist, not as buy tips. Should you invest at all? Only money you can afford to lose completely, and only after a few weeks of paper trading these signals."
     },
     "global": {
-      "total_usd": 2328061114314.8335,
-      "btc_dom": 58.9,
-      "eth_dom": 10.1,
-      "total3_usd": 721561797098.5266,
-      "chg24h": -6.0
+      "total_usd": 2269647522734.472,
+      "btc_dom": 59.5,
+      "eth_dom": 10.3,
+      "total3_usd": 686352990342.4886,
+      "chg24h": -6.3
     },
     "sectors": [
       {
         "name": "AI Applications",
-        "chg24h": 9.8,
+        "chg24h": 4.8,
         "mcap_busd": 2.5,
         "top": [
           "Venice Token",
@@ -727,19 +787,9 @@
         ]
       },
       {
-        "name": "Artificial Intelligence (AI)",
-        "chg24h": 1.5,
-        "mcap_busd": 18.8,
-        "top": [
-          "Near",
-          "Bittensor",
-          "Staked Tao Root"
-        ]
-      },
-      {
         "name": "Real World Assets (RWA)",
-        "chg24h": 1.1,
-        "mcap_busd": 71.8,
+        "chg24h": 0.8,
+        "mcap_busd": 71.2,
         "top": [
           "Figure Heloc",
           "Chainlink",
@@ -747,28 +797,8 @@
         ]
       },
       {
-        "name": "Masternodes",
-        "chg24h": 0.9,
-        "mcap_busd": 1.2,
-        "top": [
-          "Beldex",
-          "Dash",
-          "Ontology"
-        ]
-      },
-      {
-        "name": "AI Agents",
-        "chg24h": 0.7,
-        "mcap_busd": 2.9,
-        "top": [
-          "Venice Token",
-          "Fetch Ai",
-          "Virtual Protocol"
-        ]
-      },
-      {
         "name": "Yield-Bearing Tokens",
-        "chg24h": -0.3,
+        "chg24h": -0.2,
         "mcap_busd": 2.8,
         "top": [
           "Ondo Us Dollar Yield",
@@ -777,23 +807,53 @@
         ]
       },
       {
-        "name": "Wallets",
-        "chg24h": -0.3,
-        "mcap_busd": 2.4,
+        "name": "Base Native",
+        "chg24h": -0.8,
+        "mcap_busd": 105.5,
         "top": [
-          "Kaspa",
-          "Beldex",
-          "Backpack"
+          "Usd Coin",
+          "Usds",
+          "Chainlink"
         ]
       },
       {
-        "name": "DePIN",
-        "chg24h": -0.6,
-        "mcap_busd": 8.5,
+        "name": "Trump-Affiliated",
+        "chg24h": -1.1,
+        "mcap_busd": 5.0,
         "top": [
-          "Bittensor",
-          "Render Token",
-          "Filecoin"
+          "Usd1 Wlfi",
+          "World Liberty Financial",
+          "Official Trump"
+        ]
+      },
+      {
+        "name": "Synthetic Dollar",
+        "chg24h": -1.3,
+        "mcap_busd": 6.9,
+        "top": [
+          "Ethena Usde",
+          "Falcon Finance",
+          "Usdai"
+        ]
+      },
+      {
+        "name": "AI Agents",
+        "chg24h": -1.3,
+        "mcap_busd": 2.7,
+        "top": [
+          "Venice Token",
+          "Fetch Ai",
+          "Virtual Protocol"
+        ]
+      },
+      {
+        "name": "Gambling (GambleFi)",
+        "chg24h": -1.5,
+        "mcap_busd": 3.2,
+        "top": [
+          "Rain",
+          "Shuffle 2",
+          "Bc Token"
         ]
       }
     ]
