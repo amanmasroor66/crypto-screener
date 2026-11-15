@@ -54,6 +54,15 @@ h2{font-size:17px;margin:28px 0 4px}
 .obar i{display:block;height:100%}.obar .b{background:var(--up)}.obar .a{background:var(--dn)}
 .coin details{margin-top:8px}.coin details>summary{cursor:pointer;color:var(--acc);font-size:13px;list-style:none}
 .coin details>summary::-webkit-details-marker{display:none}
+.tb{font-size:10.5px;font-weight:700;border-radius:5px;padding:1px 6px;margin-left:4px;vertical-align:middle}
+.tb.Uptrend{background:var(--upbg);color:var(--up)}.tb.Downtrend{background:var(--dnbg);color:var(--dn)}.tb.Sideways{background:var(--soft);color:var(--mute)}
+.rot{font-size:11.5px;font-weight:800;letter-spacing:.3px;border-radius:7px;padding:5px 10px;white-space:nowrap}
+.rot.on{background:var(--up);color:#06140c}.rot.sq{background:var(--dn);color:#fff}.rot.nt{background:var(--soft);color:var(--mute);border:1px solid var(--line)}
+.ob .w{display:flex;justify-content:space-between;color:var(--mute);margin-top:4px;font-size:12px}
+.obt{font-size:11px;font-weight:700;border-radius:5px;padding:1px 6px;margin-left:6px}
+.obt.b{background:var(--upbg);color:var(--up)}.obt.a{background:var(--dnbg);color:var(--dn)}.obt.n{background:var(--soft);color:var(--mute)}
+.sc{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+.sc ul{margin:6px 0 0;padding-left:18px;font-size:13px}.sc .rk li{color:var(--warn)}
 /* sectors */
 .sect{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:10px}
 .sec{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
@@ -98,18 +107,26 @@ details.pl{margin-top:10px}details.pl>summary{cursor:pointer;color:var(--acc);fo
   <div class="sub"><span class="live" id="dot"></span><span id="liveTxt">Connecting to live prices...</span></div>
   <div class="card sum" id="summary" style="display:none"></div>
 
+  <div class="card" id="rotcard" style="display:none"></div>
   <h2>Coin board</h2>
   <div class="sub">Signals first, then the biggest coins. Tap a card for the full trade plan. Spot only.</div>
-  <div class="tf" id="tf"><span class="k">Chart</span>
-    <button data-i="4h">4H</button><button data-i="1d" class="on">1D</button><button data-i="1w">1W</button>
-    <span class="k">Charts only. Signals and plans always use daily closes.</span></div>
+  <div class="tf" id="tf"><span class="k">LTF</span><button data-i="1h">1H</button><button data-i="4h">4H</button>
+    <span class="k" style="margin-left:6px">HTF</span><button data-i="1d" class="on">1D</button><button data-i="1w">1W</button>
+    <span class="k">Changes the charts only. Signals and plans use daily closes.</span></div>
   <div class="board" id="board"></div>
+  <details class="card" style="margin-top:10px"><summary style="cursor:pointer"><b>Why there are no 1H/4H trade setups here</b></summary>
+    <p class="k" style="font-size:13px">We tested 1H and 4H setups (4H breakout on volume, wick rejection at daily support, RSI divergence) on 43 coins, only in daily uptrends, with stops 1 to 3.5% under the nearest swing low and targets at the nearest resistance.
+    On 4H: breakouts won 1 of 3, wick reversals averaged 0%, divergence +0.7% on only 7 trades, and random entries under the same filters did about as well.
+    On 1H every setup lost money. Tight stops get hit by normal noise, so about 3 in 4 trades stop out. Until a version beats random entries, showing them as setups would be guessing dressed up as precision.</p></details>
   <div class="k" style="margin-top:8px">Order book pressure: buy vs sell orders near the price, live from Binance. It changes by the second and large orders can be pulled, so it is context only and not part of any tested rule.</div>
 
   <h2>Narratives today</h2>
   <div class="sub">Crypto sectors over $1B, ranked by 24 hour market cap change (CoinGecko). Shows what is moving now, not future winners.</div>
   <div class="sect" id="sectors"></div>
 
+  <h2>Sector watch</h2>
+  <div class="sub">The biggest Binance listed coins in today's strongest sectors, with facts and risks. Not picks: no one can know which will rise. KuCoin is left out: it is not licensed in the UAE and its low caps carry high rug risk.</div>
+  <div class="sect" id="seccoins"></div>
   <h2>Signals</h2>
   <div class="tabs" id="tabs"><button data-f="All" class="on">All</button><button data-f="Breakout">Breakouts</button><button data-f="Reversal">Reversals</button></div>
   <div id="list"></div>
@@ -141,11 +158,11 @@ const fmt=x=>{const t=Number(x).toPrecision(5);return t.includes(".")&&!t.includ
 const esc=t=>String(t).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const pct=x=>`<span class="${x>=0?"up":"dn"}">${x>=0?"+":""}${x.toFixed(1)}%</span>`;
 const p7=x=>x==null?"n/a":pct(x);
-const big=x=>x>=1e12?(x/1e12).toFixed(2)+"T":x>=1e9?(x/1e9).toFixed(1)+"B":(x/1e6).toFixed(0)+"M";
+const big=x=>x>=1e12?(x/1e12).toFixed(2)+"T":x>=1e9?(x/1e9).toFixed(1)+"B":x>=1e6?(x/1e6).toFixed(1)+"M":(x/1e3).toFixed(0)+"K";
 
 /* theme: light by default, remembered per device */
 function setTheme(t){document.documentElement.dataset.theme=t;document.getElementById("theme").textContent=t==="dark"?"Light":"Dark";try{localStorage.setItem("theme",t)}catch(e){}}
-try{setTheme(localStorage.getItem("theme")||"light")}catch(e){setTheme("light")}
+try{setTheme(localStorage.getItem("theme")||"dark")}catch(e){setTheme("dark")}
 document.getElementById("theme").onclick=()=>setTheme(document.documentElement.dataset.theme==="dark"?"light":"dark");
 
 function res(s){const r=s.research;if(!r)return"";
@@ -191,7 +208,8 @@ function renderBoard(){
       <svg class="chart" data-chart="${esc(c.symbol)}" viewBox="0 0 300 120" preserveAspectRatio="none"></svg>
       <div class="lvls"><div class="lv"><span class="k">Buy zone</span><b class="e">${ent}</b></div><div class="lv"><span class="k">Stop</span><b class="s">${stp}</b></div></div>
       ${p.entry_lo==null&&p.why?`<div class="k">${esc(p.why)}</div>`:""}
-      <div class="ob" data-ob="${esc(c.symbol)}USDT"><div class="r"><span>Order book</span><span class="t">loading...</span></div><div class="obar"><i class="b" style="width:50%"></i><i class="a" style="width:50%"></i></div></div>
+      <div class="ob" data-ob="${esc(c.symbol)}USDT"><div class="r"><span>Order book <span class="obt n">...</span></span><span class="t">loading...</span></div><div class="obar"><i class="b" style="width:50%"></i><i class="a" style="width:50%"></i></div>
+      <div class="w"><span class="bw">Bid wall: ...</span><span class="aw">Ask wall: ...</span></div></div>
       ${c.plan?`<details><summary>Trade plan and levels</summary>${planHtml(c.plan)}</details>`:""}</div>`}).join("");
   drawCharts();depth()}
 function drawCharts(){
@@ -223,19 +241,40 @@ function depth(){
       const sum=(a,f)=>a.filter(x=>f(+x[0])).reduce((s,x)=>s+ +x[0]*+x[1],0);
       const b=sum(d.bids,p=>p>=mid*0.98),a=sum(d.asks,p=>p<=mid*1.02),t=b+a||1,bp=Math.round(b/t*100);
       el.querySelector(".t").innerHTML=`<span class="up">${bp}% buy</span> / <span class="dn">${100-bp}% sell</span>`;
+      const wall=(rows,f)=>{let best=null;rows.forEach(x=>{const pr=+x[0],v=pr*+x[1];if(f(pr)&&(!best||v>best.v))best={p:pr,v}});return best};
+      const bw=wall(d.bids,p=>p>=mid*0.97),aw=wall(d.asks,p=>p<=mid*1.03);
+      const avg=(b+a)/((d.bids.length+d.asks.length)||1);
+      el.querySelector(".bw").textContent=bw?`Bid wall ${fmt(bw.p)} ($${big(bw.v)})`:"Bid wall: none";
+      el.querySelector(".aw").textContent=aw?`Ask wall ${fmt(aw.p)} ($${big(aw.v)})`:"Ask wall: none";
+      const tag=el.querySelector(".obt");
+      if(aw&&aw.v>avg*8&&aw.p<=mid*1.01){tag.textContent="Sell wall ahead";tag.className="obt a"}
+      else if(bp>=60){tag.textContent="Bids heavier";tag.className="obt b"}
+      else if(bp<=40){tag.textContent="Asks heavier";tag.className="obt a"}
+      else{tag.textContent="Balanced";tag.className="obt n"}
       el.querySelector(".b").style.width=bp+"%";el.querySelector(".a").style.width=(100-bp)+"%"}).catch(()=>{el.querySelector(".t").textContent="unavailable"})})}
 document.getElementById("tf").onclick=e=>{if(e.target.dataset.i){TF=e.target.dataset.i;
   document.querySelectorAll("#tf button").forEach(b=>b.classList.toggle("on",b===e.target));drawCharts()}};
 
 /* ---------- ticker bar ---------- */
+let LASTP=null,LASTC=null,IDX={};
+function idxTrends(){[["SPYB","S&P 500"],["QQQB","NASDAQ 100"]].forEach(([s])=>{
+  fetch(`${API}klines?symbol=${s}USDT&interval=1d&limit=60`).then(r=>r.json()).then(k=>{const c=k.slice(0,-1).map(x=>+x[4]);if(c.length<50)return;
+    const m20=c.slice(-20).reduce((a,b)=>a+b)/20,m50=c.slice(-50).reduce((a,b)=>a+b)/50,p=c[c.length-1];
+    IDX[s]=p>m50&&m20>m50?"Uptrend":p<m50&&m20<m50?"Downtrend":"Sideways";renderTick(LASTP,LASTC)}).catch(()=>{})})}
 function renderTick(P,C){
-  const d=DATA,ov=d.overview||{},g=ov.global,t=[];
-  ["BTC","ETH","SOL"].forEach(k=>{const p=P&&P[k+"USDT"],c=C&&C[k+"USDT"];const m=d.market[k]||{};const price=p!=null?p:m.price,ch=c!=null?c:m.chg24h;
-    if(price!=null)t.push(`<div class="tk"><div class="l">${k}</div><div class="n">$${fmt(price)} ${ch!=null?pct(ch):""}</div></div>`)});
+  if(P){LASTP=P;LASTC=C}
+  const d=DATA,ov=d.overview||{},g=ov.global,t=[],trend={};(ov.leaders||[]).forEach(x=>trend[x.symbol]=x.trend);
+  const tb=x=>x?`<span class="tb ${x}">${x==="Uptrend"?"UP":x==="Downtrend"?"DOWN":"FLAT"}</span>`:"";
+  ["BTC","ETH"].forEach(k=>{const p=P&&P[k+"USDT"],c=C&&C[k+"USDT"];const m=d.market[k]||{};const price=p!=null?p:m.price,ch=c!=null?c:m.chg24h;
+    if(price!=null)t.push(`<div class="tk"><div class="l">${k}${tb(trend[k])}</div><div class="n">$${fmt(price)} ${ch!=null?pct(ch):""}</div></div>`)});
+  [["SPYB","S&P 500 (SPY)"],["QQQB","NASDAQ (QQQ)"]].forEach(([s,l])=>{const p=P&&P[s+"USDT"],c=C&&C[s+"USDT"];
+    if(p!=null)t.push(`<div class="tk" title="Tokenized ETF on Binance. Follows US market hours; weekend moves are thin."><div class="l">${l}${tb(IDX[s])}</div><div class="n">$${fmt(p)} ${c!=null?pct(c):""}</div></div>`)});
   if(g){t.push(`<div class="tk"><div class="l">BTC.D</div><div class="n">${g.btc_dom}%</div></div>`);
     t.push(`<div class="tk"><div class="l">TOTAL3</div><div class="n">$${big(g.total3_usd)}</div></div>`);
     t.push(`<div class="tk"><div class="l">TOTAL MCAP</div><div class="n">$${big(g.total_usd)} ${pct(g.chg24h)}</div></div>`)}
   if(ov.regime)t.push(`<div class="tk"><div class="l">MARKET</div><div class="n ${ov.regime.mood==="Uptrend"?"up":ov.regime.mood==="Downtrend"?"dn":""}">${esc(ov.regime.mood)}</div></div>`);
+  const r=ov.rotation;
+  if(r)t.push(`<div class="tk" title="${esc(r.text+" "+r.how)}"><span class="rot ${r.state==="ALT ROTATION ACTIVE"?"on":r.state==="NEUTRAL"?"nt":"sq"}">${esc(r.state)}</span></div>`);
   document.getElementById("tick").innerHTML=t.join("")}
 
 /* ---------- everything else ---------- */
@@ -250,6 +289,13 @@ function render(){
   const se=ov.sectors||[];
   document.getElementById("sectors").innerHTML=se.length?se.map(s=>`<div class="sec"><div class="top"><span class="nm">${esc(s.name)}</span>${pct(s.chg24h)}</div>
     <div class="k">Market cap $${s.mcap_busd}B</div><div class="tp">${s.top.map(esc).join(", ")}</div></div>`).join(""):`<div class="empty">Sector data unavailable this run.</div>`;
+  const r=ov.rotation,rc=document.getElementById("rotcard");
+  if(r){rc.style.display="";rc.className="card sum "+(r.state==="ALT ROTATION ACTIVE"?"Uptrend":r.state==="NEUTRAL"?"":"Downtrend");
+    rc.innerHTML=`<div class="top"><b>${esc(r.state)}</b><span class="k">alts median 7d ${r.alt_median_7d>=0?"+":""}${r.alt_median_7d}% vs BTC ${r.btc_7d>=0?"+":""}${r.btc_7d}%${r.btc_dom_7d_change!=null?` | BTC.D 7d ${r.btc_dom_7d_change>=0?"+":""}${r.btc_dom_7d_change}`:" | BTC.D trend: collecting history"}</span></div><p style="margin:6px 0 0">${esc(r.text)}</p>`}
+  const sc=ov.sector_coins||[];
+  document.getElementById("seccoins").innerHTML=sc.length?sc.map(x=>`<div class="sc"><div class="top"><div><span class="sym">${esc(x.symbol)}</span> <span class="k">${esc(x.name||"")}</span></div><span class="v live-px" data-p="${esc(x.symbol)}USDT">${x.price!=null?fmt(x.price):""}</span></div>
+    <div class="k">${esc(x.sector)} | market cap $${big(x.mcap_musd*1e6)}${x.rank?" | rank "+x.rank:""} | on Binance ${x.binance_days?x.binance_days+" days":x.binance_days_min?"220+ days":"n/a"}</div>
+    <ul>${x.facts.map(f=>`<li>${esc(f)}</li>`).join("")}</ul><ul class="rk">${x.risks.map(f=>`<li>${esc(f)}</li>`).join("")}</ul></div>`).join(""):`<div class="empty">Sector data unavailable this run.</div>`;
   const rows=d.signals.filter(s=>F==="All"||s.type===F);
   const el=document.getElementById("list");
   if(!rows.length){el.innerHTML=`<div class="empty">No clean setups right now. Waiting is a valid position.</div>`}
@@ -298,8 +344,8 @@ document.getElementById("tabs").onclick=e=>{if(e.target.dataset.f){F=e.target.da
 /* ---------- live prices every 15 seconds ---------- */
 function live(){
   const ov=DATA.overview||{};
-  const pairs=[...new Set([...(DATA.signals||[]),...(DATA.watchlist||[])].map(x=>x.pair).concat(["BTCUSDT","ETHUSDT","SOLUSDT"])
-    .concat([...(ov.leaders||[]),...(ov.growing||[]),...(ov.new_listings||[]),...(ov.bottoms||[])].map(x=>x.symbol+"USDT")))];
+  const pairs=[...new Set([...(DATA.signals||[]),...(DATA.watchlist||[])].map(x=>x.pair).concat(["BTCUSDT","ETHUSDT","SOLUSDT","SPYBUSDT","QQQBUSDT"])
+    .concat([...(ov.leaders||[]),...(ov.growing||[]),...(ov.new_listings||[]),...(ov.bottoms||[]),...(ov.sector_coins||[])].map(x=>x.symbol+"USDT")))];
   fetch(API+"ticker/24hr?type=MINI&symbols="+encodeURIComponent(JSON.stringify(pairs))).then(r=>r.json()).then(a=>{
     const P={},C={};a.forEach(x=>{P[x.symbol]=parseFloat(x.lastPrice);const o=parseFloat(x.openPrice);C[x.symbol]=o?(P[x.symbol]/o-1)*100:0});
     document.querySelectorAll("[data-p]").forEach(el=>{const p=P[el.dataset.p];if(p!=null)el.textContent=fmt(p)});
@@ -316,7 +362,7 @@ function live(){
 }
 function load(){fetch("signals.json?t="+Date.now()).then(r=>r.json()).then(d=>{DATA=d;render();live()})
  .catch(()=>{document.getElementById("sub").textContent="Could not load signals.json"})}
-load();setInterval(()=>{if(DATA)live()},15000);setInterval(()=>{if(DATA)depth()},30000);setInterval(load,10*60*1000);
+load();idxTrends();setInterval(()=>{if(DATA)live()},15000);setInterval(()=>{if(DATA)depth()},30000);setInterval(load,10*60*1000);
 </script>
 </body>
 </html>

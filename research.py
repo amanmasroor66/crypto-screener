@@ -75,10 +75,19 @@ def fetch_sectors(n=8, min_cap=1e9):
             continue
         if any(w in name for w in SECTOR_SKIP):
             continue
-        out.append({"name": r["name"], "chg24h": round(r["market_cap_change_24h"], 1), "mcap_busd": round(r["market_cap"] / 1e9, 1),
+        if abs(r["market_cap_change_24h"]) > 25:  # almost always a change in which coins the category counts
+            continue
+        out.append({"id": r.get("id"), "name": r["name"], "chg24h": round(r["market_cap_change_24h"], 1), "mcap_busd": round(r["market_cap"] / 1e9, 1),
                     "top": [i.replace("-", " ").title() for i in (r.get("top_3_coins_id") or [])][:3]})
     out.sort(key=lambda x: x["chg24h"], reverse=True)
     return out[:n]
+
+
+def fetch_sector_coins(cat_id, n=15):
+    """Biggest coins in one CoinGecko category, with 7 and 30 day change."""
+    q = urllib.parse.urlencode({"vs_currency": "usd", "category": cat_id, "order": "market_cap_desc", "per_page": n,
+                                "price_change_percentage": "7d,30d"})
+    return _gecko(GECKO + "?" + q)
 
 
 def fetch_trending():

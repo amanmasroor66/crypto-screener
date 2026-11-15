@@ -257,6 +257,21 @@ def run(fetch=get, enrich_with_research=True):
     out["overview"] = overview(allc, len(results), top, trending, news)
     out["overview"]["global"] = glob
     out["overview"]["sectors"] = sectors or []
+    hist = global_history(glob)
+    out["overview"]["global_history"] = hist
+    import market
+    out["overview"]["rotation"] = market.rotation(allc, hist)
+    out["overview"]["sector_coins"] = []
+    if sectors and enrich_with_research:
+        pairs = {t["symbol"] for t in tickers}
+
+        def slow_fetch(cat):
+            time.sleep(3)
+            return research.fetch_sector_coins(cat)
+        try:
+            out["overview"]["sector_coins"] = market.sector_coins(sectors, slow_fetch, pairs, allc, skip=STABLES | NON_CRYPTO)
+        except Exception as e:
+            print("sector coins skipped:", e, file=sys.stderr)
     attach_plans(results, allc)
     return out
 
@@ -266,6 +281,17 @@ def overview(allc, n_signals, top=None, trending=None, news=None):
     ov = market.build(allc, gecko_top=top, trending=trending, news=news)
     ov["regime"] = market.regime(ov.pop("_btc"), ov.pop("_all"), n_signals)
     return ov
+
+
+def global_history(glob, path="signals.json", keep=180):
+    """Keep a rolling record of BTC dominance and TOTAL3 so their trend can be measured over time."""
+    try:
+        hist = json.load(open(path)).get("overview", {}).get("global_history", []) or []
+    except Exception:
+        hist = []
+    if glob:
+        hist.append({"t": int(time.time()), "btc_dom": glob.get("btc_dom"), "total3": glob.get("total3_usd")})
+    return hist[-keep:]
 
 
 def attach_plans(signals, allc):

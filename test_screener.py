@@ -146,4 +146,24 @@ assert g["btc_dom"] == 60 and abs(g["total3_usd"] - 9e11) < 1 and g["chg24h"] ==
 sx = research.fetch_sectors()
 assert [x["name"] for x in sx] == ["Artificial Intelligence (AI)", "Meme"] and sx[0]["top"] == ["Fetch Ai", "Render Token"]
 research._gecko = _g
+# alt rotation and sector facts
+def mk(start, step, n):
+    return {"candles": series(start, step, n), "qv": 1e7}
+alts_up = {f"A{i}": mk(1, 0.02, 30) for i in range(12)}
+rot = market.rotation(dict(alts_up, BTC=mk(100, 0, 30)))
+assert rot["state"] == "ALT ROTATION ACTIVE" and rot["alt_median_7d"] > rot["btc_7d"]
+alts_dn = {f"A{i}": mk(5, -0.05, 30) for i in range(12)}
+assert market.rotation(dict(alts_dn, BTC=mk(100, 0.5, 30)))["state"] == "BTC DOMINANCE SQUEEZE"
+h = [{"t": 0, "btc_dom": 55.0}, {"t": 7 * 86400, "btc_dom": 57.0}]
+assert market.rotation(dict(alts_up, BTC=mk(100, 0, 30)), h)["state"] == "BTC DOMINANCE SQUEEZE"  # dominance spike overrides
+assert market.rotation({"BTC": mk(1, 0, 30)}) is None
+sc = market.sector_coins([{"id": "ai", "name": "AI", "chg24h": 4.2}],
+                         lambda cid: [{"symbol": "fet", "name": "Fetch", "market_cap": 5e7, "circulating_supply": 40, "max_supply": 100,
+                                       "price_change_percentage_7d_in_currency": 5, "price_change_percentage_30d_in_currency": 150},
+                                      {"symbol": "nope", "market_cap": 9e9}, {"symbol": "paxg", "market_cap": 9e9}], {"FETUSDT", "PAXGUSDT"}, {}, skip={"PAXG"})
+assert [x["symbol"] for x in sc] == ["FET"] and len(sc[0]["risks"]) == 3 and "AI" in sc[0]["facts"][0]
+assert not any(w in " ".join(sc[0]["facts"] + sc[0]["risks"]).lower() for w in ("upside", "gem", "moon", "guarantee"))
+dup = market.sector_coins([{"id": "a", "name": "A", "chg24h": 1}, {"id": "b", "name": "B", "chg24h": 1}],
+                         lambda cid: [{"symbol": "zec", "market_cap": 9e9}], {"ZECUSDT"}, {})
+assert [x["symbol"] for x in dup] == ["ZEC"]  # a coin in two sectors is listed once
 print("OK")

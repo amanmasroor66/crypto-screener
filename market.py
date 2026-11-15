@@ -173,6 +173,83 @@ def build(cands, btc_sym="BTC", gecko_top=None, trending=None, news=None, skip=(
             "news": (news or [])[:NEWS_MAX], "_btc": ms.get(btc_sym), "_all": list(old.values())}
 
 
+# ---------------------------------------------------------------- alt rotation
+def rotation(cands, history=None):
+    """Are altcoins outperforming BTC (rotation) or is money hiding in BTC (dominance squeeze)?
+    Uses the scanned coins' own 7 day moves, plus the BTC dominance trend once enough history exists."""
+    btc = cands.get("BTC")
+    alts = []
+    for s, v in cands.items():
+        c = v["candles"]
+        if s in ("BTC", "ETH") or len(c) < 8:
+            continue
+        alts.append(c[-1]["c"] / c[-8]["c"] - 1)
+    if not btc or len(btc["candles"]) < 8 or len(alts) < 10:
+        return None
+    b7 = btc["candles"][-1]["c"] / btc["candles"][-8]["c"] - 1
+    alts.sort()
+    a7 = alts[len(alts) // 2]
+    dom_chg = None
+    hist = [h for h in (history or []) if h.get("btc_dom") is not None]
+    if len(hist) >= 2 and hist[-1]["t"] - hist[0]["t"] >= 6 * 86400:
+        old = next(h for h in hist if hist[-1]["t"] - h["t"] <= 7 * 86400)
+        dom_chg = round(hist[-1]["btc_dom"] - old["btc_dom"], 2)
+    gap = (a7 - b7) * 100
+    if gap >= 3 and a7 > 0 and (dom_chg is None or dom_chg <= 0.3):
+        state, text = "ALT ROTATION ACTIVE", "Most altcoins beat BTC this week and are rising, while BTC dominance is flat or falling."
+    elif gap <= -5 or (dom_chg is not None and dom_chg >= 1.0):
+        state, text = "BTC DOMINANCE SQUEEZE", "Money is hiding in BTC: altcoins lag BTC this week. Alt breakouts tend to fail in this phase."
+    else:
+        state, text = "NEUTRAL", "Altcoins and BTC are moving roughly together. No rotation either way."
+    return {"state": state, "text": text, "btc_7d": round(b7 * 100, 1), "alt_median_7d": round(a7 * 100, 1),
+            "btc_dom_7d_change": dom_chg,
+            "how": "Compares the median 7 day move of all scanned altcoins with BTC, plus the 7 day change in BTC dominance once a week of history is stored."}
+
+
+def sector_coins(sectors, fetch, pairs, allc, gecko_rank=None, per_sector=4, sectors_max=3, skip=()):
+    """Facts for the biggest Binance listed coins in the strongest sectors. No upside claims."""
+    out, seen = [], set()
+    for sec in sectors[:sectors_max]:
+        try:
+            rows = fetch(sec["id"])
+        except Exception:
+            continue
+        n = 0
+        for r in rows:
+            sym = (r.get("symbol") or "").upper()
+            if sym + "USDT" not in pairs or sym in ("BTC", "ETH", "USDT", "USDC") or sym in skip or sym in seen:
+                continue
+            seen.add(sym)
+            mc = r.get("market_cap") or 0
+            circ, mx = r.get("circulating_supply"), r.get("max_supply") or r.get("total_supply")
+            c = (allc.get(sym) or {}).get("candles")
+            age = len(c) if c else None
+            m = metrics(c) if c and len(c) >= 50 else None
+            facts = [f"In {sec['name']}, a sector {'up' if sec['chg24h'] >= 0 else 'down'} {abs(sec['chg24h'])}% today."]
+            ch7, ch30 = r.get("price_change_percentage_7d_in_currency"), r.get("price_change_percentage_30d_in_currency")
+            if ch30 is not None:
+                facts.append(f"{ch30:+.0f}% over 30 days, {ch7:+.0f}% over 7 days.")
+            if m:
+                facts.append(f"Daily trend: {trend_word(m).lower()}.")
+            risks = []
+            if mc and mc < 100e6:
+                risks.append("Small cap: thin order books and large swings.")
+            if circ and mx and circ / mx < 0.6:
+                risks.append(f"Only {100 * circ / mx:.0f}% of supply circulating, so unlocks can add selling.")
+            if m and m["downtrend"]:
+                risks.append("Below its 50 day average: the trend is still down.")
+            if ch30 is not None and ch30 > 100:
+                risks.append("More than doubled in 30 days: late entries often reverse.")
+            out.append({"symbol": sym, "name": r.get("name"), "sector": sec["name"], "mcap_musd": round(mc / 1e6),
+                        "rank": r.get("market_cap_rank"), "price": r.get("current_price"),
+                        "binance_days": age if age and age < 219 else None, "binance_days_min": 220 if age and age >= 219 else None,
+                        "facts": facts, "risks": risks or ["No standout risk in this data, which is not the same as safe."]})
+            n += 1
+            if n >= per_sector:
+                break
+    return out
+
+
 # ---------------------------------------------------------------- trade plan
 def atr(c, n=14):
     tr = [max(x["h"] - x["l"], abs(x["h"] - p["c"]), abs(x["l"] - p["c"])) for p, x in zip(c[-n - 1:-1], c[-n:])]
