@@ -166,4 +166,9 @@ assert not any(w in " ".join(sc[0]["facts"] + sc[0]["risks"]).lower() for w in (
 dup = market.sector_coins([{"id": "a", "name": "A", "chg24h": 1}, {"id": "b", "name": "B", "chg24h": 1}],
                          lambda cid: [{"symbol": "zec", "market_cap": 9e9}], {"ZECUSDT"}, {})
 assert [x["symbol"] for x in dup] == ["ZEC"]  # a coin in two sectors is listed once
+# focus block: only BTC, ETH, SOL get full cards
+fo = market.build({"BTC": {"candles": series(50, 0.2, 220), "qv": 9e9}, "SOL": {"candles": series(5, -0.01, 220), "qv": 1e9},
+                   "XRP": {"candles": series(1, 0.01, 220), "qv": 2e9}})["focus"]
+assert [x["symbol"] for x in fo] == ["BTC", "SOL"]  # ETH missing from data is skipped, XRP never included
+assert fo[0]["plan"] and fo[1]["trend"] == "Downtrend" and fo[1]["above50_pct"] < 0
 print("OK")

@@ -5,6 +5,7 @@ Every sentence here comes from measured data (price trend, size, age, attention)
 None of it is a prediction. The summary never says a coin will go up.
 """
 
+FOCUS = ("BTC", "ETH", "SOL")  # the only coins that get full cards on the board
 NEW_DAYS = 90          # listed on Binance less than this many days ago
 GROWING_MAX = 8
 LEADERS_MAX = 10
@@ -165,10 +166,21 @@ def build(cands, btc_sym="BTC", gecko_top=None, trending=None, news=None, skip=(
         row["note"] = trending_note(row)
         trend_rows.append(row)
 
+    focus = []
+    for s in FOCUS:
+        c = (cands.get(s) or {}).get("candles")
+        if not c or len(c) < 60:
+            continue
+        m = metrics(c)
+        focus.append({"symbol": s, "trend": trend_word(m), "price": m["price"], "ch7": m["ch7"], "ch30": m["ch30"],
+                      "from_high_pct": m["from_high_pct"], "ma50": m["ma50"],
+                      "above50_pct": round((m["price"] / m["ma50"] - 1) * 100, 1) if m["ma50"] else None,
+                      "note": leader_note(s, m), "plan": plan(c, m)})
+
     bots = bottoms(cands, skip)
     for b in bots:
         b["plan"] = plan(cands[b["symbol"]]["candles"], metrics(cands[b["symbol"]]["candles"]))
-    return {"leaders": leaders, "growing": growing, "new_listings": new, "trending": trend_rows,
+    return {"focus": focus, "leaders": leaders, "growing": growing, "new_listings": new, "trending": trend_rows,
             "bottoms": bots, "bottoms_tested": BOTTOM_TESTED,
             "news": (news or [])[:NEWS_MAX], "_btc": ms.get(btc_sym), "_all": list(old.values())}
 

@@ -63,6 +63,16 @@ h2{font-size:17px;margin:28px 0 4px}
 .obt.b{background:var(--upbg);color:var(--up)}.obt.a{background:var(--dnbg);color:var(--dn)}.obt.n{background:var(--soft);color:var(--mute)}
 .sc{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
 .sc ul{margin:6px 0 0;padding-left:18px;font-size:13px}.sc .rk li{color:var(--warn)}
+.stale{background:#fff4cc;color:#5c4400;border:1px solid #f0c400;border-radius:10px;padding:10px 14px;margin:0 0 12px;font-size:14px}
+:root[data-theme="dark"] .stale{background:#3a2f00;color:#ffe27a;border-color:#8a7000}
+.ctab{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden;font-size:13.5px}
+.ctab th,.ctab td{padding:9px 10px;text-align:left;border-bottom:1px solid var(--line)}.ctab th{color:var(--mute);font-size:12px;font-weight:600}
+.ctab tr:last-child td{border-bottom:0}
+@media (max-width:480px){.ctab th,.ctab td{padding:7px 6px;font-size:12.5px}.ctab .tr{display:none}}
+[data-tip]{text-decoration:underline dotted var(--mute);text-underline-offset:3px;cursor:help}
+#tip{position:fixed;z-index:20;max-width:270px;background:var(--ink);color:var(--bg);font-size:12.5px;line-height:1.4;padding:8px 10px;border-radius:8px;display:none;box-shadow:0 4px 14px rgba(0,0,0,.25)}
+.obd{margin-top:8px;font-size:12px;color:var(--mute)}.obd summary{cursor:pointer;list-style:none}.obd summary::-webkit-details-marker{display:none}
+.tgl{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--mute);cursor:pointer;margin-left:6px}
 /* sectors */
 .sect{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:10px}
 .sec{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
@@ -101,15 +111,17 @@ details.pl{margin-top:10px}details.pl>summary{cursor:pointer;color:var(--acc);fo
   <div class="tick" id="tick"></div>
   <button class="tbtn" id="theme" title="Light or dark">Dark</button>
 </div></div>
+<div id="tip"></div>
 <div class="wrap">
+  <div class="stale" id="stale" style="display:none"></div>
   <h1>Crypto Screener</h1>
   <div class="sub" id="sub">Loading...</div>
   <div class="sub"><span class="live" id="dot"></span><span id="liveTxt">Connecting to live prices...</span></div>
   <div class="card sum" id="summary" style="display:none"></div>
 
   <div class="card" id="rotcard" style="display:none"></div>
-  <h2>Coin board</h2>
-  <div class="sub">Signals first, then the biggest coins. Tap a card for the full trade plan. Spot only.</div>
+  <h2>BTC, ETH, SOL</h2>
+  <div class="sub" id="boardsub">Full cards for the three coins that drive the market. Tap a card for its trade plan. Spot only. Every other coin is in the sections below.</div>
   <div class="tf" id="tf"><span class="k">LTF</span><button data-i="1h">1H</button><button data-i="4h">4H</button>
     <span class="k" style="margin-left:6px">HTF</span><button data-i="1d" class="on">1D</button><button data-i="1w">1W</button>
     <span class="k">Changes the charts only. Signals and plans use daily closes.</span></div>
@@ -118,7 +130,6 @@ details.pl{margin-top:10px}details.pl>summary{cursor:pointer;color:var(--acc);fo
     <p class="k" style="font-size:13px">We tested 1H and 4H setups (4H breakout on volume, wick rejection at daily support, RSI divergence) on 43 coins, only in daily uptrends, with stops 1 to 3.5% under the nearest swing low and targets at the nearest resistance.
     On 4H: breakouts won 1 of 3, wick reversals averaged 0%, divergence +0.7% on only 7 trades, and random entries under the same filters did about as well.
     On 1H every setup lost money. Tight stops get hit by normal noise, so about 3 in 4 trades stop out. Until a version beats random entries, showing them as setups would be guessing dressed up as precision.</p></details>
-  <div class="k" style="margin-top:8px">Order book pressure: buy vs sell orders near the price, live from Binance. It changes by the second and large orders can be pulled, so it is context only and not part of any tested rule.</div>
 
   <h2>Narratives today</h2>
   <div class="sub">Crypto sectors over $1B, ranked by 24 hour market cap change (CoinGecko). Shows what is moving now, not future winners.</div>
@@ -128,7 +139,7 @@ details.pl{margin-top:10px}details.pl>summary{cursor:pointer;color:var(--acc);fo
   <div class="sub">The biggest Binance listed coins in today's strongest sectors, with facts and risks. Not picks: no one can know which will rise. KuCoin is left out: it is not licensed in the UAE and its low caps carry high rug risk.</div>
   <div class="sect" id="seccoins"></div>
   <h2>Signals</h2>
-  <div class="tabs" id="tabs"><button data-f="All" class="on">All</button><button data-f="Breakout">Breakouts</button><button data-f="Reversal">Reversals</button></div>
+  <div class="tabs" id="tabs"><label class="tgl"><input type="checkbox" id="exp"> Show experimental reversal signals <span class="k">(they lost money in the backtest)</span></label></div>
   <div id="list"></div>
   <h2>Watchlist: close to triggering</h2>
   <div class="sub">Not signals. These sit within 3% under their 42 day high. They trigger only on a daily close above it with strong volume.</div>
@@ -152,7 +163,8 @@ details.pl{margin-top:10px}details.pl>summary{cursor:pointer;color:var(--acc);fo
   <div class="notes" id="notes"></div>
 </div>
 <script>
-let DATA=null,F="All",TF="1d";const BOARD_MAX=12;
+let DATA=null,TF="1d",EXP=false;
+try{EXP=localStorage.getItem("exp")==="1"}catch(e){}
 const API="https://data-api.binance.vision/api/v3/";
 const fmt=x=>{const t=Number(x).toPrecision(5);return t.includes(".")&&!t.includes("e")?t.replace(/\.?0+$/,""):String(parseFloat(t))};
 const esc=t=>String(t).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
@@ -191,30 +203,55 @@ function planHtml(p){if(!p)return"";
   return h+`<p class="k">Spot only. No leverage. Levels come from past prices, not predictions.</p></div>`}
 
 /* ---------- coin board ---------- */
-function boardCoins(){
-  const d=DATA,ov=d.overview||{},out=[],seen=new Set();
-  (d.signals||[]).forEach(s=>{if(!seen.has(s.symbol)){seen.add(s.symbol);out.push({symbol:s.symbol,plan:s.plan,signal:s,trend:"Signal",ch30:null})}});
-  (ov.leaders||[]).forEach(s=>{if(!seen.has(s.symbol)){seen.add(s.symbol);out.push(s)}});
-  (ov.growing||[]).forEach(s=>{if(!seen.has(s.symbol)){seen.add(s.symbol);out.push(s)}});
-  return out.slice(0,BOARD_MAX)}
+const TIPS={
+  buyzone:"The price range where the trade plan would buy. 'None now' means the rules say do not buy yet.",
+  stop:"If price falls to this level, sell. It caps the loss on one trade.",
+  sell20:"Your exit rule: sell if a day closes below the 20 day average price.",
+  size:"How much of your money to put in so that hitting the stop loses about 1% of your total capital.",
+  vol:"Today's trading volume compared with the 20 day average. 2x means twice the usual activity.",
+  ob:"Buy orders vs sell orders waiting near the price on Binance right now. Changes every second and big orders can be pulled, so it is context only.",
+  above50:"How far price is above (+) or below (minus) its 50 day average. Below it means the medium term trend is down.",
+  trig:"The 42 day high. A daily close above it on strong volume is a breakout signal.",
+  ch24:"Price change over the last 24 hours.",
+  ch30:"Price change over the last 30 days.",
+  btcd:"BTC dominance: Bitcoin's share of the whole crypto market value. Rising means money prefers BTC over altcoins.",
+  total3:"TOTAL3: the value of all crypto except BTC and ETH. A rough gauge of altcoin money.",
+  total:"The value of the whole crypto market and its 24 hour change.",
+  spy:"S&P 500 tracker (SPY token on Binance). Follows US stock market hours, so weekend moves are thin.",
+  qqq:"Nasdaq 100 tracker (QQQ token on Binance). Follows US stock market hours, so weekend moves are thin.",
+  mood:"Market mood from the screener rules: BTC vs its 50 and 200 day averages and the share of coins in uptrends.",
+  rot:"Compares the median 7 day move of all scanned altcoins with BTC. Rotation means alts are leading; squeeze means money is hiding in BTC."};
+const tip=(k,label)=>`<span data-tip="${esc(TIPS[k]||k)}">${label}</span>`;
+function guard(id,fn){try{fn()}catch(e){console.error(id,e);const el=document.getElementById(id);if(el)el.innerHTML=`<div class="empty">This part is unavailable right now. The rest of the page still works.</div>`}}
+function boardCoins(){const ov=DATA.overview||{};return ov.focus||[]}
 function renderBoard(){
-  const coins=boardCoins(),el=document.getElementById("board");
-  if(!coins.length){el.innerHTML=`<div class="empty">No coin data this run.</div>`;return}
-  el.innerHTML=coins.map(c=>{const p=c.plan||{},st=c.signal?"Breakout signal":(p.status||c.trend||""),cls=c.signal?"go":stCls(p.status);
+  const coins=boardCoins(),el=document.getElementById("board"),ov=DATA.overview||{};
+  if(!coins.length){el.className="";el.innerHTML=`<div class="empty">No data for BTC, ETH and SOL this run.</div>`;return}
+  const down=ov.regime&&ov.regime.mood==="Downtrend",allNo=coins.every(c=>(c.plan||{}).status==="No buy");
+  document.getElementById("tf").style.display=down&&allNo?"none":"";
+  if(down&&allNo){el.className="";
+    el.innerHTML=`<div class="k" style="margin-bottom:6px">Market is down and none of the three is a buy, so the cards are folded into a table.</div>
+    <div style="overflow-x:auto"><table class="ctab"><tr><th>Coin</th><th>Price</th><th>${tip("ch24","24h")}</th><th>${tip("ch30","30d")}</th><th>${tip("above50","vs 50d avg")}</th><th>${tip("trig","Breakout at")}</th></tr>
+    ${coins.map(c=>`<tr><td><b>${esc(c.symbol)}</b> <span class="tr ${c.trend}">${c.trend}</span></td><td class="live-px" data-p="${esc(c.symbol)}USDT">${fmt(c.price)}</td>
+      <td data-ch2="${esc(c.symbol)}USDT">...</td><td>${p7(c.ch30)}</td><td>${c.above50_pct!=null?pct(c.above50_pct):"n/a"}</td><td>${fmt((c.plan||{}).trigger)}</td></tr>`).join("")}</table></div>
+    ${coins.map(c=>`<details class="row" style="margin-top:8px"><summary><b>${esc(c.symbol)}</b> <span class="k">plan and levels</span></summary>${planHtml(c.plan)}</details>`).join("")}`;
+    return}
+  el.className="board";
+  el.innerHTML=coins.map(c=>{const p=c.plan||{},st=p.status||c.trend||"",cls=stCls(p.status);
     const ent=p.entry_lo!=null?`${fmt(p.entry_lo)} to ${fmt(p.entry_hi)}`:"None now",stp=p.stop!=null?fmt(p.stop):"n/a";
-    return `<div class="coin ${c.signal?"sig":cls==="go"?"go":""}" id="c_${esc(c.symbol)}">
+    return `<div class="coin ${cls==="go"?"go":""}" id="c_${esc(c.symbol)}">
       <div class="hd"><div class="pair">${esc(c.symbol)}<span>/USDT</span></div><span class="badge ${cls}">${esc(st)}</span></div>
       <div class="px"><b class="live-px" data-p="${esc(c.symbol)}USDT">...</b><span class="k" data-ch="${esc(c.symbol)}USDT"></span></div>
       <svg class="chart" data-chart="${esc(c.symbol)}" viewBox="0 0 300 120" preserveAspectRatio="none"></svg>
-      <div class="lvls"><div class="lv"><span class="k">Buy zone</span><b class="e">${ent}</b></div><div class="lv"><span class="k">Stop</span><b class="s">${stp}</b></div></div>
+      <div class="lvls"><div class="lv"><span class="k">${tip("buyzone","Buy zone")}</span><b class="e">${ent}</b></div><div class="lv"><span class="k">${tip("stop","Stop")}</span><b class="s">${stp}</b></div></div>
       ${p.entry_lo==null&&p.why?`<div class="k">${esc(p.why)}</div>`:""}
-      <div class="ob" data-ob="${esc(c.symbol)}USDT"><div class="r"><span>Order book <span class="obt n">...</span></span><span class="t">loading...</span></div><div class="obar"><i class="b" style="width:50%"></i><i class="a" style="width:50%"></i></div>
-      <div class="w"><span class="bw">Bid wall: ...</span><span class="aw">Ask wall: ...</span></div></div>
+      <details class="obd" data-ob="${esc(c.symbol)}USDT"><summary>${tip("ob","Order book")}: <span class="t">loading...</span> <span class="obt n">...</span></summary>
+      <div class="w"><span class="bw">Bid wall: ...</span><span class="aw">Ask wall: ...</span></div></details>
       ${c.plan?`<details><summary>Trade plan and levels</summary>${planHtml(c.plan)}</details>`:""}</div>`}).join("");
   drawCharts();depth()}
 function drawCharts(){
   document.querySelectorAll("[data-chart]").forEach(svg=>{
-    const sym=svg.dataset.chart,c=boardCoins().find(x=>x.symbol===sym),p=(c&&c.plan)||{};
+    const sym=svg.dataset.chart,c=boardCoins().find(x=>x.symbol===sym),p=(c&&c.plan)||{};if(!svg.isConnected)return;
     fetch(`${API}klines?symbol=${sym}USDT&interval=${TF}&limit=60`).then(r=>r.json()).then(k=>{
       const cs=k.map(x=>({o:+x[1],h:+x[2],l:+x[3],c:+x[4]}));if(!cs.length)return;
       let lo=Math.min(...cs.map(x=>x.l)),hi=Math.max(...cs.map(x=>x.h));
@@ -240,7 +277,7 @@ function depth(){
       const mid=(+d.bids[0][0]+ +d.asks[0][0])/2;
       const sum=(a,f)=>a.filter(x=>f(+x[0])).reduce((s,x)=>s+ +x[0]*+x[1],0);
       const b=sum(d.bids,p=>p>=mid*0.98),a=sum(d.asks,p=>p<=mid*1.02),t=b+a||1,bp=Math.round(b/t*100);
-      el.querySelector(".t").innerHTML=`<span class="up">${bp}% buy</span> / <span class="dn">${100-bp}% sell</span>`;
+      el.querySelector(".t").innerHTML=`<span class="up">${bp}% buy</span>, <span class="dn">${100-bp}% sell</span>`;
       const wall=(rows,f)=>{let best=null;rows.forEach(x=>{const pr=+x[0],v=pr*+x[1];if(f(pr)&&(!best||v>best.v))best={p:pr,v}});return best};
       const bw=wall(d.bids,p=>p>=mid*0.97),aw=wall(d.asks,p=>p<=mid*1.03);
       const avg=(b+a)/((d.bids.length+d.asks.length)||1);
@@ -250,8 +287,7 @@ function depth(){
       if(aw&&aw.v>avg*8&&aw.p<=mid*1.01){tag.textContent="Sell wall ahead";tag.className="obt a"}
       else if(bp>=60){tag.textContent="Bids heavier";tag.className="obt b"}
       else if(bp<=40){tag.textContent="Asks heavier";tag.className="obt a"}
-      else{tag.textContent="Balanced";tag.className="obt n"}
-      el.querySelector(".b").style.width=bp+"%";el.querySelector(".a").style.width=(100-bp)+"%"}).catch(()=>{el.querySelector(".t").textContent="unavailable"})})}
+      else{tag.textContent="Balanced";tag.className="obt n"}}).catch(()=>{el.querySelector(".t").textContent="unavailable"})})}
 document.getElementById("tf").onclick=e=>{if(e.target.dataset.i){TF=e.target.dataset.i;
   document.querySelectorAll("#tf button").forEach(b=>b.classList.toggle("on",b===e.target));drawCharts()}};
 
@@ -266,54 +302,66 @@ function renderTick(P,C){
   const d=DATA,ov=d.overview||{},g=ov.global,t=[],trend={};(ov.leaders||[]).forEach(x=>trend[x.symbol]=x.trend);
   const tb=x=>x?`<span class="tb ${x}">${x==="Uptrend"?"UP":x==="Downtrend"?"DOWN":"FLAT"}</span>`:"";
   ["BTC","ETH"].forEach(k=>{const p=P&&P[k+"USDT"],c=C&&C[k+"USDT"];const m=d.market[k]||{};const price=p!=null?p:m.price,ch=c!=null?c:m.chg24h;
-    if(price!=null)t.push(`<div class="tk"><div class="l">${k}${tb(trend[k])}</div><div class="n">$${fmt(price)} ${ch!=null?pct(ch):""}</div></div>`)});
+    if(price!=null)t.push(`<div class="tk"><div class="l">${k}${tb(trend[k]||((ov.focus||[]).find(x=>x.symbol===k)||{}).trend)}</div><div class="n">$${fmt(price)} ${ch!=null?pct(ch):""}</div></div>`)});
   [["SPYB","S&P 500 (SPY)"],["QQQB","NASDAQ (QQQ)"]].forEach(([s,l])=>{const p=P&&P[s+"USDT"],c=C&&C[s+"USDT"];
-    if(p!=null)t.push(`<div class="tk" title="Tokenized ETF on Binance. Follows US market hours; weekend moves are thin."><div class="l">${l}${tb(IDX[s])}</div><div class="n">$${fmt(p)} ${c!=null?pct(c):""}</div></div>`)});
-  if(g){t.push(`<div class="tk"><div class="l">BTC.D</div><div class="n">${g.btc_dom}%</div></div>`);
-    t.push(`<div class="tk"><div class="l">TOTAL3</div><div class="n">$${big(g.total3_usd)}</div></div>`);
-    t.push(`<div class="tk"><div class="l">TOTAL MCAP</div><div class="n">$${big(g.total_usd)} ${pct(g.chg24h)}</div></div>`)}
-  if(ov.regime)t.push(`<div class="tk"><div class="l">MARKET</div><div class="n ${ov.regime.mood==="Uptrend"?"up":ov.regime.mood==="Downtrend"?"dn":""}">${esc(ov.regime.mood)}</div></div>`);
+    if(p!=null)t.push(`<div class="tk"><div class="l">${tip(s==="SPYB"?"spy":"qqq",l)}${tb(IDX[s])}</div><div class="n">$${fmt(p)} ${c!=null?pct(c):""}</div></div>`)});
+  if(g){t.push(`<div class="tk"><div class="l">${tip("btcd","BTC.D")}</div><div class="n">${g.btc_dom}%</div></div>`);
+    t.push(`<div class="tk"><div class="l">${tip("total3","TOTAL3")}</div><div class="n">$${big(g.total3_usd)}</div></div>`);
+    t.push(`<div class="tk"><div class="l">${tip("total","TOTAL MCAP")}</div><div class="n">$${big(g.total_usd)} ${pct(g.chg24h)}</div></div>`)}
+  if(ov.regime)t.push(`<div class="tk"><div class="l">${tip("mood","MARKET")}</div><div class="n ${ov.regime.mood==="Uptrend"?"up":ov.regime.mood==="Downtrend"?"dn":""}">${esc(ov.regime.mood)}</div></div>`);
   const r=ov.rotation;
-  if(r)t.push(`<div class="tk" title="${esc(r.text+" "+r.how)}"><span class="rot ${r.state==="ALT ROTATION ACTIVE"?"on":r.state==="NEUTRAL"?"nt":"sq"}">${esc(r.state)}</span></div>`);
+  if(r)t.push(`<div class="tk" data-tip="${esc(TIPS.rot+" "+r.text)}"><span class="rot ${r.state==="ALT ROTATION ACTIVE"?"on":r.state==="NEUTRAL"?"nt":"sq"}">${esc(r.state)}</span></div>`);
   document.getElementById("tick").innerHTML=t.join("")}
 
 /* ---------- everything else ---------- */
-function render(){
-  const d=DATA,ov=d.overview||{};
-  document.getElementById("sub").textContent=d.generated_utc?`Updated ${d.generated_utc} UTC | scanned ${d.scanned} spot pairs on Binance`:"No scan yet";
-  renderTick();
-  const sm=document.getElementById("summary");
-  if(ov.regime){sm.style.display="";sm.className="card sum "+ov.regime.mood;
-    sm.innerHTML=`<div class="top"><b>Market today: ${esc(ov.regime.mood)}</b><span class="k">${ov.regime.breadth_pct}% of coins above their 50 day average</span></div><p>${esc(ov.regime.summary)}</p>`}
-  renderBoard();
-  const se=ov.sectors||[];
-  document.getElementById("sectors").innerHTML=se.length?se.map(s=>`<div class="sec"><div class="top"><span class="nm">${esc(s.name)}</span>${pct(s.chg24h)}</div>
-    <div class="k">Market cap $${s.mcap_busd}B</div><div class="tp">${s.top.map(esc).join(", ")}</div></div>`).join(""):`<div class="empty">Sector data unavailable this run.</div>`;
-  const r=ov.rotation,rc=document.getElementById("rotcard");
-  if(r){rc.style.display="";rc.className="card sum "+(r.state==="ALT ROTATION ACTIVE"?"Uptrend":r.state==="NEUTRAL"?"":"Downtrend");
-    rc.innerHTML=`<div class="top"><b>${esc(r.state)}</b><span class="k">alts median 7d ${r.alt_median_7d>=0?"+":""}${r.alt_median_7d}% vs BTC ${r.btc_7d>=0?"+":""}${r.btc_7d}%${r.btc_dom_7d_change!=null?` | BTC.D 7d ${r.btc_dom_7d_change>=0?"+":""}${r.btc_dom_7d_change}`:" | BTC.D trend: collecting history"}</span></div><p style="margin:6px 0 0">${esc(r.text)}</p>`}
-  const sc=ov.sector_coins||[];
-  document.getElementById("seccoins").innerHTML=sc.length?sc.map(x=>`<div class="sc"><div class="top"><div><span class="sym">${esc(x.symbol)}</span> <span class="k">${esc(x.name||"")}</span></div><span class="v live-px" data-p="${esc(x.symbol)}USDT">${x.price!=null?fmt(x.price):""}</span></div>
-    <div class="k">${esc(x.sector)} | market cap $${big(x.mcap_musd*1e6)}${x.rank?" | rank "+x.rank:""} | on Binance ${x.binance_days?x.binance_days+" days":x.binance_days_min?"220+ days":"n/a"}</div>
-    <ul>${x.facts.map(f=>`<li>${esc(f)}</li>`).join("")}</ul><ul class="rk">${x.risks.map(f=>`<li>${esc(f)}</li>`).join("")}</ul></div>`).join(""):`<div class="empty">Sector data unavailable this run.</div>`;
-  const rows=d.signals.filter(s=>F==="All"||s.type===F);
+function staleCheck(){
+  const d=DATA,el=document.getElementById("stale");if(!d||!d.generated_utc)return;
+  const t=Date.parse(d.generated_utc.replace(" ","T")+":00Z"),h=(Date.now()-t)/3600000;
+  if(h>6){el.style.display="";el.textContent=`Data is stale: the last scan was ${h<48?Math.round(h)+" hours":Math.round(h/24)+" days"} ago. Live prices still update, but signals, plans and the market mood may be out of date. Check the GitHub Actions tab.`}
+  else el.style.display="none"}
+function renderSignals(){
+  const d=DATA,rows=(d.signals||[]).filter(s=>EXP||s.type!=="Reversal"),hidden=(d.signals||[]).length-rows.length;
   const el=document.getElementById("list");
-  if(!rows.length){el.innerHTML=`<div class="empty">No clean setups right now. Waiting is a valid position.</div>`}
-  else el.innerHTML=rows.map(s=>`<div class="card">
+  if(!rows.length){el.innerHTML=`<div class="empty">No clean setups right now. Waiting is a valid position.${hidden?` (${hidden} experimental reversal signal${hidden>1?"s":""} hidden.)`:""}</div>`;return}
+  el.innerHTML=rows.map(s=>`<div class="card">
     <div class="top"><div><span class="sym">${s.symbol}</span><span class="tag ${s.type==="Reversal"?"rev":""}">${s.type}</span>${s.experimental?'<span class="tag exp">Experimental</span>':''}</div>
     <div class="k">score ${s.score}</div></div>
     <div class="grid">
       <div><div class="k">Live price</div><div class="v live-px" data-p="${s.pair}">...</div></div>
       <div><div class="k">Status now</div><div class="v st" data-st="${s.pair}">...</div></div>
       <div><div class="k">Price at signal</div><div class="v">${fmt(s.price)}</div></div>
-      <div><div class="k">Stop (exit if below)</div><div class="v">${fmt(s.stop)}</div></div>
-      <div><div class="k">Sell if daily close below</div><div class="v">${fmt(s.exit_below)}</div></div>
+      <div><div class="k">${tip("stop","Stop (exit if below)")}</div><div class="v">${fmt(s.stop)}</div></div>
+      <div><div class="k">${tip("sell20","Sell if daily close below")}</div><div class="v">${fmt(s.exit_below)}</div></div>
       <div><div class="k">Risk to stop</div><div class="v">${s.risk_pct}%</div></div>
-      <div><div class="k">Size for 1% loss</div><div class="v">${s.size_for_1pct_loss}% of capital</div></div>
-      <div><div class="k">Volume vs avg</div><div class="v">${s.vol_ratio}x</div></div>
-      <div><div class="k">24h</div><div class="v">${pct(s.chg24h)}</div></div>
+      <div><div class="k">${tip("size","Size for 1% loss")}</div><div class="v">${s.size_for_1pct_loss}% of capital</div></div>
+      <div><div class="k">${tip("vol","Volume vs avg")}</div><div class="v">${s.vol_ratio}x</div></div>
+      <div><div class="k">${tip("ch24","24h")}</div><div class="v">${pct(s.chg24h)}</div></div>
     </div>
-    <div class="why">${s.why} 24h volume $${s.qvol_musd}M.</div>${res(s)}${s.plan?`<details class="pl"><summary>Trade plan</summary>${planHtml(s.plan)}</details>`:""}</div>`).join("");
+    <div class="why">${esc(s.why)} 24h volume $${s.qvol_musd}M.</div>${res(s)}${s.plan?`<details class="pl"><summary>Trade plan</summary>${planHtml(s.plan)}</details>`:""}</div>`).join("")}
+function render(){
+  const d=DATA,ov=d.overview||{};
+  document.getElementById("sub").textContent=d.generated_utc?`Updated ${d.generated_utc} UTC | scanned ${d.scanned} spot pairs on Binance`:"No scan yet";
+  staleCheck();
+  guard("tick",()=>renderTick());
+  guard("summary",()=>{const sm=document.getElementById("summary");
+    if(ov.regime){sm.style.display="";sm.className="card sum "+ov.regime.mood;
+      sm.innerHTML=`<div class="top"><b>Market today: ${esc(ov.regime.mood)}</b><span class="k">${ov.regime.breadth_pct}% of coins above their 50 day average</span></div><p>${esc(ov.regime.summary)}</p>`}});
+  guard("board",renderBoard);
+  guard("list",renderSignals);
+  guard("sectors",()=>{
+  const se=ov.sectors||[];
+  document.getElementById("sectors").innerHTML=se.length?se.map(s=>`<div class="sec"><div class="top"><span class="nm">${esc(s.name)}</span>${pct(s.chg24h)}</div>
+    <div class="k">Market cap $${s.mcap_busd}B</div><div class="tp">${s.top.map(esc).join(", ")}</div></div>`).join(""):`<div class="empty">Sector data unavailable this run.</div>`});
+  guard("rotcard",()=>{
+  const r=ov.rotation,rc=document.getElementById("rotcard");
+  if(r){rc.style.display="";rc.className="card sum "+(r.state==="ALT ROTATION ACTIVE"?"Uptrend":r.state==="NEUTRAL"?"":"Downtrend");
+    rc.innerHTML=`<div class="top"><b>${esc(r.state)}</b><span class="k">alts median 7d ${r.alt_median_7d>=0?"+":""}${r.alt_median_7d}% vs BTC ${r.btc_7d>=0?"+":""}${r.btc_7d}%${r.btc_dom_7d_change!=null?` | BTC.D 7d ${r.btc_dom_7d_change>=0?"+":""}${r.btc_dom_7d_change}`:" | BTC.D trend: collecting history"}</span></div><p style="margin:6px 0 0">${esc(r.text)}</p>`}});
+  guard("seccoins",()=>{
+  const sc=ov.sector_coins||[];
+  document.getElementById("seccoins").innerHTML=sc.length?sc.map(x=>`<div class="sc"><div class="top"><div><span class="sym">${esc(x.symbol)}</span> <span class="k">${esc(x.name||"")}</span></div><span class="v live-px" data-p="${esc(x.symbol)}USDT">${x.price!=null?fmt(x.price):""}</span></div>
+    <div class="k">${esc(x.sector)} | market cap $${big(x.mcap_musd*1e6)}${x.rank?" | rank "+x.rank:""} | on Binance ${x.binance_days?x.binance_days+" days":x.binance_days_min?"220+ days":"n/a"}</div>
+    <ul>${x.facts.map(f=>`<li>${esc(f)}</li>`).join("")}</ul><ul class="rk">${x.risks.map(f=>`<li>${esc(f)}</li>`).join("")}</ul></div>`).join(""):`<div class="empty">Sector data unavailable this run.</div>`});
+  guard("watch",()=>{
   const w=d.watchlist||[];
   document.getElementById("watch").innerHTML=w.length?w.map(s=>`<div class="card"><div class="top"><span class="sym">${s.symbol}</span><span class="k">${s.gap_pct}% below trigger</span></div>
     <div class="grid"><div><div class="k">Live price</div><div class="v live-px" data-p="${s.pair}">...</div></div>
@@ -321,14 +369,14 @@ function render(){
     <div><div class="k">Trigger (close above)</div><div class="v">${fmt(s.trigger)}</div></div>
     <div><div class="k">Volume vs avg</div><div class="v">${s.vol_ratio}x</div></div>
     <div><div class="k">24h</div><div class="v">${pct(s.chg24h)}</div></div></div>
-    <div class="why">${s.why} 24h volume $${s.qvol_musd}M.</div>${res(s)}</div>`).join(""):`<div class="empty">Nothing close to triggering.</div>`;
-  const sect=(id,list,fn,empty)=>{document.getElementById(id).innerHTML=(list&&list.length)?list.map(fn).join(""):`<div class="empty">${empty}</div>`};
+    <div class="why">${esc(s.why)} 24h volume $${s.qvol_musd}M.</div>${res(s)}</div>`).join(""):`<div class="empty">Nothing close to triggering.</div>`});
+  const sect=(id,list,fn,empty)=>guard(id,()=>{document.getElementById(id).innerHTML=(list&&list.length)?list.map(fn).join(""):`<div class="empty">${empty}</div>`});
   const pc=s=>`<span class="v live-px" data-p="${esc(s.symbol)}USDT">${fmt(s.price)}</span>`;
   sect("leaders",ov.leaders,s=>`<details class="row"><summary><div class="top"><div><span class="sym">${esc(s.symbol)}</span><span class="tr ${s.trend}">${s.trend}</span></div>${pc(s)}</div>
     <div class="nums">7d ${p7(s.ch7)} | 30d ${p7(s.ch30)} | ${Math.abs(s.from_high_pct).toFixed(0)}% below recent high</div><div class="note">${esc(s.note)}</div><div class="tap">Tap for trade plan and levels</div></summary>${planHtml(s.plan)}</details>`,"No data this run.");
   sect("growing",ov.growing,s=>`<details class="row"><summary><div class="top"><div><span class="sym">${esc(s.symbol)}</span><span class="tr ${s.trend}">${s.trend}</span></div>${pc(s)}</div>
     <div class="nums">7d ${p7(s.ch7)} | 30d ${p7(s.ch30)}</div><div class="note">${esc(s.note)}</div><div class="tap">Tap for trade plan and levels</div></summary>${planHtml(s.plan)}</details>`,"No coin is in a clean uptrend right now. That itself tells you the market is weak.");
-  const bt=document.getElementById("bottest");if(ov.bottoms_tested){bt.style.display="";bt.textContent=ov.bottoms_tested}
+  guard("bottest",()=>{const bt=document.getElementById("bottest");if(ov.bottoms_tested){bt.style.display="";bt.textContent=ov.bottoms_tested}});
   sect("bottoms",ov.bottoms,s=>`<details class="row"><summary><div class="top"><div><span class="sym">${esc(s.symbol)}</span><span class="tr ${s.label==="Bottoming pattern"?"Uptrend":""}">${esc(s.label)}</span></div>${pc(s)}</div>
     <div class="nums">${s.drawdown_pct}% below 6 month high | 30 day range ${s.base_range_pct}% | divergence ${s.divergence?"yes":"no"} | volume ${s.vol_pickup}x</div><div class="note">${esc(s.note)}</div><div class="tap">Tap for levels</div></summary>${planHtml(s.plan)}</details>`,"No coin is down 50% or more right now.");
   sect("newl",ov.new_listings,s=>`<div class="row"><div class="top"><div><span class="sym">${esc(s.symbol)}</span><span class="tr">${s.days_listed} days</span></div>${pc(s)}</div>
@@ -336,33 +384,44 @@ function render(){
   sect("trending",ov.trending,s=>`<div class="row"><div class="top"><div><span class="sym">${esc(s.symbol)}</span><span class="k" style="margin-left:8px">${esc(s.name||"")}${s.rank?" | rank "+s.rank:""}</span></div><span class="k">24h ${p7(s.ch24)}</span></div>
     <div class="note">${esc(s.note)}</div></div>`,"Trending data unavailable this run.");
   sect("news",ov.news,n=>`<div class="row"><a href="${esc(n.link)}" target="_blank" rel="noopener">${esc(n.title)}</a> <span class="k">${esc(n.source)}</span></div>`,"News unavailable this run.");
-  document.getElementById("notes").innerHTML=d.notes.map(n=>`<div>${esc(n)}</div>`).join("");
+  guard("notes",()=>{document.getElementById("notes").innerHTML=(d.notes||[]).map(n=>`<div>${esc(n)}</div>`).join("")});
 }
-document.getElementById("tabs").onclick=e=>{if(e.target.dataset.f){F=e.target.dataset.f;
-  document.querySelectorAll(".tabs button").forEach(b=>b.classList.toggle("on",b===e.target));render()}};
+document.getElementById("exp").checked=EXP;
+document.getElementById("exp").onchange=e=>{EXP=e.target.checked;try{localStorage.setItem("exp",EXP?"1":"0")}catch(_){};if(DATA)guard("list",renderSignals)};
 
 /* ---------- live prices every 15 seconds ---------- */
 function live(){
   const ov=DATA.overview||{};
   const pairs=[...new Set([...(DATA.signals||[]),...(DATA.watchlist||[])].map(x=>x.pair).concat(["BTCUSDT","ETHUSDT","SOLUSDT","SPYBUSDT","QQQBUSDT"])
-    .concat([...(ov.leaders||[]),...(ov.growing||[]),...(ov.new_listings||[]),...(ov.bottoms||[]),...(ov.sector_coins||[])].map(x=>x.symbol+"USDT")))];
+    .concat([...(ov.focus||[]),...(ov.leaders||[]),...(ov.growing||[]),...(ov.new_listings||[]),...(ov.bottoms||[]),...(ov.sector_coins||[])].map(x=>x.symbol+"USDT")))];
   fetch(API+"ticker/24hr?type=MINI&symbols="+encodeURIComponent(JSON.stringify(pairs))).then(r=>r.json()).then(a=>{
     const P={},C={};a.forEach(x=>{P[x.symbol]=parseFloat(x.lastPrice);const o=parseFloat(x.openPrice);C[x.symbol]=o?(P[x.symbol]/o-1)*100:0});
     document.querySelectorAll("[data-p]").forEach(el=>{const p=P[el.dataset.p];if(p!=null)el.textContent=fmt(p)});
     document.querySelectorAll("[data-ch]").forEach(el=>{const c=C[el.dataset.ch];if(c!=null)el.innerHTML="24h "+pct(c)});
+    document.querySelectorAll("[data-ch2]").forEach(el=>{const c=C[el.dataset.ch2];if(c!=null)el.innerHTML=pct(c)});
     (DATA.signals||[]).forEach(s=>{const p=P[s.pair],el=document.querySelector(`[data-st="${s.pair}"]`);if(p==null||!el)return;
       let t,c;if(p<=s.stop){t="Below stop: exit";c="bad"}else if(p<s.exit_below){t="Below sell level: exit if the day closes here";c="mid"}else{t=`${((p/s.price-1)*100).toFixed(1)}% since signal. Hold`;c="ok"}
       el.textContent=t;el.className="v st "+c});
     (DATA.watchlist||[]).forEach(w=>{const p=P[w.pair],el=document.querySelector(`[data-wt="${w.pair}"]`);if(p==null||!el)return;
       const g=(w.trigger/p-1)*100;el.textContent=g<=0?"Above trigger now. Needs a daily close":`${g.toFixed(1)}% below trigger`;el.className="v st "+(g<=0?"mid":"")});
-    renderTick(P,C);
+    guard("tick",()=>renderTick(P,C));
     document.getElementById("dot").className="live on";
     document.getElementById("liveTxt").textContent="Live prices, updated "+new Date().toLocaleTimeString()+". Signals refresh several times a day.";
   }).catch(()=>{document.getElementById("dot").className="live";document.getElementById("liveTxt").textContent="Live prices unavailable. Showing the last saved scan."});
 }
+(function(){const tipEl=document.getElementById("tip");let cur=null;
+  const show=(el)=>{cur=el;tipEl.textContent=el.dataset.tip;tipEl.style.display="block";
+    const r=el.getBoundingClientRect(),w=tipEl.offsetWidth,h=tipEl.offsetHeight;
+    let x=Math.min(Math.max(8,r.left),window.innerWidth-w-8),y=r.bottom+6;if(y+h>window.innerHeight-8)y=r.top-h-6;
+    tipEl.style.left=x+"px";tipEl.style.top=y+"px"};
+  const hide=()=>{cur=null;tipEl.style.display="none"};
+  document.addEventListener("click",e=>{const el=e.target.closest("[data-tip]");if(el){e.preventDefault();e.stopPropagation();show(el)}else hide()},true);
+  document.addEventListener("mouseover",e=>{const el=e.target.closest("[data-tip]");if(el&&matchMedia("(hover:hover)").matches)show(el)});
+  document.addEventListener("mouseout",e=>{if(e.target.closest("[data-tip]")&&matchMedia("(hover:hover)").matches)hide()});
+  window.addEventListener("scroll",hide,{passive:true})})();
 function load(){fetch("signals.json?t="+Date.now()).then(r=>r.json()).then(d=>{DATA=d;render();live()})
  .catch(()=>{document.getElementById("sub").textContent="Could not load signals.json"})}
-load();idxTrends();setInterval(()=>{if(DATA)live()},15000);setInterval(()=>{if(DATA)depth()},30000);setInterval(load,10*60*1000);
+load();idxTrends();setInterval(()=>{if(DATA)live()},15000);setInterval(staleCheck,60000);setInterval(()=>{if(DATA)depth()},30000);setInterval(load,10*60*1000);
 </script>
 </body>
 </html>
