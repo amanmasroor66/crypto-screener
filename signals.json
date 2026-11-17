@@ -1,14 +1,14 @@
 {
-  "generated_utc": "2026-11-17 12:49",
-  "scanned": 36,
+  "generated_utc": "2026-11-17 14:09",
+  "scanned": 38,
   "market": {
     "BTC": {
-      "price": 64920.83,
-      "chg24h": 1.123
+      "price": 64942.71,
+      "chg24h": 1.362
     },
     "ETH": {
-      "price": 1820.78,
-      "chg24h": 1.214
+      "price": 1824.2,
+      "chg24h": 1.241
     }
   },
   "signals": [],
@@ -21,6 +21,107 @@
     "Backtest of 8 months: breakouts won about 1 in 3 trades, and most profit came from a few big winners. Reversals lost money, so treat them as experimental."
   ],
   "overview": {
+    "focus": [
+      {
+        "symbol": "BTC",
+        "trend": "Downtrend",
+        "price": 64882.87,
+        "ch7": -13.9,
+        "ch30": -20.4,
+        "from_high_pct": -25.8,
+        "ma50": 79451.9868,
+        "above50_pct": -18.3,
+        "note": "BTC is in a downtrend, below its 50 day average, -20% over 30 days. Buying a falling leader is a bet that the drop is over, and the data does not show that yet. Waiting for it to get back above the 50 day average is the safer rule.",
+        "plan": {
+          "atr_pct": 4.6,
+          "resistance": [
+            66956.15,
+            78080.0,
+            79890.0
+          ],
+          "support": [
+            62535.24,
+            59130.91,
+            57800.19
+          ],
+          "trigger": 86999.11,
+          "ma20": 74370.1335,
+          "ma50": 79451.9868,
+          "ma200": 72921.15400000001,
+          "status": "No buy",
+          "entry_lo": null,
+          "entry_hi": null,
+          "stop": null,
+          "why": "Downtrend. No buy zone until price closes back above the 50 day average (79452) or breaks the 42 day high (86999.1)."
+        }
+      },
+      {
+        "symbol": "ETH",
+        "trend": "Downtrend",
+        "price": 1820.67,
+        "ch7": -14.7,
+        "ch30": -24.2,
+        "from_high_pct": -35.1,
+        "ma50": 2363.045,
+        "above50_pct": -23.0,
+        "note": "ETH is in a downtrend, below its 50 day average, -24% over 30 days. Buying a falling leader is a bet that the drop is over, and the data does not show that yet. Waiting for it to get back above the 50 day average is the safer rule.",
+        "plan": {
+          "atr_pct": 6.6,
+          "resistance": [
+            1943.02,
+            2391.55,
+            2450.0
+          ],
+          "support": [
+            1713.44,
+            1671.79,
+            1512.0
+          ],
+          "trigger": 2738.0,
+          "ma20": 2140.301,
+          "ma50": 2363.045,
+          "ma200": 2141.9128,
+          "status": "No buy",
+          "entry_lo": null,
+          "entry_hi": null,
+          "stop": null,
+          "why": "Downtrend. No buy zone until price closes back above the 50 day average (2363.05) or breaks the 42 day high (2738)."
+        }
+      },
+      {
+        "symbol": "SOL",
+        "trend": "Downtrend",
+        "price": 71.58,
+        "ch7": -17.5,
+        "ch30": -30.8,
+        "from_high_pct": -42.7,
+        "ma50": 100.9322,
+        "above50_pct": -29.1,
+        "note": "SOL is in a downtrend, below its 50 day average, -31% over 30 days. Buying a falling leader is a bet that the drop is over, and the data does not show that yet. Waiting for it to get back above the 50 day average is the safer rule.",
+        "plan": {
+          "atr_pct": 6.9,
+          "resistance": [
+            75.0,
+            77.5,
+            83.42
+          ],
+          "support": [
+            67.92,
+            64.04,
+            60.13
+          ],
+          "trigger": 122.08,
+          "ma20": 87.43350000000001,
+          "ma50": 100.9322,
+          "ma200": 88.79145,
+          "status": "No buy",
+          "entry_lo": null,
+          "entry_hi": null,
+          "stop": null,
+          "why": "Downtrend. No buy zone until price closes back above the 50 day average (100.932) or breaks the 42 day high (122.08)."
+        }
+      }
+    ],
     "leaders": [
       {
         "symbol": "BTC",
@@ -336,56 +437,56 @@
       {
         "symbol": "GATO",
         "name": "Gato The Cat",
-        "rank": 828,
-        "ch24": 13.3,
+        "rank": 850,
+        "ch24": -0.1,
         "on_binance": false,
-        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top. It is a small coin (rank 828), so moves both ways are violent. Not in this screener's Binance list, so none of the checks here apply."
+        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top. It is a small coin (rank 850), so moves both ways are violent. Not in this screener's Binance list, so none of the checks here apply."
       },
       {
         "symbol": "BP",
         "name": "Backpack",
-        "rank": 139,
-        "ch24": 23.7,
+        "rank": 135,
+        "ch24": 31.8,
         "on_binance": false,
         "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top. Not in this screener's Binance list, so none of the checks here apply."
-      },
-      {
-        "symbol": "SOL",
-        "name": "Solana",
-        "rank": 7,
-        "ch24": 4.2,
-        "on_binance": true,
-        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top."
       },
       {
         "symbol": "BTC",
         "name": "Bitcoin",
         "rank": 1,
-        "ch24": 1.2,
+        "ch24": 1.5,
         "on_binance": true,
         "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top."
+      },
+      {
+        "symbol": "PEARL",
+        "name": "Pearl",
+        "rank": 89,
+        "ch24": 7.2,
+        "on_binance": false,
+        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top. Not in this screener's Binance list, so none of the checks here apply."
       },
       {
         "symbol": "INJ",
         "name": "Injective",
-        "rank": 79,
-        "ch24": 14.9,
+        "rank": 80,
+        "ch24": 11.9,
         "on_binance": true,
         "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top."
-      },
-      {
-        "symbol": "LIT",
-        "name": "Lighter",
-        "rank": 81,
-        "ch24": 18.4,
-        "on_binance": false,
-        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top. Not in this screener's Binance list, so none of the checks here apply."
       },
       {
         "symbol": "HYPE",
         "name": "Hyperliquid",
         "rank": 10,
-        "ch24": 6.5,
+        "ch24": 6.4,
+        "on_binance": true,
+        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top."
+      },
+      {
+        "symbol": "SOL",
+        "name": "Solana",
+        "rank": 7,
+        "ch24": 4.1,
         "on_binance": true,
         "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top."
       }
@@ -568,6 +669,16 @@
     "news": [
       {
         "source": "Cointelegraph",
+        "title": "Bitcoin to $1M by 2030? \u2018Almost certainly not,\u2019 says Dragonfly\u2019s Qureshi",
+        "link": "https://cointelegraph.com/magazine/bitcoin-to-1m-by-2030-almost-certainly-not-says-dragonflys-qureshi?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
+      },
+      {
+        "source": "Cointelegraph",
+        "title": "ARK sells $85M in Nvidia shares ahead of chipmaker\u2019s Q3 earnings results",
+        "link": "https://cointelegraph.com/news/ark-crypto-stock-purchases-nvidia-staking-etf-sales?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
+      },
+      {
+        "source": "Cointelegraph",
         "title": "Revolut plans four blockchain-based funds for private markets, chair says",
         "link": "https://cointelegraph.com/news/revolut-four-blockchain-funds-private-markets?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
       },
@@ -585,16 +696,6 @@
         "source": "Cointelegraph",
         "title": "Bitcoin realized loss metric beats June high as open interest eyes 2-year low",
         "link": "https://cointelegraph.com/markets/bitcoin-realized-loss-metric-beats-june-high-open-interest-eyes-2-year-low?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
-      },
-      {
-        "source": "Cointelegraph",
-        "title": "Google says hackers use AI agents to find and exploit software flaws",
-        "link": "https://cointelegraph.com/news/google-ai-agents-automated-cyberattacks-software-flaws?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
-      },
-      {
-        "source": "Cointelegraph",
-        "title": "US judge clears brothers in $25M Ethereum MEV case after mistrial",
-        "link": "https://cointelegraph.com/news/us-judge-acquits-brothers-25m-ethereum-mev-exploit?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
       }
     ],
     "regime": {
@@ -605,18 +706,18 @@
       "summary": "The market is weak. BTC is below its 50 day average and below its 200 day average, and 0% of coins are above their 50 day average. Most breakouts fail even in good markets, so in a weak market protecting cash matters more than finding a winner. There is no signal today, so by the rules there is nothing to buy. Use the lists below to learn the market and build your own watchlist, not as buy tips. Should you invest at all? Only money you can afford to lose completely, and only after a few weeks of paper trading these signals."
     },
     "global": {
-      "total_usd": 2199246135622.921,
-      "btc_dom": 59.2,
-      "eth_dom": 10.1,
-      "total3_usd": 674967615128.3083,
-      "chg24h": -1.8
+      "total_usd": 2231847973592.8164,
+      "btc_dom": 58.5,
+      "eth_dom": 10.0,
+      "total3_usd": 703503283728.8864,
+      "chg24h": -1.3
     },
     "sectors": [
       {
         "id": "quantum-resistant",
         "name": "Quantum-Resistant",
-        "chg24h": 9.7,
-        "mcap_busd": 18.4,
+        "chg24h": 10.0,
+        "mcap_busd": 18.5,
         "top": [
           "Zcash",
           "Injective Protocol",
@@ -626,8 +727,8 @@
       {
         "id": "zero-knowledge-zk",
         "name": "Zero Knowledge (ZK)",
-        "chg24h": 9.1,
-        "mcap_busd": 19.6,
+        "chg24h": 9.5,
+        "mcap_busd": 19.7,
         "top": [
           "Zcash",
           "Polygon Ecosystem Token",
@@ -637,7 +738,7 @@
       {
         "id": "privacy-coins",
         "name": "Privacy Coins",
-        "chg24h": 7.3,
+        "chg24h": 6.9,
         "mcap_busd": 26.3,
         "top": [
           "Zcash",
@@ -648,7 +749,7 @@
       {
         "id": "decentralized-derivatives",
         "name": "Derivatives",
-        "chg24h": 6.6,
+        "chg24h": 6.5,
         "mcap_busd": 18.6,
         "top": [
           "Hyperliquid",
@@ -659,8 +760,8 @@
       {
         "id": "decentralized-perpetuals",
         "name": "Perpetuals",
-        "chg24h": 6.5,
-        "mcap_busd": 21.5,
+        "chg24h": 6.0,
+        "mcap_busd": 21.6,
         "top": [
           "Hyperliquid",
           "Aster 2",
@@ -668,36 +769,36 @@
         ]
       },
       {
-        "id": "privacy",
-        "name": "Privacy",
-        "chg24h": 5.5,
-        "mcap_busd": 44.2,
+        "id": "yield-farming",
+        "name": "Yield Farming",
+        "chg24h": 5.9,
+        "mcap_busd": 8.2,
         "top": [
-          "Zcash",
-          "Monero",
-          "Chainlink"
-        ]
-      },
-      {
-        "id": "neobank",
-        "name": "Neobank",
-        "chg24h": 5.0,
-        "mcap_busd": 2.0,
-        "top": [
-          "Mantle",
-          "Ether Fi",
-          "Plasma"
+          "Uniswap",
+          "Aave",
+          "Bitway"
         ]
       },
       {
         "id": "sidechain",
         "name": "SideChain",
-        "chg24h": 4.9,
+        "chg24h": 5.7,
         "mcap_busd": 1.2,
         "top": [
           "Blockstack",
           "Starknet",
           "Gnosis"
+        ]
+      },
+      {
+        "id": "privacy",
+        "name": "Privacy",
+        "chg24h": 5.2,
+        "mcap_busd": 44.2,
+        "top": [
+          "Zcash",
+          "Monero",
+          "Chainlink"
         ]
       }
     ],
@@ -746,6 +847,11 @@
         "t": 1794919781,
         "btc_dom": 59.2,
         "total3": 674967615128.3083
+      },
+      {
+        "t": 1794924573,
+        "btc_dom": 58.5,
+        "total3": 703503283728.8864
       }
     ],
     "rotation": {
@@ -761,14 +867,14 @@
         "symbol": "ZEC",
         "name": "Zcash",
         "sector": "Quantum-Resistant",
-        "mcap_musd": 16154,
+        "mcap_musd": 16200,
         "rank": 11,
-        "price": 947.67,
+        "price": 950.09,
         "binance_days": null,
         "binance_days_min": 220,
         "facts": [
-          "In Quantum-Resistant, a sector up 9.7% today.",
-          "-16% over 30 days, -17% over 7 days.",
+          "In Quantum-Resistant, a sector up 10.0% today.",
+          "-15% over 30 days, -17% over 7 days.",
           "Daily trend: downtrend."
         ],
         "risks": [
@@ -779,14 +885,14 @@
         "symbol": "INJ",
         "name": "Injective",
         "sector": "Quantum-Resistant",
-        "mcap_musd": 762,
-        "rank": 79,
-        "price": 7.62,
+        "mcap_musd": 751,
+        "rank": 80,
+        "price": 7.51,
         "binance_days": null,
         "binance_days_min": 220,
         "facts": [
-          "In Quantum-Resistant, a sector up 9.7% today.",
-          "-11% over 30 days, -6% over 7 days.",
+          "In Quantum-Resistant, a sector up 10.0% today.",
+          "-10% over 30 days, -7% over 7 days.",
           "Daily trend: downtrend."
         ],
         "risks": [
@@ -797,14 +903,14 @@
         "symbol": "ALGO",
         "name": "Algorand",
         "sector": "Quantum-Resistant",
-        "mcap_musd": 729,
+        "mcap_musd": 724,
         "rank": 82,
-        "price": 0.080238,
+        "price": 0.079743,
         "binance_days": null,
         "binance_days_min": null,
         "facts": [
-          "In Quantum-Resistant, a sector up 9.7% today.",
-          "-27% over 30 days, -13% over 7 days."
+          "In Quantum-Resistant, a sector up 10.0% today.",
+          "-28% over 30 days, -13% over 7 days."
         ],
         "risks": [
           "No standout risk in this data, which is not the same as safe."
@@ -814,14 +920,14 @@
         "symbol": "STRK",
         "name": "Starknet",
         "sector": "Quantum-Resistant",
-        "mcap_musd": 271,
-        "rank": 136,
-        "price": 0.03460219,
+        "mcap_musd": 269,
+        "rank": 137,
+        "price": 0.03429578,
         "binance_days": null,
         "binance_days_min": null,
         "facts": [
-          "In Quantum-Resistant, a sector up 9.7% today.",
-          "-45% over 30 days, -11% over 7 days."
+          "In Quantum-Resistant, a sector up 10.0% today.",
+          "-45% over 30 days, -10% over 7 days."
         ],
         "risks": [
           "No standout risk in this data, which is not the same as safe."
@@ -832,13 +938,13 @@
         "name": "POL (ex-MATIC)",
         "sector": "Zero Knowledge (ZK)",
         "mcap_musd": 875,
-        "rank": 73,
-        "price": 0.082134,
+        "rank": 74,
+        "price": 0.082163,
         "binance_days": null,
         "binance_days_min": null,
         "facts": [
-          "In Zero Knowledge (ZK), a sector up 9.1% today.",
-          "-12% over 30 days, -7% over 7 days."
+          "In Zero Knowledge (ZK), a sector up 9.5% today.",
+          "-11% over 30 days, -6% over 7 days."
         ],
         "risks": [
           "No standout risk in this data, which is not the same as safe."
@@ -848,14 +954,14 @@
         "symbol": "NIGHT",
         "name": "Midnight",
         "sector": "Zero Knowledge (ZK)",
-        "mcap_musd": 790,
-        "rank": 76,
-        "price": 0.04756303,
+        "mcap_musd": 772,
+        "rank": 77,
+        "price": 0.0464665,
         "binance_days": null,
         "binance_days_min": null,
         "facts": [
-          "In Zero Knowledge (ZK), a sector up 9.1% today.",
-          "+19% over 30 days, +12% over 7 days."
+          "In Zero Knowledge (ZK), a sector up 9.5% today.",
+          "+17% over 30 days, +11% over 7 days."
         ],
         "risks": [
           "No standout risk in this data, which is not the same as safe."
@@ -865,13 +971,13 @@
         "symbol": "IMX",
         "name": "Immutable",
         "sector": "Zero Knowledge (ZK)",
-        "mcap_musd": 89,
+        "mcap_musd": 90,
         "rank": 268,
-        "price": 0.098907,
+        "price": 0.09937,
         "binance_days": null,
         "binance_days_min": null,
         "facts": [
-          "In Zero Knowledge (ZK), a sector up 9.1% today.",
+          "In Zero Knowledge (ZK), a sector up 9.5% today.",
           "-36% over 30 days, -16% over 7 days."
         ],
         "risks": [
@@ -883,14 +989,14 @@
         "symbol": "ZK",
         "name": "ZKsync",
         "sector": "Zero Knowledge (ZK)",
-        "mcap_musd": 88,
-        "rank": 270,
-        "price": 0.00799883,
+        "mcap_musd": 87,
+        "rank": 274,
+        "price": 0.00790408,
         "binance_days": null,
         "binance_days_min": null,
         "facts": [
-          "In Zero Knowledge (ZK), a sector up 9.1% today.",
-          "-46% over 30 days, -11% over 7 days."
+          "In Zero Knowledge (ZK), a sector up 9.5% today.",
+          "-46% over 30 days, -12% over 7 days."
         ],
         "risks": [
           "Small cap: thin order books and large swings.",
@@ -901,14 +1007,14 @@
         "symbol": "XMR",
         "name": "Monero",
         "sector": "Privacy Coins",
-        "mcap_musd": 9733,
+        "mcap_musd": 9578,
         "rank": 12,
-        "price": 516.81,
+        "price": 508.6,
         "binance_days": null,
         "binance_days_min": null,
         "facts": [
-          "In Privacy Coins, a sector up 7.3% today.",
-          "-12% over 30 days, -6% over 7 days."
+          "In Privacy Coins, a sector up 6.9% today.",
+          "-13% over 30 days, -8% over 7 days."
         ],
         "risks": [
           "No standout risk in this data, which is not the same as safe."
@@ -918,14 +1024,14 @@
         "symbol": "DCR",
         "name": "Decred",
         "sector": "Privacy Coins",
-        "mcap_musd": 190,
-        "rank": 156,
-        "price": 10.72,
+        "mcap_musd": 189,
+        "rank": 161,
+        "price": 10.65,
         "binance_days": null,
         "binance_days_min": null,
         "facts": [
-          "In Privacy Coins, a sector up 7.3% today.",
-          "-26% over 30 days, -10% over 7 days."
+          "In Privacy Coins, a sector up 6.9% today.",
+          "-27% over 30 days, -10% over 7 days."
         ],
         "risks": [
           "No standout risk in this data, which is not the same as safe."
@@ -935,14 +1041,14 @@
         "symbol": "XVG",
         "name": "Verge",
         "sector": "Privacy Coins",
-        "mcap_musd": 29,
-        "rank": 610,
-        "price": 0.0017275,
+        "mcap_musd": 28,
+        "rank": 615,
+        "price": 0.00172006,
         "binance_days": null,
         "binance_days_min": null,
         "facts": [
-          "In Privacy Coins, a sector up 7.3% today.",
-          "-32% over 30 days, -12% over 7 days."
+          "In Privacy Coins, a sector up 6.9% today.",
+          "-31% over 30 days, -12% over 7 days."
         ],
         "risks": [
           "Small cap: thin order books and large swings."
@@ -953,13 +1059,13 @@
         "name": "Epic Private Internet Cash",
         "sector": "Privacy Coins",
         "mcap_musd": 17,
-        "rank": 857,
-        "price": 0.861448,
+        "rank": 858,
+        "price": 0.858051,
         "binance_days": null,
         "binance_days_min": null,
         "facts": [
-          "In Privacy Coins, a sector up 7.3% today.",
-          "+8% over 30 days, +23% over 7 days."
+          "In Privacy Coins, a sector up 6.9% today.",
+          "+3% over 30 days, +16% over 7 days."
         ],
         "risks": [
           "Small cap: thin order books and large swings."
