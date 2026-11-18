@@ -121,7 +121,7 @@ details.pl{margin-top:10px}details.pl>summary{cursor:pointer;color:var(--acc);fo
 
   <div class="card" id="rotcard" style="display:none"></div>
   <h2>Signals and BTC, ETH, SOL</h2>
-  <div class="sub" id="boardsub">Every active signal gets a full card first, then the three coins that drive the market. Tap a card for its trade plan. Spot only. Every other coin is in the sections below.</div>
+  <div class="sub" id="boardsub">Every active signal gets a full chart card first, then BTC, ETH and SOL. Tap a card for its trade plan. Spot only. Every other coin is in the sections below.</div>
   <div class="tf" id="tf"><span class="k">LTF</span><button data-i="1h">1H</button><button data-i="4h">4H</button>
     <span class="k" style="margin-left:6px">HTF</span><button data-i="1d" class="on">1D</button><button data-i="1w">1W</button>
     <span class="k">Changes the charts only. Signals and plans use daily closes.</span></div>
@@ -225,7 +225,7 @@ const TIPS={
 const tip=(k,label)=>`<span data-tip="${esc(TIPS[k]||k)}">${label}</span>`;
 function guard(id,fn){try{fn()}catch(e){console.error(id,e);const el=document.getElementById(id);if(el)el.innerHTML=`<div class="empty">This part is unavailable right now. The rest of the page still works.</div>`}}
 function sigCoins(){return (DATA.signals||[]).filter(s=>s.plan&&(EXP||s.type!=="Reversal")).map(s=>({symbol:s.symbol,plan:s.plan,signal:s}))}
-function boardCoins(){const ov=DATA.overview||{};return sigCoins().concat(ov.focus||[])}
+function boardCoins(){const ov=DATA.overview||{},sg=sigCoins(),ss=new Set(sg.map(x=>x.symbol));return sg.concat((ov.focus||[]).filter(x=>!ss.has(x.symbol)))}
 function cardHtml(c){const p=c.plan||{},sg=c.signal,st=sg?(sg.type==="Reversal"?"Reversal, experimental":"Breakout signal"):(p.status||c.trend||""),cls=sg?(sg.type==="Reversal"?"wait":"go"):stCls(p.status);
   const ent=p.entry_lo!=null?`${fmt(p.entry_lo)} to ${fmt(p.entry_hi)}`:"None now",stp=p.stop!=null?fmt(p.stop):"n/a";
   return `<div class="coin ${sg&&sg.type!=="Reversal"?"sig":cls==="go"?"go":""}" id="c_${esc(c.symbol)}">
@@ -236,23 +236,15 @@ function cardHtml(c){const p=c.plan||{},sg=c.signal,st=sg?(sg.type==="Reversal"?
     ${sg?`<div class="lv"><span class="k">${tip("sell20","Sell if daily close below")}</span><b>${fmt(sg.exit_below)}</b></div><div class="lv"><span class="k">Status now</span><b class="st" data-st="${esc(sg.pair)}">...</b></div>`:""}</div>
     ${!sg&&p.entry_lo==null&&p.why?`<div class="k">${esc(p.why)}</div>`:""}
     ${sg&&sg.research&&sg.research.flags&&sg.research.flags.length?`<div class="k" style="color:var(--warn)">Caution: ${esc(sg.research.flags.join(" "))}</div>`:""}
-    <details class="obd" data-ob="${esc(c.symbol)}USDT"><summary>${tip("ob","Order book")}: <span class="t">loading...</span> <span class="obt n">...</span></summary>
+    <details class="obd" data-ob="${esc(c.symbol)}USDT"><summary>${tip("ob","Order book")}: <span class="t">loading...</span> <span class="obt n">...</span>
+    <div class="obar"><i class="b" style="width:50%"></i><i class="a" style="width:50%"></i></div></summary>
     <div class="w"><span class="bw">Bid wall: ...</span><span class="aw">Ask wall: ...</span></div></details>
     ${c.plan?`<details${sg?" open":""}><summary>Trade plan and levels</summary>${planHtml(c.plan)}</details>`:""}</div>`}
 function renderSigBoard(){const el=document.getElementById("sigboard"),cs=sigCoins();el.style.display=cs.length?"":"none";el.innerHTML=cs.map(cardHtml).join("")}
 function renderBoard(){
   renderSigBoard();
-  const ov=DATA.overview||{},coins=ov.focus||[],el=document.getElementById("board");
-  if(!coins.length){el.className="";el.innerHTML=`<div class="empty">No data for BTC, ETH and SOL this run.</div>`;drawCharts();depth();return}
-  const down=ov.regime&&ov.regime.mood==="Downtrend",allNo=coins.every(c=>(c.plan||{}).status==="No buy");
-  document.getElementById("tf").style.display=down&&allNo&&!sigCoins().length?"none":"";
-  if(down&&allNo){el.className="";
-    el.innerHTML=`<div class="k" style="margin-bottom:6px">Market is down and none of the three is a buy, so the cards are folded into a table.</div>
-    <div style="overflow-x:auto"><table class="ctab"><tr><th>Coin</th><th>Price</th><th>${tip("ch24","24h")}</th><th>${tip("ch30","30d")}</th><th>${tip("above50","vs 50d avg")}</th><th>${tip("trig","Breakout at")}</th></tr>
-    ${coins.map(c=>`<tr><td><b>${esc(c.symbol)}</b> <span class="tr ${c.trend}">${c.trend}</span></td><td class="live-px" data-p="${esc(c.symbol)}USDT">${fmt(c.price)}</td>
-      <td data-ch2="${esc(c.symbol)}USDT">...</td><td>${p7(c.ch30)}</td><td>${c.above50_pct!=null?pct(c.above50_pct):"n/a"}</td><td>${fmt((c.plan||{}).trigger)}</td></tr>`).join("")}</table></div>
-    ${coins.map(c=>`<details class="row" style="margin-top:8px"><summary><b>${esc(c.symbol)}</b> <span class="k">plan and levels</span></summary>${planHtml(c.plan)}</details>`).join("")}`;
-    drawCharts();depth();return}
+  const sigSet=new Set(sigCoins().map(x=>x.symbol)),ov=DATA.overview||{},coins=(ov.focus||[]).filter(x=>!sigSet.has(x.symbol)),el=document.getElementById("board");
+  if(!coins.length){el.className="";el.innerHTML=sigSet.size?"":`<div class="empty">No data for BTC, ETH and SOL this run.</div>`;drawCharts();depth();return}
   el.className="board";
   el.innerHTML=coins.map(cardHtml).join("");
   drawCharts();depth()}
@@ -294,7 +286,8 @@ function depth(){
       if(aw&&aw.v>avg*8&&aw.p<=mid*1.01){tag.textContent="Sell wall ahead";tag.className="obt a"}
       else if(bp>=60){tag.textContent="Bids heavier";tag.className="obt b"}
       else if(bp<=40){tag.textContent="Asks heavier";tag.className="obt a"}
-      else{tag.textContent="Balanced";tag.className="obt n"}}).catch(()=>{el.querySelector(".t").textContent="unavailable"})})}
+      else{tag.textContent="Balanced";tag.className="obt n"}
+      el.querySelector(".b").style.width=bp+"%";el.querySelector(".a").style.width=(100-bp)+"%"}).catch(()=>{el.querySelector(".t").textContent="unavailable"})})}
 document.getElementById("tf").onclick=e=>{if(e.target.dataset.i){TF=e.target.dataset.i;
   document.querySelectorAll("#tf button").forEach(b=>b.classList.toggle("on",b===e.target));drawCharts()}};
 
