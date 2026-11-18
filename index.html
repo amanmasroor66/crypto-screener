@@ -120,11 +120,12 @@ details.pl{margin-top:10px}details.pl>summary{cursor:pointer;color:var(--acc);fo
   <div class="card sum" id="summary" style="display:none"></div>
 
   <div class="card" id="rotcard" style="display:none"></div>
-  <h2>BTC, ETH, SOL</h2>
-  <div class="sub" id="boardsub">Full cards for the three coins that drive the market. Tap a card for its trade plan. Spot only. Every other coin is in the sections below.</div>
+  <h2>Signals and BTC, ETH, SOL</h2>
+  <div class="sub" id="boardsub">Every active signal gets a full card first, then the three coins that drive the market. Tap a card for its trade plan. Spot only. Every other coin is in the sections below.</div>
   <div class="tf" id="tf"><span class="k">LTF</span><button data-i="1h">1H</button><button data-i="4h">4H</button>
     <span class="k" style="margin-left:6px">HTF</span><button data-i="1d" class="on">1D</button><button data-i="1w">1W</button>
     <span class="k">Changes the charts only. Signals and plans use daily closes.</span></div>
+  <div class="board" id="sigboard" style="margin-bottom:12px"></div>
   <div class="board" id="board"></div>
   <details class="card" style="margin-top:10px"><summary style="cursor:pointer"><b>Why there are no 1H/4H trade setups here</b></summary>
     <p class="k" style="font-size:13px">We tested 1H and 4H setups (4H breakout on volume, wick rejection at daily support, RSI divergence) on 43 coins, only in daily uptrends, with stops 1 to 3.5% under the nearest swing low and targets at the nearest resistance.
@@ -223,31 +224,37 @@ const TIPS={
   rot:"Compares the median 7 day move of all scanned altcoins with BTC. Rotation means alts are leading; squeeze means money is hiding in BTC."};
 const tip=(k,label)=>`<span data-tip="${esc(TIPS[k]||k)}">${label}</span>`;
 function guard(id,fn){try{fn()}catch(e){console.error(id,e);const el=document.getElementById(id);if(el)el.innerHTML=`<div class="empty">This part is unavailable right now. The rest of the page still works.</div>`}}
-function boardCoins(){const ov=DATA.overview||{};return ov.focus||[]}
+function sigCoins(){return (DATA.signals||[]).filter(s=>s.plan&&(EXP||s.type!=="Reversal")).map(s=>({symbol:s.symbol,plan:s.plan,signal:s}))}
+function boardCoins(){const ov=DATA.overview||{};return sigCoins().concat(ov.focus||[])}
+function cardHtml(c){const p=c.plan||{},sg=c.signal,st=sg?(sg.type==="Reversal"?"Reversal, experimental":"Breakout signal"):(p.status||c.trend||""),cls=sg?(sg.type==="Reversal"?"wait":"go"):stCls(p.status);
+  const ent=p.entry_lo!=null?`${fmt(p.entry_lo)} to ${fmt(p.entry_hi)}`:"None now",stp=p.stop!=null?fmt(p.stop):"n/a";
+  return `<div class="coin ${sg&&sg.type!=="Reversal"?"sig":cls==="go"?"go":""}" id="c_${esc(c.symbol)}">
+    <div class="hd"><div class="pair">${esc(c.symbol)}<span>/USDT</span></div><span class="badge ${cls}">${esc(st)}</span></div>
+    <div class="px"><b class="live-px" data-p="${esc(c.symbol)}USDT">...</b><span class="k" data-ch="${esc(c.symbol)}USDT"></span></div>
+    <svg class="chart" data-chart="${esc(c.symbol)}" viewBox="0 0 300 120" preserveAspectRatio="none"></svg>
+    <div class="lvls"><div class="lv"><span class="k">${tip("buyzone","Buy zone")}</span><b class="e">${ent}</b></div><div class="lv"><span class="k">${tip("stop","Stop")}</span><b class="s">${stp}</b></div>
+    ${sg?`<div class="lv"><span class="k">${tip("sell20","Sell if daily close below")}</span><b>${fmt(sg.exit_below)}</b></div><div class="lv"><span class="k">Status now</span><b class="st" data-st="${esc(sg.pair)}">...</b></div>`:""}</div>
+    ${!sg&&p.entry_lo==null&&p.why?`<div class="k">${esc(p.why)}</div>`:""}
+    ${sg&&sg.research&&sg.research.flags&&sg.research.flags.length?`<div class="k" style="color:var(--warn)">Caution: ${esc(sg.research.flags.join(" "))}</div>`:""}
+    <details class="obd" data-ob="${esc(c.symbol)}USDT"><summary>${tip("ob","Order book")}: <span class="t">loading...</span> <span class="obt n">...</span></summary>
+    <div class="w"><span class="bw">Bid wall: ...</span><span class="aw">Ask wall: ...</span></div></details>
+    ${c.plan?`<details${sg?" open":""}><summary>Trade plan and levels</summary>${planHtml(c.plan)}</details>`:""}</div>`}
+function renderSigBoard(){const el=document.getElementById("sigboard"),cs=sigCoins();el.style.display=cs.length?"":"none";el.innerHTML=cs.map(cardHtml).join("")}
 function renderBoard(){
-  const coins=boardCoins(),el=document.getElementById("board"),ov=DATA.overview||{};
-  if(!coins.length){el.className="";el.innerHTML=`<div class="empty">No data for BTC, ETH and SOL this run.</div>`;return}
+  renderSigBoard();
+  const ov=DATA.overview||{},coins=ov.focus||[],el=document.getElementById("board");
+  if(!coins.length){el.className="";el.innerHTML=`<div class="empty">No data for BTC, ETH and SOL this run.</div>`;drawCharts();depth();return}
   const down=ov.regime&&ov.regime.mood==="Downtrend",allNo=coins.every(c=>(c.plan||{}).status==="No buy");
-  document.getElementById("tf").style.display=down&&allNo?"none":"";
+  document.getElementById("tf").style.display=down&&allNo&&!sigCoins().length?"none":"";
   if(down&&allNo){el.className="";
     el.innerHTML=`<div class="k" style="margin-bottom:6px">Market is down and none of the three is a buy, so the cards are folded into a table.</div>
     <div style="overflow-x:auto"><table class="ctab"><tr><th>Coin</th><th>Price</th><th>${tip("ch24","24h")}</th><th>${tip("ch30","30d")}</th><th>${tip("above50","vs 50d avg")}</th><th>${tip("trig","Breakout at")}</th></tr>
     ${coins.map(c=>`<tr><td><b>${esc(c.symbol)}</b> <span class="tr ${c.trend}">${c.trend}</span></td><td class="live-px" data-p="${esc(c.symbol)}USDT">${fmt(c.price)}</td>
       <td data-ch2="${esc(c.symbol)}USDT">...</td><td>${p7(c.ch30)}</td><td>${c.above50_pct!=null?pct(c.above50_pct):"n/a"}</td><td>${fmt((c.plan||{}).trigger)}</td></tr>`).join("")}</table></div>
     ${coins.map(c=>`<details class="row" style="margin-top:8px"><summary><b>${esc(c.symbol)}</b> <span class="k">plan and levels</span></summary>${planHtml(c.plan)}</details>`).join("")}`;
-    return}
+    drawCharts();depth();return}
   el.className="board";
-  el.innerHTML=coins.map(c=>{const p=c.plan||{},st=p.status||c.trend||"",cls=stCls(p.status);
-    const ent=p.entry_lo!=null?`${fmt(p.entry_lo)} to ${fmt(p.entry_hi)}`:"None now",stp=p.stop!=null?fmt(p.stop):"n/a";
-    return `<div class="coin ${cls==="go"?"go":""}" id="c_${esc(c.symbol)}">
-      <div class="hd"><div class="pair">${esc(c.symbol)}<span>/USDT</span></div><span class="badge ${cls}">${esc(st)}</span></div>
-      <div class="px"><b class="live-px" data-p="${esc(c.symbol)}USDT">...</b><span class="k" data-ch="${esc(c.symbol)}USDT"></span></div>
-      <svg class="chart" data-chart="${esc(c.symbol)}" viewBox="0 0 300 120" preserveAspectRatio="none"></svg>
-      <div class="lvls"><div class="lv"><span class="k">${tip("buyzone","Buy zone")}</span><b class="e">${ent}</b></div><div class="lv"><span class="k">${tip("stop","Stop")}</span><b class="s">${stp}</b></div></div>
-      ${p.entry_lo==null&&p.why?`<div class="k">${esc(p.why)}</div>`:""}
-      <details class="obd" data-ob="${esc(c.symbol)}USDT"><summary>${tip("ob","Order book")}: <span class="t">loading...</span> <span class="obt n">...</span></summary>
-      <div class="w"><span class="bw">Bid wall: ...</span><span class="aw">Ask wall: ...</span></div></details>
-      ${c.plan?`<details><summary>Trade plan and levels</summary>${planHtml(c.plan)}</details>`:""}</div>`}).join("");
+  el.innerHTML=coins.map(cardHtml).join("");
   drawCharts();depth()}
 function drawCharts(){
   document.querySelectorAll("[data-chart]").forEach(svg=>{
@@ -387,7 +394,7 @@ function render(){
   guard("notes",()=>{document.getElementById("notes").innerHTML=(d.notes||[]).map(n=>`<div>${esc(n)}</div>`).join("")});
 }
 document.getElementById("exp").checked=EXP;
-document.getElementById("exp").onchange=e=>{EXP=e.target.checked;try{localStorage.setItem("exp",EXP?"1":"0")}catch(_){};if(DATA)guard("list",renderSignals)};
+document.getElementById("exp").onchange=e=>{EXP=e.target.checked;try{localStorage.setItem("exp",EXP?"1":"0")}catch(_){};if(DATA){guard("list",renderSignals);guard("board",renderBoard);live()}};
 
 /* ---------- live prices every 15 seconds ---------- */
 function live(){
@@ -399,9 +406,9 @@ function live(){
     document.querySelectorAll("[data-p]").forEach(el=>{const p=P[el.dataset.p];if(p!=null)el.textContent=fmt(p)});
     document.querySelectorAll("[data-ch]").forEach(el=>{const c=C[el.dataset.ch];if(c!=null)el.innerHTML="24h "+pct(c)});
     document.querySelectorAll("[data-ch2]").forEach(el=>{const c=C[el.dataset.ch2];if(c!=null)el.innerHTML=pct(c)});
-    (DATA.signals||[]).forEach(s=>{const p=P[s.pair],el=document.querySelector(`[data-st="${s.pair}"]`);if(p==null||!el)return;
+    (DATA.signals||[]).forEach(s=>{const p=P[s.pair];if(p==null)return;
       let t,c;if(p<=s.stop){t="Below stop: exit";c="bad"}else if(p<s.exit_below){t="Below sell level: exit if the day closes here";c="mid"}else{t=`${((p/s.price-1)*100).toFixed(1)}% since signal. Hold`;c="ok"}
-      el.textContent=t;el.className="v st "+c});
+      document.querySelectorAll(`[data-st="${s.pair}"]`).forEach(el=>{el.textContent=t;el.className=(el.tagName==="B"?"":"v ")+"st "+c})});
     (DATA.watchlist||[]).forEach(w=>{const p=P[w.pair],el=document.querySelector(`[data-wt="${w.pair}"]`);if(p==null||!el)return;
       const g=(w.trigger/p-1)*100;el.textContent=g<=0?"Above trigger now. Needs a daily close":`${g.toFixed(1)}% below trigger`;el.className="v st "+(g<=0?"mid":"")});
     guard("tick",()=>renderTick(P,C));
