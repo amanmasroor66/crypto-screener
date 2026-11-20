@@ -1,14 +1,14 @@
 {
-  "generated_utc": "2026-11-20 01:52",
-  "scanned": 44,
+  "generated_utc": "2026-11-20 12:33",
+  "scanned": 52,
   "market": {
     "BTC": {
-      "price": 61836.0,
-      "chg24h": -1.475
+      "price": 61586.98,
+      "chg24h": -3.465
     },
     "ETH": {
-      "price": 1751.15,
-      "chg24h": -1.43
+      "price": 1739.6,
+      "chg24h": -3.27
     }
   },
   "signals": [
@@ -24,19 +24,15 @@
       "why": "Closed above the 42 day high (0.05645) on 2.8x average volume.",
       "symbol": "MEGA",
       "pair": "MEGAUSDT",
-      "qvol_musd": 7.4,
-      "chg24h": -1.3,
+      "qvol_musd": 7.9,
+      "chg24h": -14.6,
       "score": 3.8,
       "research": {
         "source": "CoinGecko + news RSS",
-        "verified": true,
-        "mcap_musd": 64.6,
-        "rank": 334,
-        "ath_drop_pct": 74.0,
-        "circulating_pct": 11.0,
+        "verified": false,
         "news": [],
         "flags": [
-          "Only 11% of supply is circulating. More tokens are still to unlock. Check the unlock calendar."
+          "CoinGecko may be showing a different coin with this ticker. Check the coin manually."
         ],
         "verdict": "Caution"
       },
@@ -548,60 +544,60 @@
     ],
     "trending": [
       {
-        "symbol": "BTC",
-        "name": "Bitcoin",
-        "rank": 1,
-        "ch24": -1.0,
-        "on_binance": true,
-        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top."
+        "symbol": "WASTED",
+        "name": "WASTED",
+        "rank": 759,
+        "ch24": 13.8,
+        "on_binance": false,
+        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top. It is a small coin (rank 759), so moves both ways are violent. Not in this screener's Binance list, so none of the checks here apply."
+      },
+      {
+        "symbol": "LUCIA",
+        "name": "Lucia",
+        "rank": 934,
+        "ch24": -13.9,
+        "on_binance": false,
+        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top. It is a small coin (rank 934), so moves both ways are violent. Not in this screener's Binance list, so none of the checks here apply."
+      },
+      {
+        "symbol": "CHUNKEE",
+        "name": "Chunkee The Manatee",
+        "rank": 938,
+        "ch24": 162.9,
+        "on_binance": false,
+        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top. It is a small coin (rank 938), so moves both ways are violent. Not in this screener's Binance list, so none of the checks here apply."
       },
       {
         "symbol": "PEARL",
         "name": "Pearl",
         "rank": 76,
-        "ch24": -5.4,
+        "ch24": -13.6,
         "on_binance": false,
         "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top. Not in this screener's Binance list, so none of the checks here apply."
       },
       {
-        "symbol": "NEAR",
-        "name": "NEAR Protocol",
-        "rank": 23,
-        "ch24": -4.4,
+        "symbol": "BTC",
+        "name": "Bitcoin",
+        "rank": 1,
+        "ch24": -3.3,
         "on_binance": true,
         "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top."
       },
       {
-        "symbol": "ETH",
-        "name": "Ethereum",
-        "rank": 2,
-        "ch24": -1.1,
-        "on_binance": true,
-        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top."
-      },
-      {
-        "symbol": "BP",
-        "name": "Backpack",
-        "rank": 151,
-        "ch24": -18.0,
+        "symbol": "XMR",
+        "name": "Monero",
+        "rank": 13,
+        "ch24": -7.8,
         "on_binance": false,
         "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top. Not in this screener's Binance list, so none of the checks here apply."
       },
       {
-        "symbol": "SUI",
-        "name": "Sui",
-        "rank": 29,
-        "ch24": -0.8,
+        "symbol": "TRUMP",
+        "name": "Official Trump",
+        "rank": 136,
+        "ch24": -7.2,
         "on_binance": true,
         "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top."
-      },
-      {
-        "symbol": "PENGU",
-        "name": "Pudgy Penguins",
-        "rank": 129,
-        "ch24": -3.0,
-        "on_binance": false,
-        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top. Not in this screener's Binance list, so none of the checks here apply."
       }
     ],
     "bottoms": [
@@ -717,78 +713,74 @@
       },
       {
         "drawdown_pct": 74,
-        "base_range_pct": 324,
-        "divergence": false,
-        "rsi_lows": null,
-        "div_days_ago": null,
-        "vol_pickup": 1.1,
-        "above20": false,
-        "base_low": 0.09324,
-        "base_high": 0.395,
-        "score": 1.55,
-        "symbol": "INIT",
-        "price": 0.10114,
-        "note": "INIT is 74% below its 6 month high and has moved in a 324% range for 30 days. No bullish divergence yet. A bottom is only confirmed once price breaks above the base (0.395) on a daily close. Below the base low (0.09324) the idea is wrong.",
-        "label": "Still swinging, no base yet",
-        "plan": {
-          "atr_pct": 52.7,
-          "resistance": [
-            0.11659,
-            0.12208,
-            0.14491
-          ],
-          "support": [
-            0.08464,
-            0.06336,
-            0.0617
-          ],
-          "trigger": 0.395,
-          "ma20": 0.1358385,
-          "ma50": 0.1356828,
-          "ma200": 0.08296239999999999,
-          "status": "No buy",
-          "entry_lo": null,
-          "entry_hi": null,
-          "stop": null,
-          "why": "No clear trend. A daily close above 0.395 (the 42 day high) on strong volume would make it a breakout signal."
-        }
-      },
-      {
-        "drawdown_pct": 75,
-        "base_range_pct": 113,
+        "base_range_pct": 116,
         "divergence": false,
         "rsi_lows": null,
         "div_days_ago": null,
         "vol_pickup": 0.5,
         "above20": false,
-        "base_low": 0.031,
-        "base_high": 0.06601,
-        "score": 1.5,
-        "symbol": "STRK",
-        "price": 0.03174,
-        "note": "STRK is 75% below its 6 month high and has moved in a 113% range for 30 days. No bullish divergence yet. A bottom is only confirmed once price breaks above the base (0.06601) on a daily close. Below the base low (0.031) the idea is wrong.",
+        "base_low": 0.891,
+        "base_high": 1.922,
+        "score": 1.48,
+        "symbol": "TRUMP",
+        "price": 0.952,
+        "note": "TRUMP is 74% below its 6 month high and has moved in a 116% range for 30 days. No bullish divergence yet. A bottom is only confirmed once price breaks above the base (1.922) on a daily close. Below the base low (0.891) the idea is wrong.",
         "label": "Still swinging, no base yet",
         "plan": {
-          "atr_pct": 9.7,
+          "atr_pct": 7.7,
           "resistance": [
-            0.03434,
-            0.038,
-            0.0396
+            1.51,
+            1.67,
+            1.711
           ],
           "support": [
-            0.0295,
-            0.02813,
-            0.02608
+            0.891
           ],
-          "trigger": 0.1265,
-          "ma20": 0.037908,
-          "ma50": 0.0518534,
-          "ma200": 0.03761355,
+          "trigger": 1.959,
+          "ma20": 1.1881,
+          "ma50": 1.57552,
+          "ma200": 1.81559,
           "status": "No buy",
           "entry_lo": null,
           "entry_hi": null,
           "stop": null,
-          "why": "Downtrend. No buy zone until price closes back above the 50 day average (0.0518534) or breaks the 42 day high (0.1265)."
+          "why": "Downtrend. No buy zone until price closes back above the 50 day average (1.57552) or breaks the 42 day high (1.959)."
+        }
+      },
+      {
+        "drawdown_pct": 55,
+        "base_range_pct": 44,
+        "divergence": false,
+        "rsi_lows": null,
+        "div_days_ago": null,
+        "vol_pickup": 0.6,
+        "above20": false,
+        "base_low": 0.13,
+        "base_high": 0.1872,
+        "score": 1.35,
+        "symbol": "XLM",
+        "price": 0.1328,
+        "note": "XLM is 55% below its 6 month high and has moved in a 44% range for 30 days. No bullish divergence yet. A bottom is only confirmed once price breaks above the base (0.1872) on a daily close. Below the base low (0.13) the idea is wrong.",
+        "label": "Still swinging, no base yet",
+        "plan": {
+          "atr_pct": 6.3,
+          "resistance": [
+            0.1526,
+            0.1711,
+            0.1752
+          ],
+          "support": [
+            0.13
+          ],
+          "trigger": 0.2061,
+          "ma20": 0.149785,
+          "ma50": 0.172918,
+          "ma200": 0.181646,
+          "status": "No buy",
+          "entry_lo": null,
+          "entry_hi": null,
+          "stop": null,
+          "why": "Downtrend. No buy zone until price closes back above the 50 day average (0.172918) or breaks the 42 day high (0.2061)."
         }
       }
     ],
@@ -796,65 +788,54 @@
     "news": [
       {
         "source": "Cointelegraph",
-        "title": "Ledger CTO Charles Guillemet to leave after nine years at company",
-        "link": "https://cointelegraph.com/news/ledger-cto-charles-guillemet-to-leave-after-nine-years-at-company?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
+        "title": "Binance hacker moves nearly $600M in ETH, routes funds through THORChain, Chainflip",
+        "link": "https://cointelegraph.com/news/binance-hacker-600m-eth-routes-thorchain-chainflip?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
       },
       {
         "source": "Cointelegraph",
-        "title": "Binance\u2019s $6.5B freeze order, Hong Kong \u2018suspicious\u2019 of HYPE: Asia Express",
-        "link": "https://cointelegraph.com/magazine/binances-65b-freeze-order-hong-kong-suspicious-of-hype-asia-express?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
+        "title": "VanEck to end Gemini ETF custody deals, keeps Coinbase",
+        "link": "https://cointelegraph.com/news/vaneck-gemini-etf-custody-end-keep-coinbase?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
       },
       {
         "source": "Cointelegraph",
-        "title": "Here\u2019s what happened in crypto today",
-        "link": "https://cointelegraph.com/news/what-happened-in-crypto-today?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
+        "title": "Bitcoin nears repeat of chart pattern that preceded 2023\u2019s $25K retest",
+        "link": "https://cointelegraph.com/markets/bitcoin-first-death-cross-repeat-2023-bottom-25k?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
       },
       {
         "source": "Cointelegraph",
-        "title": "MoonPay seeks US bank charter for stablecoin, custody services",
-        "link": "https://cointelegraph.com/news/moonpay-seeks-us-bank-charter-for-stablecoin-custody-services?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
+        "title": "BlackRock\u2019s IBIT loses record $541M amid Anthropic market debut",
+        "link": "https://cointelegraph.com/markets/blackrock-ibit-record-single-day-outflow?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
       },
       {
         "source": "Cointelegraph",
-        "title": "Hyperliquid Anthropic futures priced within 1% of Nasdaq opening price",
-        "link": "https://cointelegraph.com/markets/hyperliquid-anthropic-futures-nasdaq-opening-price?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
+        "title": "SEC charges eight firms over fake crypto platforms tied to $37M fraud",
+        "link": "https://cointelegraph.com/news/sec-charges-eight-fake-crypto-platforms-37m-fraud?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
       },
       {
         "source": "Cointelegraph",
-        "title": "Trump\u2019s SEC nominee Johnson backs formal rulemaking for tokenized stock trading",
-        "link": "https://cointelegraph.com/news/sec-nominees-johnson-levine-tokenized-stocks?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
+        "title": "Anthropic\u2019s $81B IPO draws half the net retail buying of SpaceX\u2019s",
+        "link": "https://cointelegraph.com/markets/anthropic-ipo-spacex-retail-buying-first-day-gains?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
       }
     ],
     "regime": {
       "mood": "Downtrend",
-      "breadth_pct": 10,
+      "breadth_pct": 9,
       "btc_above_50d": false,
       "btc_above_200d": false,
-      "summary": "The market is weak. BTC is below its 50 day average and below its 200 day average, and 10% of coins are above their 50 day average. Most breakouts fail even in good markets, so in a weak market protecting cash matters more than finding a winner. Today there is 1 signal. If you act, act only on those: read the caution flags, size so a stop out costs about 1% of your capital, and note the sell level. Should you invest at all? Only money you can afford to lose completely, and only after a few weeks of paper trading these signals."
+      "summary": "The market is weak. BTC is below its 50 day average and below its 200 day average, and 9% of coins are above their 50 day average. Most breakouts fail even in good markets, so in a weak market protecting cash matters more than finding a winner. Today there is 1 signal. If you act, act only on those: read the caution flags, size so a stop out costs about 1% of your capital, and note the sell level. Should you invest at all? Only money you can afford to lose completely, and only after a few weeks of paper trading these signals."
     },
     "global": {
-      "total_usd": 2142231797305.606,
-      "btc_dom": 57.9,
+      "total_usd": 2126339453838.6846,
+      "btc_dom": 58.1,
       "eth_dom": 10.0,
-      "total3_usd": 687571606562.749,
-      "chg24h": -4.2
+      "total3_usd": 678921883650.5548,
+      "chg24h": -6.2
     },
     "sectors": [
       {
-        "id": "storage",
-        "name": "Storage",
-        "chg24h": 1.4,
-        "mcap_busd": 1.4,
-        "top": [
-          "Filecoin",
-          "Bittorrent",
-          "Arweave"
-        ]
-      },
-      {
         "id": "synthetic-dollar",
         "name": "Synthetic Dollar",
-        "chg24h": 1.3,
+        "chg24h": -0.0,
         "mcap_busd": 6.9,
         "top": [
           "Ethena Usde",
@@ -863,53 +844,9 @@
         ]
       },
       {
-        "id": "neobank",
-        "name": "Neobank",
-        "chg24h": 0.4,
-        "mcap_busd": 2.0,
-        "top": [
-          "Mantle",
-          "Ether Fi",
-          "Plasma"
-        ]
-      },
-      {
-        "id": "bitcoin-fork",
-        "name": "Bitcoin Fork",
-        "chg24h": 0.3,
-        "mcap_busd": 4.6,
-        "top": [
-          "Bitcoin Cash",
-          "Bitcoin Cash Sv",
-          "Ecash"
-        ]
-      },
-      {
-        "id": "socialfi",
-        "name": "SocialFi",
-        "chg24h": 0.1,
-        "mcap_busd": 1.6,
-        "top": [
-          "Pump Fun",
-          "Swop 2",
-          "Project Galaxy"
-        ]
-      },
-      {
-        "id": "depin",
-        "name": "DePIN",
-        "chg24h": -0.1,
-        "mcap_busd": 7.7,
-        "top": [
-          "Bittensor",
-          "Render Token",
-          "Beldex"
-        ]
-      },
-      {
         "id": "yield-bearing-tokens",
         "name": "Yield-Bearing Tokens",
-        "chg24h": -0.2,
+        "chg24h": -0.9,
         "mcap_busd": 2.8,
         "top": [
           "Ondo Us Dollar Yield",
@@ -918,14 +855,69 @@
         ]
       },
       {
-        "id": "play-to-earn",
-        "name": "Play To Earn",
-        "chg24h": -0.3,
-        "mcap_busd": 1.3,
+        "id": "trump-affiliated-tokens",
+        "name": "Trump-Affiliated",
+        "chg24h": -1.6,
+        "mcap_busd": 4.6,
         "top": [
-          "Floki",
-          "Geodnet",
-          "Decentraland"
+          "Usd1 Wlfi",
+          "World Liberty Financial",
+          "Official Trump"
+        ]
+      },
+      {
+        "id": "real-world-assets-rwa",
+        "name": "Real World Assets (RWA)",
+        "chg24h": -2.2,
+        "mcap_busd": 68.2,
+        "top": [
+          "Figure Heloc",
+          "Chainlink",
+          "Stellar"
+        ]
+      },
+      {
+        "id": "payment-solutions",
+        "name": "Payment Solutions",
+        "chg24h": -2.2,
+        "mcap_busd": 1.7,
+        "top": [
+          "Dash",
+          "Stable 2",
+          "Zebec Network"
+        ]
+      },
+      {
+        "id": "storage",
+        "name": "Storage",
+        "chg24h": -2.3,
+        "mcap_busd": 1.4,
+        "top": [
+          "Filecoin",
+          "Bittorrent",
+          "Arweave"
+        ]
+      },
+      {
+        "id": "base-native",
+        "name": "Base Native",
+        "chg24h": -2.9,
+        "mcap_busd": 100.6,
+        "top": [
+          "Usd Coin",
+          "Chainlink",
+          "Coinbase Wrapped Btc"
+        ]
+      },
+      {
+        "id": "crypto-card-issuer",
+        "name": "Crypto Card Issuer",
+        "chg24h": -2.9,
+        "mcap_busd": 2.7,
+        "top": [
+          "Crypto Com Chain",
+          "Nexo",
+          "Wirex"
         ]
       }
     ],
@@ -1019,6 +1011,11 @@
         "t": 1795139546,
         "btc_dom": 57.9,
         "total3": 687571606562.749
+      },
+      {
+        "t": 1795178028,
+        "btc_dom": 58.1,
+        "total3": 678921883650.5548
       }
     ],
     "rotation": {
@@ -1031,106 +1028,41 @@
     },
     "sector_coins": [
       {
-        "symbol": "FIL",
-        "name": "Filecoin",
-        "sector": "Storage",
-        "mcap_musd": 482,
-        "rank": 100,
-        "price": 0.563917,
+        "symbol": "WLFI",
+        "name": "World Liberty Financial",
+        "sector": "Trump-Affiliated",
+        "mcap_musd": 1431,
+        "rank": 53,
+        "price": 0.0449903,
         "binance_days": null,
-        "binance_days_min": null,
+        "binance_days_min": 220,
         "facts": [
-          "In Storage, a sector up 1.4% today.",
-          "-45% over 30 days, -23% over 7 days."
+          "In Trump-Affiliated, a sector down 1.6% today.",
+          "-19% over 30 days, -5% over 7 days.",
+          "Daily trend: downtrend."
         ],
         "risks": [
-          "Only 44% of supply circulating, so unlocks can add selling."
+          "Only 32% of supply circulating, so unlocks can add selling.",
+          "Below its 50 day average: the trend is still down."
         ]
       },
       {
-        "symbol": "BTT",
-        "name": "BitTorrent",
-        "sector": "Storage",
-        "mcap_musd": 301,
-        "rank": 122,
-        "price": 3.10795e-07,
+        "symbol": "TRUMP",
+        "name": "Official Trump",
+        "sector": "Trump-Affiliated",
+        "mcap_musd": 251,
+        "rank": 136,
+        "price": 0.89245,
         "binance_days": null,
-        "binance_days_min": null,
+        "binance_days_min": 220,
         "facts": [
-          "In Storage, a sector up 1.4% today.",
-          "-16% over 30 days, -5% over 7 days."
+          "In Trump-Affiliated, a sector down 1.6% today.",
+          "-50% over 30 days, -18% over 7 days.",
+          "Daily trend: downtrend."
         ],
         "risks": [
-          "No standout risk in this data, which is not the same as safe."
-        ]
-      },
-      {
-        "symbol": "AR",
-        "name": "Arweave",
-        "sector": "Storage",
-        "mcap_musd": 159,
-        "rank": 176,
-        "price": 2.42,
-        "binance_days": null,
-        "binance_days_min": null,
-        "facts": [
-          "In Storage, a sector up 1.4% today.",
-          "-36% over 30 days, -19% over 7 days."
-        ],
-        "risks": [
-          "No standout risk in this data, which is not the same as safe."
-        ]
-      },
-      {
-        "symbol": "WAL",
-        "name": "Walrus",
-        "sector": "Storage",
-        "mcap_musd": 64,
-        "rank": 339,
-        "price": 0.02380684,
-        "binance_days": null,
-        "binance_days_min": null,
-        "facts": [
-          "In Storage, a sector up 1.4% today.",
-          "-40% over 30 days, -11% over 7 days."
-        ],
-        "risks": [
-          "Small cap: thin order books and large swings.",
-          "Only 53% of supply circulating, so unlocks can add selling."
-        ]
-      },
-      {
-        "symbol": "ETHFI",
-        "name": "Ether.fi",
-        "sector": "Neobank",
-        "mcap_musd": 474,
-        "rank": 101,
-        "price": 0.474827,
-        "binance_days": null,
-        "binance_days_min": null,
-        "facts": [
-          "In Neobank, a sector up 0.4% today.",
-          "-32% over 30 days, -24% over 7 days."
-        ],
-        "risks": [
-          "No standout risk in this data, which is not the same as safe."
-        ]
-      },
-      {
-        "symbol": "XPL",
-        "name": "Plasma",
-        "sector": "Neobank",
-        "mcap_musd": 220,
-        "rank": 147,
-        "price": 0.0461503,
-        "binance_days": null,
-        "binance_days_min": null,
-        "facts": [
-          "In Neobank, a sector up 0.4% today.",
-          "-41% over 30 days, -7% over 7 days."
-        ],
-        "risks": [
-          "Only 48% of supply circulating, so unlocks can add selling."
+          "Only 28% of supply circulating, so unlocks can add selling.",
+          "Below its 50 day average: the trend is still down."
         ]
       }
     ]
