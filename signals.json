@@ -1,14 +1,14 @@
 {
-  "generated_utc": "2026-11-22 07:19",
-  "scanned": 36,
+  "generated_utc": "2026-11-22 12:19",
+  "scanned": 34,
   "market": {
     "BTC": {
-      "price": 59138.23,
-      "chg24h": 1.422
+      "price": 61486.18,
+      "chg24h": 5.267
     },
     "ETH": {
-      "price": 1664.0,
-      "chg24h": 1.759
+      "price": 1725.46,
+      "chg24h": 4.081
     }
   },
   "signals": [],
@@ -464,18 +464,18 @@
     ],
     "trending": [
       {
-        "symbol": "TRUMP",
-        "name": "Official Trump",
-        "rank": 134,
-        "ch24": 5.0,
-        "on_binance": true,
-        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top."
+        "symbol": "WASTED",
+        "name": "WASTED",
+        "rank": 904,
+        "ch24": -14.1,
+        "on_binance": false,
+        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top. It is a small coin (rank 904), so moves both ways are violent. Not in this screener's Binance list, so none of the checks here apply."
       },
       {
-        "symbol": "BTC",
-        "name": "Bitcoin",
-        "rank": 1,
-        "ch24": 1.3,
+        "symbol": "TRUMP",
+        "name": "Official Trump",
+        "rank": 135,
+        "ch24": 6.3,
         "on_binance": true,
         "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top."
       },
@@ -483,39 +483,39 @@
         "symbol": "PENGU",
         "name": "Pudgy Penguins",
         "rank": 130,
-        "ch24": -0.5,
+        "ch24": 3.1,
         "on_binance": false,
         "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top. Not in this screener's Binance list, so none of the checks here apply."
       },
       {
-        "symbol": "EVAA",
-        "name": "EVAA Protocol",
-        "rank": 681,
-        "ch24": -45.9,
-        "on_binance": false,
-        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top. It is a small coin (rank 681), so moves both ways are violent. Not in this screener's Binance list, so none of the checks here apply."
-      },
-      {
-        "symbol": "AKE",
-        "name": "Akedo",
-        "rank": 327,
-        "ch24": -45.0,
-        "on_binance": false,
-        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top. It is a small coin (rank 327), so moves both ways are violent. Not in this screener's Binance list, so none of the checks here apply."
-      },
-      {
-        "symbol": "PEARL",
-        "name": "Pearl",
-        "rank": 77,
-        "ch24": 10.2,
+        "symbol": "PIEVERSE",
+        "name": "Pieverse",
+        "rank": 63,
+        "ch24": 42.8,
         "on_binance": false,
         "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top. Not in this screener's Binance list, so none of the checks here apply."
+      },
+      {
+        "symbol": "BTC",
+        "name": "Bitcoin",
+        "rank": 1,
+        "ch24": 5.1,
+        "on_binance": true,
+        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top."
       },
       {
         "symbol": "VVV",
         "name": "Venice Token",
         "rank": 60,
-        "ch24": 13.7,
+        "ch24": 13.5,
+        "on_binance": false,
+        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top. Not in this screener's Binance list, so none of the checks here apply."
+      },
+      {
+        "symbol": "PEARL",
+        "name": "Pearl",
+        "rank": 78,
+        "ch24": 16.6,
         "on_binance": false,
         "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top. Not in this screener's Binance list, so none of the checks here apply."
       }
@@ -705,13 +705,23 @@
     "news": [
       {
         "source": "Cointelegraph",
-        "title": "Chainflip confirms $12M hack, offers attacker 10% bounty",
-        "link": "https://cointelegraph.com/news/chainflip-12m-crypto-hack-10-percent-bounty?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
+        "title": "Here\u2019s what happened in crypto today",
+        "link": "https://cointelegraph.com/news/what-happened-in-crypto-today?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
       },
       {
         "source": "Cointelegraph",
-        "title": "Here\u2019s what happened in crypto today",
-        "link": "https://cointelegraph.com/news/what-happened-in-crypto-today?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
+        "title": "Bitcoin briefly drops to $17K on Kraken, exchange upholds trades",
+        "link": "https://cointelegraph.com/news/bitcoin-17k-kraken-canadian-dollar-market-trades-stand?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
+      },
+      {
+        "source": "Cointelegraph",
+        "title": "South Korean exchanges halt CYBER transfers amid suspected bridge exploit",
+        "link": "https://cointelegraph.com/news/upbit-bithumb-suspend-cyber-transfers-bridge-exploit?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
+      },
+      {
+        "source": "Cointelegraph",
+        "title": "Chainflip confirms $12M hack, offers attacker 10% bounty",
+        "link": "https://cointelegraph.com/news/chainflip-12m-crypto-hack-10-percent-bounty?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
       },
       {
         "source": "Cointelegraph",
@@ -722,16 +732,6 @@
         "source": "Cointelegraph",
         "title": "US lawmakers propose up to 30% rewards for prediction market whistleblowers",
         "link": "https://cointelegraph.com/news/us-prediction-market-whistleblower-rewards-30-percent?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
-      },
-      {
-        "source": "Cointelegraph",
-        "title": "Hong Kong pushes to bring crypto custodians, advisers under licensing rules",
-        "link": "https://cointelegraph.com/news/hong-kong-crypto-custody-advisory-licensing-bill?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
-      },
-      {
-        "source": "Cointelegraph",
-        "title": "Wrapped Monero token crashes 99.8% amid suspected $13.5M exploit",
-        "link": "https://cointelegraph.com/news/wrapped-monero-token-crashes-998-amid-suspected-135m-exploit?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
       }
     ],
     "regime": {
@@ -742,27 +742,18 @@
       "summary": "The market is weak. BTC is below its 50 day average and below its 200 day average, and 9% of coins are above their 50 day average. Most breakouts fail even in good markets, so in a weak market protecting cash matters more than finding a winner. There is no signal today, so by the rules there is nothing to buy. Use the lists below to learn the market and build your own watchlist, not as buy tips. Should you invest at all? Only money you can afford to lose completely, and only after a few weeks of paper trading these signals."
     },
     "global": {
-      "total_usd": 2051995115735.919,
-      "btc_dom": 57.7,
-      "eth_dom": 9.9,
-      "total3_usd": 666382433794.4867,
-      "chg24h": -1.1
+      "total_usd": 2083150498977.1663,
+      "btc_dom": 58.9,
+      "eth_dom": 10.0,
+      "total3_usd": 647211907270.1118,
+      "chg24h": -0.2
     },
     "sectors": [
       {
-        "id": "timefi",
-        "name": "TimeFi",
-        "chg24h": 22.8,
-        "mcap_busd": 1.0,
-        "top": [
-          "Pieverse"
-        ]
-      },
-      {
         "id": "ai-applications",
         "name": "AI Applications",
-        "chg24h": 9.5,
-        "mcap_busd": 3.0,
+        "chg24h": 15.0,
+        "mcap_busd": 3.1,
         "top": [
           "Venice Token",
           "Pieverse",
@@ -770,31 +761,20 @@
         ]
       },
       {
-        "id": "payment-solutions",
-        "name": "Payment Solutions",
-        "chg24h": 7.7,
-        "mcap_busd": 1.7,
+        "id": "socialfi",
+        "name": "SocialFi",
+        "chg24h": 9.7,
+        "mcap_busd": 1.3,
         "top": [
-          "Dash",
-          "Stable 2",
-          "Zebec Network"
-        ]
-      },
-      {
-        "id": "privacy-coins",
-        "name": "Privacy Coins",
-        "chg24h": 7.6,
-        "mcap_busd": 22.8,
-        "top": [
-          "Zcash",
-          "Monero",
-          "Decred"
+          "Pump Fun",
+          "Swop 2",
+          "Project Galaxy"
         ]
       },
       {
         "id": "identity",
         "name": "Decentralized Identifier (DID)",
-        "chg24h": 5.8,
+        "chg24h": 8.8,
         "mcap_busd": 1.3,
         "top": [
           "Worldcoin Wld",
@@ -803,36 +783,58 @@
         ]
       },
       {
-        "id": "privacy",
-        "name": "Privacy",
-        "chg24h": 5.5,
-        "mcap_busd": 38.9,
+        "id": "artificial-intelligence",
+        "name": "Artificial Intelligence (AI)",
+        "chg24h": 7.7,
+        "mcap_busd": 17.6,
         "top": [
-          "Zcash",
-          "Monero",
-          "Chainlink"
+          "Near",
+          "Bittensor",
+          "Staked Tao Root"
         ]
       },
       {
-        "id": "zero-knowledge-zk",
-        "name": "Zero Knowledge (ZK)",
-        "chg24h": 5.4,
-        "mcap_busd": 16.5,
+        "id": "data-availability",
+        "name": "Data Availability",
+        "chg24h": 7.7,
+        "mcap_busd": 4.7,
         "top": [
-          "Zcash",
-          "Polygon Ecosystem Token",
-          "Midnight 3"
+          "Near",
+          "Celestia",
+          "Unibase"
         ]
       },
       {
-        "id": "quantum-resistant",
-        "name": "Quantum-Resistant",
-        "chg24h": 5.3,
-        "mcap_busd": 15.3,
+        "id": "neobank",
+        "name": "Neobank",
+        "chg24h": 7.7,
+        "mcap_busd": 2.0,
         "top": [
-          "Zcash",
-          "Algorand",
-          "Injective Protocol"
+          "Mantle",
+          "Ether Fi",
+          "Plasma"
+        ]
+      },
+      {
+        "id": "ai-agents",
+        "name": "AI Agents",
+        "chg24h": 7.2,
+        "mcap_busd": 2.9,
+        "top": [
+          "Venice Token",
+          "Kite 2",
+          "Fetch Ai"
+        ]
+      },
+      {
+        "id": "metaverse",
+        "name": "Metaverse",
+        "chg24h": 6.4,
+        "mcap_busd": 1.7,
+        "top": [
+          "Render Token",
+          "Floki",
+          "Origintrail"
         ]
       }
     ],
@@ -961,80 +963,157 @@
         "t": 1795331978,
         "btc_dom": 57.7,
         "total3": 666382433794.4867
+      },
+      {
+        "t": 1795349959,
+        "btc_dom": 58.9,
+        "total3": 647211907270.1118
       }
     ],
     "rotation": {
       "state": "NEUTRAL",
       "text": "Altcoins and BTC are moving roughly together. No rotation either way.",
       "btc_7d": -6.1,
-      "alt_median_7d": -4.5,
-      "btc_dom_7d_change": -1.8,
+      "alt_median_7d": -3.6,
+      "btc_dom_7d_change": -0.5,
       "how": "Compares the median 7 day move of all scanned altcoins with BTC, plus the 7 day change in BTC dominance once a week of history is stored."
     },
     "sector_coins": [
       {
-        "symbol": "DASH",
-        "name": "Dash",
-        "sector": "Payment Solutions",
-        "mcap_musd": 446,
-        "rank": 103,
-        "price": 34.58,
+        "symbol": "PUMP",
+        "name": "Pump.fun",
+        "sector": "SocialFi",
+        "mcap_musd": 886,
+        "rank": 73,
+        "price": 0.00250736,
         "binance_days": null,
-        "binance_days_min": null,
+        "binance_days_min": 220,
         "facts": [
-          "In Payment Solutions, a sector up 7.7% today.",
-          "-36% over 30 days, -7% over 7 days."
+          "In SocialFi, a sector up 9.7% today.",
+          "-45% over 30 days, -16% over 7 days.",
+          "Daily trend: downtrend."
         ],
         "risks": [
-          "No standout risk in this data, which is not the same as safe."
+          "Only 35% of supply circulating, so unlocks can add selling.",
+          "Below its 50 day average: the trend is still down."
         ]
       },
       {
-        "symbol": "AMP",
-        "name": "Amp",
-        "sector": "Payment Solutions",
-        "mcap_musd": 43,
-        "rank": 424,
-        "price": 0.00048293,
+        "symbol": "GAL",
+        "name": "GAL (migrated to Gravity - G)",
+        "sector": "SocialFi",
+        "mcap_musd": 46,
+        "rank": 408,
+        "price": 0.357258,
         "binance_days": null,
         "binance_days_min": null,
         "facts": [
-          "In Payment Solutions, a sector up 7.7% today.",
-          "-37% over 30 days, -9% over 7 days."
-        ],
-        "risks": [
-          "Small cap: thin order books and large swings."
-        ]
-      },
-      {
-        "symbol": "XNO",
-        "name": "Nano",
-        "sector": "Payment Solutions",
-        "mcap_musd": 40,
-        "rank": 452,
-        "price": 0.296807,
-        "binance_days": null,
-        "binance_days_min": null,
-        "facts": [
-          "In Payment Solutions, a sector up 7.7% today.",
-          "-14% over 30 days, -5% over 7 days."
+          "In SocialFi, a sector up 9.7% today.",
+          "-32% over 30 days, -8% over 7 days."
         ],
         "risks": [
           "Small cap: thin order books and large swings."
         ]
       },
       {
-        "symbol": "REQ",
-        "name": "Request",
-        "sector": "Payment Solutions",
-        "mcap_musd": 33,
-        "rank": 511,
-        "price": 0.04118852,
+        "symbol": "SNT",
+        "name": "Status",
+        "sector": "SocialFi",
+        "mcap_musd": 27,
+        "rank": 608,
+        "price": 0.00555877,
         "binance_days": null,
         "binance_days_min": null,
         "facts": [
-          "In Payment Solutions, a sector up 7.7% today.",
-          "-23% over 30 days, -1% over 7 days."
+          "In SocialFi, a sector up 9.7% today.",
+          "-23% over 30 days, -3% over 7 days."
+        ],
+        "risks": [
+          "Small cap: thin order books and large swings."
+        ]
+      },
+      {
+        "symbol": "STEEM",
+        "name": "Steem",
+        "sector": "SocialFi",
+        "mcap_musd": 25,
+        "rank": 653,
+        "price": 0.04383496,
+        "binance_days": null,
+        "binance_days_min": null,
+        "facts": [
+          "In SocialFi, a sector up 9.7% today.",
+          "-17% over 30 days, +1% over 7 days."
+        ],
+        "risks": [
+          "Small cap: thin order books and large swings."
+        ]
+      },
+      {
+        "symbol": "WLD",
+        "name": "Worldcoin",
+        "sector": "Decentralized Identifier (DID)",
+        "mcap_musd": 897,
+        "rank": 71,
+        "price": 0.236069,
+        "binance_days": null,
+        "binance_days_min": 220,
+        "facts": [
+          "In Decentralized Identifier (DID), a sector up 8.8% today.",
+          "-56% over 30 days, -11% over 7 days.",
+          "Daily trend: downtrend."
+        ],
+        "risks": [
+          "Only 38% of supply circulating, so unlocks can add selling.",
+          "Below its 50 day average: the trend is still down."
+        ]
+      },
+      {
+        "symbol": "ENS",
+        "name": "Ethereum Name Service",
+        "sector": "Decentralized Identifier (DID)",
+        "mcap_musd": 156,
+        "rank": 176,
+        "price": 3.68,
+        "binance_days": null,
+        "binance_days_min": null,
+        "facts": [
+          "In Decentralized Identifier (DID), a sector up 8.8% today.",
+          "-35% over 30 days, -7% over 7 days."
+        ],
+        "risks": [
+          "Only 42% of supply circulating, so unlocks can add selling."
+        ]
+      },
+      {
+        "symbol": "G",
+        "name": "Gravity (by Galxe)",
+        "sector": "Decentralized Identifier (DID)",
+        "mcap_musd": 19,
+        "rank": 767,
+        "price": 0.00259558,
+        "binance_days": null,
+        "binance_days_min": null,
+        "facts": [
+          "In Decentralized Identifier (DID), a sector up 8.8% today.",
+          "-33% over 30 days, -3% over 7 days."
+        ],
+        "risks": [
+          "Small cap: thin order books and large swings."
+        ]
+      },
+      {
+        "symbol": "CVC",
+        "name": "Civic",
+        "sector": "Decentralized Identifier (DID)",
+        "mcap_musd": 18,
+        "rank": 795,
+        "price": 0.01770151,
+        "binance_days": null,
+        "binance_days_min": null,
+        "facts": [
+          "In Decentralized Identifier (DID), a sector up 8.8% today.",
+          "-25% over 30 days, -0% over 7 days."
         ],
         "risks": [
           "Small cap: thin order books and large swings."
