@@ -1,14 +1,14 @@
 {
-  "generated_utc": "2026-11-23 01:04",
-  "scanned": 30,
+  "generated_utc": "2026-11-23 14:04",
+  "scanned": 38,
   "market": {
     "BTC": {
-      "price": 61070.8,
-      "chg24h": 1.432
+      "price": 63548.16,
+      "chg24h": 4.551
     },
     "ETH": {
-      "price": 1714.82,
-      "chg24h": 1.787
+      "price": 1806.9,
+      "chg24h": 6.028
     }
   },
   "signals": [],
@@ -471,100 +471,63 @@
     ],
     "trending": [
       {
-        "symbol": "VVV",
-        "name": "Venice Token",
-        "rank": 59,
-        "ch24": 5.7,
+        "symbol": "MINELIUS",
+        "name": "Minelius",
+        "rank": 910,
+        "ch24": 0,
         "on_binance": false,
-        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top. Not in this screener's Binance list, so none of the checks here apply."
+        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top. It is a small coin (rank 910), so moves both ways are violent. Not in this screener's Binance list, so none of the checks here apply."
       },
       {
-        "symbol": "BTC",
-        "name": "Bitcoin",
-        "rank": 1,
-        "ch24": 1.8,
-        "on_binance": true,
-        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top."
+        "symbol": "PEI",
+        "name": "Pepe Intelligence",
+        "rank": 922,
+        "ch24": 0,
+        "on_binance": false,
+        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top. It is a small coin (rank 922), so moves both ways are violent. Not in this screener's Binance list, so none of the checks here apply."
       },
       {
-        "symbol": "HYPE",
-        "name": "Hyperliquid",
-        "rank": 10,
-        "ch24": 2.4,
-        "on_binance": true,
-        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top."
+        "symbol": "LOOSY",
+        "name": "Cool Dog",
+        "rank": 892,
+        "ch24": 0,
+        "on_binance": false,
+        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top. It is a small coin (rank 892), so moves both ways are violent. Not in this screener's Binance list, so none of the checks here apply."
       },
       {
         "symbol": "PEARL",
         "name": "Pearl",
-        "rank": 76,
-        "ch24": 7.7,
+        "rank": 74,
+        "ch24": 18.2,
         "on_binance": false,
         "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top. Not in this screener's Binance list, so none of the checks here apply."
-      },
-      {
-        "symbol": "ETH",
-        "name": "Ethereum",
-        "rank": 2,
-        "ch24": 2.1,
-        "on_binance": true,
-        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top."
       },
       {
         "symbol": "PENGU",
         "name": "Pudgy Penguins",
-        "rank": 130,
-        "ch24": -1.2,
+        "rank": 125,
+        "ch24": 5.3,
         "on_binance": false,
         "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top. Not in this screener's Binance list, so none of the checks here apply."
       },
       {
-        "symbol": "TRUMP",
-        "name": "Official Trump",
-        "rank": 135,
-        "ch24": -0.9,
+        "symbol": "DRV",
+        "name": "Derive",
+        "rank": 111,
+        "ch24": -5.2,
+        "on_binance": false,
+        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top. Not in this screener's Binance list, so none of the checks here apply."
+      },
+      {
+        "symbol": "VVV",
+        "name": "Venice Token",
+        "rank": 60,
+        "ch24": 3.3,
         "on_binance": false,
         "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top. Not in this screener's Binance list, so none of the checks here apply."
       }
     ],
     "bottoms": [
-      {
-        "drawdown_pct": 65,
-        "base_range_pct": 80,
-        "divergence": false,
-        "rsi_lows": null,
-        "div_days_ago": null,
-        "vol_pickup": 3.3,
-        "above20": true,
-        "base_low": 0.01154,
-        "base_high": 0.0208,
-        "score": 3.81,
-        "symbol": "AIGENSYN",
-        "price": 0.01472,
-        "note": "AIGENSYN is 65% below its 6 month high and has moved in a 80% range for 30 days. No bullish divergence yet. Volume is picking up (3.3x its recent average). A bottom is only confirmed once price breaks above the base (0.0208) on a daily close. Below the base low (0.01154) the idea is wrong.",
-        "label": "Still swinging, no base yet",
-        "plan": {
-          "atr_pct": 8.5,
-          "resistance": [
-            0.02052,
-            0.02181,
-            0.02225
-          ],
-          "support": [
-            0.01338,
-            0.01154
-          ],
-          "trigger": 0.02108,
-          "ma20": 0.0139645,
-          "ma50": 0.016704399999999998,
-          "ma200": null,
-          "status": "No buy",
-          "entry_lo": null,
-          "entry_hi": null,
-          "stop": null,
-          "why": "Downtrend. No buy zone until price closes back above the 50 day average (0.0167044) or breaks the 42 day high (0.02108)."
-        }
-      },
       {
         "drawdown_pct": 53,
         "base_range_pct": 236,
@@ -642,6 +605,80 @@
         }
       },
       {
+        "drawdown_pct": 59,
+        "base_range_pct": 95,
+        "divergence": false,
+        "rsi_lows": null,
+        "div_days_ago": null,
+        "vol_pickup": 4.1,
+        "above20": false,
+        "base_low": 0.0367,
+        "base_high": 0.0715,
+        "score": 2.68,
+        "symbol": "SKY",
+        "price": 0.04172,
+        "note": "SKY is 59% below its 6 month high and has moved in a 95% range for 30 days. No bullish divergence yet. Volume is picking up (4.1x its recent average). A bottom is only confirmed once price breaks above the base (0.0715) on a daily close. Below the base low (0.0367) the idea is wrong.",
+        "label": "Still swinging, no base yet",
+        "plan": {
+          "atr_pct": 10.8,
+          "resistance": [
+            0.05708,
+            0.05966,
+            0.06439
+          ],
+          "support": [
+            0.0367
+          ],
+          "trigger": 0.08211,
+          "ma20": 0.0561765,
+          "ma50": 0.0666842,
+          "ma200": 0.0641653,
+          "status": "No buy",
+          "entry_lo": null,
+          "entry_hi": null,
+          "stop": null,
+          "why": "Downtrend. No buy zone until price closes back above the 50 day average (0.0666842) or breaks the 42 day high (0.08211)."
+        }
+      },
+      {
+        "drawdown_pct": 76,
+        "base_range_pct": 170,
+        "divergence": false,
+        "rsi_lows": null,
+        "div_days_ago": null,
+        "vol_pickup": 0.6,
+        "above20": false,
+        "base_low": 0.02009,
+        "base_high": 0.05427,
+        "score": 1.52,
+        "symbol": "MUBARAK",
+        "price": 0.02088,
+        "note": "MUBARAK is 76% below its 6 month high and has moved in a 170% range for 30 days. No bullish divergence yet. A bottom is only confirmed once price breaks above the base (0.05427) on a daily close. Below the base low (0.02009) the idea is wrong.",
+        "label": "Still swinging, no base yet",
+        "plan": {
+          "atr_pct": 13.2,
+          "resistance": [
+            0.02303,
+            0.0297,
+            0.03367
+          ],
+          "support": [
+            0.0189,
+            0.01515,
+            0.01168
+          ],
+          "trigger": 0.08361,
+          "ma20": 0.03256,
+          "ma50": 0.04845239999999999,
+          "ma200": 0.02689715,
+          "status": "No buy",
+          "entry_lo": null,
+          "entry_hi": null,
+          "stop": null,
+          "why": "Downtrend. No buy zone until price closes back above the 50 day average (0.0484524) or breaks the 42 day high (0.08361)."
+        }
+      },
+      {
         "drawdown_pct": 67,
         "base_range_pct": 132,
         "divergence": false,
@@ -674,178 +711,142 @@
           "stop": null,
           "why": "Downtrend. No buy zone until price closes back above the 50 day average (0.413208) or breaks the 42 day high (0.5983)."
         }
-      },
-      {
-        "drawdown_pct": 66,
-        "base_range_pct": 143,
-        "divergence": false,
-        "rsi_lows": null,
-        "div_days_ago": null,
-        "vol_pickup": 0.8,
-        "above20": false,
-        "base_low": 0.0897,
-        "base_high": 0.2178,
-        "score": 1.31,
-        "symbol": "ENA",
-        "price": 0.1013,
-        "note": "ENA is 66% below its 6 month high and has moved in a 143% range for 30 days. No bullish divergence yet. A bottom is only confirmed once price breaks above the base (0.2178) on a daily close. Below the base low (0.0897) the idea is wrong.",
-        "label": "Still swinging, no base yet",
-        "plan": {
-          "atr_pct": 11.3,
-          "resistance": [
-            0.1185,
-            0.1835,
-            0.1889
-          ],
-          "support": [
-            0.0816,
-            0.0784,
-            0.0723
-          ],
-          "trigger": 0.2474,
-          "ma20": 0.13483499999999998,
-          "ma50": 0.177178,
-          "ma200": 0.1324415,
-          "status": "No buy",
-          "entry_lo": null,
-          "entry_hi": null,
-          "stop": null,
-          "why": "Downtrend. No buy zone until price closes back above the 50 day average (0.177178) or breaks the 42 day high (0.2474)."
-        }
       }
     ],
     "bottoms_tested": "Tested on 2.7 years of these coins, 30 days later: the classic pattern (bullish divergence plus a tight base) averaged 5% down and rose only 32% of the time, worse than a random coin (up 44% of the time). Buying after the break above the base was worse still. Catching bottoms has no edge in this data.",
     "news": [
       {
         "source": "Cointelegraph",
-        "title": "Half of wallets on Trump\u2019s dinner list got tokens from non-US exchanges",
-        "link": "https://cointelegraph.com/news/half-wallets-trumps-dinner-list-got-tokens-from-non-us-exchanges?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
+        "title": "OKX, ICE launch 113 tokenized assets despite issuer objections",
+        "link": "https://cointelegraph.com/news/okxice-launch-113-tokenized-assets-objections?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
       },
       {
         "source": "Cointelegraph",
-        "title": "Will Bitcoin\u2019s big rebound hold? More tampered Ledgers found: Hodler\u2019s Digest",
-        "link": "https://cointelegraph.com/magazine/will-bitcoins-big-rebound-hold-more-tampered-ledgers-found-hodlers-digest?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
+        "title": "Trump-linked American Bitcoin secures $150M credit line from FalconX",
+        "link": "https://cointelegraph.com/news/trumps-american-bitcoin-rises-150m-credit-falconx?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
       },
       {
         "source": "Cointelegraph",
-        "title": "The future of onchain FX could start with users, not institutional liquidity",
-        "link": "https://cointelegraph.com/opinion/future-onchain-fx-could-start-with-users-not-institutional-liquidity?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
+        "title": "Strategy buys 457 Bitcoin, spends $212M on preferred share buybacks",
+        "link": "https://cointelegraph.com/news/strategy-buy-457-bitcoin-btc-treasury-losses?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
       },
       {
         "source": "Cointelegraph",
-        "title": "Here\u2019s what happened in crypto today",
-        "link": "https://cointelegraph.com/news/what-happened-in-crypto-today?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
+        "title": "AI agents are using credit cards. Where does that leave crypto?",
+        "link": "https://cointelegraph.com/magazine/ai-agents-are-using-credit-cards-where-does-that-leave-crypto?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
       },
       {
         "source": "Cointelegraph",
-        "title": "Bitcoin briefly drops to $17K on Kraken, exchange upholds trades",
-        "link": "https://cointelegraph.com/news/bitcoin-17k-kraken-canadian-dollar-market-trades-stand?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
+        "title": "Critics of Netflix\u2019s FTX drama point to Obama\u2019s producer credit",
+        "link": "https://cointelegraph.com/news/netflix-ftx-scrutiny-obama-production-ties?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
       },
       {
         "source": "Cointelegraph",
-        "title": "South Korean exchanges halt CYBER transfers amid suspected bridge exploit",
-        "link": "https://cointelegraph.com/news/upbit-bithumb-suspend-cyber-transfers-bridge-exploit?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
+        "title": "ECB to let banks pledge more tokenized securities as collateral",
+        "link": "https://cointelegraph.com/news/ecb-expands-eurosystem-collateral-tokenized-securities?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
       }
     ],
     "regime": {
       "mood": "Downtrend",
-      "breadth_pct": 7,
+      "breadth_pct": 9,
       "btc_above_50d": false,
       "btc_above_200d": false,
-      "summary": "The market is weak. BTC is below its 50 day average and below its 200 day average, and 7% of coins are above their 50 day average. Most breakouts fail even in good markets, so in a weak market protecting cash matters more than finding a winner. There is no signal today, so by the rules there is nothing to buy. Use the lists below to learn the market and build your own watchlist, not as buy tips. Should you invest at all? Only money you can afford to lose completely, and only after a few weeks of paper trading these signals."
+      "summary": "The market is weak. BTC is below its 50 day average and below its 200 day average, and 9% of coins are above their 50 day average. Most breakouts fail even in good markets, so in a weak market protecting cash matters more than finding a winner. There is no signal today, so by the rules there is nothing to buy. Use the lists below to learn the market and build your own watchlist, not as buy tips. Should you invest at all? Only money you can afford to lose completely, and only after a few weeks of paper trading these signals."
     },
     "global": {
-      "total_usd": 2082356591026.6123,
-      "btc_dom": 58.9,
+      "total_usd": 2202909197375.876,
+      "btc_dom": 58.5,
       "eth_dom": 10.0,
-      "total3_usd": 646434507478.5181,
-      "chg24h": -2.7
+      "total3_usd": 693807122491.0461,
+      "chg24h": -0.2
     },
     "sectors": [
       {
-        "id": "timefi",
-        "name": "TimeFi",
-        "chg24h": 9.1,
-        "mcap_busd": 1.0,
+        "id": "dex-aggregator",
+        "name": "Dex Aggregator",
+        "chg24h": 10.2,
+        "mcap_busd": 1.1,
         "top": [
-          "Pieverse"
+          "Jupiter Exchange Solana",
+          "1Inch",
+          "Lcx"
         ]
       },
       {
-        "id": "socialfi",
-        "name": "SocialFi",
-        "chg24h": 5.4,
-        "mcap_busd": 1.3,
+        "id": "directed-acyclic-graph-dag",
+        "name": "Directed Acyclic Graph (DAG)",
+        "chg24h": 7.3,
+        "mcap_busd": 3.4,
         "top": [
-          "Pump Fun",
-          "Swop 2",
-          "Project Galaxy"
+          "Hedera Hashgraph",
+          "Kaspa",
+          "Iota"
         ]
       },
       {
-        "id": "neobank",
-        "name": "Neobank",
-        "chg24h": 3.8,
+        "id": "liquid-staking",
+        "name": "Liquid Staking",
+        "chg24h": 6.9,
+        "mcap_busd": 1.1,
+        "top": [
+          "Staked Ether",
+          "Wrapped Steth",
+          "Wrapped Beacon Eth"
+        ]
+      },
+      {
+        "id": "ai-applications",
+        "name": "AI Applications",
+        "chg24h": 6.6,
+        "mcap_busd": 3.0,
+        "top": [
+          "Venice Token",
+          "Pieverse",
+          "Quack Ai"
+        ]
+      },
+      {
+        "id": "decentralized-derivatives",
+        "name": "Derivatives",
+        "chg24h": 6.5,
+        "mcap_busd": 17.8,
+        "top": [
+          "Hyperliquid",
+          "Lighter",
+          "Derive"
+        ]
+      },
+      {
+        "id": "decentralized-perpetuals",
+        "name": "Perpetuals",
+        "chg24h": 6.3,
+        "mcap_busd": 20.6,
+        "top": [
+          "Hyperliquid",
+          "Aster 2",
+          "Jupiter Exchange Solana"
+        ]
+      },
+      {
+        "id": "infrastructure",
+        "name": "Infrastructure",
+        "chg24h": 6.3,
+        "mcap_busd": 20.4,
+        "top": [
+          "Chainlink",
+          "Litecoin",
+          "Quant Network"
+        ]
+      },
+      {
+        "id": "solana-meme-coins",
+        "name": "Solana Meme",
+        "chg24h": 6.3,
         "mcap_busd": 2.0,
         "top": [
-          "Mantle",
-          "Ether Fi",
-          "Plasma"
-        ]
-      },
-      {
-        "id": "privacy-infrastructure",
-        "name": "Privacy Infrastructure",
-        "chg24h": 3.1,
-        "mcap_busd": 13.1,
-        "top": [
-          "Chainlink",
-          "Near",
-          "Midnight 3"
-        ]
-      },
-      {
-        "id": "data-availability",
-        "name": "Data Availability",
-        "chg24h": 3.0,
-        "mcap_busd": 4.6,
-        "top": [
-          "Near",
-          "Celestia",
-          "Unibase"
-        ]
-      },
-      {
-        "id": "chain-abstraction",
-        "name": "Chain Abstraction",
-        "chg24h": 2.8,
-        "mcap_busd": 10.8,
-        "top": [
-          "Chainlink",
-          "Near",
-          "Zetachain"
-        ]
-      },
-      {
-        "id": "oracle",
-        "name": "Oracle",
-        "chg24h": 2.7,
-        "mcap_busd": 7.6,
-        "top": [
-          "Chainlink",
-          "Pyth Network",
-          "Redstone Oracles"
-        ]
-      },
-      {
-        "id": "layer-2",
-        "name": "Layer 2 (L2)",
-        "chg24h": 2.7,
-        "mcap_busd": 7.2,
-        "top": [
-          "Okb",
-          "Mantle",
-          "Polygon Ecosystem Token"
+          "Pudgy Penguins",
+          "Official Trump",
+          "Bonk"
         ]
       }
     ],
@@ -989,47 +990,50 @@
         "t": 1795395863,
         "btc_dom": 58.9,
         "total3": 646434507478.5181
+      },
+      {
+        "t": 1795442699,
+        "btc_dom": 58.5,
+        "total3": 693807122491.0461
       }
     ],
     "rotation": {
       "state": "NEUTRAL",
       "text": "Altcoins and BTC are moving roughly together. No rotation either way.",
       "btc_7d": -6.2,
-      "alt_median_7d": -7.5,
-      "btc_dom_7d_change": -0.4,
+      "alt_median_7d": -9.6,
+      "btc_dom_7d_change": -0.2,
       "how": "Compares the median 7 day move of all scanned altcoins with BTC, plus the 7 day change in BTC dominance once a week of history is stored."
     },
     "sector_coins": [
       {
-        "symbol": "PUMP",
-        "name": "Pump.fun",
-        "sector": "SocialFi",
-        "mcap_musd": 906,
-        "rank": 71,
-        "price": 0.00256365,
-        "binance_days": null,
-        "binance_days_min": 220,
-        "facts": [
-          "In SocialFi, a sector up 5.4% today.",
-          "-40% over 30 days, -13% over 7 days.",
-          "Daily trend: downtrend."
-        ],
-        "risks": [
-          "Only 35% of supply circulating, so unlocks can add selling.",
-          "Below its 50 day average: the trend is still down."
-        ]
-      },
-      {
-        "symbol": "GAL",
-        "name": "GAL (migrated to Gravity - G)",
-        "sector": "SocialFi",
-        "mcap_musd": 46,
-        "rank": 412,
-        "price": 0.356506,
+        "symbol": "JUP",
+        "name": "Jupiter",
+        "sector": "Dex Aggregator",
+        "mcap_musd": 823,
+        "rank": 78,
+        "price": 0.248057,
         "binance_days": null,
         "binance_days_min": null,
         "facts": [
-          "In SocialFi, a sector up 5.4% today.",
+          "In Dex Aggregator, a sector up 10.2% today.",
+          "-14% over 30 days, -2% over 7 days."
+        ],
+        "risks": [
+          "Only 33% of supply circulating, so unlocks can add selling."
+        ]
+      },
+      {
+        "symbol": "1INCH",
+        "name": "1INCH",
+        "sector": "Dex Aggregator",
+        "mcap_musd": 88,
+        "rank": 266,
+        "price": 0.062541,
+        "binance_days": null,
+        "binance_days_min": null,
+        "facts": [
+          "In Dex Aggregator, a sector up 10.2% today.",
           "-31% over 30 days, -7% over 7 days."
         ],
         "risks": [
@@ -1037,71 +1041,123 @@
         ]
       },
       {
-        "symbol": "SNT",
-        "name": "Status",
-        "sector": "SocialFi",
-        "mcap_musd": 28,
-        "rank": 600,
-        "price": 0.00569503,
+        "symbol": "HOME",
+        "name": "HOME",
+        "sector": "Dex Aggregator",
+        "mcap_musd": 19,
+        "rank": 787,
+        "price": 0.00428626,
         "binance_days": null,
         "binance_days_min": null,
         "facts": [
-          "In SocialFi, a sector up 5.4% today.",
-          "-20% over 30 days, -8% over 7 days."
+          "In Dex Aggregator, a sector up 10.2% today.",
+          "-18% over 30 days, +5% over 7 days."
+        ],
+        "risks": [
+          "Small cap: thin order books and large swings.",
+          "Only 44% of supply circulating, so unlocks can add selling."
+        ]
+      },
+      {
+        "symbol": "CETUS",
+        "name": "Cetus Protocol",
+        "sector": "Dex Aggregator",
+        "mcap_musd": 15,
+        "rank": 891,
+        "price": 0.01570704,
+        "binance_days": null,
+        "binance_days_min": null,
+        "facts": [
+          "In Dex Aggregator, a sector up 10.2% today.",
+          "-29% over 30 days, -2% over 7 days."
         ],
         "risks": [
           "Small cap: thin order books and large swings."
         ]
       },
       {
-        "symbol": "STEEM",
-        "name": "Steem",
-        "sector": "SocialFi",
-        "mcap_musd": 24,
-        "rank": 654,
-        "price": 0.04313916,
+        "symbol": "HBAR",
+        "name": "Hedera",
+        "sector": "Directed Acyclic Graph (DAG)",
+        "mcap_musd": 2414,
+        "rank": 34,
+        "price": 0.054467,
         "binance_days": null,
         "binance_days_min": null,
         "facts": [
-          "In SocialFi, a sector up 5.4% today.",
-          "-17% over 30 days, -2% over 7 days."
-        ],
-        "risks": [
-          "Small cap: thin order books and large swings."
-        ]
-      },
-      {
-        "symbol": "ETHFI",
-        "name": "Ether.fi",
-        "sector": "Neobank",
-        "mcap_musd": 496,
-        "rank": 97,
-        "price": 0.496666,
-        "binance_days": null,
-        "binance_days_min": null,
-        "facts": [
-          "In Neobank, a sector up 3.8% today.",
-          "-23% over 30 days, +0% over 7 days."
+          "In Directed Acyclic Graph (DAG), a sector up 7.3% today.",
+          "-29% over 30 days, -6% over 7 days."
         ],
         "risks": [
           "No standout risk in this data, which is not the same as safe."
         ]
       },
       {
-        "symbol": "XPL",
-        "name": "Plasma",
-        "sector": "Neobank",
-        "mcap_musd": 211,
-        "rank": 149,
-        "price": 0.04435043,
+        "symbol": "IOTA",
+        "name": "IOTA",
+        "sector": "Directed Acyclic Graph (DAG)",
+        "mcap_musd": 154,
+        "rank": 179,
+        "price": 0.03243494,
         "binance_days": null,
         "binance_days_min": null,
         "facts": [
-          "In Neobank, a sector up 3.8% today.",
-          "-41% over 30 days, -0% over 7 days."
+          "In Directed Acyclic Graph (DAG), a sector up 7.3% today.",
+          "-27% over 30 days, +2% over 7 days."
         ],
         "risks": [
-          "Only 48% of supply circulating, so unlocks can add selling."
+          "No standout risk in this data, which is not the same as safe."
+        ]
+      },
+      {
+        "symbol": "XNO",
+        "name": "Nano",
+        "sector": "Directed Acyclic Graph (DAG)",
+        "mcap_musd": 41,
+        "rank": 453,
+        "price": 0.30565,
+        "binance_days": null,
+        "binance_days_min": null,
+        "facts": [
+          "In Directed Acyclic Graph (DAG), a sector up 7.3% today.",
+          "-7% over 30 days, +7% over 7 days."
+        ],
+        "risks": [
+          "Small cap: thin order books and large swings."
+        ]
+      },
+      {
+        "symbol": "WBETH",
+        "name": "Wrapped Beacon ETH",
+        "sector": "Liquid Staking",
+        "mcap_musd": 6969,
+        "rank": null,
+        "price": 1993.37,
+        "binance_days": null,
+        "binance_days_min": null,
+        "facts": [
+          "In Liquid Staking, a sector up 6.9% today.",
+          "-24% over 30 days, -0% over 7 days."
+        ],
+        "risks": [
+          "No standout risk in this data, which is not the same as safe."
+        ]
+      },
+      {
+        "symbol": "BNSOL",
+        "name": "Binance Staked SOL",
+        "sector": "Liquid Staking",
+        "mcap_musd": 784,
+        "rank": null,
+        "price": 86.91,
+        "binance_days": null,
+        "binance_days_min": null,
+        "facts": [
+          "In Liquid Staking, a sector up 6.9% today.",
+          "-25% over 30 days, +8% over 7 days."
+        ],
+        "risks": [
+          "No standout risk in this data, which is not the same as safe."
         ]
       }
     ]
