@@ -125,6 +125,25 @@ h2{font-size:17px;margin:28px 0 4px}
 .inval{margin-top:9px;background:var(--dnbg);color:var(--dn);border:1px solid var(--dn);border-radius:9px;padding:7px 10px;font-size:13px;font-weight:600}
 .c2 .chart{height:110px}
 @media (max-width:420px){.ttab span{display:none}.ttab{padding:9px 8px}.ttab i{position:static;transform:none;display:inline-grid;margin-top:3px}}
+/* clean folded sections */
+details.fold{background:var(--card);border:1px solid var(--line);border-radius:12px;margin:8px 0}
+details.fold>summary{list-style:none;cursor:pointer;display:flex;justify-content:flex-start;align-items:center;gap:10px;padding:13px 14px;font-weight:700;font-size:15px}
+details.fold>summary::-webkit-details-marker{display:none}
+details.fold>summary .r{display:flex;align-items:center;gap:8px;margin-left:auto}
+details.fold>summary i{font-style:normal;font-size:12px;font-weight:800;min-width:24px;height:22px;padding:0 7px;border-radius:11px;display:grid;place-items:center;background:var(--soft);color:var(--mute);border:1px solid var(--line)}
+details.fold>summary i.hot{background:var(--up);color:#06140c;border-color:var(--up)}
+details.fold>summary:after{content:"\203A";font-size:20px;color:var(--mute);transition:transform .15s}
+details.fold[open]>summary:after{transform:rotate(90deg)}
+details.fold[open]>summary{border-bottom:1px solid var(--line)}
+.fb{padding:10px 12px}.fb>.sub{margin-bottom:8px}
+details.cr{border-bottom:1px solid var(--line)}details.cr:last-child{border-bottom:0}
+details.cr>summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:1fr auto;gap:2px 10px;padding:9px 2px}
+details.cr>summary::-webkit-details-marker{display:none}
+details.cr>summary .s1{font-weight:700}details.cr>summary .s2{font-size:12.5px;color:var(--mute);grid-column:1/-1}
+details.cr>summary .px{font-weight:700;text-align:right}
+details.cr .crb{padding:2px 2px 12px;font-size:13.5px}
+.line1{display:flex;justify-content:space-between;align-items:center;gap:8px;cursor:pointer;list-style:none}
+.line1::-webkit-details-marker{display:none}
 /* sectors */
 .sect{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:10px}
 .sec{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
@@ -169,9 +188,9 @@ details.pl{margin-top:10px}details.pl>summary{cursor:pointer;color:var(--acc);fo
   <h1>Crypto Screener</h1>
   <div class="sub" id="sub">Loading...</div>
   <div class="sub"><span class="live" id="dot"></span><span id="liveTxt">Connecting to live prices...</span></div>
-  <div class="card sum" id="summary" style="display:none"></div>
+  <details class="card sum" id="summary" style="display:none;padding:11px 14px"></details>
 
-  <div class="card" id="rotcard" style="display:none"></div>
+  <details class="card" id="rotcard" style="display:none;padding:11px 14px"></details>
   <div class="app" id="app">
     <div class="apphd"><div class="brand"><div class="lg">&#8599;</div><div><b>CRYPTO SCREENER</b><div class="k">&#9679; SPOT BREAKOUT SCANNER</div></div></div><span class="lvb">&#9679; LIVE SPOT</span></div>
     <div class="apbar"><span class="pl" id="scanpill">Loading scan...</span><button class="rbtn" id="refresh">&#8635; Refresh</button></div>
@@ -189,38 +208,18 @@ details.pl{margin-top:10px}details.pl>summary{cursor:pointer;color:var(--acc);fo
     <div id="board"></div>
   </div>
 
-  <h2>Narratives today</h2>
-  <div class="sub">Crypto sectors over $1B, ranked by 24 hour market cap change (CoinGecko). Shows what is moving now, not future winners.</div>
-  <div class="sect" id="sectors"></div>
-
-  <h2>Sector watch</h2>
-  <div class="sub">The biggest Binance listed coins in today's strongest sectors, with facts and risks. Not picks: no one can know which will rise. KuCoin is left out: it is not licensed in the UAE and its low caps carry high rug risk.</div>
-  <div class="sect" id="seccoins"></div>
-  <h2>Signals</h2>
-  <div class="tabs" id="tabs"><label class="tgl"><input type="checkbox" id="exp"> Show experimental reversal signals <span class="k">(they lost money in the backtest)</span></label></div>
-  <div id="list"></div>
-  <h2>Watchlist: close to triggering</h2>
-  <div class="sub">Not signals. These sit within 3% under their 42 day high. They trigger only on a daily close above it with strong volume.</div>
-  <div id="watch"></div>
-  <h2>Near support: watch only</h2>
-  <div class="sub" id="nsnote">Coins within 3% above their nearest swing low support, closest first.</div>
-  <div id="nearsup"></div>
-
-  <div class="cols">
-    <div><h2>Growing coins</h2><div class="sub">In an uptrend and up over 30 days. Strength, not a buy signal.</div><div id="growing"></div></div>
-    <div><h2>Market leaders</h2><div class="sub">The biggest coins on Binance and their trend.</div><div id="leaders"></div></div>
-  </div>
-  <h2>Bottom watch: 5 beaten down coins</h2>
-  <div class="sub">Down 50%+ from their 6 month high, ranked by base tightness, bullish divergence and volume. Read the test result first.</div>
-  <div class="card" id="bottest" style="border-left:4px solid var(--dn);font-size:13.5px;display:none"></div>
-  <div id="bottoms"></div>
-  <div class="cols">
-    <div><h2>New on Binance</h2><div class="sub">Listed in the last 90 days. The riskiest group.</div><div id="newl"></div></div>
-    <div><h2>Trending searches</h2><div class="sub">Most searched on CoinGecko in 24 hours. Attention, not quality.</div><div id="trending"></div></div>
-  </div>
-  <h2>Market news</h2>
-  <div class="sub">Latest headlines from Cointelegraph and Decrypt.</div>
-  <div id="news"></div>
+  <h2 style="margin-top:20px">More</h2>
+  <details class="fold" data-fold="watch"><summary>Close to breakout<span class="r"><i id="n_watch">0</i></span></summary><div class="fb"><div class="sub">Within 3% under their 42 day high. Not signals until a daily close above it on strong volume.</div><div id="watch"></div></div></details>
+  <details class="fold" data-fold="nearsup"><summary>Near support<span class="r"><i id="n_nearsup">0</i></span></summary><div class="fb"><div class="sub" id="nsnote">Within 3% above their nearest support. Watch only.</div><div id="nearsup"></div></div></details>
+  <details class="fold" data-fold="growing"><summary>Growing coins<span class="r"><i id="n_growing">0</i></span></summary><div class="fb"><div class="sub">Uptrend and up over 30 days. Strength, not a buy signal.</div><div id="growing"></div></div></details>
+  <details class="fold" data-fold="leaders"><summary>Market leaders<span class="r"><i id="n_leaders">0</i></span></summary><div class="fb"><div class="sub">The biggest coins on Binance and their trend.</div><div id="leaders"></div></div></details>
+  <details class="fold" data-fold="bottoms"><summary>Bottom watch<span class="r"><i id="n_bottoms">0</i></span></summary><div class="fb"><div class="sub" id="bottest" style="color:var(--dn)"></div><div id="bottoms"></div></div></details>
+  <details class="fold" data-fold="newl"><summary>New on Binance<span class="r"><i id="n_newl">0</i></span></summary><div class="fb"><div class="sub">Listed in the last 90 days. The riskiest group.</div><div id="newl"></div></div></details>
+  <details class="fold" data-fold="trending"><summary>Trending searches<span class="r"><i id="n_trending">0</i></span></summary><div class="fb"><div class="sub">Most searched on CoinGecko in 24 hours. Attention, not quality.</div><div id="trending"></div></div></details>
+  <details class="fold" data-fold="sectors"><summary>Narratives today<span class="r"><i id="n_sectors">0</i></span></summary><div class="fb"><div class="sub">Sectors over $1B by 24 hour change. What is moving now, not future winners.</div><div class="sect" id="sectors"></div></div></details>
+  <details class="fold" data-fold="seccoins"><summary>Sector watch<span class="r"><i id="n_seccoins">0</i></span></summary><div class="fb"><div class="sub">Biggest Binance coins in the strongest sectors, with facts and risks. Not picks.</div><div id="seccoins"></div></div></details>
+  <details class="fold" data-fold="news"><summary>Market news<span class="r"><i id="n_news">0</i></span></summary><div class="fb"><div id="news"></div></div></details>
+  <details class="fold" data-fold="list"><summary>Signal details<span class="r"><i id="n_list">0</i></span></summary><div class="fb"><div class="tabs" id="tabs"><label class="tgl"><input type="checkbox" id="exp"> Show experimental reversal signals <span class="k">(they lost money in the backtest)</span></label></div><div id="list"></div></div></details>
   <div class="notes" id="notes"></div>
 </div>
 <script>
@@ -481,7 +480,7 @@ function render(){
   guard("tick",()=>renderTick());
   guard("summary",()=>{const sm=document.getElementById("summary");
     if(ov.regime){sm.style.display="";sm.className="card sum "+ov.regime.mood;
-      sm.innerHTML=`<div class="top"><b>Market today: ${esc(ov.regime.mood)}</b><span class="k">${ov.regime.breadth_pct}% of coins above their 50 day average</span></div><p>${esc(ov.regime.summary)}</p>`}});
+      sm.innerHTML=`<summary class="line1"><b>Market today: ${esc(ov.regime.mood)}</b><span class="k">${ov.regime.breadth_pct}% of coins in uptrends &#8250;</span></summary><p>${esc(ov.regime.summary)}</p>`}});
   guard("board",renderBoard);
   guard("list",renderSignals);
   guard("sectors",()=>{
@@ -491,40 +490,31 @@ function render(){
   guard("rotcard",()=>{
   const r=ov.rotation,rc=document.getElementById("rotcard");
   if(r){rc.style.display="";rc.className="card sum "+(r.state==="ALT ROTATION ACTIVE"?"Uptrend":r.state==="NEUTRAL"?"":"Downtrend");
-    rc.innerHTML=`<div class="top"><b>${esc(r.state)}</b><span class="k">alts median 7d ${r.alt_median_7d>=0?"+":""}${r.alt_median_7d}% vs BTC ${r.btc_7d>=0?"+":""}${r.btc_7d}%${r.btc_dom_7d_change!=null?` | BTC.D 7d ${r.btc_dom_7d_change>=0?"+":""}${r.btc_dom_7d_change}`:" | BTC.D trend: collecting history"}</span></div><p style="margin:6px 0 0">${esc(r.text)}</p>`}});
+    rc.innerHTML=`<summary class="line1"><b>${esc(r.state)}</b><span class="k">alts 7d ${r.alt_median_7d>=0?"+":""}${r.alt_median_7d}% vs BTC ${r.btc_7d>=0?"+":""}${r.btc_7d}% &#8250;</span></summary><div class="k" style="margin-top:6px">alts median 7d ${r.alt_median_7d>=0?"+":""}${r.alt_median_7d}% vs BTC ${r.btc_7d>=0?"+":""}${r.btc_7d}%${r.btc_dom_7d_change!=null?` | BTC.D 7d ${r.btc_dom_7d_change>=0?"+":""}${r.btc_dom_7d_change}`:" | BTC.D trend: collecting history"}</div><p style="margin:6px 0 0">${esc(r.text)}</p>`}});
   guard("seccoins",()=>{
   const sc=ov.sector_coins||[];
-  document.getElementById("seccoins").innerHTML=sc.length?sc.map(x=>`<div class="sc"><div class="top"><div><span class="sym">${esc(x.symbol)}</span> <span class="k">${esc(x.name||"")}</span></div><span class="v live-px" data-p="${esc(x.symbol)}USDT">${x.price!=null?fmt(x.price):""}</span></div>
-    <div class="k">${esc(x.sector)} | market cap $${big(x.mcap_musd*1e6)}${x.rank?" | rank "+x.rank:""} | on Binance ${x.binance_days?x.binance_days+" days":x.binance_days_min?"220+ days":"n/a"}</div>
-    <ul>${x.facts.map(f=>`<li>${esc(f)}</li>`).join("")}</ul><ul class="rk">${x.risks.map(f=>`<li>${esc(f)}</li>`).join("")}</ul></div>`).join(""):`<div class="empty">Sector data unavailable this run.</div>`});
+  document.getElementById("seccoins").innerHTML=sc.length?sc.map(x=>`<details class="cr"><summary><span class="s1">${esc(x.symbol)} <span class="k">${esc(x.sector)}</span></span><span class="px"><span class="live-px" data-p="${esc(x.symbol)}USDT">${x.price!=null?fmt(x.price):""}</span></span><span class="s2">Market cap $${big(x.mcap_musd*1e6)}${x.rank?" | rank "+x.rank:""}</span></summary><div class="crb"><ul style="margin:0;padding-left:18px">${x.facts.map(f=>`<li>${esc(f)}</li>`).join("")}</ul><ul class="rk" style="margin:4px 0 0;padding-left:18px;color:var(--warn)">${x.risks.map(f=>`<li>${esc(f)}</li>`).join("")}</ul></div></details>`
+  ).join(""):`<div class="empty">Sector data unavailable this run.</div>`});
   guard("nearsup",()=>{const ns=ov.near_support||[],el=document.getElementById("nearsup");
-    if(ov.near_support_note)document.getElementById("nsnote").textContent="Coins within 3% above their nearest swing low support, closest first. "+ov.near_support_note;
-    el.innerHTML=ns.length?ns.map(x=>`<details class="row"><summary><div class="top"><div><span class="sym">${esc(x.symbol)}</span><span class="tr ${x.trend}">${x.trend}</span></div><span class="v live-px" data-p="${esc(x.symbol)}USDT">${fmt(x.price)}</span></div>
-      <div class="nums">${x.gap_pct}% above support ${fmt(x.support)} | 30d ${p7(x.ch30)}</div><div class="note">${esc(x.note)}</div><div class="tap">Tap for levels</div></summary>${planHtml(x.plan)}</details>`).join(""):`<div class="empty">No coin is sitting within 3% of its support right now.</div>`});
+    if(ov.near_support_note)document.getElementById("nsnote").textContent="Within 3% above their nearest support. "+ov.near_support_note;
+    el.innerHTML=ns.length?ns.map(x=>`<details class="cr"><summary><span class="s1">${esc(x.symbol)} <span class="tr ${x.trend}">${x.trend}</span></span><span class="px"><span class="live-px" data-p="${esc(x.symbol)}USDT">${fmt(x.price)}</span></span><span class="s2">Support ${fmt(x.support)} | live <b data-dist="${esc(x.symbol)}USDT" data-sup="${x.support}">${x.gap_pct}%</b> vs support | 30d ${p7(x.ch30)}</span></summary><div class="crb">${esc(x.note)}${planHtml(x.plan)}</div></details>`).join(""):`<div class="empty">No coin is sitting within 3% of its support right now.</div>`});
   guard("watch",()=>{
   const w=d.watchlist||[];
-  document.getElementById("watch").innerHTML=w.length?w.map(s=>`<div class="card"><div class="top"><span class="sym">${s.symbol}</span><span class="k">${s.gap_pct}% below trigger</span></div>
-    <div class="grid"><div><div class="k">Live price</div><div class="v live-px" data-p="${s.pair}">...</div></div>
-    <div><div class="k">Status now</div><div class="v st" data-wt="${s.pair}">...</div></div>
-    <div><div class="k">Trigger (close above)</div><div class="v">${fmt(s.trigger)}</div></div>
-    <div><div class="k">Volume vs avg</div><div class="v">${s.vol_ratio}x</div></div>
-    <div><div class="k">24h</div><div class="v">${pct(s.chg24h)}</div></div></div>
-    <div class="why">${esc(s.why)} 24h volume $${s.qvol_musd}M.</div>${res(s)}</div>`).join(""):`<div class="empty">Nothing close to triggering.</div>`});
+  document.getElementById("watch").innerHTML=w.length?w.map(s=>`<details class="cr"><summary><span class="s1">${esc(s.symbol)}</span><span class="px"><span class="live-px" data-p="${s.pair}">${fmt(s.price)}</span></span><span class="s2">Breakout at ${fmt(s.trigger)} | <span class="st" data-wt="${s.pair}">${s.gap_pct}% below trigger</span></span></summary><div class="crb">${esc(s.why)} Volume ${s.vol_ratio}x average, 24h volume $${s.qvol_musd}M.${res(s)}</div></details>`).join(""):`<div class="empty">Nothing close to triggering.</div>`});
   const sect=(id,list,fn,empty)=>guard(id,()=>{document.getElementById(id).innerHTML=(list&&list.length)?list.map(fn).join(""):`<div class="empty">${empty}</div>`});
   const pc=s=>`<span class="v live-px" data-p="${esc(s.symbol)}USDT">${fmt(s.price)}</span>`;
-  sect("leaders",ov.leaders,s=>`<details class="row"><summary><div class="top"><div><span class="sym">${esc(s.symbol)}</span><span class="tr ${s.trend}">${s.trend}</span></div>${pc(s)}</div>
-    <div class="nums">7d ${p7(s.ch7)} | 30d ${p7(s.ch30)} | ${Math.abs(s.from_high_pct).toFixed(0)}% below recent high</div><div class="note">${esc(s.note)}</div><div class="tap">Tap for trade plan and levels</div></summary>${planHtml(s.plan)}</details>`,"No data this run.");
-  sect("growing",ov.growing,s=>`<details class="row"><summary><div class="top"><div><span class="sym">${esc(s.symbol)}</span><span class="tr ${s.trend}">${s.trend}</span></div>${pc(s)}</div>
-    <div class="nums">7d ${p7(s.ch7)} | 30d ${p7(s.ch30)}</div><div class="note">${esc(s.note)}</div><div class="tap">Tap for trade plan and levels</div></summary>${planHtml(s.plan)}</details>`,"No coin is in a clean uptrend right now. That itself tells you the market is weak.");
-  guard("bottest",()=>{const bt=document.getElementById("bottest");if(ov.bottoms_tested){bt.style.display="";bt.textContent=ov.bottoms_tested}});
-  sect("bottoms",ov.bottoms,s=>`<details class="row"><summary><div class="top"><div><span class="sym">${esc(s.symbol)}</span><span class="tr ${s.label==="Bottoming pattern"?"Uptrend":""}">${esc(s.label)}</span></div>${pc(s)}</div>
-    <div class="nums">${s.drawdown_pct}% below 6 month high | 30 day range ${s.base_range_pct}% | divergence ${s.divergence?"yes":"no"} | volume ${s.vol_pickup}x</div><div class="note">${esc(s.note)}</div><div class="tap">Tap for levels</div></summary>${planHtml(s.plan)}</details>`,"No coin is down 50% or more right now.");
-  sect("newl",ov.new_listings,s=>`<div class="row"><div class="top"><div><span class="sym">${esc(s.symbol)}</span><span class="tr">${s.days_listed} days</span></div>${pc(s)}</div>
-    <div class="nums">Since listing ${p7(s.since_listing_pct)} | ${Math.abs(s.from_high_pct).toFixed(0)}% below its high</div><div class="note">${esc(s.note)}</div></div>`,"No liquid new listings.");
-  sect("trending",ov.trending,s=>`<div class="row"><div class="top"><div><span class="sym">${esc(s.symbol)}</span><span class="k" style="margin-left:8px">${esc(s.name||"")}${s.rank?" | rank "+s.rank:""}</span></div><span class="k">24h ${p7(s.ch24)}</span></div>
-    <div class="note">${esc(s.note)}</div></div>`,"Trending data unavailable this run.");
-  sect("news",ov.news,n=>`<div class="row"><a href="${esc(n.link)}" target="_blank" rel="noopener">${esc(n.title)}</a> <span class="k">${esc(n.source)}</span></div>`,"News unavailable this run.");
+  sect("leaders",ov.leaders,s=>`<details class="cr"><summary><span class="s1">${esc(s.symbol)} <span class="tr ${s.trend}">${s.trend}</span></span><span class="px">${pc(s)}</span><span class="s2">7d ${p7(s.ch7)} | 30d ${p7(s.ch30)}</span></summary><div class="crb">${esc(s.note)}${planHtml(s.plan)}</div></details>`,"No data this run.");
+  sect("growing",ov.growing,s=>`<details class="cr"><summary><span class="s1">${esc(s.symbol)} <span class="tr ${s.trend}">${s.trend}</span></span><span class="px">${pc(s)}</span><span class="s2">7d ${p7(s.ch7)} | 30d ${p7(s.ch30)}</span></summary><div class="crb">${esc(s.note)}${planHtml(s.plan)}</div></details>`,"No coin is in a clean uptrend right now. That itself tells you the market is weak.");
+  guard("bottest",()=>{const bt=document.getElementById("bottest");if(ov.bottoms_tested)bt.textContent="Tested: this pattern did worse than a random coin, so it is watch only. "});
+  sect("bottoms",ov.bottoms,s=>`<details class="cr"><summary><span class="s1">${esc(s.symbol)} <span class="tr ${s.label==="Bottoming pattern"?"Uptrend":""}">${esc(s.label)}</span></span><span class="px">${pc(s)}</span><span class="s2">${s.drawdown_pct}% below 6 month high | divergence ${s.divergence?"yes":"no"}</span></summary><div class="crb">${esc(s.note)}<p class="k">${esc(ov.bottoms_tested||"")}</p>${planHtml(s.plan)}</div></details>`,"No coin is down 50% or more right now.");
+  sect("newl",ov.new_listings,s=>`<details class="cr"><summary><span class="s1">${esc(s.symbol)} <span class="tr">${s.days_listed} days</span></span><span class="px">${pc(s)}</span><span class="s2">Since listing ${p7(s.since_listing_pct)}</span></summary><div class="crb">${esc(s.note)}</div></details>`,"No liquid new listings.");
+  sect("trending",ov.trending,s=>`<details class="cr"><summary><span class="s1">${esc(s.symbol)} <span class="k">${s.rank?"rank "+s.rank:""}</span></span><span class="px"><span class="k">24h ${p7(s.ch24)}</span></span><span class="s2">${esc(s.name||"")}${s.on_binance?"":" | not on Binance"}</span></summary><div class="crb">${esc(s.note)}</div></details>`,"Trending data unavailable this run.");
+  sect("news",ov.news,n=>`<div style="padding:8px 2px;border-bottom:1px solid var(--line)"><a href="${esc(n.link)}" target="_blank" rel="noopener">${esc(n.title)}</a> <span class="k">${esc(n.source)}</span></div>`,"News unavailable this run.");
   guard("notes",()=>{document.getElementById("notes").innerHTML=(d.notes||[]).map(n=>`<div>${esc(n)}</div>`).join("")});
+  const cnt={watch:(d.watchlist||[]).length,nearsup:(ov.near_support||[]).length,growing:(ov.growing||[]).length,leaders:(ov.leaders||[]).length,
+    bottoms:(ov.bottoms||[]).length,newl:(ov.new_listings||[]).length,trending:(ov.trending||[]).length,sectors:(ov.sectors||[]).length,
+    seccoins:(ov.sector_coins||[]).length,news:(ov.news||[]).length,list:(d.signals||[]).length};
+  Object.keys(cnt).forEach(k=>{const el=document.getElementById("n_"+k);if(el){el.textContent=cnt[k];el.className=(k==="watch"||k==="list")&&cnt[k]?"hot":""}});
 }
 document.getElementById("exp").checked=EXP;
 document.getElementById("exp").onchange=e=>{EXP=e.target.checked;try{localStorage.setItem("exp",EXP?"1":"0")}catch(_){};if(DATA){guard("list",renderSignals);guard("board",renderBoard);live()}};
@@ -550,6 +540,9 @@ function live(){
     document.getElementById("liveTxt").textContent="Live prices, updated "+new Date().toLocaleTimeString()+". Signals refresh several times a day.";
   }).catch(()=>{document.getElementById("dot").className="live";document.getElementById("liveTxt").textContent="Live prices unavailable. Showing the last saved scan."});
 }
+(function(){let open={};try{open=JSON.parse(localStorage.getItem("folds")||"{}")}catch(e){}
+  document.querySelectorAll("details.fold").forEach(f=>{if(open[f.dataset.fold])f.open=true;
+    f.addEventListener("toggle",()=>{open[f.dataset.fold]=f.open;try{localStorage.setItem("folds",JSON.stringify(open))}catch(e){}})})})();
 (function(){const tipEl=document.getElementById("tip");let cur=null;
   const show=(el)=>{cur=el;tipEl.textContent=el.dataset.tip;tipEl.style.display="block";
     const r=el.getBoundingClientRect(),w=tipEl.offsetWidth,h=tipEl.offsetHeight;
