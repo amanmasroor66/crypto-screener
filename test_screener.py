@@ -1,4 +1,5 @@
 """Offline test with synthetic candles. Run: python3 test_screener.py"""
+import json
 import random
 import screener
 
@@ -171,4 +172,19 @@ fo = market.build({"BTC": {"candles": series(50, 0.2, 220), "qv": 9e9}, "SOL": {
                    "XRP": {"candles": series(1, 0.01, 220), "qv": 2e9}})["focus"]
 assert [x["symbol"] for x in fo] == ["BTC", "SOL"]  # ETH missing from data is skipped, XRP never included
 assert fo[0]["plan"] and fo[1]["trend"] == "Downtrend" and fo[1]["above50_pct"] < 0
+# top 100 by market cap joins the scan even below the usual volume floor
+tk2 = [{"symbol": "AAAUSDT", "quoteVolume": "3e6", "priceChangePercent": "0"}, {"symbol": "BBBUSDT", "quoteVolume": "3e6", "priceChangePercent": "0"},
+       {"symbol": "CCCUSDT", "quoteVolume": "1e6", "priceChangePercent": "0"}]
+assert [c[1] for c in screener.candidates(tk2, {"AAA", "CCC"})] == ["AAA"]  # BBB not top 100, CCC too thin
+# near support list
+ns_c = series(1, 0.01, 60) + series(1.59, -0.02, 6) + series(1.5, 0.004, 4)  # rise, dip to a swing low, small bounce
+ns = market.near_support({"NS": {"candles": ns_c}, "UP": {"candles": series(1, 0.01, 80)}})
+assert [x["symbol"] for x in ns] == ["NS"] and 0 < ns[0]["gap_pct"] <= 3 and ns[0]["plan"] and "breaks it" in ns[0]["note"]
+assert "Not a buy signal" in market.SUPPORT_TESTED
+# fear and greed parsing, offline
+_r = research._read
+research._read = lambda url: json.dumps({"data": [{"value": v, "value_classification": "Fear"} for v in ["20", "18"] + ["30"] * 10]})
+fg = research.fetch_fng()
+assert fg["value"] == 20 and fg["chg1d"] == 2 and fg["trend"] == "down" and fg["week_ago"] == 30
+research._read = _r
 print("OK")

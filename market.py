@@ -185,6 +185,35 @@ def build(cands, btc_sym="BTC", gecko_top=None, trending=None, news=None, skip=(
             "news": (news or [])[:NEWS_MAX], "_btc": ms.get(btc_sym), "_all": list(old.values())}
 
 
+# ---------------------------------------------------------------- near support
+SUPPORT_TESTED = ("Not a buy signal. In our backtests, buying bounces at support did no better than random entries,"
+                  " so this list is for watching only. A daily close below the support means it broke.")
+
+
+def near_support(cands, skip=(), max_gap=0.03, n=10):
+    """Coins sitting just above their nearest swing low support (within max_gap)."""
+    rows = []
+    for s, v in cands.items():
+        c = v["candles"]
+        if s in skip or len(c) < 60:
+            continue
+        px = c[-1]["c"]
+        lows = [p for p in pivots(c, "l") if p < px]
+        if not lows:
+            continue
+        sup = max(lows)
+        gap = px / sup - 1
+        if gap > max_gap:
+            continue
+        m = metrics(c)
+        rows.append({"symbol": s, "price": px, "support": sup, "gap_pct": round(gap * 100, 2), "trend": trend_word(m),
+                     "ch30": m["ch30"], "plan": plan(c, m),
+                     "note": (f"{s} is {gap * 100:.1f}% above support at {sup:.6g}, a recent swing low where buyers stepped in."
+                              f" Trend: {trend_word(m).lower()}. A daily close below {sup:.6g} breaks it.")})
+    rows.sort(key=lambda x: x["gap_pct"])
+    return rows[:n]
+
+
 # ---------------------------------------------------------------- alt rotation
 def rotation(cands, history=None):
     """Are altcoins outperforming BTC (rotation) or is money hiding in BTC (dominance squeeze)?

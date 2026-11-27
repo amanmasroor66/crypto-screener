@@ -13,7 +13,9 @@ from datetime import datetime, timezone
 
 BASE = "https://data-api.binance.vision"  # public data host, works from US servers
 MIN_QUOTE_VOL = 5_000_000   # USDT traded in 24h
-TOP_N = 150                 # candidates scanned, by volume
+TOP_N = 220                 # cap on pairs scanned
+TOP_MCAP = 100              # also scan the top 100 coins by market cap...
+MIN_TOP_VOL = 2_000_000     # ...if their Binance USDT pair trades at least this much a day
 STABLES = {"USDC", "FDUSD", "TUSD", "USDP", "DAI", "USDE", "EUR", "AEUR", "XUSD", "USD1", "PYUSD", "BFUSD", "RLUSD", "U", "USDS", "USDD", "BUSD", "EURI", "UST", "FRAX", "LUSD", "GUSD", "USDG"}
 BAD_SUFFIX = ("UP", "DOWN", "BULL", "BEAR")
 # Gold and tokenized stock pairs follow other markets and trade thinly at weekends. Not crypto setups.
@@ -33,7 +35,8 @@ def get(path, params=None):
         return json.loads(r.read().decode())
 
 
-def candidates(tickers):
+def candidates(tickers, include=()):
+    """Liquid Binance USDT pairs, plus any coin in `include` (top by market cap) with enough volume to trade."""
     out = []
     for t in tickers:
         s = t["symbol"]
@@ -43,7 +46,7 @@ def candidates(tickers):
         if base in STABLES or base in NON_CRYPTO or base.endswith(BAD_SUFFIX):
             continue
         qv = float(t["quoteVolume"])
-        if qv < MIN_QUOTE_VOL:
+        if qv < MIN_QUOTE_VOL and not (base in include and qv >= MIN_TOP_VOL):
             continue
         out.append((s, base, qv, float(t["priceChangePercent"])))
     out.sort(key=lambda x: x[2], reverse=True)
@@ -187,7 +190,21 @@ def quality(sig, qv):
 
 def run(fetch=get, enrich_with_research=True):
     tickers = fetch("/api/v3/ticker/24hr")
-    cands = candidates(tickers)
+    top = None
+    if enrich_with_research:
+        try:
+            import research
+            top = research.fetch_top(150)
+        except Exception as e:
+            print("top coins skipped:", e, file=sys.stderr)
+    top100 = set()
+    for r in top or []:
+        b = (r.get("symbol") or "").upper()
+        if b and b not in STABLES and b not in NON_CRYPTO:
+            top100.add(b)
+        if len(top100) >= TOP_MCAP:
+            break
+    cands = candidates(tickers, top100)
     btc = next((t for t in tickers if t["symbol"] == "BTCUSDT"), None)
     eth = next((t for t in tickers if t["symbol"] == "ETHUSDT"), None)
     results = []
@@ -234,7 +251,7 @@ def run(fetch=get, enrich_with_research=True):
             "Backtest of 8 months: breakouts won about 1 in 3 trades, and most profit came from a few big winners. Reversals lost money, so treat them as experimental.",
         ],
     }
-    news = top = trending = glob = sectors = None
+    news = trending = glob = sectors = fng = None
     if enrich_with_research:
         import research
 
@@ -246,8 +263,7 @@ def run(fetch=get, enrich_with_research=True):
                 return None
         news = safe("news", research.fetch_news)
         safe("coin research", lambda: research.enrich(out, fetch_n=lambda: news or []))
-        time.sleep(3)
-        top = safe("top coins", research.fetch_top)
+        fng = safe("fear and greed", research.fetch_fng)
         time.sleep(3)
         trending = safe("trending", research.fetch_trending)
         time.sleep(3)
@@ -256,6 +272,11 @@ def run(fetch=get, enrich_with_research=True):
         sectors = safe("sectors", research.fetch_sectors)
     out["overview"] = overview(allc, len(results), top, trending, news)
     out["overview"]["global"] = glob
+    out["overview"]["fng"] = fng
+    out["overview"]["near_support"] = market_near_support(allc)
+    out["overview"]["near_support_note"] = __import__("market").SUPPORT_TESTED
+    out["universe"] = {"top100_on_binance": len([b for b in top100 if b in allc]), "total": len(allc),
+                       "rule": f"Top {TOP_MCAP} coins by market cap with at least ${MIN_TOP_VOL // 1_000_000}M daily volume on Binance, plus any pair over ${MIN_QUOTE_VOL // 1_000_000}M"}
     out["overview"]["sectors"] = sectors or []
     hist = global_history(glob)
     out["overview"]["global_history"] = hist
@@ -281,6 +302,15 @@ def overview(allc, n_signals, top=None, trending=None, news=None):
     ov = market.build(allc, gecko_top=top, trending=trending, news=news)
     ov["regime"] = market.regime(ov.pop("_btc"), ov.pop("_all"), n_signals)
     return ov
+
+
+def market_near_support(allc):
+    import market
+    try:
+        return market.near_support(allc, skip=STABLES | NON_CRYPTO)
+    except Exception as e:
+        print("near support skipped:", e, file=sys.stderr)
+        return []
 
 
 def global_history(glob, path="signals.json", keep=180):

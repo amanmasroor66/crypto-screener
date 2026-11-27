@@ -90,6 +90,18 @@ def fetch_sector_coins(cat_id, n=15):
     return _gecko(GECKO + "?" + q)
 
 
+def fetch_fng(days=30):
+    """Crypto Fear & Greed index (alternative.me): 0 extreme fear, 100 extreme greed, daily."""
+    rows = json.loads(_read(f"https://api.alternative.me/fng/?limit={days}"))["data"]
+    vals = [int(r["value"]) for r in rows]  # newest first
+    if not vals:
+        return None
+    wk = vals[7] if len(vals) > 7 else vals[-1]
+    trend = "up" if vals[0] - wk >= 5 else "down" if wk - vals[0] >= 5 else "flat"
+    return {"value": vals[0], "label": rows[0]["value_classification"], "chg1d": vals[0] - vals[1] if len(vals) > 1 else 0,
+            "week_ago": wk, "trend": trend, "avg30": round(sum(vals) / len(vals))}
+
+
 def fetch_trending():
     """Coins most searched on CoinGecko in the last 24 hours."""
     return _gecko("https://api.coingecko.com/api/v3/search/trending").get("coins", [])

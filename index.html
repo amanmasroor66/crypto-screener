@@ -202,6 +202,9 @@ details.pl{margin-top:10px}details.pl>summary{cursor:pointer;color:var(--acc);fo
   <h2>Watchlist: close to triggering</h2>
   <div class="sub">Not signals. These sit within 3% under their 42 day high. They trigger only on a daily close above it with strong volume.</div>
   <div id="watch"></div>
+  <h2>Near support: watch only</h2>
+  <div class="sub" id="nsnote">Coins within 3% above their nearest swing low support, closest first.</div>
+  <div id="nearsup"></div>
 
   <div class="cols">
     <div><h2>Growing coins</h2><div class="sub">In an uptrend and up over 30 days. Strength, not a buy signal.</div><div id="growing"></div></div>
@@ -271,6 +274,7 @@ const TIPS={
   above50:"How far price is above (+) or below (minus) its 50 day average. Below it means the medium term trend is down.",
   trig:"The 42 day high. A daily close above it on strong volume is a breakout signal.",
   ch24:"Price change over the last 24 hours.",
+  fng:"Crypto Fear and Greed index from alternative.me, 0 to 100, updated daily. Below 25 is extreme fear, above 75 extreme greed. The badge compares it with a week ago. Sentiment context only, not a signal.",
   sup:"The nearest recent swing low below the price at scan time: a level where buyers stepped in before.",
   dist:"How far the live price is above (+) or below (minus) that support level.",
   ch30:"Price change over the last 30 days.",
@@ -332,7 +336,7 @@ function copyText(c){const p=c.plan||{},sg=c.signal,L=[`${c.symbol}/USDT (Binanc
   L.push("Spot only. Not advice. Check token unlocks first.");return L.join("\n")}
 function allCoins(){const d=DATA,ov=d.overview||{},out=[],seen=new Set(),add=x=>{if(x&&x.symbol&&!seen.has(x.symbol)){seen.add(x.symbol);out.push(x)}};
   (d.signals||[]).filter(s=>s.plan).forEach(s=>add({symbol:s.symbol,plan:s.plan,signal:s}));
-  [ov.focus,ov.leaders,ov.growing,ov.bottoms].forEach(l=>(l||[]).forEach(x=>{if(x.plan)add(x)}));return out}
+  [ov.focus,ov.leaders,ov.growing,ov.bottoms,ov.near_support].forEach(l=>(l||[]).forEach(x=>{if(x.plan)add(x)}));return out}
 function sigCoins(){return (DATA.signals||[]).filter(s=>s.plan&&(EXP||s.type!=="Reversal")).map(s=>({symbol:s.symbol,plan:s.plan,signal:s}))}
 function boardCoins(){return allCoins()}
 const TABMSG={
@@ -346,7 +350,7 @@ function renderBoard(){
   document.getElementById("starbtn").classList.toggle("on",TAB==="star");
   document.querySelectorAll(".ttab").forEach(b=>b.classList.toggle("on",b.dataset.t===TAB&&!q));
   let info="",info2="",list1=[],list2=[];msg.style.display="none";msg.innerHTML="";
-  if(q){const hits=allCoins().filter(c=>c.symbol.includes(q));info=`Search: ${hits.length} coin${hits.length===1?"":"s"} with a trade plan`;info2="Signals, BTC ETH SOL, leaders, growing, bottom watch";list1=hits;
+  if(q){const hits=allCoins().filter(c=>c.symbol.includes(q));info=`Search: ${hits.length} coin${hits.length===1?"":"s"} with a trade plan`;info2="Signals, BTC ETH SOL, leaders, growing, near support, bottom watch";list1=hits;
     if(!hits.length){msg.style.display="";msg.innerHTML=`<div class="empty">No coin with a trade plan matches "${esc(q)}". Only coins the screener tracked in this scan are searchable.</div>`}}
   else if(TAB==="star"){const all=allCoins();list1=STARS.map(s=>all.find(c=>c.symbol===s)).filter(Boolean);info=`Starred (${list1.length})`;info2="Saved on this device";
     if(!list1.length){msg.style.display="";msg.innerHTML=`<div class="empty">No starred coins yet. Tap the star on any card to keep it here.</div>`}}
@@ -433,6 +437,8 @@ function renderTick(P,C){
     if(price!=null)t.push(`<div class="tk"><div class="l">${k}${tb(trend[k]||((ov.focus||[]).find(x=>x.symbol===k)||{}).trend)}</div><div class="n">$${fmt(price)} ${ch!=null?pct(ch):""}</div></div>`)});
   [["SPYB","S&P 500 (SPY)"],["QQQB","NASDAQ (QQQ)"]].forEach(([s,l])=>{const p=P&&P[s+"USDT"],c=C&&C[s+"USDT"];
     if(p!=null)t.push(`<div class="tk"><div class="l">${tip(s==="SPYB"?"spy":"qqq",l)}${tb(IDX[s])}</div><div class="n">$${fmt(p)} ${c!=null?pct(c):""}</div></div>`)});
+  const fg=ov.fng;
+  if(fg)t.push(`<div class="tk"><div class="l">${tip("fng","FEAR &amp; GREED")}${tb(fg.trend==="up"?"Uptrend":fg.trend==="down"?"Downtrend":"Sideways")}</div><div class="n" style="color:${fg.value<=25?"var(--dn)":fg.value>=75?"var(--up)":"var(--ink)"}">${fg.value} ${esc(fg.label)} <span class="k">${fg.chg1d>=0?"+":""}${fg.chg1d} 1d</span></div></div>`);
   if(g){t.push(`<div class="tk"><div class="l">${tip("btcd","BTC.D")}</div><div class="n">${g.btc_dom}%</div></div>`);
     t.push(`<div class="tk"><div class="l">${tip("total3","TOTAL3")}</div><div class="n">$${big(g.total3_usd)}</div></div>`);
     t.push(`<div class="tk"><div class="l">${tip("total","TOTAL MCAP")}</div><div class="n">$${big(g.total_usd)} ${pct(g.chg24h)}</div></div>`)}
@@ -468,10 +474,10 @@ function renderSignals(){
     <div class="why">${esc(s.why)} 24h volume $${s.qvol_musd}M.</div>${res(s)}${s.plan?`<details class="pl"><summary>Trade plan</summary>${planHtml(s.plan)}</details>`:""}</div>`).join("")}
 function render(){
   const d=DATA,ov=d.overview||{};
-  document.getElementById("sub").textContent=d.generated_utc?`Updated ${d.generated_utc} UTC | scanned ${d.scanned} spot pairs on Binance`:"No scan yet";
+  document.getElementById("sub").textContent=d.generated_utc?`Updated ${d.generated_utc} UTC | scanned ${d.scanned} spot pairs on Binance${d.universe?`: ${d.universe.rule}`:""}`:"No scan yet";
   staleCheck();
   {const t=Date.parse(d.generated_utc.replace(" ","T")+":00Z"),m=Math.round((Date.now()-t)/60000);
-   document.getElementById("scanpill").textContent=`Scan ${d.generated_utc} UTC (${m<90?m+" min":Math.round(m/60)+" h"} ago) | ${d.scanned} pairs`}
+   document.getElementById("scanpill").textContent=`Scan ${d.generated_utc} UTC (${m<90?m+" min":Math.round(m/60)+" h"} ago) | ${d.scanned} pairs${d.universe?`, ${d.universe.top100_on_binance} of them top 100`:""}`}
   guard("tick",()=>renderTick());
   guard("summary",()=>{const sm=document.getElementById("summary");
     if(ov.regime){sm.style.display="";sm.className="card sum "+ov.regime.mood;
@@ -491,6 +497,10 @@ function render(){
   document.getElementById("seccoins").innerHTML=sc.length?sc.map(x=>`<div class="sc"><div class="top"><div><span class="sym">${esc(x.symbol)}</span> <span class="k">${esc(x.name||"")}</span></div><span class="v live-px" data-p="${esc(x.symbol)}USDT">${x.price!=null?fmt(x.price):""}</span></div>
     <div class="k">${esc(x.sector)} | market cap $${big(x.mcap_musd*1e6)}${x.rank?" | rank "+x.rank:""} | on Binance ${x.binance_days?x.binance_days+" days":x.binance_days_min?"220+ days":"n/a"}</div>
     <ul>${x.facts.map(f=>`<li>${esc(f)}</li>`).join("")}</ul><ul class="rk">${x.risks.map(f=>`<li>${esc(f)}</li>`).join("")}</ul></div>`).join(""):`<div class="empty">Sector data unavailable this run.</div>`});
+  guard("nearsup",()=>{const ns=ov.near_support||[],el=document.getElementById("nearsup");
+    if(ov.near_support_note)document.getElementById("nsnote").textContent="Coins within 3% above their nearest swing low support, closest first. "+ov.near_support_note;
+    el.innerHTML=ns.length?ns.map(x=>`<details class="row"><summary><div class="top"><div><span class="sym">${esc(x.symbol)}</span><span class="tr ${x.trend}">${x.trend}</span></div><span class="v live-px" data-p="${esc(x.symbol)}USDT">${fmt(x.price)}</span></div>
+      <div class="nums">${x.gap_pct}% above support ${fmt(x.support)} | 30d ${p7(x.ch30)}</div><div class="note">${esc(x.note)}</div><div class="tap">Tap for levels</div></summary>${planHtml(x.plan)}</details>`).join(""):`<div class="empty">No coin is sitting within 3% of its support right now.</div>`});
   guard("watch",()=>{
   const w=d.watchlist||[];
   document.getElementById("watch").innerHTML=w.length?w.map(s=>`<div class="card"><div class="top"><span class="sym">${s.symbol}</span><span class="k">${s.gap_pct}% below trigger</span></div>
@@ -523,7 +533,7 @@ document.getElementById("exp").onchange=e=>{EXP=e.target.checked;try{localStorag
 function live(){
   const ov=DATA.overview||{};
   const pairs=[...new Set([...(DATA.signals||[]),...(DATA.watchlist||[])].map(x=>x.pair).concat(["BTCUSDT","ETHUSDT","SOLUSDT","SPYBUSDT","QQQBUSDT"])
-    .concat([...(ov.focus||[]),...(ov.leaders||[]),...(ov.growing||[]),...(ov.new_listings||[]),...(ov.bottoms||[]),...(ov.sector_coins||[])].map(x=>x.symbol+"USDT")))];
+    .concat([...(ov.focus||[]),...(ov.near_support||[]),...(ov.leaders||[]),...(ov.growing||[]),...(ov.new_listings||[]),...(ov.bottoms||[]),...(ov.sector_coins||[])].map(x=>x.symbol+"USDT")))];
   fetch(API+"ticker/24hr?type=MINI&symbols="+encodeURIComponent(JSON.stringify(pairs))).then(r=>r.json()).then(a=>{
     const P={},C={};a.forEach(x=>{P[x.symbol]=parseFloat(x.lastPrice);const o=parseFloat(x.openPrice);C[x.symbol]=o?(P[x.symbol]/o-1)*100:0});
     document.querySelectorAll("[data-p]").forEach(el=>{const p=P[el.dataset.p];if(p!=null)el.textContent=fmt(p)});
