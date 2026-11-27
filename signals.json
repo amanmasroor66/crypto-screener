@@ -1,14 +1,14 @@
 {
-  "generated_utc": "2026-11-27 03:07",
-  "scanned": 39,
+  "generated_utc": "2026-11-27 10:14",
+  "scanned": 57,
   "market": {
     "BTC": {
-      "price": 61491.99,
-      "chg24h": 1.315
+      "price": 61662.29,
+      "chg24h": 1.164
     },
     "ETH": {
-      "price": 1728.07,
-      "chg24h": 1.829
+      "price": 1728.72,
+      "chg24h": 1.431
     }
   },
   "signals": [
@@ -24,19 +24,19 @@
       "why": "Closed above the 42 day high (2.681) on 16.9x average volume.",
       "symbol": "SSV",
       "pair": "SSVUSDT",
-      "qvol_musd": 10.6,
-      "chg24h": 16.9,
+      "qvol_musd": 8.7,
+      "chg24h": 0.5,
       "score": 7,
       "research": {
         "source": "CoinGecko + news RSS",
         "verified": true,
-        "mcap_musd": 40.7,
-        "rank": 461,
+        "mcap_musd": 36.9,
+        "rank": 486,
         "ath_drop_pct": 96.0,
         "circulating_pct": 100.0,
         "news": [],
         "flags": [
-          "Small cap ($41M). Hard to exit, so size down."
+          "Small cap ($37M). Hard to exit, so size down."
         ],
         "verdict": "Caution"
       },
@@ -74,7 +74,36 @@
       }
     }
   ],
-  "watchlist": [],
+  "watchlist": [
+    {
+      "price": 0.14532,
+      "trigger": 0.14855,
+      "gap_pct": 2.2,
+      "vol_ratio": 1.3,
+      "why": "Needs a daily close above 0.14855 on strong volume to trigger.",
+      "symbol": "JST",
+      "pair": "JSTUSDT",
+      "qvol_musd": 3.4,
+      "chg24h": -2.5,
+      "research": {
+        "source": "CoinGecko + news RSS",
+        "verified": true,
+        "mcap_musd": 1146.2,
+        "rank": 64,
+        "ath_drop_pct": 26.0,
+        "circulating_pct": 81.0,
+        "news": [
+          {
+            "source": "Decrypt",
+            "title": "China's Google Just Released Its Fast New AI Model for Free",
+            "link": "https://decrypt.co/384015/china-google-released-fast-new-ai-model-free-baidu-ernie"
+          }
+        ],
+        "flags": [],
+        "verdict": "No red flags found"
+      }
+    }
+  ],
   "notes": [
     "Filters only. Not advice and not a prediction.",
     "Check token unlock dates (tokenomist.ai) before any buy.",
@@ -527,6 +556,85 @@
           "profit_plan": "Sell about a third at each target. After target 1, move your stop to your entry price so the rest cannot turn into a loss. If price closes a day below the 20 day average before the targets, sell the rest: that exit beat fixed holding in the backtest.",
           "cancel": "Plan is wrong if price closes below 0.0899594. Sell there, no exceptions."
         }
+      },
+      {
+        "symbol": "NIGHT",
+        "trend": "Uptrend",
+        "price": 0.04848,
+        "ch7": 8.1,
+        "ch30": 16.7,
+        "from_high_pct": -8.8,
+        "note": "NIGHT is +17% over 30 days and +8% this week, above its 50 day average. It sits 9% under its recent high. Strength can continue, but buying after a run means a deeper fall if it turns.",
+        "plan": {
+          "atr_pct": 10.5,
+          "resistance": [
+            0.05126,
+            0.05242
+          ],
+          "support": [
+            0.04085,
+            0.03896,
+            0.03807
+          ],
+          "trigger": 0.05216,
+          "ma20": 0.045616000000000004,
+          "ma50": 0.0431578,
+          "ma200": 0.031384300000000004,
+          "status": "Wait for a dip",
+          "entry_lo": 0.0431578,
+          "entry_hi": 0.045616000000000004,
+          "stop": 0.038085657142857145,
+          "why": "Uptrend, but price is stretched above its 20 day average. Buying the dip to the zone gives a closer stop than buying now. Warning: this coin moves about 10% a day, so the stop is far away and the position must be very small. Many traders simply skip coins this wild.",
+          "tested": "Tested on the last 2.7 years of these coins: dip buys like this won 60% of the time but broke even on average, because the losses were bigger than the wins. Treat the zone as a better price, not an edge. Breakout signals tested better.",
+          "targets": [
+            0.05126,
+            0.05242,
+            0.060140007142857166
+          ],
+          "risk_pct": 14.2,
+          "size_for_1pct_loss": 7.0,
+          "profit_plan": "Sell about a third at each target. After target 1, move your stop to your entry price so the rest cannot turn into a loss. If price closes a day below the 20 day average before the targets, sell the rest: that exit beat fixed holding in the backtest.",
+          "cancel": "Plan is wrong if price closes below 0.0380857. Sell there, no exceptions."
+        }
+      },
+      {
+        "symbol": "JST",
+        "trend": "Uptrend",
+        "price": 0.14532,
+        "ch7": -0.7,
+        "ch30": 4.3,
+        "from_high_pct": -3.0,
+        "note": "JST is +4% over 30 days and -1% this week, above its 50 day average. It is near its high, so a breakout signal could come soon. Watch it rather than buy ahead of the signal.",
+        "plan": {
+          "atr_pct": 3.0,
+          "resistance": [
+            0.14853
+          ],
+          "support": [
+            0.13912,
+            0.13515,
+            0.13101
+          ],
+          "trigger": 0.14855,
+          "ma20": 0.1449955,
+          "ma50": 0.1415386,
+          "ma200": 0.1105495,
+          "status": "In buy zone",
+          "entry_lo": 0.1415386,
+          "entry_hi": 0.1449955,
+          "stop": 0.13725002857142857,
+          "why": "Uptrend, and price has pulled back to its 20 day average. This is where trend buyers usually step in.",
+          "tested": "Tested on the last 2.7 years of these coins: dip buys like this won 60% of the time but broke even on average, because the losses were bigger than the wins. Treat the zone as a better price, not an edge. Breakout signals tested better.",
+          "targets": [
+            0.14853,
+            0.1583096035714286,
+            0.16733513571428577
+          ],
+          "risk_pct": 4.2,
+          "size_for_1pct_loss": 23.8,
+          "profit_plan": "Sell about a third at each target. After target 1, move your stop to your entry price so the rest cannot turn into a loss. If price closes a day below the 20 day average before the targets, sell the rest: that exit beat fixed holding in the backtest.",
+          "cancel": "Plan is wrong if price closes below 0.13725. Sell there, no exceptions."
+        }
       }
     ],
     "new_listings": [
@@ -538,15 +646,6 @@
         "from_high_pct": -36.2,
         "rank": 10,
         "note": "HYPE is new on Binance (about 64 days) but not a new coin: it is ranked 10 by market cap and traded elsewhere before. It is -32% since its Binance listing and 36% below the high since then. Too little Binance history for the screener's rules, so judge it like a leader once it has 90 days of data."
-      },
-      {
-        "symbol": "\u725b\u6765",
-        "days_listed": 79,
-        "price": 0.04493,
-        "since_listing_pct": -53.4,
-        "from_high_pct": -72.5,
-        "rank": null,
-        "note": "\u725b\u6765 was listed about 79 days ago and is -53% since its first day, 72% below its high. New coins are the riskiest group: early investors, team tokens and airdrop holders often sell for months. Too little history for the screener's rules. If you want exposure, use a very small amount you can lose."
       }
     ],
     "trending": [
@@ -554,57 +653,57 @@
         "symbol": "BTC",
         "name": "Bitcoin",
         "rank": 1,
-        "ch24": 1.1,
+        "ch24": 1.2,
         "on_binance": true,
         "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top."
       },
       {
-        "symbol": "PENGU",
-        "name": "Pudgy Penguins",
-        "rank": 127,
-        "ch24": 1.3,
+        "symbol": "PONS",
+        "name": "Pons",
+        "rank": 308,
+        "ch24": 24.9,
         "on_binance": false,
-        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top. Not in this screener's Binance list, so none of the checks here apply."
-      },
-      {
-        "symbol": "PEJAK",
-        "name": "Pepe Wojak",
-        "rank": 964,
-        "ch24": 205.2,
-        "on_binance": false,
-        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top. It is a small coin (rank 964), so moves both ways are violent. Not in this screener's Binance list, so none of the checks here apply."
+        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top. It is a small coin (rank 308), so moves both ways are violent. Not in this screener's Binance list, so none of the checks here apply."
       },
       {
         "symbol": "XMR",
         "name": "Monero",
         "rank": 13,
-        "ch24": -8.8,
+        "ch24": -13.6,
         "on_binance": false,
         "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top. Not in this screener's Binance list, so none of the checks here apply."
       },
       {
-        "symbol": "VVV",
-        "name": "Venice Token",
-        "rank": 57,
-        "ch24": -2.2,
-        "on_binance": false,
-        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top. Not in this screener's Binance list, so none of the checks here apply."
+        "symbol": "NEAR",
+        "name": "NEAR Protocol",
+        "rank": 23,
+        "ch24": 1.9,
+        "on_binance": true,
+        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top."
       },
       {
         "symbol": "PEARL",
         "name": "Pearl",
-        "rank": 82,
-        "ch24": -7.7,
+        "rank": 84,
+        "ch24": -10.1,
         "on_binance": false,
         "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top. Not in this screener's Binance list, so none of the checks here apply."
       },
       {
-        "symbol": "ZYLO",
-        "name": "Zylo Ecosystem",
-        "rank": 726,
-        "ch24": 11.2,
+        "symbol": "CFG",
+        "name": "Centrifuge",
+        "rank": 668,
+        "ch24": 26.7,
+        "on_binance": true,
+        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top. It is a small coin (rank 668), so moves both ways are violent."
+      },
+      {
+        "symbol": "LIT",
+        "name": "Lighter",
+        "rank": 86,
+        "ch24": 8.5,
         "on_binance": false,
-        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top. It is a small coin (rank 726), so moves both ways are violent. Not in this screener's Binance list, so none of the checks here apply."
+        "note": "Many people are searching for it on CoinGecko right now. That is attention, not quality, and attention often peaks near a top. Not in this screener's Binance list, so none of the checks here apply."
       }
     ],
     "bottoms": [
@@ -647,6 +746,45 @@
           "entry_hi": null,
           "stop": null,
           "why": "Downtrend. No buy zone until price closes back above the 50 day average (0.0524152) or breaks the 42 day high (0.0673)."
+        }
+      },
+      {
+        "drawdown_pct": 54,
+        "base_range_pct": 46,
+        "divergence": true,
+        "rsi_lows": [
+          26,
+          30
+        ],
+        "div_days_ago": 5,
+        "vol_pickup": 0.8,
+        "above20": false,
+        "base_low": 0.1197,
+        "base_high": 0.1752,
+        "score": 4.22,
+        "symbol": "XLM",
+        "price": 0.1268,
+        "note": "XLM is 54% below its 6 month high and has moved in a 46% range for 30 days. Bullish divergence: price made a lower low but RSI made a higher low (26 then 30), which means selling pressure is weakening. A bottom is only confirmed once price breaks above the base (0.1752) on a daily close. Below the base low (0.1197) the idea is wrong.",
+        "label": "Still swinging, no base yet",
+        "plan": {
+          "atr_pct": 7.2,
+          "resistance": [
+            0.1385,
+            0.1428,
+            0.1526
+          ],
+          "support": [
+            0.1198
+          ],
+          "trigger": 0.1872,
+          "ma20": 0.137625,
+          "ma50": 0.16074000000000002,
+          "ma200": 0.1804525,
+          "status": "No buy",
+          "entry_lo": null,
+          "entry_hi": null,
+          "stop": null,
+          "why": "Downtrend. No buy zone until price closes back above the 50 day average (0.16074) or breaks the 42 day high (0.1872)."
         }
       },
       {
@@ -732,87 +870,44 @@
         }
       },
       {
-        "drawdown_pct": 76,
-        "base_range_pct": 137,
-        "divergence": false,
-        "rsi_lows": null,
-        "div_days_ago": null,
-        "vol_pickup": 14.0,
-        "above20": true,
-        "base_low": 0.00164,
-        "base_high": 0.00389,
-        "score": 4.03,
-        "symbol": "MANTRA",
-        "price": 0.0025,
-        "note": "MANTRA is 76% below its 6 month high and has moved in a 137% range for 30 days. No bullish divergence yet. Volume is picking up (14.0x its recent average). A bottom is only confirmed once price breaks above the base (0.00389) on a daily close. Below the base low (0.00164) the idea is wrong.",
+        "drawdown_pct": 54,
+        "base_range_pct": 81,
+        "divergence": true,
+        "rsi_lows": [
+          28,
+          33
+        ],
+        "div_days_ago": 5,
+        "vol_pickup": 0.5,
+        "above20": false,
+        "base_low": 30.72,
+        "base_high": 55.52,
+        "score": 4.09,
+        "symbol": "DASH",
+        "price": 35.9,
+        "note": "DASH is 54% below its 6 month high and has moved in a 81% range for 30 days. Bullish divergence: price made a lower low but RSI made a higher low (28 then 33), which means selling pressure is weakening. A bottom is only confirmed once price breaks above the base (55.52) on a daily close. Below the base low (30.72) the idea is wrong.",
         "label": "Still swinging, no base yet",
         "plan": {
-          "atr_pct": 17.8,
+          "atr_pct": 8.7,
           "resistance": [
-            0.00406,
-            0.0044,
-            0.00468
+            37.36,
+            38.21,
+            40.22
           ],
           "support": [
-            0.00217
+            34.38,
+            33.25,
+            32.41
           ],
-          "trigger": 0.0044,
-          "ma20": 0.002418,
-          "ma50": 0.0032584000000000003,
-          "ma200": 0.0054771,
+          "trigger": 55.98,
+          "ma20": 38.8095,
+          "ma50": 45.5158,
+          "ma200": 42.6958,
           "status": "No buy",
           "entry_lo": null,
           "entry_hi": null,
           "stop": null,
-          "why": "Downtrend. No buy zone until price closes back above the 50 day average (0.0032584) or breaks the 42 day high (0.0044)."
-        }
-      },
-      {
-        "drawdown_pct": 56,
-        "base_range_pct": 247,
-        "divergence": false,
-        "rsi_lows": null,
-        "div_days_ago": null,
-        "vol_pickup": 3.7,
-        "above20": true,
-        "base_low": 0.0945,
-        "base_high": 0.3281,
-        "score": 3.63,
-        "symbol": "MMT",
-        "price": 0.2037,
-        "note": "MMT is 56% below its 6 month high and has moved in a 247% range for 30 days. No bullish divergence yet. Volume is picking up (3.7x its recent average). A bottom is only confirmed once price breaks above the base (0.3281) on a daily close. Below the base low (0.0945) the idea is wrong.",
-        "label": "Still swinging, no base yet",
-        "plan": {
-          "atr_pct": 31.8,
-          "resistance": [
-            0.2098,
-            0.2483,
-            0.3177
-          ],
-          "support": [
-            0.1674,
-            0.1637,
-            0.1602
-          ],
-          "trigger": 0.3281,
-          "ma20": 0.172325,
-          "ma50": 0.154788,
-          "ma200": 0.1582335,
-          "status": "Wait for a dip",
-          "entry_lo": 0.154788,
-          "entry_hi": 0.172325,
-          "stop": 0.08995942857142858,
-          "why": "Uptrend, but price is stretched above its 20 day average. Buying the dip to the zone gives a closer stop than buying now. Warning: this coin moves about 32% a day, so the stop is far away and the position must be very small. Many traders simply skip coins this wild.",
-          "tested": "Tested on the last 2.7 years of these coins: dip buys like this won 60% of the time but broke even on average, because the losses were bigger than the wins. Treat the zone as a better price, not an edge. Breakout signals tested better.",
-          "targets": [
-            0.2098,
-            0.2483,
-            0.3177
-          ],
-          "risk_pct": 45.0,
-          "size_for_1pct_loss": 2.2,
-          "profit_plan": "Sell about a third at each target. After target 1, move your stop to your entry price so the rest cannot turn into a loss. If price closes a day below the 20 day average before the targets, sell the rest: that exit beat fixed holding in the backtest.",
-          "cancel": "Plan is wrong if price closes below 0.0899594. Sell there, no exceptions."
+          "why": "Downtrend. No buy zone until price closes back above the 50 day average (45.5158) or breaks the 42 day high (55.98)."
         }
       }
     ],
@@ -820,18 +915,13 @@
     "news": [
       {
         "source": "Cointelegraph",
-        "title": "AI is driving a flood of crypto bug reports. Now it\u2019s helping sort them",
-        "link": "https://cointelegraph.com/news/ai-driving-flood-of-crypto-bug-reports-now-helping-sort-them?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
+        "title": "ESMA to overhaul EU\u2019s MiCA crypto register in 2027",
+        "link": "https://cointelegraph.com/news/esma-overhaul-eu-mica-crypto-register-2027?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
       },
       {
         "source": "Cointelegraph",
-        "title": "Privacy coins face diverging fortunes as KuCoin moves to drop Monero",
-        "link": "https://cointelegraph.com/news/privacy-coins-kucoin-drop-monero-grayscale-zcash?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
-      },
-      {
-        "source": "Cointelegraph",
-        "title": "\u2018Very racist\u2019 Netflix SBF series, BitMart\u2019s $319M shortfall: Asia Express",
-        "link": "https://cointelegraph.com/magazine/very-racist-netflix-sbf-series-bitmarts-319m-shortfall-asia-express?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
+        "title": "New York AG secures $1.37B court judgment against NovaTech founders",
+        "link": "https://cointelegraph.com/news/new-york-ag-137b-court-judgment-novatech?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
       },
       {
         "source": "Cointelegraph",
@@ -840,35 +930,363 @@
       },
       {
         "source": "Cointelegraph",
-        "title": "BNB Chain details new layer-1 for trading, private finance and AI",
-        "link": "https://cointelegraph.com/news/bnb-chain-details-new-layer-1-trading-private-finance-ai?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
+        "title": "Japan\u2019s crypto security group taps SEAL to speed up hack response",
+        "link": "https://cointelegraph.com/news/japans-crypto-security-group-taps-seal-to-speed-up-hack-response?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
       },
       {
         "source": "Cointelegraph",
-        "title": "Binance completes withdrawal recovery four weeks after $6.3B hack",
-        "link": "https://cointelegraph.com/news/binance-completes-withdrawal-recovery-four-weeks-after-63b-hack?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
+        "title": "Ethereum devs set Glamsterdam\u2019s Hoodi rollout for mid-December after delays",
+        "link": "https://cointelegraph.com/news/ethereum-devs-set-glamsterdams-hoodi-rollout-for-mid-december-after-delays?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
+      },
+      {
+        "source": "Cointelegraph",
+        "title": "AI is driving a flood of crypto bug reports. Now it\u2019s helping sort them",
+        "link": "https://cointelegraph.com/news/ai-driving-flood-of-crypto-bug-reports-now-helping-sort-them?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
       }
     ],
     "regime": {
       "mood": "Downtrend",
-      "breadth_pct": 8,
+      "breadth_pct": 13,
       "btc_above_50d": false,
       "btc_above_200d": false,
-      "summary": "The market is weak. BTC is below its 50 day average and below its 200 day average, and 8% of coins are above their 50 day average. Most breakouts fail even in good markets, so in a weak market protecting cash matters more than finding a winner. Today there is 1 signal. If you act, act only on those: read the caution flags, size so a stop out costs about 1% of your capital, and note the sell level. Should you invest at all? Only money you can afford to lose completely, and only after a few weeks of paper trading these signals."
+      "summary": "The market is weak. BTC is below its 50 day average and below its 200 day average, and 13% of coins are above their 50 day average. Most breakouts fail even in good markets, so in a weak market protecting cash matters more than finding a winner. Today there is 1 signal. If you act, act only on those: read the caution flags, size so a stop out costs about 1% of your capital, and note the sell level. Should you invest at all? Only money you can afford to lose completely, and only after a few weeks of paper trading these signals."
     },
     "global": {
-      "total_usd": 2122694586213.3035,
+      "total_usd": 2133884653895.736,
       "btc_dom": 58.0,
       "eth_dom": 9.9,
-      "total3_usd": 682323019088.8188,
-      "chg24h": -1.8
+      "total3_usd": 685324171540.1176,
+      "chg24h": -0.2
     },
+    "fng": {
+      "value": 12,
+      "label": "Extreme Fear",
+      "chg1d": 1,
+      "week_ago": 12,
+      "trend": "flat",
+      "avg30": 22
+    },
+    "near_support": [
+      {
+        "symbol": "TAO",
+        "price": 183.9,
+        "support": 183.5,
+        "gap_pct": 0.22,
+        "trend": "Downtrend",
+        "ch30": -28.1,
+        "plan": {
+          "atr_pct": 8.8,
+          "resistance": [
+            200.8,
+            210.8,
+            219.5
+          ],
+          "support": [
+            177.5,
+            165.4
+          ],
+          "trigger": 291.3,
+          "ma20": 198.675,
+          "ma50": 233.50599999999997,
+          "ma200": 234.74349999999998,
+          "status": "No buy",
+          "entry_lo": null,
+          "entry_hi": null,
+          "stop": null,
+          "why": "Downtrend. No buy zone until price closes back above the 50 day average (233.506) or breaks the 42 day high (291.3)."
+        },
+        "note": "TAO is 0.2% above support at 183.5, a recent swing low where buyers stepped in. Trend: downtrend. A daily close below 183.5 breaks it."
+      },
+      {
+        "symbol": "SSV",
+        "price": 2.72,
+        "support": 2.71,
+        "gap_pct": 0.37,
+        "trend": "Sideways",
+        "ch30": 10.7,
+        "plan": {
+          "atr_pct": 8.2,
+          "resistance": [
+            3.02,
+            3.203,
+            3.469
+          ],
+          "support": [
+            2.6,
+            2.427,
+            2.173
+          ],
+          "trigger": 2.681,
+          "ma20": 1.937,
+          "ma50": 2.2852799999999998,
+          "ma200": 2.41934,
+          "status": "No buy",
+          "entry_lo": null,
+          "entry_hi": null,
+          "stop": null,
+          "why": "No clear trend. A daily close above 2.681 (the 42 day high) on strong volume would make it a breakout signal."
+        },
+        "note": "SSV is 0.4% above support at 2.71, a recent swing low where buyers stepped in. Trend: sideways. A daily close below 2.71 breaks it."
+      },
+      {
+        "symbol": "LTC",
+        "price": 43.8,
+        "support": 43.62,
+        "gap_pct": 0.41,
+        "trend": "Downtrend",
+        "ch30": -23.4,
+        "plan": {
+          "atr_pct": 6.5,
+          "resistance": [
+            45.55,
+            46.5,
+            48.15
+          ],
+          "support": [
+            42.92,
+            41.14,
+            39.28
+          ],
+          "trigger": 62.39,
+          "ma20": 45.503,
+          "ma50": 53.2542,
+          "ma200": 51.0813,
+          "status": "No buy",
+          "entry_lo": null,
+          "entry_hi": null,
+          "stop": null,
+          "why": "Downtrend. No buy zone until price closes back above the 50 day average (53.2542) or breaks the 42 day high (62.39)."
+        },
+        "note": "LTC is 0.4% above support at 43.62, a recent swing low where buyers stepped in. Trend: downtrend. A daily close below 43.62 breaks it."
+      },
+      {
+        "symbol": "ZEC",
+        "price": 682.52,
+        "support": 679.48,
+        "gap_pct": 0.45,
+        "trend": "Downtrend",
+        "ch30": -47.9,
+        "plan": {
+          "atr_pct": 15.2,
+          "resistance": [
+            888.0,
+            973.87,
+            1296.02
+          ],
+          "support": [
+            465.97,
+            451.75,
+            368.03
+          ],
+          "trigger": 1398.14,
+          "ma20": 915.5355,
+          "ma50": 1100.0076,
+          "ma200": 815.2522,
+          "status": "No buy",
+          "entry_lo": null,
+          "entry_hi": null,
+          "stop": null,
+          "why": "Downtrend. No buy zone until price closes back above the 50 day average (1100.01) or breaks the 42 day high (1398.14)."
+        },
+        "note": "ZEC is 0.4% above support at 679.48, a recent swing low where buyers stepped in. Trend: downtrend. A daily close below 679.48 breaks it."
+      },
+      {
+        "symbol": "ATOM",
+        "price": 1.218,
+        "support": 1.212,
+        "gap_pct": 0.5,
+        "trend": "Downtrend",
+        "ch30": -25.3,
+        "plan": {
+          "atr_pct": 7.1,
+          "resistance": [
+            1.444,
+            1.536,
+            1.573
+          ],
+          "support": [
+            1.127
+          ],
+          "trigger": 1.818,
+          "ma20": 1.3006499999999999,
+          "ma50": 1.51982,
+          "ma200": 1.629455,
+          "status": "No buy",
+          "entry_lo": null,
+          "entry_hi": null,
+          "stop": null,
+          "why": "Downtrend. No buy zone until price closes back above the 50 day average (1.51982) or breaks the 42 day high (1.818)."
+        },
+        "note": "ATOM is 0.5% above support at 1.212, a recent swing low where buyers stepped in. Trend: downtrend. A daily close below 1.212 breaks it."
+      },
+      {
+        "symbol": "TRX",
+        "price": 0.3041,
+        "support": 0.3023,
+        "gap_pct": 0.6,
+        "trend": "Downtrend",
+        "ch30": -8.3,
+        "plan": {
+          "atr_pct": 1.9,
+          "resistance": [
+            0.3125,
+            0.321,
+            0.3312
+          ],
+          "support": [],
+          "trigger": 0.3654,
+          "ma20": 0.31028500000000003,
+          "ma50": 0.321062,
+          "ma200": 0.33112,
+          "status": "No buy",
+          "entry_lo": null,
+          "entry_hi": null,
+          "stop": null,
+          "why": "Downtrend. No buy zone until price closes back above the 50 day average (0.321062) or breaks the 42 day high (0.3654)."
+        },
+        "note": "TRX is 0.6% above support at 0.3023, a recent swing low where buyers stepped in. Trend: downtrend. A daily close below 0.3023 breaks it."
+      },
+      {
+        "symbol": "SUI",
+        "price": 0.6685,
+        "support": 0.6643,
+        "gap_pct": 0.63,
+        "trend": "Downtrend",
+        "ch30": -28.4,
+        "plan": {
+          "atr_pct": 8.6,
+          "resistance": [
+            0.7003,
+            0.7179,
+            0.7337
+          ],
+          "support": [
+            0.6514,
+            0.6354,
+            0.5882
+          ],
+          "trigger": 1.0615,
+          "ma20": 0.7358,
+          "ma50": 0.876562,
+          "ma200": 0.839731,
+          "status": "No buy",
+          "entry_lo": null,
+          "entry_hi": null,
+          "stop": null,
+          "why": "Downtrend. No buy zone until price closes back above the 50 day average (0.876562) or breaks the 42 day high (1.0615)."
+        },
+        "note": "SUI is 0.6% above support at 0.6643, a recent swing low where buyers stepped in. Trend: downtrend. A daily close below 0.6643 breaks it."
+      },
+      {
+        "symbol": "SOL",
+        "price": 71.03,
+        "support": 70.58,
+        "gap_pct": 0.64,
+        "trend": "Downtrend",
+        "ch30": -29.9,
+        "plan": {
+          "atr_pct": 7.2,
+          "resistance": [
+            75.0,
+            77.5,
+            83.98
+          ],
+          "support": [
+            67.92,
+            64.87,
+            60.13
+          ],
+          "trigger": 109.2,
+          "ma20": 75.96900000000001,
+          "ma50": 91.39,
+          "ma200": 87.9595,
+          "status": "No buy",
+          "entry_lo": null,
+          "entry_hi": null,
+          "stop": null,
+          "why": "Downtrend. No buy zone until price closes back above the 50 day average (91.39) or breaks the 42 day high (109.2)."
+        },
+        "note": "SOL is 0.6% above support at 70.58, a recent swing low where buyers stepped in. Trend: downtrend. A daily close below 70.58 breaks it."
+      },
+      {
+        "symbol": "ONDO",
+        "price": 0.2874,
+        "support": 0.2852,
+        "gap_pct": 0.77,
+        "trend": "Downtrend",
+        "ch30": -31.7,
+        "plan": {
+          "atr_pct": 8.2,
+          "resistance": [
+            0.315,
+            0.3376,
+            0.348
+          ],
+          "support": [
+            0.254
+          ],
+          "trigger": 0.4767,
+          "ma20": 0.31598,
+          "ma50": 0.38555,
+          "ma200": 0.37868900000000005,
+          "status": "No buy",
+          "entry_lo": null,
+          "entry_hi": null,
+          "stop": null,
+          "why": "Downtrend. No buy zone until price closes back above the 50 day average (0.38555) or breaks the 42 day high (0.4767)."
+        },
+        "note": "ONDO is 0.8% above support at 0.2852, a recent swing low where buyers stepped in. Trend: downtrend. A daily close below 0.2852 breaks it."
+      },
+      {
+        "symbol": "UNI",
+        "price": 4.658,
+        "support": 4.619,
+        "gap_pct": 0.84,
+        "trend": "Downtrend",
+        "ch30": -34.3,
+        "plan": {
+          "atr_pct": 10.0,
+          "resistance": [
+            5.312,
+            7.483,
+            7.79
+          ],
+          "support": [
+            4.188,
+            3.786,
+            3.611
+          ],
+          "trigger": 7.82,
+          "ma20": 5.4645,
+          "ma50": 6.499840000000001,
+          "ma200": 5.040085,
+          "status": "No buy",
+          "entry_lo": null,
+          "entry_hi": null,
+          "stop": null,
+          "why": "Downtrend. No buy zone until price closes back above the 50 day average (6.49984) or breaks the 42 day high (7.82)."
+        },
+        "note": "UNI is 0.8% above support at 4.619, a recent swing low where buyers stepped in. Trend: downtrend. A daily close below 4.619 breaks it."
+      }
+    ],
+    "near_support_note": "Not a buy signal. In our backtests, buying bounces at support did no better than random entries, so this list is for watching only. A daily close below the support means it broke.",
     "sectors": [
+      {
+        "id": "identity",
+        "name": "Decentralized Identifier (DID)",
+        "chg24h": 7.8,
+        "mcap_busd": 1.5,
+        "top": [
+          "Worldcoin Wld",
+          "Ethereum Name Service",
+          "Swop 2"
+        ]
+      },
       {
         "id": "decentralized-derivatives",
         "name": "Derivatives",
-        "chg24h": 5.8,
-        "mcap_busd": 17.5,
+        "chg24h": 6.7,
+        "mcap_busd": 17.6,
         "top": [
           "Hyperliquid",
           "Lighter",
@@ -878,8 +1296,8 @@
       {
         "id": "decentralized-perpetuals",
         "name": "Perpetuals",
-        "chg24h": 5.5,
-        "mcap_busd": 20.2,
+        "chg24h": 6.5,
+        "mcap_busd": 20.4,
         "top": [
           "Hyperliquid",
           "Aster 2",
@@ -887,10 +1305,32 @@
         ]
       },
       {
+        "id": "payment-solutions",
+        "name": "Payment Solutions",
+        "chg24h": 6.3,
+        "mcap_busd": 1.8,
+        "top": [
+          "Dash",
+          "Stable 2",
+          "Zebec Network"
+        ]
+      },
+      {
+        "id": "yield-farming",
+        "name": "Yield Farming",
+        "chg24h": 5.8,
+        "mcap_busd": 8.3,
+        "top": [
+          "Uniswap",
+          "Aave",
+          "Bitway"
+        ]
+      },
+      {
         "id": "dex-aggregator",
         "name": "Dex Aggregator",
-        "chg24h": 4.8,
-        "mcap_busd": 1.0,
+        "chg24h": 5.7,
+        "mcap_busd": 1.1,
         "top": [
           "Jupiter Exchange Solana",
           "1Inch",
@@ -898,56 +1338,25 @@
         ]
       },
       {
-        "id": "bitcoin-fork",
-        "name": "Bitcoin Fork",
-        "chg24h": 4.7,
-        "mcap_busd": 4.8,
-        "top": [
-          "Bitcoin Cash",
-          "Bitcoin Cash Sv",
-          "Ecash"
-        ]
-      },
-      {
         "id": "governance",
         "name": "Governance",
-        "chg24h": 4.3,
-        "mcap_busd": 33.3,
+        "chg24h": 5.4,
+        "mcap_busd": 33.5,
         "top": [
           "Hyperliquid",
           "Uniswap",
-          "Bitway"
+          "Aave"
         ]
       },
       {
-        "id": "cross-chain-communication",
-        "name": "Cross-chain Communication",
-        "chg24h": 3.8,
-        "mcap_busd": 8.6,
+        "id": "socialfi",
+        "name": "SocialFi",
+        "chg24h": 5.4,
+        "mcap_busd": 1.4,
         "top": [
-          "Chainlink",
-          "Layerzero",
-          "Olympus"
-        ]
-      },
-      {
-        "id": "oracle",
-        "name": "Oracle",
-        "chg24h": 3.7,
-        "mcap_busd": 8.1,
-        "top": [
-          "Chainlink",
-          "Pyth Network",
-          "Redstone Oracles"
-        ]
-      },
-      {
-        "id": "timefi",
-        "name": "TimeFi",
-        "chg24h": 3.7,
-        "mcap_busd": 1.1,
-        "top": [
-          "Pieverse"
+          "Pump Fun",
+          "Swop 2",
+          "Project Galaxy"
         ]
       }
     ],
@@ -1151,29 +1560,104 @@
         "t": 1795748884,
         "btc_dom": 58.0,
         "total3": 682323019088.8188
+      },
+      {
+        "t": 1795774470,
+        "btc_dom": 58.0,
+        "total3": 685324171540.1176
       }
     ],
     "rotation": {
       "state": "NEUTRAL",
       "text": "Altcoins and BTC are moving roughly together. No rotation either way.",
       "btc_7d": -2.3,
-      "alt_median_7d": -2.9,
+      "alt_median_7d": -4.1,
       "btc_dom_7d_change": -0.1,
       "how": "Compares the median 7 day move of all scanned altcoins with BTC, plus the 7 day change in BTC dominance once a week of history is stored."
     },
     "sector_coins": [
       {
+        "symbol": "WLD",
+        "name": "Worldcoin",
+        "sector": "Decentralized Identifier (DID)",
+        "mcap_musd": 957,
+        "rank": 70,
+        "price": 0.251644,
+        "binance_days": null,
+        "binance_days_min": 220,
+        "facts": [
+          "In Decentralized Identifier (DID), a sector up 7.8% today.",
+          "-42% over 30 days, +2% over 7 days.",
+          "Daily trend: downtrend."
+        ],
+        "risks": [
+          "Only 38% of supply circulating, so unlocks can add selling.",
+          "Below its 50 day average: the trend is still down."
+        ]
+      },
+      {
+        "symbol": "ENS",
+        "name": "Ethereum Name Service",
+        "sector": "Decentralized Identifier (DID)",
+        "mcap_musd": 152,
+        "rank": 182,
+        "price": 3.59,
+        "binance_days": null,
+        "binance_days_min": null,
+        "facts": [
+          "In Decentralized Identifier (DID), a sector up 7.8% today.",
+          "-32% over 30 days, -6% over 7 days."
+        ],
+        "risks": [
+          "Only 42% of supply circulating, so unlocks can add selling."
+        ]
+      },
+      {
+        "symbol": "GAL",
+        "name": "GAL (migrated to Gravity - G)",
+        "sector": "Decentralized Identifier (DID)",
+        "mcap_musd": 46,
+        "rank": 418,
+        "price": 0.358657,
+        "binance_days": null,
+        "binance_days_min": null,
+        "facts": [
+          "In Decentralized Identifier (DID), a sector up 7.8% today.",
+          "-31% over 30 days, -2% over 7 days."
+        ],
+        "risks": [
+          "Small cap: thin order books and large swings."
+        ]
+      },
+      {
+        "symbol": "G",
+        "name": "Gravity (by Galxe)",
+        "sector": "Decentralized Identifier (DID)",
+        "mcap_musd": 21,
+        "rank": 737,
+        "price": 0.00287577,
+        "binance_days": null,
+        "binance_days_min": null,
+        "facts": [
+          "In Decentralized Identifier (DID), a sector up 7.8% today.",
+          "-22% over 30 days, +9% over 7 days."
+        ],
+        "risks": [
+          "Small cap: thin order books and large swings."
+        ]
+      },
+      {
         "symbol": "HYPE",
         "name": "Hyperliquid",
         "sector": "Derivatives",
-        "mcap_musd": 15479,
+        "mcap_musd": 15613,
         "rank": 10,
-        "price": 65.13,
+        "price": 65.69,
         "binance_days": 64,
         "binance_days_min": null,
         "facts": [
-          "In Derivatives, a sector up 5.8% today.",
-          "-21% over 30 days, -1% over 7 days.",
+          "In Derivatives, a sector up 6.7% today.",
+          "-19% over 30 days, +1% over 7 days.",
           "Daily trend: downtrend."
         ],
         "risks": [
@@ -1185,14 +1669,14 @@
         "symbol": "LIT",
         "name": "Lighter",
         "sector": "Derivatives",
-        "mcap_musd": 638,
-        "rank": 87,
-        "price": 2.55,
+        "mcap_musd": 677,
+        "rank": 86,
+        "price": 2.71,
         "binance_days": null,
         "binance_days_min": null,
         "facts": [
-          "In Derivatives, a sector up 5.8% today.",
-          "-17% over 30 days, -5% over 7 days."
+          "In Derivatives, a sector up 6.7% today.",
+          "-11% over 30 days, +3% over 7 days."
         ],
         "risks": [
           "Only 25% of supply circulating, so unlocks can add selling."
@@ -1208,7 +1692,7 @@
         "binance_days": null,
         "binance_days_min": null,
         "facts": [
-          "In Derivatives, a sector up 5.8% today.",
+          "In Derivatives, a sector up 6.7% today.",
           "-38% over 30 days, -9% over 7 days."
         ],
         "risks": [
@@ -1219,14 +1703,14 @@
         "symbol": "AWE",
         "name": "AWE Network",
         "sector": "Derivatives",
-        "mcap_musd": 104,
+        "mcap_musd": 103,
         "rank": 238,
-        "price": 0.05353,
+        "price": 0.053285,
         "binance_days": null,
         "binance_days_min": null,
         "facts": [
-          "In Derivatives, a sector up 5.8% today.",
-          "-18% over 30 days, -5% over 7 days."
+          "In Derivatives, a sector up 6.7% today.",
+          "-22% over 30 days, -6% over 7 days."
         ],
         "risks": [
           "No standout risk in this data, which is not the same as safe."
@@ -1236,31 +1720,33 @@
         "symbol": "ASTER",
         "name": "Aster",
         "sector": "Perpetuals",
-        "mcap_musd": 1310,
-        "rank": 59,
-        "price": 0.509191,
+        "mcap_musd": 1306,
+        "rank": 58,
+        "price": 0.507915,
         "binance_days": null,
-        "binance_days_min": null,
+        "binance_days_min": 220,
         "facts": [
-          "In Perpetuals, a sector up 5.5% today.",
-          "-28% over 30 days, +0% over 7 days."
+          "In Perpetuals, a sector up 6.5% today.",
+          "-29% over 30 days, +1% over 7 days.",
+          "Daily trend: downtrend."
         ],
         "risks": [
-          "Only 32% of supply circulating, so unlocks can add selling."
+          "Only 32% of supply circulating, so unlocks can add selling.",
+          "Below its 50 day average: the trend is still down."
         ]
       },
       {
         "symbol": "JUP",
         "name": "Jupiter",
         "sector": "Perpetuals",
-        "mcap_musd": 819,
+        "mcap_musd": 828,
         "rank": 76,
-        "price": 0.246767,
+        "price": 0.24933,
         "binance_days": null,
         "binance_days_min": null,
         "facts": [
-          "In Perpetuals, a sector up 5.5% today.",
-          "-13% over 30 days, +3% over 7 days."
+          "In Perpetuals, a sector up 6.5% today.",
+          "-11% over 30 days, +9% over 7 days."
         ],
         "risks": [
           "Only 33% of supply circulating, so unlocks can add selling."
@@ -1270,13 +1756,13 @@
         "symbol": "CAKE",
         "name": "PancakeSwap",
         "sector": "Perpetuals",
-        "mcap_musd": 504,
-        "rank": 95,
-        "price": 1.59,
+        "mcap_musd": 560,
+        "rank": 92,
+        "price": 1.6,
         "binance_days": null,
         "binance_days_min": null,
         "facts": [
-          "In Perpetuals, a sector up 5.5% today.",
+          "In Perpetuals, a sector up 6.5% today.",
           "-24% over 30 days, +2% over 7 days."
         ],
         "risks": [
@@ -1287,88 +1773,24 @@
         "symbol": "RAY",
         "name": "Raydium",
         "sector": "Perpetuals",
-        "mcap_musd": 363,
-        "rank": 115,
-        "price": 1.35,
+        "mcap_musd": 366,
+        "rank": 113,
+        "price": 1.36,
         "binance_days": null,
         "binance_days_min": null,
         "facts": [
-          "In Perpetuals, a sector up 5.5% today.",
-          "-25% over 30 days, -4% over 7 days."
+          "In Perpetuals, a sector up 6.5% today.",
+          "-23% over 30 days, -3% over 7 days."
         ],
         "risks": [
           "Only 49% of supply circulating, so unlocks can add selling."
         ]
-      },
-      {
-        "symbol": "1INCH",
-        "name": "1INCH",
-        "sector": "Dex Aggregator",
-        "mcap_musd": 82,
-        "rank": 275,
-        "price": 0.058496,
-        "binance_days": null,
-        "binance_days_min": null,
-        "facts": [
-          "In Dex Aggregator, a sector up 4.8% today.",
-          "-34% over 30 days, -8% over 7 days."
-        ],
-        "risks": [
-          "Small cap: thin order books and large swings."
-        ]
-      },
-      {
-        "symbol": "HOME",
-        "name": "HOME",
-        "sector": "Dex Aggregator",
-        "mcap_musd": 19,
-        "rank": 781,
-        "price": 0.00428936,
-        "binance_days": null,
-        "binance_days_min": null,
-        "facts": [
-          "In Dex Aggregator, a sector up 4.8% today.",
-          "-20% over 30 days, +4% over 7 days."
-        ],
-        "risks": [
-          "Small cap: thin order books and large swings.",
-          "Only 44% of supply circulating, so unlocks can add selling."
-        ]
-      },
-      {
-        "symbol": "CETUS",
-        "name": "Cetus Protocol",
-        "sector": "Dex Aggregator",
-        "mcap_musd": 15,
-        "rank": 884,
-        "price": 0.01570599,
-        "binance_days": null,
-        "binance_days_min": null,
-        "facts": [
-          "In Dex Aggregator, a sector up 4.8% today.",
-          "-29% over 30 days, -1% over 7 days."
-        ],
-        "risks": [
-          "Small cap: thin order books and large swings."
-        ]
-      },
-      {
-        "symbol": "JOE",
-        "name": "JOE",
-        "sector": "Dex Aggregator",
-        "mcap_musd": 10,
-        "rank": 1136,
-        "price": 0.02094362,
-        "binance_days": null,
-        "binance_days_min": null,
-        "facts": [
-          "In Dex Aggregator, a sector up 4.8% today.",
-          "-31% over 30 days, +1% over 7 days."
-        ],
-        "risks": [
-          "Small cap: thin order books and large swings."
-        ]
       }
     ]
+  },
+  "universe": {
+    "top100_on_binance": 42,
+    "total": 55,
+    "rule": "Top 100 coins by market cap with at least $2M daily volume on Binance, plus any pair over $5M"
   }
 }
